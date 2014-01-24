@@ -1,4 +1,4 @@
-Bienvenue sur le nouveau repo GIT de la L3 SPI 2013-2014 !
+Bienvenue sur le repo du groupe de projet C de la L3-SPI !
 
 # Utiliser GIT (facilement)
 
