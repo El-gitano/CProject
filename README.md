@@ -4,9 +4,9 @@ Bienvenue sur le repo du groupe de projet C de la L3-SPI !
 
 ##Installation
 
-* [Pour Windows]
-* [Pour Mac] 
-* Pour (Maître) Linux voir ci-dessous 
+* [Pour Windows] , c'est tout nouveau, apparemment c'est intuitif et ça fonctionne bien, je vous laisse découvrir !
+* [Pour Mac] , c'est tout nouveau, apparemment c'est intuitif et ça fonctionne bien, je vous laisse découvrir !
+* Pour Linux voir ci-dessous 
 
 
 ```Bash
@@ -18,10 +18,10 @@ ou encore
 sudo yum install git
 ```
 
-[Pour Windows]: http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git
-[Pour Mac]: http://code.google.com/p/git-osx-installer
+[Pour Windows]: http://windows.github.com
+[Pour Mac]: http://mac.github.com
 
-##Configuration
+##Configuration (pour Linux)
 
 Quelques étapes de configuration vous seront nécessaire pour pouvoir utiliser GIT tranquillement.
 
@@ -34,7 +34,6 @@ git config --global color.branch auto
 ```
 
 ###Les informations diverses
-
 ```Bash
 git config --global user.name "Votre nom/pseudo"
 git config --global user.email "Votre e-mail utilisé pour vous inscrire sur github"
@@ -49,7 +48,7 @@ git remote add upstream https://github.com/El-gitano/CProject.git
 git fetch upstream
 ```
 
-##Utilisation
+##Utilisation (pour Linux)
 
 En seulement 4 étapes !
 
