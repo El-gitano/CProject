@@ -1,0 +1,12 @@
+======================================================
+
+
+			IDEES
+
+
+======================================================
+
+Réaliser des maquettes de l'interface graphique pour le client
+
+Intégrer des librairies afin de faciliter le dévellopement
+
