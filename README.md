@@ -1,4 +1,4 @@
-Bienvenue sur le repo du groupe de projet C de la L3-SPI !
+Bienvenue sur le nouveau repo Git du groupe C de projet !
 
 # Utiliser GIT (facilement)
 
@@ -6,24 +6,25 @@ Bienvenue sur le repo du groupe de projet C de la L3-SPI !
 
 * [Pour Windows] , c'est tout nouveau, apparemment c'est intuitif et ça fonctionne bien, je vous laisse découvrir !
 * [Pour Mac] , c'est tout nouveau, apparemment c'est intuitif et ça fonctionne bien, je vous laisse découvrir !
-* Pour Linux voir ci-dessous 
+* Pour (Maître) Linux , le paquet _git_ est nécessaire; voir ci-dessous pour découvrir.
 
-
+Debian et dérivés:
 ```Bash
-sudo apt-get install git-core
+sudo apt-get install git
 ```
-ou encore
-
+Fedora:
 ```Bash
 sudo yum install git
 ```
 
 [Pour Windows]: http://windows.github.com
 [Pour Mac]: http://mac.github.com
+NB: pour Windows et Mac, le tuto s'arrête ici. Pour Linux également, ils existe des logiciels (tig, gitk,...) pour gérer git sans passser (ou presque) par les commandes expliquées dans la suite du tuto.  
 
-##Configuration (pour Linux)
 
-Quelques étapes de configuration vous seront nécessaire pour pouvoir utiliser GIT tranquillement.
+##Configuration (Linux)
+
+Quelques étapes de configuration vous seront nécessaire pour pouvoir utiliser Git tranquillement.
 
 ###Les couleurs
 
@@ -34,11 +35,12 @@ git config --global color.branch auto
 ```
 
 ###Les informations diverses
+
 ```Bash
 git config --global user.name "Votre nom/pseudo"
 git config --global user.email "Votre e-mail utilisé pour vous inscrire sur github"
 git config --global credential.helper cache
-git config --global credential.helper 'cache --timeout=3600' (garde le mot de passe en cache 1h après authentification réussie, c'est plus pratique)
+git config --global credential.helper 'cache --timeout=3600' #garde le mot de passe en cache 3600s après authentification réussie, c'est plus pratique
 ```
 
 ###Ajouter le repo et rediriger les push sur le repo commun
@@ -62,7 +64,7 @@ git pull
 
 2.Faire un changement (travail)
 
-3.Commiter le changement, càd mise à jour locale (Dire la mise à jour qu'on a effectué lors de nos dernières actions)
+3.Commiter le changement, càd mise à jour locale (Dire la mise à jour qu'on a effectué lors de nos dernières actions"
 ```Bash
 git commit -a
 ```
