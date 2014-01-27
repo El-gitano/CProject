@@ -1,0 +1,40 @@
+======================================================
+
+
+			QUESTIONS
+
+
+======================================================
+
+
+=========
+JEU     : 
+=========
+
+A qui destinez vous le logiciel ?
+
+Souhaitez vous intégrer de la musique dans le logiciel ? (Implique d'intégrer un option pour activer/désactiver)
+
+Quelle taille de grille souhaitez vous ?
+
+Souhaitez vous intégrer différents niveaux de difficulté ?
+
+Qu'entendez vous par système d'aide ?
+
+	-Remplir une ligne
+	-Cocher une case à noircir
+	-Désigner une ligne où se trouve une solution
+	-Confirmer une case désignée par l'utilisateur
+
+Souhaitez vous intégrer un système de classement ? (Sous-entendu enregistrement du temps de validation du niveau)
+
+Souhaitez vous intégrer un système de progression ? (Niveau bloqué si on a pas effectué les autres)
+
+Qu'entendez vous par persistance des données ? Système de sauvegarde/chargement ou seulement reprise de la dernière partie en cours ?
+
+=========
+EDITEUR : 
+=========
+
+Qu'entendez vous par éditeur ? (question à améliorer en faisant des propositions)
+
