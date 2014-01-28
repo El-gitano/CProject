@@ -11,6 +11,8 @@
 JEU     : 
 =========
 
+Avec quelles versions de Ruby/GTK le programme devra-t-il être compatible ?
+
 Souhaitez vous une compatibilité avec tous les OS ou un seul spécifiquement ?
 
 A qui destinez vous le logiciel ?
