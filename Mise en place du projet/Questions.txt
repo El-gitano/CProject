@@ -11,6 +11,8 @@
 JEU     : 
 =========
 
+Souhaitez vous une compatibilité avec tous les OS ou un seul spécifiquement ?
+
 A qui destinez vous le logiciel ?
 
 Souhaitez vous intégrer de la musique dans le logiciel ? (Implique d'intégrer un option pour activer/désactiver)
@@ -37,4 +39,7 @@ EDITEUR :
 =========
 
 Qu'entendez vous par éditeur ? (question à améliorer en faisant des propositions)
+	-Créer les cases et générer les chiffres
+	-Créer les chiffres et générer les cases
+	-Génération aléatoire
 
