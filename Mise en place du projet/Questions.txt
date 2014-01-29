@@ -11,37 +11,42 @@
 JEU     : 
 =========
 
-Avec quelles versions de Ruby/GTK le programme devra-t-il être compatible ?
+Avec quelles versions de Ruby/GTK le programme devra-t-il ï¿½tre compatible ?
 
-Souhaitez vous une compatibilité avec tous les OS ou un seul spécifiquement ?
+Souhaitez vous une compatibilitï¿½ avec tous les OS ou un seul spï¿½cifiquement ?
 
 A qui destinez vous le logiciel ?
 
-Souhaitez vous intégrer de la musique dans le logiciel ? (Implique d'intégrer un option pour activer/désactiver)
+Souhaitez vous intï¿½grer de la musique dans le logiciel ? (Implique d'intï¿½grer un option pour activer/dï¿½sactiver)
 
 Quelle taille de grille souhaitez vous ?
 
-Souhaitez vous intégrer différents niveaux de difficulté ?
+Souhaitez vous intï¿½grer diffï¿½rents niveaux de difficultï¿½ ?
 
-Qu'entendez vous par système d'aide ?
+Qu'entendez vous par systï¿½me d'aide ?
 
 	-Remplir une ligne
-	-Cocher une case à noircir
-	-Désigner une ligne où se trouve une solution
-	-Confirmer une case désignée par l'utilisateur
+	-Cocher une case ï¿½ noircir
+	-Dï¿½signer une ligne oï¿½ se trouve une solution
+	-Confirmer une case dï¿½signï¿½e par l'utilisateur
 
-Souhaitez vous intégrer un système de classement ? (Sous-entendu enregistrement du temps de validation du niveau)
+Souhaitez vous intï¿½grer un systï¿½me de classement ? (Sous-entendu enregistrement du temps de validation du niveau)
 
-Souhaitez vous intégrer un système de progression ? (Niveau bloqué si on a pas effectué les autres)
+Souhaitez vous intï¿½grer un systï¿½me de progression ? (Niveau bloquï¿½ si on a pas effectuï¿½ les autres)
 
-Qu'entendez vous par persistance des données ? Système de sauvegarde/chargement ou seulement reprise de la dernière partie en cours ?
+Qu'entendez vous par persistance des donnï¿½es ? Systï¿½me de sauvegarde/chargement ou seulement reprise de la derniï¿½re partie en cours ?
 
 =========
 EDITEUR : 
 =========
 
-Qu'entendez vous par éditeur ? (question à améliorer en faisant des propositions)
-	-Créer les cases et générer les chiffres
-	-Créer les chiffres et générer les cases
-	-Génération aléatoire
+Qu'entendez vous par ï¿½diteur ? (question ï¿½ amï¿½liorer en faisant des propositions)
+	-Crï¿½er les cases et gï¿½nï¿½rer les chiffres
+	-Crï¿½er les chiffres et gï¿½nï¿½rer les cases
+	-Gï¿½nï¿½ration alï¿½atoire
 
+========
+TEST :
+========
+
+Je fais seulement un test pour voir comment Ã§a marche ^^
