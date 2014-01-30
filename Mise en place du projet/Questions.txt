@@ -1,4 +1,4 @@
-======================================================
+﻿======================================================
 
 
 			QUESTIONS
@@ -50,6 +50,12 @@ Qu'entendez vous par �diteur ? (question � am�liorer en faisant des propos
 	-Génération depuis une image
 	
 Système d'import/export de grilles userfriendly ?
+
+=======
+TEST 2.0.1.8 
+=======
+
+Le chien est un chiffon.
 
 ========
 TEST :
