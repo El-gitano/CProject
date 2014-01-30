@@ -31,10 +31,13 @@ Qu'entendez vous par syst�me d'aide ?
 	-Confirmer une case d�sign�e par l'utilisateur
 
 Souhaitez vous int�grer un syst�me de classement ? (Sous-entendu enregistrement du temps de validation du niveau)
+	Si non : Timer pendant le niveau (sans enregistrement) ?
 
 Souhaitez vous int�grer un syst�me de progression ? (Niveau bloqu� si on a pas effectu� les autres)
 
 Qu'entendez vous par persistance des donn�es ? Syst�me de sauvegarde/chargement ou seulement reprise de la derni�re partie en cours ?
+
+Grille solvable sans hypothèses ? (Une seule solution possible pour une grille)
 
 =========
 EDITEUR : 
@@ -44,6 +47,9 @@ Qu'entendez vous par �diteur ? (question � am�liorer en faisant des propos
 	-Cr�er les cases et g�n�rer les chiffres
 	-Cr�er les chiffres et g�n�rer les cases
 	-G�n�ration al�atoire
+	-Génération depuis une image
+	
+Système d'import/export de grilles userfriendly ?
 
 ========
 TEST :
