@@ -6,10 +6,9 @@
 
 ======================================================
 
-
-=========
-JEU     : 
-=========
+============
+CONCEPTION :
+============
 
 Avec quelles versions de Ruby/GTK le programme devra-t-il �tre compatible ?
 
@@ -17,7 +16,9 @@ Souhaitez vous une compatibilit� avec tous les OS ou un seul sp�cifiquement 
 
 A qui destinez vous le logiciel ?
 
-Souhaitez vous int�grer de la musique dans le logiciel ? (Implique d'int�grer un option pour activer/d�sactiver)
+=========
+JEU     : 
+=========
 
 Quelle taille de grille souhaitez vous ?
 
@@ -47,15 +48,26 @@ Qu'entendez vous par �diteur ? (question � am�liorer en faisant des propos
 	-Cr�er les cases et g�n�rer les chiffres
 	-Cr�er les chiffres et g�n�rer les cases
 	-G�n�ration al�atoire
-	-Génération depuis une image
+	-Génération depuis une image (Dangereux ça non ?)
 	
 Système d'import/export de grilles userfriendly ?
 
-=======
-TEST 2.0.1.8 
-=======
 
-Le chien est un chiffon.
+==================
+IHM ET ESTHETIQUE: 
+==================
+
+Si système de sauvegarde il y a, sous quelle forme doit-il se présenter au niveau IHM ?
+
+Doit-on mettre une barre de menu ? Si oui quels onglets devrait-on y trouver ? (Informations sur les auteurs, sauvegarde, charger, nouvelle partie etc...) (OPTIONNEL)
+
+Souhaitez vous int�grer de la musique dans le logiciel ? (Implique d'int�grer un option pour activer/d�sactiver)
+
+==================
+GESTION DE PROJET: 
+==================
+
+Est-il possible de suivre un cycle de vie en spiral et par conséquent que nous ayons régulièrement des réunions avec le client ?
 
 ========
 TEST :
