@@ -6,12 +6,14 @@
 
 ======================================================
 
-Réaliser des maquettes de l'interface graphique pour le client
+Rï¿½aliser des maquettes de l'interface graphique pour le client
 
-Intégrer des librairies afin de faciliter le dévellopement
+Intï¿½grer des librairies afin de faciliter le dï¿½vellopement
 
-Etablir un déroulement type d'une séance (exemple) :
+Etablir un dï¿½roulement type d'une sï¿½ance (exemple) :
 
-	-Introduction : On discute de ce que chacun a à faire et des choses à choisir ensemble ainsi que de l'objectif de la séance
-	-Séance : Chacun bosse sur sa partie du travail, tout en restant en collaboration avec les autres
-	-Conclusion : On résume ce que chacun a fait l'avancement et on se définit un objectif pour la prochaine séance 
+	-Introduction : On discute de ce que chacun a ï¿½ faire et des choses ï¿½ choisir ensemble ainsi que de l'objectif de la sï¿½ance
+	-Sï¿½ance : Chacun bosse sur sa partie du travail, tout en restant en collaboration avec les autres
+	-Conclusion : On rï¿½sume ce que chacun a fait l'avancement et on se dï¿½finit un objectif pour la prochaine sï¿½ance 
+
+Ajouter WBS dans CDC
