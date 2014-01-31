@@ -1,0 +1,28 @@
+==========
+SPECIFICATIONS
+==========
+
+Programme compatible avec Ruby 1.9.3
+Compatible tout OS
+S'adresse à un public classique
+
+==========
+
+==========
+JEU
+==========
+
+Intégrer un menu avec Options, Mode classique, Mode éditeur
+Tailles des grilles partant de 5x5 et de 5 en 5 jusqu'à 25x25
+Pas de solution unique pour un niveau crée à l'aide de l'éditeur
+Système de score, classement, statistique
+Possibilité de reprendre une partie
+Système d'étoiles, de joker et de timer
+Pas de musique
+Pas de système de progression (déblocage)
+
+===========
+CHOIX DE CONCEPTION
+===========
+
+Persistance des données : serialisation
