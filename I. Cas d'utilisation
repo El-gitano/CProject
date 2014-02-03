@@ -1,0 +1,42 @@
+Exemple : http://fr.wikipedia.org/wiki/Cas_d%27utilisation
+
+Cas d’utilisation numéro 1 
+
+    Nom : Résolution picross
+    Description : l’utilisateur tente de résoure une grille de picross
+    Acteurs : l'utilisateur de l'application
+    Références : ?
+    Préalables : L'application doit être téléchargé
+    Conséquents : L'utilisateur peut exécuter l'application
+
+Séquences d’événements 
+(en partant du menu)
+	- l’utilisateur clique sur l'option " nouvelle partie"
+	- Gestion de profil pour éviter de proposer une grille déjà remplie ?
+	
+	- l'application propose différentes tailles de grille (Peut être encombrant s'il y a beaucoup de tailles possible, mais évite une entrée manuelle qui pourrait être incorrecte)
+	
+	- L'utilisateur choisit une taille de grille
+	- Le système recherche une grille correspondant à la taille sélectionnée et jamais remplie par l'utilisateur
+	- Le système questionne l'utilisateur pour le choix de joker / timer (à préciser)
+
+
+Exceptions 
+
+
+
+
+Cas d’utilisation numéro 2 
+
+    Nom : Edition picross
+    Description : l’utilisateur créé une grille de picross via l'éditeur
+    Acteurs : l'utilisateur de l'application
+    Références : ?
+    Préalables : L'application doit être téléchargé
+    Conséquents : L'utilisateur peut exécuter l'application
+
+Séquences d’événements 
+
+
+
+Exceptions 
