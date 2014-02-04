@@ -10,15 +10,31 @@ Cas d’utilisation numéro 1
     Conséquents : L'utilisateur peut exécuter l'application
 
 Séquences d’événements 
-(en partant du menu)
+	- (L'utilisateur n'est pas encore dans la partie)
+	
 	- l’utilisateur clique sur l'option " nouvelle partie"
 	- Gestion de profil pour éviter de proposer une grille déjà remplie ?
 	
 	- l'application propose différentes tailles de grille (Peut être encombrant s'il y a beaucoup de tailles possible, mais évite une entrée manuelle qui pourrait être incorrecte)
 	
 	- L'utilisateur choisit une taille de grille
-	- Le système recherche une grille correspondant à la taille sélectionnée et jamais remplie par l'utilisateur
-	- Le système questionne l'utilisateur pour le choix de joker / timer (à préciser)
+	- Le système demande si un timer doit être mis en place (nécessaire pour être classé)
+	
+	- Le système recherche une grille correspondant à la taille sélectionnée et jamais remplie par l'utilisateur, met ou non en place le timer
+	
+	- (L'utilisateur est maintenant dans la partie)
+	
+	- L'utilisateur essaye de résoudre la grille
+	- Une fois la grille complète, il peut cliquer sur l'option "terminer / vérifier grille"
+	- Le système compare les valeurs de chaque ligne / colonne avec les cases noircies
+	
+		- 1er cas : Affichage d'un message de confirmation, stockage du score
+		- Si l'image obtenue est différente de celle stockée
+			- Le système en informe l'utilisateur et lui montre l'image stockée
+	
+		- 2e cas : Affichage d'un message indiquant qu'il y a (au moins) une erreur
+			- L'utilisation d'un joker peut être proposé dans ce même message, vu que le joueur s'en servira probablement pour repérer une erreur (les erreurs en cascade, ça pardonne pas)
+
 
 
 Exceptions 
