@@ -10,19 +10,24 @@ Cas d’utilisation numéro 1
     Conséquents : L'utilisateur peut exécuter l'application
 
 Séquences d’événements 
-	- (L'utilisateur n'est pas encore dans la partie)
+
+I - L'utilisateur n'est pas encore dans la partie
 	
-	- l’utilisateur clique sur l'option " nouvelle partie" (Gestion de profil pour éviter de proposer une grille déjà remplie ?)
+	- L’utilisateur clique sur l'option " nouvelle partie" (Identification à prendre en compte, gestion de profil ...)
 	
-	- l'application propose différentes tailles de grille (Peut être encombrant s'il y a beaucoup de tailles possible, mais évite une entrée manuelle qui pourrait être incorrecte)
+	- Le système demande si l'on souhaite une grille choisie ou aléatoire
+	- L'utilisateur fait son choix
 	
-	- L'utilisateur choisit une taille de grille
+	- S'il demande une grille aléatoire 
+		- Le système propose différentes tailles de grille (Peut être encombrant s'il y en a beaucoup, mais évite une entrée manuelle qui pourrait être incorrecte)
+		- L'utilisateur choisit choisit une taille de grille
+		- Le système sélectionne une grille
 	
 	- Le système demande si un timer doit être mis en place (nécessaire pour être classé)
+	- L'utilisateur répond soit oui, soit non
+	- Le système met ou non le timer en place
 	
-	- Le système recherche une grille correspondant à la taille sélectionnée et jamais remplie par l'utilisateur, met ou non en place le timer
-	
-	- (L'utilisateur est maintenant dans la partie)
+II - L'utilisateur est maintenant dans la partie
 	
 	- L'utilisateur essaye de résoudre la grille
 	
