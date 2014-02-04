@@ -13,7 +13,7 @@ Séquences d’événements
 
 I - L'utilisateur n'est pas encore dans la partie
 	
-	- L’utilisateur clique sur l'option " nouvelle partie" (Identification à prendre en compte, gestion de profil ...)
+	- L’utilisateur clique sur l'option " nouvelle partie"
 	
 	- Le système demande si l'on souhaite une grille choisie ou aléatoire
 	- L'utilisateur fait son choix
@@ -23,11 +23,8 @@ I - L'utilisateur n'est pas encore dans la partie
 		- L'utilisateur choisit une taille
 		- Le système sélectionne une grille
 	
-	- Le système demande si un timer doit être mis en place (nécessaire pour être classé)
-	- L'utilisateur répond soit oui, soit non
-	- Le système met ou non le timer en place
-	
-	- Choix du nombre de jokers ? Moins on en prend, plus le bonus sera important, idem lors de leur utilisation ?
+	- Le système met le timer en place
+	- Quant aux jokers : choix du nombre ? Moins on en prend, plus le bonus sera important, idem lors de leur utilisation ?
 	
 II - L'utilisateur est maintenant dans la partie
 	
@@ -39,17 +36,20 @@ II - L'utilisateur est maintenant dans la partie
 	- Affichage d'un message indiquant s'il y a correspondance ou non
 	
 		- S'il y a correspondance
-			- Stockage du score
-			- Affichage des scores pour cette grille
+			- Le système demande d'entrer son nom
+			- L'utilisateur entre son nom
+			- Enregistrement du temps mis pour terminer la grille avec le nom entré
+			- Affichage des records pour cette grille
 			- Si l'image obtenue est différente de celle stockée, Le système en informe l'utilisateur et lui montre l'image en question
 	
 		- Sinon
-			- L'utilisation d'un joker peut être proposé dans lemessage, vu que le joueur s'en servira probablement pour repérer une erreur (les erreurs en cascade, ça pardonne pas)
+			- L'utilisation d'un joker peut être proposé dans le message, vu que le joueur s'en servira probablement pour repérer une erreur (les erreurs en cascade, ça pardonne pas)
 
 
 
 Exceptions 
-
+	- L'utilisateur entre une taille de grille souhaitée qui n'est pas prise en compte
+	-		veut utiliser un joker alors qu'il n'en a plus
 
 
 
