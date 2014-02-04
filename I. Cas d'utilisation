@@ -3,8 +3,8 @@ Exemple : http://fr.wikipedia.org/wiki/Cas_d%27utilisation
 Cas d’utilisation numéro 1 
 
     Nom : Résolution picross
-    Description : L’utilisateur tente de résoure une grille de picross
-    Acteurs : L'utilisateur de l'application
+    Description : L’utilisateur tente de résoudre une grille de picross
+    Acteur : L'utilisateur de l'application
     Références : ?
     Préalables : L'application doit être téléchargé
     Conséquents : L'utilisateur peut exécuter l'application
@@ -20,7 +20,7 @@ I - L'utilisateur n'est pas encore dans la partie
 	
 	- S'il demande une grille aléatoire 
 		- Le système propose différentes tailles de grille (Peut être encombrant s'il y en a beaucoup, mais évite une entrée manuelle qui pourrait être incorrecte)
-		- L'utilisateur choisit choisit une taille
+		- L'utilisateur choisit une taille
 		- Le système sélectionne une grille
 	
 	- Le système demande si un timer doit être mis en place (nécessaire pour être classé)
@@ -56,8 +56,8 @@ Exceptions
 Cas d’utilisation numéro 2 
 
     Nom : Edition picross
-    Description : l’utilisateur créé une grille de picross via l'éditeur
-    Acteurs : L'utilisateur de l'application
+    Description : L’utilisateur créé une grille de picross via l'éditeur
+    Acteur : L'utilisateur de l'application
     Références : ?
     Préalables : L'application doit être téléchargé
     Conséquents : L'utilisateur peut exécuter l'application
