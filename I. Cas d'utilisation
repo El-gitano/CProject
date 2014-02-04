@@ -13,7 +13,7 @@ Séquences d’événements
 
 I - L'utilisateur n'est pas encore dans la partie
 	
-	- L’utilisateur clique sur l'option " nouvelle partie"
+	- L’utilisateur clique sur l'option "nouvelle partie"
 	
 	- Le système demande si l'on souhaite une grille choisie ou aléatoire
 	- L'utilisateur fait son choix
@@ -23,17 +23,24 @@ I - L'utilisateur n'est pas encore dans la partie
 		- L'utilisateur choisit une taille
 		- Le système sélectionne une grille
 	
-	- Le système met le timer en place
-	- Quant aux jokers : choix du nombre ? Moins on en prend, plus le bonus sera important, idem lors de leur utilisation ?
+	- (Un joker = une aide ?)
+	
+	- Ajout d'un malus par joker utilisé
+	- Dans le cas ou le nombre au départ est limité :
+		- Ajout d'un bonus en fonction du nombre de jokers non utilisés (optionnel)
+		
+	- On considère que le timer est toujours mis en place
 	
 II - L'utilisateur est maintenant dans la partie
 	
 	- L'utilisateur essaye de résoudre la grille
 	
+	- L'utilisateur peut utiliser l'option "joker / aide" pour se débloquer
+	
 	- Une fois la grille complète, il peut cliquer sur l'option "terminer / vérifier grille"
 	
 	- Le système compare les valeurs de chaque ligne / colonne avec les cases noircies
-	- Affichage d'un message indiquant s'il y a correspondance ou non
+	- Affichage d'un message indiquant s'il y a correspondance (réussite) ou non
 	
 		- S'il y a correspondance
 			- Le système demande d'entrer son nom
@@ -48,8 +55,8 @@ II - L'utilisateur est maintenant dans la partie
 
 
 Exceptions 
-	- L'utilisateur entre une taille de grille souhaitée qui n'est pas prise en compte
-	-		veut utiliser un joker alors qu'il n'en a plus
+	- L'utilisateur entre une taille de grille souhaitée qui n'est pas prise en compte (dans le cas d'une saisie manuelle)
+	- L'utilisateur	veut utiliser un joker alors qu'il n'en a plus
 
 
 
@@ -65,6 +72,8 @@ Cas d’utilisation numéro 2
 Séquences d’événements 
 
 exemple : http://www.hanjie-star.fr/picross/regles-et-tutoriels/tutoriel-creer-une-grille-de-hanjie-3.html
+
+
 
 
 Exceptions 
