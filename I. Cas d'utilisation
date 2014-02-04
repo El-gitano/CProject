@@ -5,13 +5,12 @@ Cas d’utilisation numéro 1
     Nom : Résolution picross
     Description : L’utilisateur tente de résoudre une grille de picross
     Acteur : L'utilisateur de l'application
-    Références : ?
     Préalables : L'application doit être téléchargé
     Conséquents : L'utilisateur peut exécuter l'application
 
 Séquences d’événements 
 
-I - L'utilisateur n'est pas encore dans la partie
+I - Choix des options
 	
 	- L’utilisateur clique sur l'option "nouvelle partie"
 	
@@ -31,12 +30,10 @@ I - L'utilisateur n'est pas encore dans la partie
 		
 	- On considère que le timer est toujours mis en place
 	
-II - L'utilisateur est maintenant dans la partie
+II - Résolution du picross
 	
 	- L'utilisateur essaye de résoudre la grille
-	
 	- L'utilisateur peut utiliser l'option "joker / aide" pour se débloquer
-	
 	- Une fois la grille complète, il peut cliquer sur l'option "terminer / vérifier grille"
 	
 	- Le système compare les valeurs de chaque ligne / colonne avec les cases noircies
@@ -48,15 +45,14 @@ II - L'utilisateur est maintenant dans la partie
 			- Enregistrement du temps mis pour terminer la grille avec le nom entré
 			- Affichage des records pour cette grille
 			- Si l'image obtenue est différente de celle stockée, Le système en informe l'utilisateur et lui montre l'image en question
-			- Le système propose soit de jouer à une nouvelle grille, soit de retourner au menu principal
+			- Le système propose soit de tenter une nouvelle grille, soit de retourner au menu principal
 			- L'utilisateur choisit
 	
 		- Sinon
 			- L'utilisation d'un joker peut être proposé dans le message, vu que le joueur s'en servira probablement pour repérer une erreur (les erreurs en cascade, ça pardonne pas)
 
-	
+III - Exceptions 
 
-Exceptions 
 	- L'utilisateur entre une taille de grille souhaitée qui n'est pas prise en compte (dans le cas d'une saisie manuelle)
 	- L'utilisateur	veut utiliser un joker alors qu'il n'en a plus
 
@@ -67,13 +63,14 @@ Cas d’utilisation numéro 2
     Nom : Edition picross
     Description : L’utilisateur créé une grille de picross via l'éditeur
     Acteur : L'utilisateur de l'application
-    Références : ?
     Préalables : L'application doit être téléchargé
     Conséquents : L'utilisateur peut exécuter l'application
 
 Séquences d’événements 
 
 exemple : http://www.hanjie-star.fr/picross/regles-et-tutoriels/tutoriel-creer-une-grille-de-hanjie-3.html
+
+I - Création de la grille
 
 	- L'utilisateur clique sur l'option "créer un picross"
 	- Le système permet de modifier le nombre de lignes et de colonne via
@@ -83,7 +80,9 @@ exemple : http://www.hanjie-star.fr/picross/regles-et-tutoriels/tutoriel-creer-u
 	- L'utilisateur sélectionne le nombre de lignes et de colonnes (non modifiable par la suite)
 	- L'utilisateur dessine son image en cliquant sur les cases de la grille pour les noircir, une 2e fois pour annuler
 	- L'utilisateur clique sur l'option "enregistrer la grille"
-	
+
+II - Enregistrement de la grille
+
 	- Le système demande de saisir un nom de grille (obligatoire) ainsi qu'une description (optionnel, peut aider à résoudre la grille)
 	- L'utilisateur saisit le nom, et éventuellement la description
 	- Le système compte, pour chaque ligne et ensuite pour chaque colonne, les séries de cases noires et enregistre ces valeurs avec la grille
@@ -91,7 +90,6 @@ exemple : http://www.hanjie-star.fr/picross/regles-et-tutoriels/tutoriel-creer-u
 	- Le système propose soit de créer une autre grille, soit de retourner au menu principal
 	- L'utilisateur choisit
 
+III - Exceptions 
 
-
-
-Exceptions 
+	- ?
