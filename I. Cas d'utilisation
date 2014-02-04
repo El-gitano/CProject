@@ -20,12 +20,14 @@ I - L'utilisateur n'est pas encore dans la partie
 	
 	- S'il demande une grille aléatoire 
 		- Le système propose différentes tailles de grille (Peut être encombrant s'il y en a beaucoup, mais évite une entrée manuelle qui pourrait être incorrecte)
-		- L'utilisateur choisit choisit une taille de grille
+		- L'utilisateur choisit choisit une taille
 		- Le système sélectionne une grille
 	
 	- Le système demande si un timer doit être mis en place (nécessaire pour être classé)
 	- L'utilisateur répond soit oui, soit non
 	- Le système met ou non le timer en place
+	
+	- Choix du nombre de jokers ? Moins on en prend, plus le bonus sera important, idem lors de leur utilisation ?
 	
 II - L'utilisateur est maintenant dans la partie
 	
@@ -34,12 +36,15 @@ II - L'utilisateur est maintenant dans la partie
 	- Une fois la grille complète, il peut cliquer sur l'option "terminer / vérifier grille"
 	
 	- Le système compare les valeurs de chaque ligne / colonne avec les cases noircies
+	- Affichage d'un message indiquant s'il y a correspondance ou non
 	
-		- 1er cas : Affichage d'un message de confirmation, stockage du score
+		- S'il y a correspondance
+			- Stockage du score
+			- Affichage des scores pour cette grille
 			- Si l'image obtenue est différente de celle stockée, Le système en informe l'utilisateur et lui montre l'image en question
 	
-		- 2e cas : Affichage d'un message indiquant qu'il y a (au moins) une erreur
-			- L'utilisation d'un joker peut être proposé dans ce même message, vu que le joueur s'en servira probablement pour repérer une erreur (les erreurs en cascade, ça pardonne pas)
+		- Sinon
+			- L'utilisation d'un joker peut être proposé dans lemessage, vu que le joueur s'en servira probablement pour repérer une erreur (les erreurs en cascade, ça pardonne pas)
 
 
 
@@ -52,7 +57,7 @@ Cas d’utilisation numéro 2
 
     Nom : Edition picross
     Description : l’utilisateur créé une grille de picross via l'éditeur
-    Acteurs : l'utilisateur de l'application
+    Acteurs : L'utilisateur de l'application
     Références : ?
     Préalables : L'application doit être téléchargé
     Conséquents : L'utilisateur peut exécuter l'application
