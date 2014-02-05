@@ -1,25 +1,61 @@
-1.1 Contexte et cible
-
-Ce projet se déroulera dans le cadre dun projet tutoré lors du semestre 6 de L3 SPI Informatique. Ce document définit les exigences et les besoins du client, ainsi que les fonctionnalités qui seront présentes dans la future application.
-
-L'application développée sera destinée à tout public. Un système d'aide permettra de terminer une grille, peu importe son niveau.
+Exemple : http://www.google.fr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&ved=0CDwQFjAC&url=http%3A%2F%2Fbenjamin.davy.free.fr%2FCahier%2520des%2520charges%2520CPI%2520Angers.doc&ei=ljvyUoHkKYLD0QXj1YGwDw&usg=AFQjCNFDRLdlh1GFAc1j9A8fkr7gZlmPcw&bvm=bv.60799247,d.d2k&cad=rja
 
 
-1.2 Objectifs
++++ Origine
 
-Ce projet doit aboutir à la création dune application de type jeu de picross, pour tout PC dont le système d'exploitation est compatible avec le langage Ruby dans sa version 1.9.3.
+Ce projet se déroulera dans le cadre d'un projet tutoré lors du semestre 6 de L3 SPI Informatique. Ce document définit les exigences et les besoins du client, ainsi que les fonctionnalités qui seront présentes dans la future application.
 
-L'application devra inclure :
 
-- La résolution d'une grille de picross
-- Un éditeur pour créer ses propres grilles
-- Un système d'aide à la résolution
-- Une sauvegarde du nom du joueur ainsi que le temps de résolution par grille
-- Un tutoriel (pop-up ?)
 
-1.3 Critères d’acceptabilité du produit
++++ Contexte
+
+- Etude de l’existant
+  - Récupération de grilles déjà existantes
+  
+- Environnement technique (système d’exploitation, langage de programmation ...)
+  - Compatiblité avec le langage Ruby dans sa version 1.9.3
+  - Interface graphique avec la bibliothèque logicielle GTK
+  - Centralisation des documents du projet avec Git
+  
+- Ressources matérielles et humaines
+  - PC personels de l'université
+  - Membres du groupe : Thomas MARCAIS, Loïc GUENVER, Elyan LANVIN, Arthur RAMOLET, Emre AYDIN, Antoine FOUCAULT
+  
+
+
++++ Objectifs
+
+Ce projet doit aboutir à la création d'une application de type jeu de picross (ou henjie), destinée à tout public.
+Un système d'aide permettra de terminer une grille, peu importe son expérience et la difficulté de la grille.
+
+L'application comprendra :
+
+  - La résolution d'une grille de picross
+  - Un éditeur pour créer ses propres grilles
+  - Un système d'aide à la résolution
+  - Une sauvegarde du nom du joueur avec le temps de résolution, et ce par grille
+  - Un tutoriel (sous forme de pop-up ?)
+
+
+
++++ Livrable
+
+- Un cahier des charges validé par le client
+- Un logiciel qui respecte le cahier des charges
+- Les cahiers d'analyse et de conception
+- Un manuel utilisateur
+
+
+
++++ Calendrier
+- La soutenance est prévue pour le vendredi 16 mai à 13h30, le projet est à rendre la semaine précédente au plus tard ?
+
+
+
++++ Critères d’acceptabilité du produit
 
 L’application doit répondre aux critères suivants :
 
 - Validation du produit via un dossier de tests réalisé par notre groupe
 - Respect des contraintes client (choix technologique, fonctionnalités de l'application)
+
