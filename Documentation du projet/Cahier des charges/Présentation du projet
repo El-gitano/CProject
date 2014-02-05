@@ -2,8 +2,7 @@
 
 Ce projet se déroulera dans le cadre dun projet tutoré lors du semestre 6 de L3 SPI Informatique. Ce document définit les exigences et les besoins du client, ainsi que les fonctionnalités qui seront présentes dans la future application.
 
-Lapplication développée sera destinée à tout public capable de résoudre un picross.
-(une 2e phrase, ça serait cool)
+L'application développée sera destinée à tout public. Un système d'aide permettra de terminer une grille, peu importe son niveau.
 
 
 1.2 Objectifs
