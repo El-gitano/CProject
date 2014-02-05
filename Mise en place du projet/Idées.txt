@@ -6,14 +6,16 @@
 
 ======================================================
 
-R�aliser des maquettes de l'interface graphique pour le client
+Réaliser des maquettes de l'interface graphique pour le client
 
-Int�grer des librairies afin de faciliter le d�vellopement
+Intégrer des librairies afin de faciliter le dévellopement
 
-Etablir un d�roulement type d'une s�ance (exemple) :
+Etablir un déroulement type d'une séance (exemple) :
 
-	-Introduction : On discute de ce que chacun a � faire et des choses � choisir ensemble ainsi que de l'objectif de la s�ance
-	-S�ance : Chacun bosse sur sa partie du travail, tout en restant en collaboration avec les autres
-	-Conclusion : On r�sume ce que chacun a fait l'avancement et on se d�finit un objectif pour la prochaine s�ance 
+	-Introduction : On discute de ce que chacun a à faire et des choses à choisir ensemble ainsi que de l'objectif de la séance
+	-Séance : Chacun bosse sur sa partie du travail, tout en restant en collaboration avec les autres
+	-Conclusion : On résume ce que chacun a fait l'avancement et on se définit un objectif pour la prochaine séance 
 
 Ajouter WBS dans CDC
+
+Convertir les fichiers finaux en Latex pour les livrables
