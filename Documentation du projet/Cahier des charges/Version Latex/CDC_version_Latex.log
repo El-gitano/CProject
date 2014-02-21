@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.13)  21 FEB 2014 09:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.13)  21 FEB 2014 10:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -556,33 +556,40 @@ e
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 34.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 35.
 (/usr/share/texlive/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 34.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 34.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 35.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 34.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 35.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 34.
+(Font)              <14.4> on input line 35.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 34.
+(Font)              <10> on input line 35.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 34.
+(Font)              <7> on input line 35.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 37.
+
+(/usr/share/texlive/texmf-dist/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 37.
  [1
 
 
@@ -606,47 +613,40 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 54.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 60.
  (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 54.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 55.
-
-(/usr/share/texlive/texmf-dist/tex/latex/lm/omslmr.fd
-File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
+(Font)              <5> on input line 60.
 LaTeX Font Info:    Font shape `OMS/lmr/bx/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 55.
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 55.
+(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 61.
 
-Underfull \hbox (badness 10000) in paragraph at lines 60--61
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 64--65
+Underfull \hbox (badness 10000) in paragraph at lines 70--71
 
  []
 
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <14.4> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 74.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 80.
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--79
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
 
  []
 
 LaTeX Font Info:    Font shape `OMS/lmr/bx/n' in size <14.4> not available
-(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 81.
+(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 87.
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--82
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
  []
 
@@ -657,92 +657,92 @@ Package Fancyhdr Warning: \headheight is too small (14.49998pt):
  This may cause the page layout to be inconsistent, however.
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
+Underfull \hbox (badness 10000) in paragraph at lines 95--96
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 99--100
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--102
+Underfull \hbox (badness 10000) in paragraph at lines 107--108
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+Underfull \hbox (badness 10000) in paragraph at lines 124--125
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 131--132
+Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 138--139
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
+Underfull \hbox (badness 10000) in paragraph at lines 148--149
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--155
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--160
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
+Underfull \hbox (badness 10000) in paragraph at lines 170--171
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 169--170
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--177
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--186
+Underfull \hbox (badness 10000) in paragraph at lines 191--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--191
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
+Underfull \hbox (badness 10000) in paragraph at lines 201--202
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
 
  []
 
@@ -750,32 +750,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 206--207
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-Overfull \hbox (11.67395pt too wide) in paragraph at lines 253--254
+Overfull \hbox (11.67395pt too wide) in paragraph at lines 259--260
 []\T1/lmr/m/n/12 L'utilisateur peut sau-ve-gar-der sa par-
  []
 
 [7]
-Overfull \hbox (3.55351pt too wide) in paragraph at lines 293--294
+Overfull \hbox (3.55351pt too wide) in paragraph at lines 299--300
 []\T1/lmr/m/n/12 L'utilisateur doit pou-voir sau-ve-gar-
  []
 
 <CasUt.png, id=34, 940.26282pt x 687.31781pt>
 File: CasUt.png Graphic file (type png)
  <use CasUt.png>
-Package pdftex.def Info: CasUt.png used on input line 299.
+Package pdftex.def Info: CasUt.png used on input line 305.
 (pdftex.def)             Requested size: 470.13026pt x 343.65807pt.
 
-Overfull \hbox (51.87659pt too wide) in paragraph at lines 299--300
+Overfull \hbox (51.87659pt too wide) in paragraph at lines 305--306
  [] 
  []
 
 [8] [9 <./CasUt.png>]
-Overfull \hbox (42.82478pt too wide) in paragraph at lines 345--356
+Overfull \hbox (42.82478pt too wide) in paragraph at lines 351--362
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
 
  []
 
@@ -815,7 +815,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 364--365
  <WBS.png, id=47, 260.975pt x 1248.665pt>
 File: WBS.png Graphic file (type png)
  <use WBS.png>
-Package pdftex.def Info: WBS.png used on input line 386.
+Package pdftex.def Info: WBS.png used on input line 392.
 (pdftex.def)             Requested size: 159.19452pt x 761.68456pt.
  [11
 
@@ -832,7 +832,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 Here is how much of TeX's memory you used:
  3967 strings out of 495015
  54140 string characters out of 6180922
- 125097 words of memory out of 5000000
+ 126105 words of memory out of 5000000
  7071 multiletter control sequences out of 15000+600000
  66945 words of font info for 54 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -847,7 +847,7 @@ lm/lmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr10.pfb><
 ve/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/lm/lmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
 lm/lmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pfb>
-Output written on CDC_version_Latex.pdf (12 pages, 314587 bytes).
+Output written on CDC_version_Latex.pdf (12 pages, 314756 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
