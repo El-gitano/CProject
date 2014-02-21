@@ -10,11 +10,14 @@
 \usepackage{soul}
 \usepackage{url}
 \usepackage{color}
+\usepackage{graphicx}
 \usepackage{array}
 
+\rule{7cm}{2pt}
 \title{Cachier des charges : PicExplorer}
 \author{\textsc{Lanvin} Elyan - \textsc{Marcais} Thomas\\ \textsc{Ramolet} Arthur - \textsc{Guenver} Loïc\\ \textsc{Aydin} Emre - \textsc{Foucault} Antoine}
 \date{\today}
+\rule{7cm}{2pt}
 
 \begin{document}
 
@@ -237,6 +240,11 @@ Le client souhaite disposer d'une application réalisée sous Ruby. Celle-ci ser
 
 \end{center}
 
+\begin{description}
+ \item[Aider le joueur :]  L'utilisateur doit pouvoir recevoir une aide du logiciel dans le cas ou il est bloqué. Il pourra interagir sur le  plateau de deux différentes manières. Noircir une case correcte ou donner un indice à l'utilisateur
+ \item[Jouer une partie :] L'utilisateur doit pouvoir jouer une partie de Picross à l'aide de la souris
+\end{itemize}
+
 \subsubsection*{L'éditeur}
 
 \begin{center}
@@ -260,6 +268,13 @@ Le client souhaite disposer d'une application réalisée sous Ruby. Celle-ci ser
   \end{tabular}
  
 \end{center}
+
+\begin{figure}[ht]
+  \center
+  \includegraphics[scale=0.45]{CasUt.png}
+  \caption{Diagramme de cas d'utilisation}
+  \label{diagCU}
+\end{figure}
 
 \subsection{Cas d'utilisation} % Finir de remplir les différents cas d'utilisation
 
@@ -334,7 +349,22 @@ Le développement de l'application se fera avec ces moyens techniques listés ci
 
 \section{Organisation du projet}
 
+
+%Ajout du diagramme WBS dans une page dédiée
+\newpage
+\thispagestyle{empty}
+
 \subsection{Diagramme WBS}
+
+\begin{figure}[ht]
+  \center
+  \includegraphics[scale=0.34]{WBS.png}
+  \caption{Diagramme WBS du projet}
+  \label{diagWBS}
+\end{figure}
+
+\newpage
+
 
 \subsection{Diagramme de Gantt}
 

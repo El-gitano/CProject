@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.13)  21 FEB 2014 02:03
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.13)  21 FEB 2014 09:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -419,25 +419,25 @@ Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 (./CDC_version_Latex.aux)
 \openout1 = `CDC_version_Latex.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 21.
  (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \degres on input line 20.
-LaTeX Info: Redefining \dots on input line 20.
-LaTeX Info: Redefining \up on input line 20.
+LaTeX Info: Redefining \degres on input line 21.
+LaTeX Info: Redefining \dots on input line 21.
+LaTeX Info: Redefining \up on input line 21.
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count123
@@ -499,34 +499,34 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 32.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 34.
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 32.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 34.
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 32.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 34.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 32.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 34.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 32.
+(Font)              <14.4> on input line 34.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 32.
+(Font)              <10> on input line 34.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 32.
+(Font)              <7> on input line 34.
  [1
 
 
@@ -550,47 +550,47 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 52.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 54.
  (/usr/share/texlive/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 52.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 53.
+(Font)              <5> on input line 54.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 55.
 
 (/usr/share/texlive/texmf-dist/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/bx/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 53.
+(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 55.
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 53.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 55.
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--59
+Underfull \hbox (badness 10000) in paragraph at lines 60--61
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 62--63
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
 
  []
 
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <14.4> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 72.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 74.
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--73
+Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--77
+Underfull \hbox (badness 10000) in paragraph at lines 78--79
 
  []
 
 LaTeX Font Info:    Font shape `OMS/lmr/bx/n' in size <14.4> not available
-(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 79.
+(Font)              Font shape `OMS/lmsy/b/n' tried instead on input line 81.
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--80
+Underfull \hbox (badness 10000) in paragraph at lines 81--82
 
  []
 
@@ -601,12 +601,7 @@ Package Fancyhdr Warning: \headheight is too small (14.49998pt):
  This may cause the page layout to be inconsistent, however.
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
  []
 
@@ -616,83 +611,88 @@ Underfull \hbox (badness 10000) in paragraph at lines 99--100
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 116--117
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 129--130
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 136--137
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 140--141
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--149
+Underfull \hbox (badness 10000) in paragraph at lines 150--151
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
+Underfull \hbox (badness 10000) in paragraph at lines 154--155
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 157--158
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 162--163
+Underfull \hbox (badness 10000) in paragraph at lines 164--165
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--168
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--175
+Underfull \hbox (badness 10000) in paragraph at lines 176--177
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 180--181
 
  []
 
 
-Overfull \hbox (0.79839pt too wide) in paragraph at lines 180--181
+Overfull \hbox (0.79839pt too wide) in paragraph at lines 182--183
 []\T1/lmr/m/n/12 L'utilisateur doit choi-sir entre deux modes : ^^S Grilles par
  dé-faut ^^Tou
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--184
+Underfull \hbox (badness 10000) in paragraph at lines 185--186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--189
+Underfull \hbox (badness 10000) in paragraph at lines 190--191
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 195--196
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
 
  []
 
@@ -700,47 +700,67 @@ Underfull \hbox (badness 10000) in paragraph at lines 204--205
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [6]
-<CasUt.png, id=30, 940.26282pt x 687.31781pt>
+Overfull \hbox (14.93506pt too wide) in paragraph at lines 252--253
+[]\T1/lmr/m/n/12 Les choix de l'uti-li-sa-teur concer-
+ []
+
+
+Overfull \hbox (3.30685pt too wide) in paragraph at lines 253--254
+[]\T1/lmr/m/n/12 L'utilisateur peut sau-ve-gar-der
+ []
+
+[7]
+Overfull \hbox (4.3908pt too wide) in paragraph at lines 293--294
+[]\T1/lmr/m/n/12 L'utilisateur doit pou-voir sau-
+ []
+
+<CasUt.png, id=34, 940.26282pt x 687.31781pt>
 File: CasUt.png Graphic file (type png)
  <use CasUt.png>
-Package pdftex.def Info: CasUt.png used on input line 267.
-(pdftex.def)             Requested size: 376.09846pt x 274.92226pt.
- [7] [8 <./CasUt.png>]
-Overfull \hbox (42.8248pt too wide) in paragraph at lines 313--324
+Package pdftex.def Info: CasUt.png used on input line 299.
+(pdftex.def)             Requested size: 423.11436pt x 309.29016pt.
+
+Overfull \hbox (33.11436pt too wide) in paragraph at lines 299--300
+ [] 
+ []
+
+[8]
+Overfull \hbox (42.8248pt too wide) in paragraph at lines 345--356
 [][] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 332--333
+[9 <./CasUt.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
 
  []
 
-[9] [10] <WBS.png, id=47, 260.975pt x 1248.665pt>
+[10] <WBS.png, id=47, 260.975pt x 1248.665pt>
 File: WBS.png Graphic file (type png)
  <use WBS.png>
-Package pdftex.def Info: WBS.png used on input line 354.
+Package pdftex.def Info: WBS.png used on input line 386.
 (pdftex.def)             Requested size: 88.73032pt x 424.54048pt.
- [11 <./WBS.png>] [12] (./CDC_version_Latex.aux) ) 
+ [11 <./WBS.png>]
+[12] (./CDC_version_Latex.aux) ) 
 Here is how much of TeX's memory you used:
  3490 strings out of 495015
  47136 string characters out of 6180922
- 111554 words of memory out of 5000000
+ 110554 words of memory out of 5000000
  6604 multiletter control sequences out of 15000+600000
  66945 words of font info for 54 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,12n,43p,393b,470s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dis
-t/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/l
-m/lm-mathsy.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbsy10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/lm/lmbx8.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/lm/lmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr12.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/lm/lmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/lm/lmtt10.pfb>
-Output written on CDC_version_Latex.pdf (12 pages, 311622 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/
+lm/lm-ec.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}</
+usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmbsy10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/lm/lmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/lm/lmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/lm/lmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/lm/lmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/lm/lmtt10.pf
+b>
+Output written on CDC_version_Latex.pdf (12 pages, 314629 bytes).
 PDF statistics:
  89 PDF objects out of 1000 (max. 8388607)
  61 compressed objects within 1 object stream
