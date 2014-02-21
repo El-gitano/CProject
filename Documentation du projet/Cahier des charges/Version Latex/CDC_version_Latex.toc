@@ -12,11 +12,11 @@
 \contentsline {subsection}{\numberline {2.4}Besoins non-fonctionnels}{7}
 \contentsline {subsection}{\numberline {2.5}Fonctionnalit\IeC {\'e}s}{7}
 \contentsline {subsection}{\numberline {2.6}Cas d'utilisation}{8}
-\contentsline {section}{\numberline {3}Livrables}{9}
-\contentsline {section}{\numberline {4}Contraintes}{9}
-\contentsline {subsection}{\numberline {4.1}Documentation}{9}
-\contentsline {subsection}{\numberline {4.2}D\IeC {\'e}lais}{9}
-\contentsline {subsection}{\numberline {4.3}Contraintes techniques}{9}
-\contentsline {section}{\numberline {5}Organisation du projet}{10}
-\contentsline {subsection}{\numberline {5.1}Diagramme WBS}{11}
-\contentsline {subsection}{\numberline {5.2}Diagramme de Gantt}{12}
+\contentsline {section}{\numberline {3}Livrables}{11}
+\contentsline {section}{\numberline {4}Contraintes}{12}
+\contentsline {subsection}{\numberline {4.1}Documentation}{12}
+\contentsline {subsection}{\numberline {4.2}D\IeC {\'e}lais}{12}
+\contentsline {subsection}{\numberline {4.3}Contraintes techniques}{12}
+\contentsline {section}{\numberline {5}Organisation du projet}{12}
+\contentsline {subsection}{\numberline {5.1}Diagramme WBS}{13}
+\contentsline {subsection}{\numberline {5.2}Diagramme de Gantt}{14}

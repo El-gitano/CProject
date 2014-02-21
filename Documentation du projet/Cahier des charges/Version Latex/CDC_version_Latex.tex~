@@ -351,7 +351,7 @@ Le client souhaite disposer d'une application réalisée sous Ruby. Celle-ci ser
 
 \begin{enumerate}
 	\item{\ul{Cr\'eation de la grille :}}\newline
-	\begin{itemize}	\setlength{\itemsep}{5mm}
+	\begin{itemize}	
 		\item L'utilisateur clique sur l'option "créer un picross".
 		\item Le système permet de modifier le nombre de lignes et de colonne soit avec une saisie manuelle.
 		\item Un "pointeur" situé sur une barre de longueur 25.\newline
@@ -361,7 +361,7 @@ Le client souhaite disposer d'une application réalisée sous Ruby. Celle-ci ser
 		\item L'utilisateur clique sur l'option "enregistrer la grille".
 	\end{itemize}
 	\item{\ul{Enregistrement de la grille :}}\newline
-	\begin{itemize}	\setlength{\itemsep}{5mm}
+	\begin{itemize}	
 		\item Le système demande de saisir un nom de grille (obligatoire) ainsi qu'une description (optionnel, peut aider à résoudre la grille).
 		\item L'utilisateur saisit le nom, et éventuellement la description.
 		\item Le système compte, pour chaque ligne et ensuite pour chaque colonne, les séries de cases noires et enregistre ces valeurs avec la grille.\newline
