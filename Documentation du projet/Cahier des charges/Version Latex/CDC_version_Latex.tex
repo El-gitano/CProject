@@ -12,8 +12,9 @@
 \usepackage{color}
 \usepackage{graphicx}
 \usepackage{array}
+\usepackage{geometry}
 
-\title{Cachier des charges : PicExplorer}
+\title{\hrule \vspace{1cm} Cachier des charges : PicExplorer}
 \author{\textsc{Lanvin} Elyan - \textsc{Marcais} Thomas\\ \textsc{Ramolet} Arthur - \textsc{Guenver} Loïc\\ \textsc{Aydin} Emre - \textsc{Foucault} Antoine}
 \date{\today}
 
@@ -29,8 +30,15 @@
 \rfoot{Page \thepage}
 
 %Titre
-\clearpage\maketitle
-\thispagestyle{empty}
+\clearpage\thispagestyle{empty}
+
+\maketitle
+\begin{center}
+ \copyright 2014 Groupe C - Tout droit reservé\\
+\end{center}
+\vspace{1cm}
+\hrule
+
 \newpage
 
 %Sommaire
@@ -238,6 +246,22 @@ Le client souhaite disposer d'une application réalisée sous Ruby. Celle-ci ser
 
 \end{center}
 
+\begin{itemize}
+ \item[\textbullet] \textbf{\textcolor{blue}{Jeu : }}
+ \begin{description}
+    \item[Aider le joueur :]  L'utilisateur doit pouvoir recevoir une aide du logiciel dans le cas ou il est bloqué. Il pourra interagir sur le  plateau de deux différentes manières. Noircir une case correcte ou donner un indice à l'utilisateur
+     \item[Jouer une partie :] L'utilisateur doit pouvoir jouer une partie de Picross à l'aide de la souris
+  \end{description}
+  
+  \item[\textbullet] \textbf{\textcolor{blue}{Traitement et persistance des données : }}
+ \begin{description}
+    \item[Sauvegarder/Charger les options :] Les choix de l'utilisateur concernant les options du jeu sont sauvegardées entre les différents lancements du jeu
+    \item[Sauvegarder/Charger une partie :] L'utilisateur peut sauvegarder sa partie en cours afin de la reprendre ultérieurement.\\Lorsqu'il quitte le jeu en pleine partie et qu'il revient, le jeu lui propose de reprendre la partie précédente ou de retomber sur les menus
+    \item[Sauvegarder/Charger les scores et les statistiques :]
+    \item[Crypter les données [OPTION] :] Toute donnée sauvegardée sur le système est cryptée de façon à assurer l'intégrité des sauvegardes
+  \end{description}
+\end{itemize}
+
 \subsubsection*{L'éditeur}
 
 \begin{center}
@@ -262,9 +286,23 @@ Le client souhaite disposer d'une application réalisée sous Ruby. Celle-ci ser
  
 \end{center}
 
+\begin{itemize}
+ \item[\textbullet] \textbf{\textcolor{blue}{\'Editeur : }}
+ \begin{description}
+    \item[Créer une grille :] L'utilisateur doit pouvoir créer une grille personnalisé en remplissant une grille vide
+    \item[Créer une grille aléatoirement :] L'application doit pouvoir créer une grille aléatoire pour l'utilisateur
+    \item[Modifier une grille :] L'utilisateur doit pouvoir modifier une grille déjà existante
+  \end{description}
+  
+  \item[\textbullet] \textbf{\textcolor{blue}{Traitement et persistance des données : }}
+ \begin{description}
+    \item[Sauvegarder/Charger un plateau :] L'utilisateur doit pouvoir sauvegarder ses plateaux en cours et si l'application quitte sans avoir sauvegarder, le dernier plateau est sauvegarder automatiquement
+  \end{description}
+\end{itemize}
+
 \begin{figure}[ht]
   \center
-  \includegraphics[scale=0.45]{CasUt.png}
+  \includegraphics[scale=0.50]{CasUt.png}
   \caption{Diagramme de cas d'utilisation}
   \label{diagCU}
 \end{figure}
@@ -422,20 +460,22 @@ Le développement de l'application se fera avec ces moyens techniques listés ci
 
 
 %Ajout du diagramme WBS dans une page dédiée
-\newpage
-\thispagestyle{empty}
+\newpage\thispagestyle{empty}
+\newgeometry{top=0.5cm, bottom=0cm, left=0.5cm, right=0.5cm}
 
 \subsection{Diagramme WBS}
 
-\begin{figure}[ht]
+\begin{figure}[!h]
   \center
-  \includegraphics[scale=0.34]{WBS.png}
+  \includegraphics[scale=0.61]{WBS.png}
   \caption{Diagramme WBS du projet}
   \label{diagWBS}
 \end{figure}
 
 \newpage
+\restoregeometry
 
+%Fin WBS
 
 \subsection{Diagramme de Gantt}
 
