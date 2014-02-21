@@ -12,7 +12,7 @@
 \usepackage{color}
 \usepackage{graphicx}
 \usepackage{array}
-
+\usepackage{geometry}
 
 \title{Cachier des charges : PicExplorer}
 \author{\textsc{Lanvin} Elyan - \textsc{Marcais} Thomas\\ \textsc{Ramolet} Arthur - \textsc{Guenver} Loïc\\ \textsc{Aydin} Emre - \textsc{Foucault} Antoine}
@@ -377,19 +377,21 @@ Le développement de l'application se fera avec ces moyens techniques listés ci
 
 %Ajout du diagramme WBS dans une page dédiée
 \newpage
-\thispagestyle{empty}
+\newgeometry{top=2cm, bottom=0cm}
 
 \subsection{Diagramme WBS}
 
 \begin{figure}[ht]
   \center
-  \includegraphics[scale=0.34]{WBS.png}
+  \includegraphics[scale=0.47]{WBS.png}
   \caption{Diagramme WBS du projet}
   \label{diagWBS}
 \end{figure}
 
 \newpage
+\restoregeometry
 
+%Fin WBS
 
 \subsection{Diagramme de Gantt}
 
