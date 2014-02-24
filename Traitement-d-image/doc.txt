@@ -1,0 +1,8 @@
+TD traitement d'image :
+knaknakna.free.fr/docrub/TD3_-_Ruby.pdf
+
+Bib traitement d'images : GTK ?, Imlib2
+
+Niveaux de gris :
+http://fr.wikipedia.org/wiki/Image_num%C3%A9rique#Images_en_teintes_.28ou_niveaux.29_de_gris
+
