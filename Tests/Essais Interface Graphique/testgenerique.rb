@@ -17,10 +17,13 @@ class Gui
 		@window.set_window_position Gtk::Window::POS_CENTER
 		@window.signal_connect('destroy') { Gtk.main_quit }
 		
-		@builder.connect_signals(){ |handler| 
-      		puts "Connection d\'un signal à la méthode : '#{handler}'"
-     		method(handler) 
-    	}
+		if ARGV[1] == 1 then
+		
+			@builder.connect_signals(){ |handler| 
+		  		puts "Connection d\'un signal à la méthode : '#{handler}'"
+		 		method(handler) 
+			}
+		end
     	
 		@window.show_all
 		
@@ -29,4 +32,4 @@ class Gui
 
 end
 
-test = Gui.new()
+test = Gui.new(ARGV[0])
