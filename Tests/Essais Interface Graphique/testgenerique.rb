@@ -14,7 +14,7 @@ class Gui
 		@builder.add_from_file(fichier)
 		
 		@window = @builder.get_object("window1")
-		@window.set_window_position Gtk::Window::POS_CENTER
+		@window.set_window_position Gtk::Window::POS_CENTER_ALWAYS
 		@window.signal_connect('destroy') { Gtk.main_quit }
 		
 		if ARGV[1] == 1 then
