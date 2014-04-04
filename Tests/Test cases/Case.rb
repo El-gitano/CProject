@@ -3,16 +3,13 @@ require './EtatCaseNeutre.rb'
 class Case
 
     @etat
-    @x
-    @y
     
     attr_accessor :etat
     
-    def initialize(x, y)
+    def initialize
     
     	@etat = EtatCaseNeutre.getInstance(self)
-    	@x = x
-    	@y = y
+
     end
     
     def clicDroit
