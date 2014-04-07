@@ -30,6 +30,21 @@ class EtatCaseCroix < EtatCase
 		uneCase.changerEtat(EtatCaseJouee.getInstance)
 	end
 	
+	def neutre?
+    
+    	return false
+    end
+    
+    def croix?
+    
+    	return true
+    end
+    
+    def jouee?
+    
+    	return false
+    end
+    
 	def to_s
 
 		return "Je suis une case avec une croix"

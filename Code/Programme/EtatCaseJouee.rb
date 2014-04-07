@@ -26,6 +26,21 @@ class EtatCaseJouee < EtatCase
 		super(uneCase)
 	end
 	
+	def neutre?
+    
+    	return false
+    end
+    
+    def croix?
+    
+    	return false
+    end
+    
+    def jouee?
+    
+    	return true
+    end
+    
 	def to_s
 	
 		return "Je suis une case jouee"

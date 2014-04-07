@@ -5,6 +5,8 @@ class Grille
 	@cases
 	@taille
 	
+	attr_reader :taille
+	
 	private_class_method :new
 	
 	def initialize(taille)
@@ -31,7 +33,7 @@ class Grille
 		
 			resultat.push(x[y])
 		}
-		
+
 		return resultat
 	end
 	
@@ -64,18 +66,14 @@ class Grille
 	
 	def to_s
 	
-		x = 0
+		0.upto(@taille-1){|y|
 		
-		operationGrille{|laCase|
-		
-			if (x % @taille) == 0 then
+			print "Ligne #{y+1}\n\n"
 			
-				print "\nLigne numero #{x/@taille + 1}\n\n"
-			end
+			operationLigne(y){|uneCase|
 			
-			print laCase.to_s + "\n"
-			
-			x += 1	
+				print " #{uneCase} "
+			}
 		}
 		
 		return nil
@@ -83,22 +81,17 @@ class Grille
 	
 	def to_debug
 	
-		x = 0
+		0.upto(@taille-1){|y|
 		
-		operationGrille{|laCase|
-		
-			if (x % @taille) == 0 then
+			print "\n"
 			
-				print "\n"
-			end
+			operationLigne(y){|uneCase|
 			
-			print laCase.to_debug
-			
-			x += 1	
+				print uneCase.to_debug
+			}
 		}
 		
-		print "\n\n"
-		
 		return nil
+		
 	end
 end

@@ -22,6 +22,21 @@ class Case
     	@etat.clicGauche(self)
     end
     
+    def neutre?
+    
+    	return @etat.neutre?
+    end
+    
+    def croix?
+    
+    	return @etat.croix?
+    end
+    
+    def jouee?
+    
+    	return @etat.jouee?
+    end
+    
     def to_s
     
     	@etat.to_s

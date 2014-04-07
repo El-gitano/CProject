@@ -2,6 +2,7 @@ class Plateau
 
 	@grille
 	@nbJokers
+	@nom
 	
 	private_class_method :new
 	
