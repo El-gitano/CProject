@@ -5,6 +5,8 @@ class Grille
 	@cases
 	@taille
 	
+	private_class_method :new
+	
 	def initialize(taille)
 	
 		@cases = Array.new(taille){Array.new(taille){Case.new}}

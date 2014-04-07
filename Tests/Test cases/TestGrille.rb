@@ -1,8 +1,9 @@
 require './Grille.rb'
+require './GrilleEditeur.rb'
 
 print "\n\nDECLARATION GRILLE\n\n"
 
-g = Grille.new(5)
+g = GrilleEditeur.Creer(5)
 print g.to_debug
 
 print "\n\nMODIFICATION GRILLE\n\n"
