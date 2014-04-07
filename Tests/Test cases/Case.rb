@@ -8,23 +8,28 @@ class Case
     
     def initialize
     
-    	@etat = EtatCaseNeutre.getInstance(self)
+    	@etat = EtatCaseNeutre.getInstance
 
     end
     
     def clicDroit
 
-    	@etat.clicDroit
+    	@etat.clicDroit(self)
     end
     
     def clicGauche
     
-    	@etat.clicGauche
+    	@etat.clicGauche(self)
     end
     
     def to_s
     
     	@etat.to_s
+    end
+    
+    def to_debug
+    
+    	@etat.to_debug
     end
     
     def changerEtat(unEtat)

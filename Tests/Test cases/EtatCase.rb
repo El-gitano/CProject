@@ -1,19 +1,12 @@
 class EtatCase
-
-	@case
-
+	
 	private_class_method :new
-
-	def initialize(uneCase)
-
-		@case = uneCase
-	end
 	
-	def clicGauche
+	def clicGauche(uneCase)
 	
 	end
 	
-	def clicDroit
-	
+	def clicDroit(uneCase)
+		
 	end
 end

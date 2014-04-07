@@ -7,36 +7,36 @@ class EtatCaseNeutre < EtatCase
 	@instance = nil
 	
 	private_class_method :new
-	
-	def initialize(uneCase)
-
-		super(uneCase)	
-	end
     
-	def EtatCaseNeutre.getInstance(uneCase)
+	def EtatCaseNeutre.getInstance
 
 		if @instance.nil? then
 	
-			@instance = new(uneCase)
+			@instance = new
 		end
 	
 		return @instance
 	end
 	
-	def clicDroit
+	def clicDroit(uneCase)
 	
-		super()
-		@case.changerEtat(EtatCaseCroix.getInstance(@case))
+		super(uneCase)
+		uneCase.changerEtat(EtatCaseCroix.getInstance)
 	end
 	
-	def clicGauche
+	def clicGauche(uneCase)
 	
-		super()
-		@case.changerEtat(EtatCaseJouee.getInstance(@case))
+		super(uneCase)
+		uneCase.changerEtat(EtatCaseJouee.getInstance)
 	end
 	
 	def to_s
 	
 		return "Je suis une case neutre"
+	end
+	
+	def to_debug
+	
+		return ' N '
 	end
 end

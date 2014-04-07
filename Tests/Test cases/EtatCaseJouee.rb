@@ -5,17 +5,12 @@ class EtatCaseJouee < EtatCase
 	@instance = nil
 	
 	private_class_method :new
-	
-	def initialize(uneCase)
-
-		super(uneCase)	
-	end
     
-	def EtatCaseJouee.getInstance(uneCase)
+	def EtatCaseJouee.getInstance
 	
 		if @instance.nil? then
 		
-			@instance = new(uneCase)
+			@instance = new
 		end
 		
 		return @instance
@@ -23,17 +18,22 @@ class EtatCaseJouee < EtatCase
 	
 	def clicDroit
 	
-		super()
+		super(uneCase)
 	end
 	
 	def clicGauche
 	
-		super()
+		super(uneCase)
 	end
 	
 	def to_s
 	
 		return "Je suis une case jouee"
+	end
+	
+	def to_debug
+	
+		return ' J '
 	end
 end
 
