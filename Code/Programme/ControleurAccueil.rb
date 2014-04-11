@@ -42,6 +42,7 @@ class ControleurAccueil < Controleur
 		
 		dialogue = Gtk::Dialog.new("Credits", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
 		
+		# Creation des elements
 		tabNoms = Array.new
 
 		tabNoms.push(Gtk::Label.new("AYDIN Emre"))
