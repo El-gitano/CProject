@@ -28,11 +28,14 @@ class ControleurAccueil < Controleur
 	}
 	
 	@vue.boutonJouer.signal_connect("clicked"){
-		changerControleur(ControleurJeu.new(@picross))
+	
+		changerControleur(ControleurJeu.new(@picross, @profil))
 	}
 	
 	@vue.boutonEditer.signal_connect("clicked"){
-		changerControleur(ControleurEditeur.new(@picross))	
+	
+		changerControleur(ControleurEditeur.new(@picross, @profil))
+
 	}
 	
 	@vue.boutonCredit.signal_connect("clicked"){
@@ -70,6 +73,11 @@ class ControleurAccueil < Controleur
 	}
 	
 	@vue.boutonProfil.signal_connect("clicked"){
+<<<<<<< HEAD
 		changerControleur(ControleurProfil.new(@picross))	
+=======
+	
+		changerControleur(ControleurProfil.new(@picross, @profil))
+>>>>>>> c963bfcbe0e87b8afb4fecd257fc975e0b899de6
 	}
 end
