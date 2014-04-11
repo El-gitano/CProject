@@ -1,3 +1,5 @@
+#encoding: UTF-8
+
 require './ModeleDemarrage'
 require './VueDemarrage'
 require './Controleur'
