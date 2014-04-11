@@ -9,7 +9,8 @@ class Modele
     private_class_method :new
     
     def initialize
-    	
+
+    	$fichierBDD = "test.sqlite"
     	@observateurs = Array.new
     	@bdd = SQLite3::Database.open $fichierBDD
     	@bdd.results_as_hash = true#Utile pour retourner les résultats dans un tableau de hash   	

@@ -25,11 +25,18 @@ class ModeleDemarrage < Modele
 		if not existe?(unLogin) then
 		
 			requete("INSERT INTO profil(pseudo, pass) VALUES ('#{unLogin}', NULL)")
-			return true
-		
+            tab=requete("SELECT id from profil WHERE pseudo = '#{unLogin}'")
+            print requete("select * from profil")
+            id = tab [0]["id"]
+            req = "INSERT INTO stats(id, parties_commencees, parties_terminees, temps_joue, joker_utilises, indices_utilises, grilles_crees, ragequits) VALUES(#{id},0,0,0,0,0,0,0)"
+            print "\n",req,"\n"
+            requete(req)
+            print requete("select * from stats"),"\n"
+
+            return true
 		else
-		
-			return false
+
+            return false
 		end
 	end
 	
@@ -37,8 +44,12 @@ class ModeleDemarrage < Modele
 	def supprimerProfil(unLogin)
 		
 		if existe?(unLogin) then
-		
+
+            tab=requete("SELECT id from profil WHERE pseudo = '#{unLogin}'")
+            id = tab [0]["id"]
 			requete("DELETE FROM profil WHERE pseudo = '#{unLogin}'")
+			requete("DELETE FROM stats WHERE id = '#{id}'")
+
 			return true
 		
 		else
