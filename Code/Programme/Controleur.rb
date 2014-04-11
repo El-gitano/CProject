@@ -11,7 +11,12 @@ class Controleur
     def initialize(unJeu)
     
 	    @picross = unJeu
-	end      
+	end
+	
+	def changerControleur(unControleur)
+    
+    	@picross.controleur = unControleur
+    end
 end
 
 
