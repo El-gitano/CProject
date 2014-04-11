@@ -11,7 +11,7 @@ class Controleur
     def initialize(unJeu)
     
 	    @picross = unJeu
-	end        
+	end      
 end
 
 

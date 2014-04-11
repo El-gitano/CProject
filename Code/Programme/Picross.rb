@@ -24,4 +24,9 @@ class Picross
     	
     	Gtk.main
     end
+    
+    def changerControleur(unControleur)
+    
+    	@controleur = unControleur
+    end
 end
