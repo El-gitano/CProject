@@ -1,32 +1,83 @@
+# encoding: UTF-8
+
+require './ModeleAccueil'
+require './VueAccueil'
+require './Controleur'
+
+require 'gtk2'
+
+# Le contrôleur d'accueil permet d'accéder aux différents menu du jeu
 class ControleurAccueil < Controleur
 
+	public_class_method :new
+
 	# Constructeur
-	def initialize(unJeu, unModele)
+	def initialize(unJeu)
 
-		super(unJeu, unModele)
+		super(unJeu)
+		@modele = ModeleAccueil.new
+		@vue = VueAccueil.new(@modele)
 
-		@picross.controleur = self
-		@picross.vue = VueAccueil.changer(self)
-		@picross.modele = ModeleAccueil.changer(@picross.vue)	
+		@modele.ajouterObservateur(@vue)
+		
 	end
 
-	# Acceder a l'editeur
-	def lancerEditeur
-	end
+	@vue.boutonDeco.signal_connect("clicked"){
+		@modele.sauvegarderProfil
+		changerControleur(ControleurDemarrage.new(@picross))
+	}
+	
+	@vue.boutonJouer.signal_connect("clicked"){
+	
+		changerControleur(ControleurJeu.new(@picross, @profil))
+	}
+	
+	@vue.boutonEditer.signal_connect("clicked"){
+	
+		changerControleur(ControleurEditeur.new(@picross, @profil))
 
-	# Acceder au jeu
-	def lancerJeu
-	end
+	}
+	
+	@vue.boutonCredit.signal_connect("clicked"){
+		
+		dialogue = Gtk::Dialog.new("Credits", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+		
+		# Creation des elements
+		tabNoms = Array.new
 
-	# Regarder les options
-	def regarderOptions
-	end
+		tabNoms.push(Gtk::Label.new("AYDIN Emre"))
+		tabNoms.push(Gtk::Label.new("FOUCAULT Antoine"))
+		tabNoms.push(Gtk::Label.new("GUENVER Loic"))
+		tabNoms.push(Gtk::Label.new("LANVIN Elyan"))
+		tabNoms.push(Gtk::Label.new("MARCAIS Thomas"))
+		tabNoms.push(Gtk::Label.new("RAMOLET Arthur"))
 
-	# Acceder au profil
-	def profilAcceder
-	end
+		labelAnnee = Gtk::Label.new("Cree en 2014")
+		labelUniv = Gtk::Label.new("Projet Universite du Maine")
 
-	# Voir les credits
-	def creditVoir
-	end
+		boutonOK = Gtk::Button.new("Ok", false)
+
+		# Ajout des elements a la Vbox
+		tabNoms.each{|x|
+
+			dialogue.vbox.add(x)
+		}
+
+		dialogue.vbox.add(labelAnnee)
+		dialogue.vbox.add(labeluniv)
+
+		# Affichage des elements et lancement de la fenetre
+		dialogue.show_all
+
+		dialogue.run
+	}
+	
+	@vue.boutonProfil.signal_connect("clicked"){
+<<<<<<< HEAD
+		changerControleur(ControleurProfil.new(@picross))	
+=======
+	
+		changerControleur(ControleurProfil.new(@picross, @profil))
+>>>>>>> c963bfcbe0e87b8afb4fecd257fc975e0b899de6
+	}
 end
