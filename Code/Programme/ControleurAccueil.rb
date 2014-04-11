@@ -25,17 +25,14 @@ class ControleurAccueil < Controleur
 	@vue.boutonDeco.signal_connect("clicked"){
 		@modele.sauvegarderProfil
 		changerControleur(ControleurDemarrage.new(@picross))
-	
 	}
 	
 	@vue.boutonJouer.signal_connect("clicked"){
-	
-	
+		changerControleur(ControleurJeu.new(@picross))
 	}
 	
 	@vue.boutonEditer.signal_connect("clicked"){
-	
-	
+		changerControleur(ControleurEditeur.new(@picross))	
 	}
 	
 	@vue.boutonCredit.signal_connect("clicked"){
@@ -73,7 +70,6 @@ class ControleurAccueil < Controleur
 	}
 	
 	@vue.boutonProfil.signal_connect("clicked"){
-	
-	
+		changerControleur(ControleurProfil.new(@picross))	
 	}
 end
