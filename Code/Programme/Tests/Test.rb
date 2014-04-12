@@ -1,4 +1,4 @@
-require './Case.rb'
+require '../Modeles/Case'
 
 c = Case.new
 puts c

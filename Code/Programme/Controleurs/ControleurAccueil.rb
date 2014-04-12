@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
-require './ModeleAccueil'
-require './VueAccueil'
+require '../Modeles/ModeleAccueil'
+require '../Vues/VueAccueil'
 require './Controleur'
 
 require 'gtk2'
@@ -12,10 +12,10 @@ class ControleurAccueil < Controleur
 	public_class_method :new
 
 	# Constructeur
-	def initialize(unJeu)
+	def initialize(unJeu, unProfil)
 
 		super(unJeu)
-		@modele = ModeleAccueil.new
+		@modele = ModeleAccueil.new(unProfil)
 		@vue = VueAccueil.new(@modele)
 
 		@modele.ajouterObservateur(@vue)
@@ -23,19 +23,19 @@ class ControleurAccueil < Controleur
 	end
 
 	@vue.boutonDeco.signal_connect("clicked"){
+	
 		@modele.sauvegarderProfil
 		changerControleur(ControleurDemarrage.new(@picross))
 	}
 	
 	@vue.boutonJouer.signal_connect("clicked"){
 	
-		changerControleur(ControleurJeu.new(@picross, @profil))
+		changerControleur(ControleurJeu.new(@picross, @modele.profil))
 	}
 	
 	@vue.boutonEditer.signal_connect("clicked"){
 	
-		changerControleur(ControleurEditeur.new(@picross, @profil))
-
+		changerControleur(ControleurEditeur.new(@picross, @modele.profil))
 	}
 	
 	@vue.boutonCredit.signal_connect("clicked"){
@@ -52,8 +52,8 @@ class ControleurAccueil < Controleur
 		tabNoms.push(Gtk::Label.new("MARCAIS Thomas"))
 		tabNoms.push(Gtk::Label.new("RAMOLET Arthur"))
 
-		labelAnnee = Gtk::Label.new("Cree en 2014")
-		labelUniv = Gtk::Label.new("Projet Universite du Maine")
+		labelAnnee = Gtk::Label.new("Crée en 2014")
+		labelUniv = Gtk::Label.new("Projet Université du Maine")
 
 		boutonOK = Gtk::Button.new("Ok", false)
 
@@ -73,11 +73,7 @@ class ControleurAccueil < Controleur
 	}
 	
 	@vue.boutonProfil.signal_connect("clicked"){
-<<<<<<< HEAD
-		changerControleur(ControleurProfil.new(@picross))	
-=======
-	
-		changerControleur(ControleurProfil.new(@picross, @profil))
->>>>>>> c963bfcbe0e87b8afb4fecd257fc975e0b899de6
+
+		changerControleur(ControleurProfil.new(@picross, @modele.profil))
 	}
 end

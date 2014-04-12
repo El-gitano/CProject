@@ -1,4 +1,5 @@
-#encoding UTF8
+# encoding: UTF-8
+
 require './Vue'
 
 #Vue chargée d'effectuer le lien entre le contrôleur et l'utilisateur lors de l'écran d'accueil
@@ -9,7 +10,6 @@ class VueAccueil < Vue
 	@boutonCredit
 	@boutonProfil
 	@boutonDeco
-
 	
 	attr_reader :boutonJouer, :boutonEditer, :boutonCredit, :boutonProfil, :boutonDeco
 	
@@ -20,14 +20,11 @@ class VueAccueil < Vue
 		super(unModele)
 
 		#Lignes de code commentées pour les tests
-		#@window = Gtk::Window.new("Picross Menu")
-		#@window.set_window_position(Gtk::Window::POS_CENTER)
-		#@window.set_resizable(false)
 		@window.set_size_request(350,290)
 		
 		#Cette box contient les 5 lignes champs + bouton
 		vbox = Gtk::VBox.new(true, 50)
-		vbox.set_border_width(20)
+		vbox.set_border_width(20) #On espace la vBox de la fenêtre
 		hbox = Gtk::HBox.new(false, 0)
 
 		arial18 = Pango::FontDescription.new('Arial 25')
@@ -51,8 +48,7 @@ class VueAccueil < Vue
 		vbox.pack_start(hbox, true, false, 0)
 		hbox.pack_start(@boutonProfil, true, true, 0)
 		hbox.pack_start(@boutonDeco, true, false, 0)
-
-
+		
 		@window.add(vbox)		
 		@window.signal_connect('destroy') { Gtk.main_quit }
 		@window.show_all

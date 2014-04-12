@@ -1,4 +1,4 @@
-require './ModeleDemarrage'
+require '../Modeles/ModeleDemarrage'
 
 modele= ModeleDemarrage.new
 puts "#{modele.supprimerProfil("pierre")}"

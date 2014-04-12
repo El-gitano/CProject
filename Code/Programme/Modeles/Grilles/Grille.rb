@@ -1,4 +1,4 @@
-require './Case.rb'
+require './Case'
 
 class Grille
 

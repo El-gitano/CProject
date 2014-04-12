@@ -1,4 +1,4 @@
-require './Grille.rb'
+require './Grille'
 
 class GrilleJeu < Grille
 
