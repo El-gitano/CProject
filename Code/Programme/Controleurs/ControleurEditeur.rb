@@ -1,14 +1,17 @@
 # encoding: utf-8
 class ControleurEditeur < Controleur
 
+	public_class_method :new
+	
 	# Constructeur
-	def initialize(unJeu, unModele)
+	def initialize(unJeu, unProfil)
 
-		super(unJeu, unModele)
+		super(unJeu)
 
-		@picross.controleur = self
-		@picross.vue = VueEditeur.changer(self)
-		@picross.modele = ModeleEditeur.changer(@picross.vue)	
+		@modele = ModeleEditeur.new(unProfil)
+		@vue = VueDemarrage.new(@modele)
+		
+		@modele.ajouterObservateur(@vue)
 	end
 
 	# Retour a l'accueil
