@@ -14,15 +14,39 @@ class ControleurEditeur < Controleur
 		@modele.ajouterObservateur(@vue)
 	end
 
+	@vue.boutonOuvrir.signal_connect("clicked"){
+	
+	}
+	
+	@vue.boutonEnregistrer.signal_connect("clicked"){
+	
+	}
+	
+	@vue.boutonAleatoire.signal_connect("clicked"){
+	
+	}
+	
+	@vue.bouton5.signal_connect("clicked"){
+	
+	}
+	
+	@vue.bouton10.signal_connect("clicked"){
+	
+	}
+	
+	@vue.bouton15.signal_connect("clicked"){
+	
+	}
+	
+	@vue.bouton20.signal_connect("clicked"){
+	
+	}
+	
+	@vue.bouton25.signal_connect("clicked"){
+	
+	}
+	
 	# Retour a l'accueil
 	def retourAccueil
-	end
-
-	# Sauvegarder un plateau
-	def sauverPlateau(unPlateau)
-	end
-
-	# Editer un plateau
-	def editerPlateau(unPlateau)
 	end
 end
