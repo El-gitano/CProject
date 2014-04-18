@@ -1,9 +1,12 @@
-require './Case'
+require './Modeles/Grilles/Case.rb'
 
 class Grille
 
 	@cases
 	@taille
+	#@nom
+	#@createur
+	#@nbJockers
 	
 	attr_reader :taille
 	
@@ -63,7 +66,19 @@ class Grille
 			yield el
 		}
 	end
+
+	def serialize()
+		return Marshal::dump(self)
+	end
 	
+	def Grille.deserialize(obj)
+		return Marshal::load(obj)
+	end
+	
+	def to_num
+
+	end
+
 	def to_s
 	
 		0.upto(@taille-1){|y|

@@ -20,6 +20,15 @@ class Vue
 		@window.set_resizable(false)
 		@window.signal_connect('destroy') {Gtk.main_quit}
 	end
+
+	#A utiliser pour les test (pas besoin du modèle)
+	#def initialize()
+	
+
+#		@window = Gtk::Window.new("Picross")
+#		@window.set_window_position(Gtk::Window::POS_CENTER)
+#		@window.set_resizable(false)
+#	end
 	
 	#Actualiser sera redéfinit par les classes filles (on code ici pour débuguer)
 	def actualiser

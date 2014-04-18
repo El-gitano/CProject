@@ -21,15 +21,15 @@ class ModeleDemarrage < Modele
 	end
 	
 	#Crée un profil dans la base de donnée, retourne vrai en cas de succès, faux sinon
-	def creerProfil(unLogin)
+    def creerProfil(unLogin)
 		
-		if not existe?(unLogin) then
+        if not existe?(unLogin) then
 		
-			requete("INSERT INTO profil(pseudo, pass) VALUES ('#{unLogin}', NULL)")
-            		tab=requete("SELECT id from profil WHERE pseudo = '#{unLogin}'")
-            		id = tab [0]["id"]
-            		req = "INSERT INTO stats(id, parties_commencees, parties_terminees, temps_joue, joker_utilises, indices_utilises, grilles_crees, ragequits) VALUES(#{id},0,0,0,0,0,0,0)"
-            		requete(req)
+            requete("INSERT INTO profil(pseudo, pass) VALUES ('#{unLogin}', NULL)")
+            tab=requete("SELECT id from profil WHERE pseudo = '#{unLogin}'")
+            id = tab [0]["id"]
+            req = "INSERT INTO stats(id, parties_commencees, parties_terminees, temps_joue, joker_utilises, indices_utilises, grilles_crees, ragequits) VALUES(#{id},0,0,0,0,0,0,0)"
+            requete(req)
 
             return true
 		else
@@ -59,14 +59,13 @@ class ModeleDemarrage < Modele
  	#Cette méthode charge un profil à partir d'un pseudo en allant chercher dans la base de donnée
     def chargerProfil(unPseudo)
 
-		pseudo = self.requete("SELECT pseudo FROM profil WHERE profil.pseudo = '#{unPseudo}'")
+	pseudo = self.requete("SELECT pseudo FROM profil WHERE profil.pseudo = '#{unPseudo}'")
        	stats = self.requete("SELECT stats.* FROM profil INNER JOIN stats ON profil.id = stats.id WHERE profil.pseudo = '#{unPseudo}'")
 		
-		#print "Dans charger Profil"
-		#print "Profil :",pseudo
-		#print "Stats :",stats[0]
-       	
-       	@profil = Profil.ouvrir(pseudo[0]["pseudo"], stats[0])
+	#print "Dans charger Profil"
+	#print "Profil :",pseudo
+	#print "Stats :",stats[0]
+
    	end
 	
 	#Retourne la liste des profils de la bdd ordonnés de manière alphabétique dans un tableau

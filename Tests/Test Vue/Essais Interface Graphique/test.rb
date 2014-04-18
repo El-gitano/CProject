@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'gtk2'
 
 class Gui
@@ -18,7 +19,7 @@ class Gui
 		@window.signal_connect('destroy') { Gtk.main_quit }
 		
 		@builder.connect_signals(){ |handler| 
-      		puts "Connection d\'un signal à la méthode : '#{handler}'"
+      		puts "Connection d\'un signal a la methode : '#{handler}'"
      		method(handler) 
     	}
     	
