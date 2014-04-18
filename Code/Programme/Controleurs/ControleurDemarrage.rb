@@ -76,7 +76,7 @@ class ControleurDemarrage < Controleur
 			if @modele.existe?(pseudo) then
 			
 				@vue.genererMessage("Connexion au profil #{pseudo}")
-				#Charger le profil
+				@modele.chargerProfil(pseudo)
 				changerControleur(ControleurAccueil.new(@picross, @modele.profil))
 				
 			else

@@ -8,6 +8,8 @@ class Modele
     @bdd
     @profil
     
+    attr_reader :profil
+    
     private_class_method :new
 	attr_reader :profil
     
@@ -63,6 +65,4 @@ class Modele
     
     	@bdd.close
     end
-    
-   
 end
