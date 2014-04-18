@@ -1,4 +1,4 @@
-require './Modele'
+require './Modeles/Modele'
 
 #Le modèle de démarrage permet au profil d'effectuer des intéraction avec la partie Profil de notre Bdd
 class ModeleDemarrage < Modele
@@ -21,15 +21,15 @@ class ModeleDemarrage < Modele
 	end
 	
 	#Crée un profil dans la base de donnée, retourne vrai en cas de succès, faux sinon
-	def creerProfil(unLogin)
+    def creerProfil(unLogin)
 		
-		if not existe?(unLogin) then
+        if not existe?(unLogin) then
 		
-			requete("INSERT INTO profil(pseudo, pass) VALUES ('#{unLogin}', NULL)")
-            		tab=requete("SELECT id from profil WHERE pseudo = '#{unLogin}'")
-            		id = tab [0]["id"]
-            		req = "INSERT INTO stats(id, parties_commencees, parties_terminees, temps_joue, joker_utilises, indices_utilises, grilles_crees, ragequits) VALUES(#{id},0,0,0,0,0,0,0)"
-            		requete(req)
+            requete("INSERT INTO profil(pseudo, pass) VALUES ('#{unLogin}', NULL)")
+            tab=requete("SELECT id from profil WHERE pseudo = '#{unLogin}'")
+            id = tab [0]["id"]
+            req = "INSERT INTO stats(id, parties_commencees, parties_terminees, temps_joue, joker_utilises, indices_utilises, grilles_crees, ragequits) VALUES(#{id},0,0,0,0,0,0,0)"
+            requete(req)
 
             return true
 		else
@@ -82,11 +82,8 @@ class ModeleDemarrage < Modele
 		#print "Stats :",statss
 
 		pseudo = self.requete("SELECT pseudo FROM profil WHERE profil.pseudo = '#{unPseudo}'")
-       		stats = self.requete("SELECT stats.* FROM profil INNER JOIN stats ON profil.id = stats.id WHERE profil.pseudo = '#{unPseudo}'")
-		print "Dans charger Profil"
-		print "Profil :",pseudo
-		print "Stats :",stats[0]
-       		@profil = Profil.ouvrir(pseudo[0]["pseudo"], stats[0])
+       	stats = self.requete("SELECT stats.* FROM profil INNER JOIN stats ON profil.id = stats.id WHERE profil.pseudo = '#{unPseudo}'")
+       	@profil = Profil.ouvrir(pseudo[0]["pseudo"], stats[0])
    	end
 	
 	#Retourne la liste des profils de la bdd ordonnés de manière alphabétique dans un tableau
@@ -110,13 +107,3 @@ class ModeleDemarrage < Modele
 
 
 end
-
-modele = ModeleDemarrage.new
-modele.creerProfil("Dede")
-modele.chargerProfil("Dede")
-
-print "\n\n\n\n",modele.profil.pseudo,"\n"
-print modele.profil.donnees.stats,"\n"
-modele.profil.donnees.maj("ragequits",0)
-print "\n\n",modele.profil.donnees.stats,"\n"
-modele.sauvegarderProfil

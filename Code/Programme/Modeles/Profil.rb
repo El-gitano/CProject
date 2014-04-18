@@ -1,4 +1,4 @@
-require './Statistiques'
+require './Modeles/Statistiques'
 
 class Profil
 
