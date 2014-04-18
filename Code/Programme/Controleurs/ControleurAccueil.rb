@@ -1,8 +1,8 @@
 # encoding: UTF-8
 
-require '../Modeles/ModeleAccueil'
-require '../Vues/VueAccueil'
-require './Controleur'
+require './Modeles/ModeleAccueil'
+require './Vues/VueAccueil'
+require './Controleurs/Controleur'
 
 require 'gtk2'
 

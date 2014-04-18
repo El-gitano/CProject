@@ -1,4 +1,4 @@
-require '../Grilles/GrilleJeu.rb'
+require './Modeles/Grilles/GrilleJeu'
 
 class PlateauJeu
 

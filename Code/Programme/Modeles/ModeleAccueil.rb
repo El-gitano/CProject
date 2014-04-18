@@ -1,6 +1,6 @@
-require './ModeleAvecProfil'
+require './Modeles/ModeleAvecProfil'
 
-class ModeleAccueil < ModeleAvecProfil
+class ModeleAccueil < Modele
 
 	public_class_method :new
 	

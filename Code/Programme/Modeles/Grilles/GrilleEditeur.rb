@@ -1,6 +1,6 @@
-require './Grille'
-require './Etats Cases/EtatCaseJouee'
-require './Etats Cases/EtatCaseNeutre'
+require './Modeles/Grilles/Grille'
+require './Modeles/Grilles/Etats Cases/EtatCaseJouee'
+require './Modeles/Grilles/Etats Cases/EtatCaseNeutre'
 
 class GrilleEditeur < Grille
 

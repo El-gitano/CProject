@@ -1,6 +1,6 @@
-require './EtatCase'
-require './EtatCaseNeutre'
-require './EtatCaseJouee'
+require './Modeles/Grilles/Etats/Cases/EtatCase'
+require './Modeles/Grilles/Etats/Cases/EtatCaseNeutre'
+require './Modeles/Grilles/Etats/Cases/EtatCaseJouee'
 
 class EtatCaseCroix < EtatCase
     

@@ -1,8 +1,8 @@
 # encoding: UTF-8
 
-require '../Modeles/ModeleDemarrage'
-require '../Vues/VueDemarrage'
-require './Controleur'
+require './Modeles/ModeleDemarrage.rb'
+require './Vues/VueDemarrage'
+require './Controleurs/Controleur'
 
 require 'gtk2'
 

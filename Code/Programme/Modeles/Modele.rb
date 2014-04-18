@@ -5,15 +5,20 @@ class Modele
 
     @observateurs
     @bdd
+    @profil
     
     private_class_method :new
     
-    def initialize
+    def initialize(unProfil)
 
     	$fichierBDD = "test.sqlite"
+    	
     	@observateurs = Array.new
+    	
     	@bdd = SQLite3::Database.open $fichierBDD
-    	@bdd.results_as_hash = true#Utile pour retourner les résultats dans un tableau de hash   	
+    	@bdd.results_as_hash = true#Utile pour retourner les résultats dans un tableau de hash
+    	
+    	@profil = unProfil
     end
     
     #Ajoute un observateur dans la liste des observateurs
@@ -54,8 +59,14 @@ class Modele
 	end
     
     #Ferme la connection avec la bdd pour le modèle en cours
-    def fermerBdd()
+    def fermerBdd
     
     	@bdd.close
+    end
+    
+    #Cette méthode charge un profil à partir d'un pseudo en allant chercher dans la base de donnée
+    def chargerProfil(unPseudo)
+    
+    	
     end
 end

@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-require './Vue'
+require './Vues/Vue'
 
 #Vue chargée d'effectuer le lien entre le contrôleur et l'utilisateur lors de l'écran d'accueil
 class VueAccueil < Vue

@@ -1,4 +1,4 @@
-require './Grille'
+require './Modeles/Grilles/Grille'
 
 class GrilleJeu < Grille
 
