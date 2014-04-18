@@ -3,6 +3,7 @@
 require './Modeles/ModeleDemarrage.rb'
 require './Vues/VueDemarrage'
 require './Controleurs/Controleur'
+require './Controleurs/ControleurAccueil'
 
 require 'gtk2'
 

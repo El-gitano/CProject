@@ -53,8 +53,6 @@ class VueDemarrage < Vue
 		
 		@window.add(vbox)
 		
-		@window.signal_connect('destroy') { Gtk.main_quit }
-		
 		actualiser
 	end
 	

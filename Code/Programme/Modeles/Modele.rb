@@ -1,5 +1,5 @@
 require 'sqlite3'
-require './Profil'
+require './Modeles/Profil'
 
 #Les modèles définiront les structures de donnée de notre programme ainsi que les intéractions sur ces structures. Tout modèle sera connecté à la base de donnée et pourra mettre à jour ses observateurs
 class Modele
@@ -65,4 +65,22 @@ class Modele
     
     	@bdd.close
     end
+    
+    def sauvegarderProfil()		
+
+		0.upto(@profil.donnees.stats.length/2) do |x|
+	
+			@profil.donnees.stats.delete(x)
+		end	
+
+		id = @profil.donnees.stats["id"]
+
+		#print "id : ",id
+
+		@profil.donnees.stats.each do |key, value| 
+	
+			self.requete("UPDATE stats SET '#{key}' = '#{value}' WHERE id = #{id}")
+			#puts "#{key} is #{value}\n" 
+		end	
+	end
 end

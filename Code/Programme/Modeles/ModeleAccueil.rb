@@ -8,4 +8,9 @@ class ModeleAccueil < Modele
 	
 		super(unProfil)
 	end
+	
+	def getProfil
+	
+		return @profil.pseudo
+	end
 end

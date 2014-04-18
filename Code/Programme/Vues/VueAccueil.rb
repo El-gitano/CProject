@@ -57,7 +57,3 @@ class VueAccueil < Vue
 	
 	
 end
-
-Gtk.init
-v= VueAccueil.new
-Gtk.main

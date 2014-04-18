@@ -1,4 +1,4 @@
-require './Statistiques'
+require './Modeles/Statistiques'
 
 class Profil
 
@@ -11,10 +11,12 @@ class Profil
 	private_class_method :new
 
 	def Profil.ouvrir(pseudo,stats)
+	
 		new(pseudo,stats)
 	end
 
 	def initialize(pseudo,stats)
+	
 		@pseudo = pseudo
 		@donnees = Statistiques.ouvrir(stats)
 	end

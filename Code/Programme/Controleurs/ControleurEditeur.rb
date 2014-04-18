@@ -62,6 +62,8 @@ class ControleurEditeur < Controleur
 			}
 	
 			dialogue.destroy
+			
+			@modele.lancerMaj
 		}
 	
 		@vue.boutonEnregistrer.signal_connect("clicked"){
