@@ -1,4 +1,4 @@
-require './ControleurDemarrage.rb'
+require './Controleurs/ControleurDemarrage.rb'
 require 'gtk2'
 
 #Cette classe représente le jeu en lui même. Au cours du déroulement du programme les contrôleurs changeront, ayant pour conséquence de changer la vue et le modèle "temporaire" également.

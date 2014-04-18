@@ -1,6 +1,6 @@
-require './Grille.rb'
-require './EtatCaseJouee.rb'
-require './EtatCaseNeutre.rb'
+require './Grille'
+require './Etats Cases/EtatCaseJouee'
+require './Etats Cases/EtatCaseNeutre'
 
 class GrilleEditeur < Grille
 

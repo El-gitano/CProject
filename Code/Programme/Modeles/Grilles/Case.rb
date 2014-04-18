@@ -1,4 +1,4 @@
-require './EtatCaseNeutre.rb'
+require './Etats Cases/EtatCaseNeutre'
 
 class Case
 

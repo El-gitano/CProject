@@ -1,4 +1,4 @@
-require './EtatCase.rb'
+require './EtatCase'
 
 class EtatCaseJouee < EtatCase
    

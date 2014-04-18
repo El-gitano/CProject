@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
-require './ModeleDemarrage'
-require './VueDemarrage'
+require '../Modeles/ModeleDemarrage'
+require '../Vues/VueDemarrage'
 require './Controleur'
 
 require 'gtk2'
@@ -76,7 +76,8 @@ class ControleurDemarrage < Controleur
 			if @modele.existe?(pseudo) then
 			
 				@vue.genererMessage("Connexion au profil #{pseudo}")
-				#Changer de contrôleur pour le jeu
+				#Charger le profil
+				changerControleur(ControleurAccueil.new(@picross, @modele.profil))
 				
 			else
 			
