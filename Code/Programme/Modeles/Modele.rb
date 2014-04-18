@@ -7,6 +7,8 @@ class Modele
     @bdd
     @profil
     
+    attr_reader :profil
+    
     private_class_method :new
     
     def initialize(unProfil)
@@ -63,11 +65,5 @@ class Modele
     def fermerBdd
     
     	@bdd.close
-    end
-    
-    #Cette méthode charge un profil à partir d'un pseudo en allant chercher dans la base de donnée
-    def chargerProfil(unPseudo)
-    
-    	
     end
 end
