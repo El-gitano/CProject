@@ -3,8 +3,9 @@ require 'sqlite3'
 #Les modèles définiront les structures de donnée de notre programme ainsi que les intéractions sur ces structures. Tout modèle sera connecté à la base de donnée et pourra mettre à jour ses observateurs
 class Modele
 
-    @observateurs
-    @bdd
+    	@observateurs
+   	@bdd
+	@profil
     
     private_class_method :new
     
@@ -14,6 +15,11 @@ class Modele
     	@observateurs = Array.new
     	@bdd = SQLite3::Database.open $fichierBDD
     	@bdd.results_as_hash = true#Utile pour retourner les résultats dans un tableau de hash   	
+
+	#initialize de Modèle avec profil.
+        #self
+        #stats = self.requete("SELECT * FROM profil INNER JOIN stats ON profil.id = stats.id WHERE  #{pseudo} = profil.pseudo")
+        #@profil = profil.ouvrir(pseudo, stats)
     end
     
     #Ajoute un observateur dans la liste des observateurs
