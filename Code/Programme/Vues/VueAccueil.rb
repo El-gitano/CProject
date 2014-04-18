@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-require './Vues/Vue'
+require './Vue'
 
 #Vue chargée d'effectuer le lien entre le contrôleur et l'utilisateur lors de l'écran d'accueil
 class VueAccueil < Vue
@@ -30,7 +30,6 @@ class VueAccueil < Vue
 		arial18 = Pango::FontDescription.new('Arial 25')
 
 		@boutonProfil = Gtk::Button.new(@modele.getProfil, false)
-		#@boutonProfil = Gtk::Button.new("Profil", false)
 		@boutonProfil.child.modify_font(arial18)
 		@boutonDeco = Gtk::Button.new("", false)
 		@boutonJouer = Gtk::Button.new("Jouer", false)
@@ -40,7 +39,7 @@ class VueAccueil < Vue
 		@boutonCredit = Gtk::Button.new("Credits", false)
 		@boutonCredit.child.modify_font(arial18)
 
-		@boutonDeco.set_image(Gtk::Image.new("./croix2.png"))
+		@boutonDeco.set_image(Gtk::Image.new("./Images/croix2.png"))
 
 		vbox.pack_start(@boutonJouer, false, false, 0)
 		vbox.pack_start(@boutonEditer, false, false, 0)
@@ -58,6 +57,3 @@ class VueAccueil < Vue
 	
 end
 
-Gtk.init
-v= VueAccueil.new
-Gtk.main
