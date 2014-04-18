@@ -1,4 +1,4 @@
-require './Modeles/Grilles/Etats/Cases/EtatCase'
+require './Modeles/Grilles/EtatsCases/EtatCase.rb'
 
 class EtatCaseJouee < EtatCase
    

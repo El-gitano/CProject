@@ -1,6 +1,6 @@
-require './Modeles/Grilles/Grille'
-require './Modeles/Grilles/Etats Cases/EtatCaseJouee'
-require './Modeles/Grilles/Etats Cases/EtatCaseNeutre'
+require './Modeles/Grilles/Grille.rb'
+require './Modeles/Grilles/EtatsCases/EtatCaseJouee.rb'
+require './Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb'
 
 class GrilleEditeur < Grille
 
@@ -16,7 +16,7 @@ class GrilleEditeur < Grille
 	
 	def genererAleatoire
 	
-		operationGrille{|uneCase|
+		operationGrille do |uneCase|
 		
 			nbAleat = rand(2)
 			
@@ -30,6 +30,7 @@ class GrilleEditeur < Grille
 				
 					uneCase.changerEtat(EtatCaseNeutre.getInstance)
 			end		
-		}
+		end
 	end
 end
+
