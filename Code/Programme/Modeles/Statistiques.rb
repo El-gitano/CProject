@@ -3,14 +3,15 @@ class Statistiques
 	@stats
 
 	attr_reader :stats
+
 	private_class_method :new
 
-	def Statistiques.ouvrir(nom,stats)
-		new(nom,stats)
+	def Statistiques.ouvrir(stats)
+		new(stats)
 	end
 
 	def initialize(stats)
-		@stats = Statistiques.ouvrir(stats)
+		@stats = stats
 	end
 
 	def maj(cle,donnee)
