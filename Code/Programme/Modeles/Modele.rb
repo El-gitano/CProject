@@ -1,4 +1,5 @@
 require 'sqlite3'
+require './Modeles/Profil'
 
 #Les modèles définiront les structures de donnée de notre programme ainsi que les intéractions sur ces structures. Tout modèle sera connecté à la base de donnée et pourra mettre à jour ses observateurs
 class Modele
@@ -7,19 +8,19 @@ class Modele
     @bdd
     @profil
     
+    attr_reader :profil
+    
     private_class_method :new
+	attr_reader :profil
     
     def initialize(unProfil)
 
     	$fichierBDD = "test.sqlite"
-    	
     	@observateurs = Array.new
-    	
     	@bdd = SQLite3::Database.open $fichierBDD
-
     	@bdd.results_as_hash = true#Utile pour retourner les résultats dans un tableau de hash
-    	
     	@profil = unProfil
+
     end
     
     #Ajoute un observateur dans la liste des observateurs
@@ -63,11 +64,5 @@ class Modele
     def fermerBdd
     
     	@bdd.close
-    end
-    
-    #Cette méthode charge un profil à partir d'un pseudo en allant chercher dans la base de donnée
-    def chargerProfil(unPseudo)
-    
-    	
     end
 end

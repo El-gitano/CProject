@@ -1,6 +1,6 @@
-require './Modeles/Grilles/Etats/Cases/EtatCase'
-require './Modeles/Grilles/Etats/Cases/EtatCaseJouee'
-require './Modeles/Grilles/Etats/Cases/EtatCaseCroix'
+require './Modeles/Grilles/EtatsCases/EtatCase.rb'
+require './Modeles/Grilles/EtatsCases/EtatCaseJouee.rb'
+require './Modeles/Grilles/EtatsCases/EtatCaseCroix.rb'
 
 class EtatCaseNeutre < EtatCase
 
@@ -44,7 +44,8 @@ class EtatCaseNeutre < EtatCase
     
     	return false
     end
-    
+   
+
 	def to_s
 	
 		return "Je suis une case neutre"

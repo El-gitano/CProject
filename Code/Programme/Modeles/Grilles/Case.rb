@@ -1,4 +1,4 @@
-require './Etats Cases/EtatCaseNeutre'
+require './Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb'
 
 class Case
 

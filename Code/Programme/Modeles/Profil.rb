@@ -1,18 +1,22 @@
+require './Modeles/Statistiques'
+
 class Profil
 
-	@nom
-	@stats
+	@pseudo
+	@donnees
 
-	attr_reader :nom,:stats
+	attr_reader :pseudo,:donnees
+
+
 	private_class_method :new
 
-	def Profil.ouvrir(nom,stats)
-		new(nom,stats)
+	def Profil.ouvrir(pseudo,stats)
+		new(pseudo,stats)
 	end
 
-	def initialize(nom,stats)
-		@nom = nom
-		@stats = Statistiques.ouvrir(stats)
+	def initialize(pseudo,stats)
+		@pseudo = pseudo
+		@donnees = Statistiques.ouvrir(stats)
 	end
 
 end
