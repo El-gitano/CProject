@@ -21,19 +21,26 @@ class VueEditeur < Vue
 	@hbox3
 	@vbox
 	@vbox2
-	@boutonTest
+	
+	@caseTest
+	
+	@imgCaseCroix
+	@imgCaseNoire
+	@imgCaseNeutre
+	
+	#Utile pour retrouver une case à partir des coordonnees
+	@mat[][]
+	
 	attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAleatoire, :bouton, :bouton10, :bouton15, :bouton20, :bouton25
 	
 	public_class_method :new
 	
-	def initialize()
+	def initialize(unModele)
 	
-		super()
+		super(unModele)
 
-		#Lignes de code commentées pour les tests
 		@window.set_size_request(1000,800)
 		
-		#Cette box contient les 5 lignes champs + bouton
 		@vbox = Gtk::VBox.new(false, 4)
 		@vbox2 = Gtk::VBox.new(true, 2)
 
@@ -46,24 +53,24 @@ class VueEditeur < Vue
 		@boutonImporterImage = Gtk::Button.new("Importer depuis une image", false)
 		@boutonAleatoire = Gtk::Button.new("Aléatoire", false)
 		@labelTaille = Gtk::Label.new("Taille de la grille", false)
-		@bouton5= Gtk::Button.new("5 X 5", false)
-		@bouton10 = Gtk::Button.new("10 X 10", false)
-		@bouton15 = Gtk::Button.new("15 X 15", false)
-		@bouton20 = Gtk::Button.new("20 X 20", false)
-		@bouton25 = Gtk::Button.new("25 X 25", false)
-
-
-
-
+		
+		#@bouton5= Gtk::Button.new("5 X 5", false)
+		#@bouton10 = Gtk::Button.new("10 X 10", false)
+		#@bouton15 = Gtk::Button.new("15 X 15", false)
+		#@bouton20 = Gtk::Button.new("20 X 20", false)
+		#@bouton25 = Gtk::Button.new("25 X 25", false)
+		
+		@bouton5 = BoutonTaille.new(5)
+		@bouton10 = BoutonTaille.new(10)
+		@bouton15 = BoutonTaille.new(15)
+		@bouton20 = BoutonTaille.new(20)
+		@bouton25 = BoutonTaille.new(25)
 
 
 		@boutonOuvrir.set_image(Gtk::Image.new("./Images/folder.png"))
 		@boutonEnregistrer.set_image(Gtk::Image.new("./Images/disquette.png"))
 		@boutonImporterImage.set_image(Gtk::Image.new("./Images/image2.png"))
 		@boutonAleatoire.set_image(Gtk::Image.new("./Images/aleatoire.png"))
-
-
-		
 
 
 		@hbox1.pack_start(@boutonOuvrir, true, false, 0)
@@ -82,8 +89,13 @@ class VueEditeur < Vue
 
 		@vbox.pack_start(@hbox1, true, false, 0)
 		@vbox.pack_start(@vbox2, true, false, 0)
-
-		dessinerGrille(10)
+		
+		#Images utilisees pour la grille (LIEN A MODIFIER)
+		@imgCaseCroix = Gtk::Image.new("./Images/folder.png")
+		@imgCaseNoire = Gtk::Image.new("./Images/folder.png")
+		@imgCaseNeutre = Gtk::Image.new("./Images/folder.png")
+		
+		initialiserGrille(10)
 
 		@window.add(@vbox)		
 		@window.signal_connect('destroy') { Gtk.main_quit }
@@ -91,19 +103,36 @@ class VueEditeur < Vue
 		
 	end
 	
-	def dessinerGrille(tailleGrille)
-   		 @grille=Gtk::Table.new(tailleGrille,tailleGrille,TRUE) 
+	def initialiserGrille(tailleGrille)
+   		 @grille=Gtk::Table.new(tailleGrille,tailleGrille,true) 
 		 0.upto(tailleGrille-1){|x|
 			0.upto(tailleGrille-1){|y|
-				@boutonTest = Gtk::Button.new("", false)
-				@boutonTest.set_image(Gtk::Image.new("./Images/croix2.png"))
-				@grille.attach_defaults(@boutonTest, x, x+1, y, y+1)
+				@caseTest = CaseVue.new(x, y, @imgCaseNeutre)
+				@mat[y][x] = @caseTest
+				@grille.attach_defaults(@caseTest, x, x+1, y, y+1)
 			}
 		}
 		
 		@vbox.pack_start(@grille, true, true, 0)
- 
 	end
+	
+	
+	
+	def actualiser()
+		@grille=Gtk::Table.new(tailleGrille,tailleGrille,true) 
+		0.upto(@modele.grille.size-1){|x|
+			0.upto(@modele.grille.size-1){|y|
+				@caseTest = CaseVue.new(x, y, @imgCaseNeutre)
+				@mat[y][x] = @caseTest
+				@grille.attach_defaults(@caseTest, x, x+1, y, y+1)
+			}
+		}
+	end
+	
+	def getGrilleXY(x, y)
+		return @mat[y][x]
+	end
+	
 end
 
 Gtk.init
