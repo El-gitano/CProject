@@ -40,9 +40,8 @@ class ModeleEditeur < Modele
     end
 
     def grilleExiste?(nom)
-    
-        grille = self.requete("SELECT * FROM grilleediter WHERE nomgrille = '#{nom}'")
-        return grille[0]["nomgrille"]!=nil
+        grille = requete "SELECT COUNT(*) AS 'liste' FROM grilleediter WHERE nomgrille = '#{nom}'"
+		return true if grille[0]["liste"] == 1
     end
 
     def sauvegarder(nom)
