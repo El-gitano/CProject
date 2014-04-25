@@ -5,31 +5,48 @@ require './Modeles/Grilles/GrilleEditeur'
 class ModeleEditeur < Modele
 	
 	@grille
+<<<<<<< HEAD
 	#@nbJokers
     #@nomGrille
+=======
+	@nbJokers
+   	@nomGrille
+   	 
+>>>>>>> deee181f6d6129c97b208c27a8ff26a331f738c4
 	attr_writer :grille
 
 	public_class_method :new
 	
-	def initialize(unProfil,taille)
+	def initialize(unProfil, taille)
+	
 		super(unProfil)
+<<<<<<< HEAD
         #@nbJokers=0
         #@taille=taille
 		@grille = GrilleEditeur.Creer(taille,"NouvelleGrille",unProfil,0)
 		#@grille.to_debug
 		#lancerMaj
+=======
+        @nbJokers=0
+        @taille=taille
+		@grille = GrilleEditeur.Creer(taille)
+		
+>>>>>>> deee181f6d6129c97b208c27a8ff26a331f738c4
 	end
 
     def setNbJokers(nbjoker)
+    
         @nbJokers=nbjoker
     end
 
     def grilleExiste?(nom)
-        grille=self.requete("SELECT * FROM grilleediter WHERE nomgrille = '#{nom}'")
+    
+        grille = self.requete("SELECT * FROM grilleediter WHERE nomgrille = '#{nom}'")
         return grille[0]["nomgrille"]!=nil
     end
 
     def sauvegarder(nom)
+<<<<<<< HEAD
         nomGrille=nom
         serial = @grille.casesSerialize
         tailleGrille =@grille.taille
@@ -39,6 +56,19 @@ class ModeleEditeur < Modele
             self.requete("INSERT INTO grilleediter(createur,nomgrille,taillegrille,grille,nbjokers) VALUES('#{@profil}','#{nomGrille}','#{tailleGrille}','#{serial}','#{@nbJokers}')")
           #  return true
         #end
+=======
+    
+        @nomGrille=nom
+        serial=@grille.serialize
+        tailleGrille=@grille.taille
+        
+        if grilleExiste?(nom)
+            return false
+        else
+            self.requete("INSERT INTO grilleediter(createur,nomgrille,taillegrille,grille,nbjokers) VALUES('#{@profil}','#{@nomGrille}','#{@tailleGrille}','#{serial}','#{@nbJokers}')")
+            return true
+        end
+>>>>>>> deee181f6d6129c97b208c27a8ff26a331f738c4
     end
 
     def charger(nom)

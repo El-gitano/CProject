@@ -75,7 +75,7 @@ class ControleurEditeur < Controleur
 	
 					when Gtk::Dialog::RESPONSE_ACCEPT
 		
-						@modele.chargerGrille(choixGrille)
+						@modele.charger(choixGrille)
 				end
 			}
 
@@ -171,6 +171,8 @@ class ControleurEditeur < Controleur
 				@modele.lancerMaj
 			}
 		}
+		
+		@modele.lancerMaj
 	end
 	
 	# Retour a l'accueil

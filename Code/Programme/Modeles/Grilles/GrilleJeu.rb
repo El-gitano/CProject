@@ -11,4 +11,9 @@ class GrilleJeu < Grille
 	
 		super(uneTaille)
 	end
+
+	# Pour ControleurJeu
+	def reinitialiserCases
+		# Mettre toutes les cases à l'état neutre
+	end
 end

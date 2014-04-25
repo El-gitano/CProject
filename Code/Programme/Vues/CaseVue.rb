@@ -1,17 +1,16 @@
-class CaseVue < Gtk::Button
+class CaseVue < Gtk::EventBox 
 
 	@x
 	@y
-	@imgEtat
+	@img
 	
-	attr_reader :x, :y
+	attr_reader :x, :y, :img
 	
 	public_class_method :new
 	
 	def initialize(x, y, img)
 	
-		super("", false)
-		self.set_image(img)
+		super(img)
 		@x, @y = x, y
 		
 	end
