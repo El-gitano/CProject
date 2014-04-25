@@ -6,32 +6,38 @@ class ModeleEditeur < Modele
 	
 	@grille
 	@nbJokers
-    @nomGrille
+   	@nomGrille
+   	 
 	attr_writer :grille
 
 	public_class_method :new
 	
-	def initialize(unProfil,taille)
+	def initialize(unProfil, taille)
+	
 		super(unProfil)
         @nbJokers=0
         @taille=taille
 		@grille = GrilleEditeur.Creer(taille)
-		lancerMaj
+		
 	end
 
     def setNbJokers(nbjoker)
+    
         @nbJokers=nbjoker
     end
 
     def grilleExiste?(nom)
-        grille=self.requete("SELECT * FROM grilleediter WHERE nomgrille = '#{nom}'")
+    
+        grille = self.requete("SELECT * FROM grilleediter WHERE nomgrille = '#{nom}'")
         return grille[0]["nomgrille"]!=nil
     end
 
     def sauvegarder(nom)
+    
         @nomGrille=nom
         serial=@grille.serialize
         tailleGrille=@grille.taille
+        
         if grilleExiste?(nom)
             return false
         else
