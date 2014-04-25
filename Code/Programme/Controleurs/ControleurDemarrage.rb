@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-require './Modeles/ModeleDemarrage.rb'
+require './Modeles/ModeleDemarrage'
 require './Vues/VueDemarrage'
 require './Controleurs/Controleur'
 require './Controleurs/ControleurAccueil'

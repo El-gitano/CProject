@@ -35,7 +35,7 @@ class Modele
     	@observaeurs.delete(unObservateur)
     end
     
-    #Met à jour l'ensemble des observateurs
+    #Met à jour l'ensemble des observateursattr_reader :pseudo
     def lancerMaj
     
     	@observateurs.each{|unObservateur|

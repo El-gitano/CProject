@@ -1,9 +1,8 @@
 class Plateau
 
 	@grille
-	@nbJokers
-	@nom
-	
+	@nbJoker
+		
 	private_class_method :new
 	
 	def enleverJoker
