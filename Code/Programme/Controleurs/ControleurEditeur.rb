@@ -17,50 +17,68 @@ class ControleurEditeur < Controleur
 		
 		@modele.ajouterObservateur(@vue)
 		
+		choixGrille = nil
+		
+		#Boîte de dialogue pour ouverture d'une grille
 		@vue.boutonOuvrir.signal_connect("clicked"){
 		
-			dialogue = Gtk::Dialog.new("Ouverture d'une grille", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_REJECT])
+			dialogue = Gtk::Dialog.new("Ouverture d'un plateau", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
+
+			dialogue.set_size_request(550,200)
 			dialogue.set_modal(true)
-			
-			list_store = Gtk::ListStore.new(String)		
-			comboBoxGrilles = Gtk::ComboBox.new(@list_store, 0)
-		
-			#Charger le list store
-			laGrille = nil
-		
+
+			comboBoxGrilles = Gtk::ComboBox.new(true)
+	
+			@modele.listeGrillesEditables(@modele.profil.pseudo){|x|
+
+				comboBoxGrilles.append_text(x.nom)
+			}
+
 			ligneH = Gtk::HSeparator.new
-		
-			nomGrille = Gtk::Label.new("Le nom de la grille")
-		
+
+			lbNomGrille = Gtk::Label.new("Le nom du plateau")
+
 			hBox = Gtk::HBox.new(false, 5)
-		
+
 			#Création de l'intérieur de la boite de dialogue
-			lbNbJoker = Gtk::Label.new("Nombre de Jokers : ")
-			lbTaille = Gtk::Label.new("Taille de la grille : ")
-			lbDateCreation = Gtk::Label.new("Date de création de la grille : ")
-		
+			lbNbJoker = Gtk::Label.new("Jokers : ")
+			lbTaille = Gtk::Label.new("Taille : ")
+			lbDateCreation = Gtk::Label.new("Date de création : ")
+
 			hBox.pack_start(lbNbJoker, false, false, 0)
 			hBox.pack_start(lbTaille, false, false, 0)
 			hBox.pack_start(lbDateCreation, false, false, 0)
-		
+
 			#Ajout à la vbox par défaut
 			dialogue.vbox.pack_start(comboBoxGrilles, false, false, 0)
 			dialogue.vbox.pack_start(nomGrille, false, false, 0)
 			dialogue.vbox.pack_start(hBox, false, false, 0)
+
+			comboBoxGrilles.signal_connect("changed"){
+
+				nomGrille = comboBoxGrilles.active_text
+				choixGrille = comboBoxGrilles.active_text
+				lbNomGrille.text = nomGrille
+				grille = @modele.getGrille(nomGrille)
 	
-			dialogue.show_all
-	
-			dialogue.run{|reponse|
-		
-				#On ne traite la réponse que si l'utilisateur a cliqué sur "OPEN"
-				case response
-				
-	   				when Gtk::Dialog::RESPONSE_ACCEPT
-	   				
-	   					@modele.ouvrirGrille(laGrille)
-	   			end
+				lbNbJokers.text = grille.jokers
+				lbTaille.text = grille.taille.to_s + "X" + grille.taille.to_s
+				lbDateCreation = grille.dateCreation
 			}
+
+			dialogue.show_all
+
+			dialogue.run{|reponse|
+
+				#On ne traite la réponse que si l'utilisateur a cliqué sur "OPEN"
+				case reponse
 	
+					when Gtk::Dialog::RESPONSE_ACCEPT
+		
+						@modele.chargerGrille(choixGrille)
+				end
+			}
+
 			dialogue.destroy
 			
 			@modele.lancerMaj
@@ -68,29 +86,75 @@ class ControleurEditeur < Controleur
 	
 		@vue.boutonEnregistrer.signal_connect("clicked"){
 	
-			if @modele.enregistrerGrille then
-		
-				dialogue = Gtk::Dialog.new("Sauvegarde de la grille", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT)
-				hbox = Gtk::HBox.new(false, 5)
+			#On demande à l'utilisateur d'entrer un nom de grille
+			Gtk::Dialog.new("Nom de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+
+			dialogue.set_modal(true)
+
+			lbNomGrille = Gtk::Label.new("Nom de la grille : ")
+			etNomGrille = Gtk::Entry.new
 			
-				label = Gtk::Label.new("Grille sauvegardée avec succès")
-				image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
+			hBox = Gtk::HBox.new(false, 5)
+
+			hBox.pack_start(lbNomGrille , false, false, 0)
+			hBox.pack_start(etNomGrille , false, false, 0)
+			dialogue.vbox.pack_start(hBox, false, false, 0)
+			
+			nomGrille = nil
+			
+			etNomGrille.signal_connect("changed"){
+			
+				nomGrille = etNomGrille.text
+			}
+			
+			#On vérifie que la grille n'existe pas
+			if !nomGrille.eql?("") and @modele.grilleExiste?(nomGrille) then
+			
+				if @modele.enregistrerGrille(nomGrille) then
+		
+					dialogue = Gtk::Dialog.new("Sauvegarde de la grille", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+					dialogue.set_modal(true)
+				
+					hbox = Gtk::HBox.new(false, 5)
+			
+					label = Gtk::Label.new("Grille sauvegardée avec succès")
+					image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
 	
+					hbox.pack_start(image, false, false, 0)
+					hbox.pack_start(label, false, false, 0)
+	
+					dialogue.vbox.add(hbox)
+	
+					dialogue.show_all	
+					dialogue.run
+			
+					dialogue.destroy
+		
+				else
+		
+					print "Erreur dans la sauvegarde de la grille"
+					exit(-1)
+				end
+			
+			else
+				dialogue = Gtk::Dialog.new("Grille existante", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+				dialogue.set_modal(true)
+			
+				hbox = Gtk::HBox.new(false, 5)
+		
+				label = Gtk::Label.new("La grille " + nomGrille + " existe déjà !")
+				image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
+
 				hbox.pack_start(image, false, false, 0)
 				hbox.pack_start(label, false, false, 0)
-	
+
 				dialogue.vbox.add(hbox)
-	
+
 				dialogue.show_all	
 				dialogue.run
-			
+		
 				dialogue.destroy
-		
-			else
-		
-				print "Erreur dans la sauvegarde de la grille"
-				exit(-1)
-			end
+			end	
 		}
 	
 		@vue.boutonAleatoire.signal_connect("clicked"){
@@ -99,34 +163,13 @@ class ControleurEditeur < Controleur
 			@modele.lancerMaj
 		}
 	
-		@vue.bouton5.signal_connect("clicked"){
+		@vue.listBoutonTaille.each{|x|
+		
+			x.signal_connect("clicked"){|leBouton|
 
-			@modele.grille = GrilleEditeur.creerGrille(5)
-			@modele.lancerMaj
-		}
-	
-		@vue.bouton10.signal_connect("clicked"){
-		
-			@modele.grille = GrilleEditeur.creerGrille(10)
-			@modele.lancerMaj	
-		}
-	
-		@vue.bouton15.signal_connect("clicked"){
-		
-			@modele.grille = GrilleEditeur.creerGrille(15)
-			@modele.lancerMaj	
-		}
-	
-		@vue.bouton20.signal_connect("clicked"){
-		
-			@modele.grille = GrilleEditeur.creerGrille(20)
-			@modele.lancerMaj	
-		}
-	
-		@vue.bouton25.signal_connect("clicked"){
-		
-			@modele.grille = GrilleEditeur.creerGrille(25)
-			@modele.lancerMaj	
+				@modele.grille = GrilleEditeur.creerGrille(leBouton.taille)
+				@modele.lancerMaj
+			}
 		}
 	end
 	
