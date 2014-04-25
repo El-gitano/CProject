@@ -1,4 +1,5 @@
 require './Modeles/Grilles/Case.rb'
+require 'yaml'
 
 class Grille
 
@@ -68,11 +69,11 @@ class Grille
 	end
 
 	def serialize()
-		return Marshal::dump(self)
+		return YAML.dump(self)
 	end
 	
 	def Grille.deserialize(obj)
-		return Marshal::load(obj)
+		return YAML.load(obj)
 	end
 	
 	def to_num
