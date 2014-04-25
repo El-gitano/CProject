@@ -1,22 +1,9 @@
-require './Modeles/Grilles/GrilleEditeur.rb' 	
-require './Modeles/Grilles/InfosGrille.rb' 
-
-grille = GrilleEditeur.Creer(10)
-
-grille.genererAleatoire
-grille.to_debug
-
-print "\n"
-
-seri = grille.serialize
+require './Modeles/ModeleEditeur.rb'
+modeleedit=ModeleEditeur.new('Pierre',15)
 
 
+print modeleedit.sauvegarder('magrille')
+modeleedit.charger('magrille')
 
+print modeleedit
 
-toto = Grille.deserialize(seri)
-toto.to_debug
-print "\n"
-infos = InfosGrille.new()
-infos.genererInfos(toto)
-infos.to_debug
-print "\n";

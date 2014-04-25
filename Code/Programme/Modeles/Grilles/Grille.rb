@@ -7,9 +7,10 @@ class Grille
 	@cases
 	@nomGrille
 	@createur
-	@nbJockers
+	@nbJokers
 	
-	attr_reader :taille,:nomGrille,:createur,:nbJockers
+	attr_reader :taille,:nomGrille,:createur,:nbJokers,:cases
+	attr_writer :taille,:nomGrille,:createur,:nbJokers,:cases
 	
 	private_class_method :new
 	
@@ -17,7 +18,7 @@ class Grille
 		@taille = taille
 		@nomGrille = nomGrille
 		@createur = createur
-		@nbJockers = nbJockers
+		@nbJokers = nbJokers
 		@cases = Array.new(taille){Array.new(taille){Case.new}}
 		
 	end
@@ -71,11 +72,12 @@ class Grille
 		}
 	end
 
-	def serialize()
-		return YAML.dump(self)
+	def casesSerialize()
+		#print @cases
+		return YAML.dump(@cases)
 	end
 	
-	def Grille.deserialize(obj)
+	def Grille.casesDeserialize(obj)
 		return YAML.load(obj)
 	end
 	
