@@ -1,17 +1,12 @@
-require './Modeles/Grilles/GrilleEditeur.rb' 	
+require './Modeles/ModeleEditeur.rb'
+modeleedit=ModeleEditeur.new('Pierre',15)
 
-grille = GrilleEditeur.Creer(10)
 
-grille.genererAleatoire
-grille.to_debug
+modeleedit.sauvegarder('magrille')
+modeleedit.charger('magrille')
+
+print modeleedit
 
 print "\n"
 
-seri = grille.serialize
 
-
-
-
-toto = Grille.deserialize(seri)
-toto.to_debug
-print "\n"
