@@ -1,21 +1,25 @@
 require './Modeles/Grilles/Case.rb'
+require 'yaml'
 
 class Grille
-
-	@cases
-	@taille
-	#@nom
-	#@createur
-	#@nbJockers
 	
-	attr_reader :taille
+	@taille
+	@cases
+	@nomGrille
+	@createur
+	@nbJockers
+	
+	attr_reader :taille,:nomGrille,:createur,:nbJockers
 	
 	private_class_method :new
 	
-	def initialize(taille)
-	
-		@cases = Array.new(taille){Array.new(taille){Case.new}}
+	def initialize(taille,nomGrille,createur,nbJokers)
 		@taille = taille
+		@nomGrille = nomGrille
+		@createur = createur
+		@nbJockers = nbJockers
+		@cases = Array.new(taille){Array.new(taille){Case.new}}
+		
 	end
 		
 	def getCase(y, x)
@@ -68,11 +72,11 @@ class Grille
 	end
 
 	def serialize()
-		return Marshal::dump(self)
+		return YAML.dump(self)
 	end
 	
 	def Grille.deserialize(obj)
-		return Marshal::load(obj)
+		return YAML.load(obj)
 	end
 	
 	def to_num

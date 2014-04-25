@@ -17,4 +17,6 @@ class ModeleEditeur < Modele
 		@grille = GrilleEditeur.Creer(15)
 		lancerMaj
 	end
+
+	def 
 end
