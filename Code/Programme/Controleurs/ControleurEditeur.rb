@@ -31,7 +31,7 @@ class ControleurEditeur < Controleur
 	
 			@modele.listeGrillesEditables(@modele.profil.pseudo){|x|
 
-				comboBoxGrilles.append_text(x.nom)
+				comboBoxGrilles.append_text(x.nomGrille)
 			}
 
 			ligneH = Gtk::HSeparator.new
@@ -110,7 +110,7 @@ class ControleurEditeur < Controleur
 			#On vérifie que la grille n'existe pas
 			if !nomGrille.eql?("") and @modele.grilleExiste?(nomGrille) then
 			
-				if @modele.enregistrerGrille(nomGrille) then
+				if @modele.sauvegarder(nomGrille) then
 		
 					dialogue = Gtk::Dialog.new("Sauvegarde de la grille", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
 					dialogue.set_modal(true)
