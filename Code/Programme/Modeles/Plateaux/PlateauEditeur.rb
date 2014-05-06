@@ -1,4 +1,4 @@
-require '../Grilles/GrilleEditeur'
+require './Modeles/Grilles/GrilleEditeur'
 
 class PlateauEditeur
 	

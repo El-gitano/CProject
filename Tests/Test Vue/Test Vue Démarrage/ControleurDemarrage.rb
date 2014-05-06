@@ -33,7 +33,7 @@ class ControleurDemarrage < Controleur
 			
 				hbox = Gtk::HBox.new(false, 5)
 			
-				label = Gtk::Label.new("Etes vous sûr de vouloir supprimer le profil #{pseudo} ?")
+				label = Gtk::Label.new("Etes vous sur de vouloir supprimer le profil #{pseudo} ?")
 				image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
 			
 				hbox.pack_start(image, false, false, 0)
@@ -49,7 +49,7 @@ class ControleurDemarrage < Controleur
 
 						if @modele.supprimerProfil(pseudo) then
 
-							message = "Profil #{pseudo} supprimé avec succès !"	
+							message = "Profil #{pseudo} supprime avec succes !"	
 						else 	
 						
 							message = "Impossible de supprimer le profil #{pseudo}"
@@ -90,18 +90,18 @@ class ControleurDemarrage < Controleur
 			
 			if @modele.existe?(nomProfil) then
 			
-				message = "Le profil #{nomProfil} existe déjà !"
+				message = "Le profil #{nomProfil} existe deja !"
 				
 			elsif !nomProfil.eql?("") and @modele.creerProfil(nomProfil) then
 			
 				@vue.actualiser
-				message = "Profil #{nomProfil} crée avec succès !"
+				message = "Profil #{nomProfil} cree avec succes !"
 				
 				@vue.setProfil(nomProfil)
 				
 			else
 			
-				message = "Impossible de créer le profil #{nomProfil}"
+				message = "Impossible de creer le profil #{nomProfil}"
 			end
 			
 			@vue.genererMessage(message)

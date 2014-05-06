@@ -1,5 +1,5 @@
 require 'sqlite3'
-require './Modele'
+require './Modeles/Modele'
 
 class ModeleAvecProfil < Modele
     @profil

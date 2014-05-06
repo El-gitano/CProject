@@ -1,4 +1,4 @@
-require './Vue'
+require './Vues/Vue'
 
 #Vue chargée d'effectuer le lien entre le contrôleur et l'utilisateur lors de l'écran de connexion à son profil
 class VueDemarrage < Vue
@@ -52,8 +52,6 @@ class VueDemarrage < Vue
 		vbox.pack_start(hbox2, false, false, 0)
 		
 		@window.add(vbox)
-		
-		@window.signal_connect('destroy') { Gtk.main_quit }
 		
 		actualiser
 	end

@@ -1,19 +1,26 @@
 require 'sqlite3'
+require './Modeles/Profil'
 
 #Les modèles définiront les structures de donnée de notre programme ainsi que les intéractions sur ces structures. Tout modèle sera connecté à la base de donnée et pourra mettre à jour ses observateurs
 class Modele
 
     @observateurs
     @bdd
+    @profil
+    
+    attr_reader :profil
     
     private_class_method :new
+	attr_reader :profil
     
-    def initialize
+    def initialize(unProfil)
 
     	$fichierBDD = "test.sqlite"
     	@observateurs = Array.new
     	@bdd = SQLite3::Database.open $fichierBDD
-    	@bdd.results_as_hash = true#Utile pour retourner les résultats dans un tableau de hash   	
+    	@bdd.results_as_hash = true#Utile pour retourner les résultats dans un tableau de hash
+    	@profil = unProfil
+
     end
     
     #Ajoute un observateur dans la liste des observateurs
@@ -28,7 +35,7 @@ class Modele
     	@observaeurs.delete(unObservateur)
     end
     
-    #Met à jour l'ensemble des observateurs
+    #Met à jour l'ensemble des observateursattr_reader :pseudo
     def lancerMaj
     
     	@observateurs.each{|unObservateur|
@@ -54,8 +61,26 @@ class Modele
 	end
     
     #Ferme la connection avec la bdd pour le modèle en cours
-    def fermerBdd()
+    def fermerBdd
     
     	@bdd.close
     end
+    
+    def sauvegarderProfil()		
+
+		0.upto(@profil.donnees.stats.length/2) do |x|
+	
+			@profil.donnees.stats.delete(x)
+		end	
+
+		id = @profil.donnees.stats["id"]
+
+		#print "id : ",id
+
+		@profil.donnees.stats.each do |key, value| 
+	
+			self.requete("UPDATE stats SET '#{key}' = '#{value}' WHERE id = #{id}")
+			#puts "#{key} is #{value}\n" 
+		end	
+	end
 end

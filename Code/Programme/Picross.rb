@@ -25,3 +25,5 @@ class Picross
     	Gtk.main
     end
 end
+
+p = Picross.Creer

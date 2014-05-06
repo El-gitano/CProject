@@ -1,22 +1,22 @@
-require './Grille'
-require './Etats Cases/EtatCaseJouee'
-require './Etats Cases/EtatCaseNeutre'
+require './Modeles/Grilles/Grille.rb'
+require './Modeles/Grilles/EtatsCases/EtatCaseJouee.rb'
+require './Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb'
 
 class GrilleEditeur < Grille
 
-	def GrilleEditeur.Creer(uneTaille)
+	def GrilleEditeur.Creer(taille,nomGrille,createur,nbJokers)
 	
-		new(uneTaille)
+		new(taille,nomGrille,createur,nbJokers)
 	end
 	
-	def initialize(uneTaille)
+	def initialize(taille,nomGrille,createur,nbJokers)
 	
-		super(uneTaille)
+		super(taille,nomGrille,createur,nbJokers)
 	end
 	
 	def genererAleatoire
 	
-		operationGrille{|uneCase|
+		operationGrille do |uneCase|
 		
 			nbAleat = rand(2)
 			
@@ -30,6 +30,7 @@ class GrilleEditeur < Grille
 				
 					uneCase.changerEtat(EtatCaseNeutre.getInstance)
 			end		
-		}
+		end
 	end
 end
+

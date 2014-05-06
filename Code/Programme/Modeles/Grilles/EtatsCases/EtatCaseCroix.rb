@@ -1,27 +1,27 @@
-require './EtatCase'
-require './EtatCaseJouee'
-require './EtatCaseCroix'
+require './Modeles/Grilles/EtatsCases/EtatCase.rb'
+require './Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb'
+require './Modeles/Grilles/EtatsCases/EtatCaseJouee.rb'
 
-class EtatCaseNeutre < EtatCase
-
+class EtatCaseCroix < EtatCase
+    
 	@instance = nil
 	
 	private_class_method :new
     
-	def EtatCaseNeutre.getInstance
-
-		if @instance.nil? then
+	def EtatCaseCroix.getInstance
 	
+		if @instance.nil? then
+		
 			@instance = new
 		end
-	
+		
 		return @instance
 	end
 	
 	def clicDroit(uneCase)
 	
 		super(uneCase)
-		uneCase.changerEtat(EtatCaseCroix.getInstance)
+		uneCase.changerEtat(EtatCaseNeutre.getInstance)
 	end
 	
 	def clicGauche(uneCase)
@@ -32,12 +32,12 @@ class EtatCaseNeutre < EtatCase
 	
 	def neutre?
     
-    	return true
+    	return false
     end
     
     def croix?
     
-    	return false
+    	return true
     end
     
     def jouee?
@@ -46,12 +46,12 @@ class EtatCaseNeutre < EtatCase
     end
     
 	def to_s
-	
-		return "Je suis une case neutre"
+
+		return "Je suis une case avec une croix"
 	end
 	
 	def to_debug
-	
-		return ' N '
+
+		return ' X '
 	end
 end
