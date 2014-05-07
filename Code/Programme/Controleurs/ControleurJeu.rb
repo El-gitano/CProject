@@ -109,27 +109,44 @@ class ControleurJeu < Controleur
 	}
 
 
-	# Gestion des clics dans la grille		
-	@vue.boutonCase.signal_connect("clicked"){		
+	# Gestion des clics pour 1 bouton (a multiplier par le nombre de cases ?)	
+	@vue.boutonCase1.add_events(Gdk::Event::BUTTON_PRESS_MASK)
+	@vue.boutonCase1.signal_connect("button_press_event") do |widget, event|{		
 		# Si clic gauche
-			# si EtatNeutre
-				# devient EtatJoue
+		if (event.button == 1)
+		
+			# si EtatNeutre   
+			if @vue.boutonCase.etat == EtatCaseNeutre.getInstance 
+
+				@vue.boutonCase.etat = EtatCaseJouee.getInstance
 
 			# si EtatJoue
-				# devient EtatNeutre
+			if @vue.boutonCase.etat == EtatCaseJouee.getInstance 
+
+				@vue.boutonCase.etat = EtatCaseNeutre.getInstance
 
 			# si EtatCroix
-				# devient EtatJoue
+			if @vue.boutonCase.etat == EtatCaseCroix.getInstance 
 
+				@vue.boutonCase.etat = EtatCaseJouee.getInstance
+				
 		# Si clic droit
+		if (event.button == 3)
+		
 			# si EtatNeutre
-				# devientCroix
+			if @vue.boutonCase.etat == EtatCaseNeutre.getInstance 
+
+				@vue.boutonCase.etat = EtatCaseCroix.getInstance
 
 			# si EtatJoue
-				#devient EtatCroix
+			if @vue.boutonCase.etat == EtatCaseJouee.getInstance 
+
+				@vue.boutonCase.etat = EtatCaseCroix.getInstance
 
 			# si EtatCroix
-				# devient EtatNeutre
+			if @vue.boutonCase.etat == EtatCaseCroix.getInstance 
+
+				@vue.boutonCase.etat = EtatCaseNeutre.getInstance
 	}
 
 
