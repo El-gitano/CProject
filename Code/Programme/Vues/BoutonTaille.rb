@@ -8,9 +8,8 @@ class BoutonTaille < Gtk::Button
 	
 	def initialize(taille)
 	
+		#On inscrit la taille dans le bouton
 		super(taille.to_s + " X " + taille.to_s, false)
-		@taille = taille
-		
+		@taille = taille	
 	end
-	
 end

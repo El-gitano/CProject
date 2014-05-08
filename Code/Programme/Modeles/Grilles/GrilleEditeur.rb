@@ -4,14 +4,14 @@ require './Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb'
 
 class GrilleEditeur < Grille
 
-	def GrilleEditeur.Creer(taille,nomGrille,createur,nbJokers)
+	def GrilleEditeur.Creer(taille, nomGrille, createur, nbJokers)
 	
 		new(taille,nomGrille,createur,nbJokers)
 	end
 	
-	def initialize(taille,nomGrille,createur,nbJokers)
+	def initialize(taille, nomGrille, createur, nbJokers)
 	
-		super(taille,nomGrille,createur,nbJokers)
+		super(taille, nomGrille, createur, nbJokers)
 	end
 	
 	def genererAleatoire

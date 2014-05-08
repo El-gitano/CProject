@@ -11,7 +11,6 @@ class Modele
     attr_reader :profil
     
     private_class_method :new
-	attr_reader :profil
     
     def initialize(unProfil)
 
@@ -51,6 +50,7 @@ class Modele
     	
     		resultat = @bdd.execute(uneRequete)
     		return resultat if not resultat.empty?
+    		return Array.new#On retourne un tableau nul si pas de résultat (pour les each)
     		
     	rescue SQLite3::Exception => e 
     	

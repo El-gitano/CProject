@@ -1,6 +1,8 @@
 # encoding: utf-8
 
+require './Modeles/ModeleEditeur'
 require './Modeles/Grilles/GrilleEditeur'
+require './Vues/VueEditeur'
 require 'gtk2'
 
 class ControleurEditeur < Controleur
@@ -12,8 +14,8 @@ class ControleurEditeur < Controleur
 
 		super(unJeu)
 
-		@modele = ModeleEditeur.new(unProfil)
-		@vue = VueDemarrage.new(@modele)
+		@modele = ModeleEditeur.new(unProfil, 10)
+		@vue = VueEditeur.new(@modele)
 		
 		@modele.ajouterObservateur(@vue)
 		
@@ -29,41 +31,46 @@ class ControleurEditeur < Controleur
 
 			comboBoxGrilles = Gtk::ComboBox.new(true)
 	
-			@modele.listeGrillesEditables(@modele.profil.pseudo){|x|
+			@modele.listeNomGrillesEditables(@modele.profil.pseudo){|x|
 
-				comboBoxGrilles.append_text(x.nomGrille)
+				comboBoxGrilles.append_text(x)
 			}
 
 			ligneH = Gtk::HSeparator.new
 
-			lbNomGrille = Gtk::Label.new("Le nom du plateau")
+			lbNomGrille = Gtk::Label.new
+			lbNomGrille.markup="<b>Le nom du plateau</b>"
 
-			hBox = Gtk::HBox.new(false, 5)
+			vBox = Gtk::VBox.new(false, 5)
 
 			#Création de l'intérieur de la boite de dialogue
 			lbNbJoker = Gtk::Label.new("Jokers : ")
 			lbTaille = Gtk::Label.new("Taille : ")
 			lbDateCreation = Gtk::Label.new("Date de création : ")
+			lbDateModification = Gtk::Label.new("Date de modification : ")
 
-			hBox.pack_start(lbNbJoker, false, false, 0)
-			hBox.pack_start(lbTaille, false, false, 0)
-			hBox.pack_start(lbDateCreation, false, false, 0)
+			vBox.pack_start(lbNbJoker, false, false, 0)
+			vBox.pack_start(lbTaille, false, false, 0)
+			vBox.pack_start(lbDateCreation, false, false, 0)
+			vBox.pack_start(lbDateModification, false, false, 0)
 
 			#Ajout à la vbox par défaut
 			dialogue.vbox.pack_start(comboBoxGrilles, false, false, 0)
-			dialogue.vbox.pack_start(nomGrille, false, false, 0)
-			dialogue.vbox.pack_start(hBox, false, false, 0)
+			dialogue.vbox.pack_start(lbNomGrille, false, false, 0)
+			dialogue.vbox.pack_start(vBox, false, false, 0)
 
+			#Màj sélection de l'utilisateur
 			comboBoxGrilles.signal_connect("changed"){
 
 				nomGrille = comboBoxGrilles.active_text
 				choixGrille = comboBoxGrilles.active_text
-				lbNomGrille.text = nomGrille
+				lbNomGrille.markup = "<b>"+nomGrille+"</b>"
 				grille = @modele.getGrille(nomGrille)
 	
-				lbNbJokers.text = grille.jokers
-				lbTaille.text = grille.taille.to_s + "X" + grille.taille.to_s
-				lbDateCreation = grille.dateCreation
+				lbNbJoker.text = "Jokers : " + grille.nbJokers.to_s
+				lbTaille.text = "Taille : " + grille.taille.to_s + "X" + grille.taille.to_s
+				lbDateCreation.text = "Date de création : " + grille.dateCreation.to_s
+				lbDateModification.text = "Date de modification : " + grille.dateModification.to_s
 			}
 
 			dialogue.show_all
@@ -76,23 +83,26 @@ class ControleurEditeur < Controleur
 					when Gtk::Dialog::RESPONSE_ACCEPT
 		
 						@modele.charger(choixGrille)
+	
 				end
 			}
 
 			dialogue.destroy
 			
 			@modele.lancerMaj
+			connecterGrille
 		}
 	
 		@vue.boutonEnregistrer.signal_connect("clicked"){
 	
 			#On demande à l'utilisateur d'entrer un nom de grille
-			Gtk::Dialog.new("Nom de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+			dialogue = Gtk::Dialog.new("Nom de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
 
 			dialogue.set_modal(true)
 
 			lbNomGrille = Gtk::Label.new("Nom de la grille : ")
 			etNomGrille = Gtk::Entry.new
+			etNomGrille.text = @modele.grille.nomGrille
 			
 			hBox = Gtk::HBox.new(false, 5)
 
@@ -100,61 +110,77 @@ class ControleurEditeur < Controleur
 			hBox.pack_start(etNomGrille , false, false, 0)
 			dialogue.vbox.pack_start(hBox, false, false, 0)
 			
-			nomGrille = nil
-			
 			etNomGrille.signal_connect("changed"){
 			
-				nomGrille = etNomGrille.text
+				@modele.grille.nomGrille = etNomGrille.text
 			}
 			
-			#On vérifie que la grille n'existe pas
-			if !nomGrille.eql?("") and @modele.grilleExiste?(nomGrille) then
+			dialogue.show_all
 			
-				if @modele.sauvegarder(nomGrille) then
-		
-					dialogue = Gtk::Dialog.new("Sauvegarde de la grille", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
-					dialogue.set_modal(true)
-				
-					hbox = Gtk::HBox.new(false, 5)
+			choixOK = false
 			
-					label = Gtk::Label.new("Grille sauvegardée avec succès")
-					image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
-	
-					hbox.pack_start(image, false, false, 0)
-					hbox.pack_start(label, false, false, 0)
-	
-					dialogue.vbox.add(hbox)
-	
-					dialogue.show_all	
-					dialogue.run
+			while choixOK != true
 			
-					dialogue.destroy
-		
-				else
-		
-					print "Erreur dans la sauvegarde de la grille"
-					exit(-1)
-				end
-			
-			else
-				dialogue = Gtk::Dialog.new("Grille existante", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
-				dialogue.set_modal(true)
-			
-				hbox = Gtk::HBox.new(false, 5)
-		
-				label = Gtk::Label.new("La grille " + nomGrille + " existe déjà !")
-				image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
+				dialogue.run{|reponse|
 
-				hbox.pack_start(image, false, false, 0)
-				hbox.pack_start(label, false, false, 0)
-
-				dialogue.vbox.add(hbox)
-
-				dialogue.show_all	
-				dialogue.run
+					#On ne traite la réponse que si l'utilisateur a cliqué sur "Enregistrer" ou "ANNULER"
+					case reponse
+	
+						when Gtk::Dialog::RESPONSE_ACCEPT
 		
-				dialogue.destroy
-			end	
+							#On vérifie que la grille n'existe pas
+							if not etNomGrille.text.eql?("") then
+								
+								#La grille existe déjà, on demande donc à l'utilisateur de confirmer sa sauvegarde
+								if @modele.grilleExiste?(etNomGrille.text) then
+							
+									d = Gtk::Dialog.new("Grille existante", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT])
+									d.set_modal(true)
+
+									hbox = Gtk::HBox.new(false, 5)
+
+									label = Gtk::Label.new("Une grille sous ce nom existe déjà. Écraser la grille existante ?")
+									image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
+
+									hbox.pack_start(image, false, false, 0)
+									hbox.pack_start(label, false, false, 0)
+
+									d.vbox.add(hbox)
+
+									d.show_all	
+									d.run{|reponse|
+								
+										case reponse
+											
+											#Réponse positive on sauvegarde en écrasant l'ancienne grille
+											when Gtk::Dialog::RESPONSE_ACCEPT
+										
+												@modele.miseAJourGrille(etNomGrille.text)
+												@vue.dgGrilleSauv
+												choixOK = true
+										end
+									}
+									d.destroy
+								
+								#Pas de grille déjà existante, on sauvegarde
+								else
+								
+									@modele.sauvegarderGrille(etNomGrille.text)
+									@vue.dgGrilleSauv
+									choixOK = true
+								end
+							else
+							
+								@vue.dgGrilleVide
+							end
+						
+						when Gtk::Dialog::RESPONSE_REJECT
+						
+							choixOK = true
+					end
+				}
+			end
+			dialogue.destroy
 		}
 	
 		@vue.boutonAleatoire.signal_connect("clicked"){
@@ -167,16 +193,33 @@ class ControleurEditeur < Controleur
 		
 			x.signal_connect("clicked"){|leBouton|
 
-				@modele.grille = GrilleEditeur.creerGrille(leBouton.taille)
+				@modele.grille = GrilleEditeur.Creer(leBouton.taille, "NouvelleGrille", @modele.profil, 0)
 				@modele.lancerMaj
+				connecterGrille
 			}
 		}
 		
-		@modele.lancerMaj
+		connecterGrille
+		
+	end
+	
+	#Connecte un listener d'évènement sur la grille pour récupérer les clics
+	def connecterGrille
+	
+		#On connecte un signal pour chaque case du plateau
+		@vue.operationGrille{|uneCase|
+		
+			uneCase.signal_connect("button_press_event"){
+				
+				@modele.getCase(uneCase.x,  uneCase.y).clicGauche
+				@modele.lancerMaj
+			}
+		}
 	end
 	
 	# Retour a l'accueil
 	def retourAccueil
+	
 		changerControleur(ControleurAccueil.new(@picross, @modele.profil))
 	end
 end

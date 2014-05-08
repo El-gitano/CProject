@@ -1,21 +1,56 @@
-class CaseVue < Gtk::EventBox 
+require 'gtk2'
+
+class CaseVue < Gtk::EventBox
 
 	@x
 	@y
-	@img
 	
-	attr_reader :x, :y, :img
+	@tailleGrille
 	
-	public_class_method :new
+	@image
+	@etat
 	
-	def initialize(x, y, img)
+	attr_reader :x, :y, :etat, :taille
 	
-		super(img)
-		@x, @y = x, y
+	def initialize(unEtat, uneTaille, x, y)
+	
+		super()
 		
+		@tailleGrille = uneTaille
+		@etat = unEtat
+		@x = x
+		@y = y
+		
+		changerEtat(unEtat)	
+		show_all	
 	end
 	
-	def changerImageEtat(img)
-		self.set_image(img)
+	#Change la variale interne etat de l'instance et change l'image pour celle de l'état nouveau (avec la taille de base)
+	def changerEtat(unEtat)
+	
+		remove(@image) if not @image.nil?
+		setImage(unEtat, @tailleGrille)
+		add(@image)
+		@etat = unEtat
+		
+		show_all	
+	end
+	
+	def setImage(unEtat, uneTaille)
+	
+		case unEtat
+		
+			when "neutre"
+			
+				@image =  Gtk::Image.new("./Vues/Images/carreB"+@tailleGrille.to_s+".png")
+				
+			when "jouee"
+			
+				@image = Gtk::Image.new("./Vues/Images/carreN"+@tailleGrille.to_s+".png")
+				
+			when "croix"
+				i=1
+				#return Gtk::Image.new("./Vues/Images/carreN"+@tailleGrille.to_s+".png")
+		end
 	end
 end

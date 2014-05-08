@@ -8,7 +8,6 @@ class ModeleDemarrage < Modele
 	def initialize()
 	
 		super(nil)		
-
 	end
 		
 	#Retourne vrai si unLogin existe, faux sinon
@@ -59,8 +58,12 @@ class ModeleDemarrage < Modele
  	#Cette méthode charge un profil à partir d'un pseudo en allant chercher dans la base de donnée
     def chargerProfil(unPseudo)
 
-	pseudo = self.requete("SELECT pseudo FROM profil WHERE profil.pseudo = '#{unPseudo}'")
-       	stats = self.requete("SELECT stats.* FROM profil INNER JOIN stats ON profil.id = stats.id WHERE profil.pseudo = '#{unPseudo}'")
+		#Récupération du profil dans des variables
+		pseudo = requete("SELECT pseudo FROM profil WHERE profil.pseudo = '#{unPseudo}'")
+       	stats = requete("SELECT stats.* FROM profil INNER JOIN stats ON profil.id = stats.id WHERE profil.pseudo = '#{unPseudo}'")
+		
+		#Chargement du profil
+		@profil = Profil.ouvrir(pseudo[0]["pseudo"], stats[0])
 		
 	#print "Dans charger Profil"
 	#print "Profil :",pseudo

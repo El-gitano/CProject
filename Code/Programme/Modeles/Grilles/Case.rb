@@ -9,7 +9,6 @@ class Case
     def initialize
     
     	@etat = EtatCaseNeutre.getInstance
-
     end
     
     def clicDroit

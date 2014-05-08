@@ -10,9 +10,9 @@ class Profil
 
 	private_class_method :new
 
-	def Profil.ouvrir(pseudo,stats)
+	def Profil.ouvrir(pseudo, stats)
 	
-		new(pseudo,stats)
+		new(pseudo, stats)
 	end
 
 	def initialize(pseudo,stats)

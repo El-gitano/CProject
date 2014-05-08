@@ -2,18 +2,16 @@ require './Modeles/Grilles/EtatsCases/EtatCase.rb'
 
 class EtatCaseJouee < EtatCase
    
-	@instance = nil
-	
-	private_class_method :new
+	@@instance = nil
     
 	def EtatCaseJouee.getInstance
 	
-		if @instance.nil? then
+		if @@instance.nil? then
 		
-			@instance = new
+			@@instance = new
 		end
 		
-		return @instance
+		return @@instance
 	end
 	
 	def clicDroit
@@ -21,9 +19,10 @@ class EtatCaseJouee < EtatCase
 		super(uneCase)
 	end
 	
-	def clicGauche
+	def clicGauche(uneCase)
 	
 		super(uneCase)
+		uneCase.changerEtat(EtatCaseNeutre.getInstance)
 	end
 	
 	def neutre?

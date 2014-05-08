@@ -8,19 +8,22 @@ class Grille
 	@nomGrille
 	@createur
 	@nbJokers
+	@dateCreation
+	@dateModification
 	
-	attr_reader :taille,:nomGrille,:createur,:nbJokers,:cases
-	attr_writer :taille,:nomGrille,:createur,:nbJokers,:cases
+	attr_accessor :nomGrille,:createur,:nbJokers, :taille, :dateModification, :cases, :dateCreation
 	
 	private_class_method :new
 	
-	def initialize(taille,nomGrille,createur,nbJokers)
+	def initialize(taille, nomGrille, createur, nbJokers)
+		
 		@taille = taille
 		@nomGrille = nomGrille
 		@createur = createur
 		@nbJokers = nbJokers
 		@cases = Array.new(taille){Array.new(taille){Case.new}}
-		
+		@dateCreation = Time.now.strftime("%d/%m/%Y %H:%M")
+		@dateMofication = Time.now.strftime("%d/%m/%Y %H:%M")
 	end
 		
 	def getCase(y, x)

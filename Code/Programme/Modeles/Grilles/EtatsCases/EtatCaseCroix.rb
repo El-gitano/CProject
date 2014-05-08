@@ -4,18 +4,18 @@ require './Modeles/Grilles/EtatsCases/EtatCaseJouee.rb'
 
 class EtatCaseCroix < EtatCase
     
-	@instance = nil
+	@@instance = nil
 	
 	private_class_method :new
     
 	def EtatCaseCroix.getInstance
 	
-		if @instance.nil? then
+		if @@instance.nil? then
 		
-			@instance = new
+			@@instance = new
 		end
 		
-		return @instance
+		return @@instance
 	end
 	
 	def clicDroit(uneCase)

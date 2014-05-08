@@ -3,6 +3,7 @@
 require './Modeles/ModeleAccueil'
 require './Vues/VueAccueil'
 require './Controleurs/Controleur'
+require './Controleurs/ControleurEditeur'
 
 require 'gtk2'
 
