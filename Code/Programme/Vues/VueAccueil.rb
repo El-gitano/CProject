@@ -36,7 +36,7 @@ class VueAccueil < Vue
 		@boutonJouer.child.modify_font(arial18)
 		@boutonEditer = Gtk::Button.new("Editeur", false)
 		@boutonEditer.child.modify_font(arial18)
-		@boutonCredit = Gtk::Button.new("Credits", false)
+		@boutonCredit = Gtk::Button.new("Crédits", false)
 		@boutonCredit.child.modify_font(arial18)
 
 		@boutonDeco.set_image(Gtk::Image.new("./Images/croix2.png"))

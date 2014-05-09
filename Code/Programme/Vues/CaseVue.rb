@@ -1,10 +1,13 @@
 require 'gtk2'
 
+#Une case vue est un boite d'évènement qui contient une image
+#À l'initialisation, on définit la taille de l'image contenue puis ensuite on la change seulement (le type de l'image mais pas la taille
 class CaseVue < Gtk::EventBox
 
 	@x
 	@y
 	
+	#Permet d'effectuer la sélection de l'image à partir de son nom
 	@tailleGrille
 	
 	@image
@@ -25,7 +28,7 @@ class CaseVue < Gtk::EventBox
 		show_all	
 	end
 	
-	#Change la variale interne etat de l'instance et change l'image pour celle de l'état nouveau (avec la taille de base)
+	#Change la variable interne "etat" de l'instance et change l'image pour celle de l'état nouveau (avec la taille de base)
 	def changerEtat(unEtat)
 	
 		remove(@image) if not @image.nil?
@@ -36,6 +39,7 @@ class CaseVue < Gtk::EventBox
 		show_all	
 	end
 	
+	#Met à variable @image à une GtkImage de l'état et la taille désirée
 	def setImage(unEtat, uneTaille)
 	
 		case unEtat

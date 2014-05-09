@@ -18,7 +18,6 @@ class Vue
 		@window = Gtk::Window.new("Picross accueil")
 		@window.set_window_position(Gtk::Window::POS_CENTER)
 		@window.set_resizable(false)
-		@window.signal_connect('destroy'){Gtk.main_quit}
 	end
 
 	

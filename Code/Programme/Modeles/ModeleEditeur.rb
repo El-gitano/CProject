@@ -22,25 +22,26 @@ class ModeleEditeur < Modele
 		#lancerMaj
 	end
 
+	#Retourne vrai si une grille du nom passé en paramètre existe
     def grilleExiste?(nom)
     
         grille = requete("SELECT COUNT(*) AS 'liste' FROM grilleediter WHERE nomgrille = '#{nom}'")
 		return true if grille[0]["liste"] >= 1
     end
 
-	#A fixer : Changer la date de création seulement quand la grille est nouvelle
+	#Sauvegarde une grille
     def sauvegarderGrille(nomGrille)
     
         serial = @grille.casesSerialize
         tailleGrille = @grille.taille
         nbJokers = @grille.nbJokers
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
-		print tailleGrille, nomGrille, date
         
         self.requete("INSERT INTO grilleediter(createur,nomgrille,taillegrille,grille,nbjokers,datecreation,datemaj) VALUES('#{@profil.pseudo}','#{nomGrille}','#{tailleGrille}','#{serial}','#{nbJokers}','#{date}','#{date}')")
         
     end
 
+	#Met à jour une grille
 	def miseAJourGrille(nomGrille)
 	
 		serial = @grille.casesSerialize
@@ -50,6 +51,7 @@ class ModeleEditeur < Modele
 		self.requete("UPDATE grilleediter SET taillegrille = '#{tailleGrille}', grille = '#{serial}', nbjokers = '#{@nbJokers}', datemaj = '#{dateModification}' WHERE nomgrille = '#{nomGrille}'")
 	end
 	
+	#Charge une grille
     def charger(uneGrille)
     
         @grille = getGrille(uneGrille)
@@ -87,6 +89,7 @@ class ModeleEditeur < Modele
 		return grille
     end
 	
+	#Retourne une case de la grille du modèle
 	def getCase(x,y)
 	
 		return @grille.getCase(x,y)

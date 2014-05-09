@@ -108,6 +108,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		
 	end
 	
+	#Crée une grille de taille "tailleGrille" à partir de cases de la taille adéquate
 	def creerGrille(tailleGrille)
  
  		tailleWidget = 600
@@ -130,7 +131,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 			0.upto(tailleGrille-1){|y|
 				#On spécifie la position de la case
 				caseTemp = CaseVue.new("neutre", tailleGrille, x, y)
-				@mat[x][y] = caseTemp
+				@mat[x][y] = caseTemp#Mat contient des références à nos objets afin de les faire évoluer aux évènements
 				@grille.attach(caseTemp, x, x+1, y, y+1)
   				
 				posX += tailleCase + 1
@@ -163,6 +164,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 	#Actualise la case située aux coordonnées (x,y)
 	def actualiserCase(x,y)
 		
+		#Doit devenir....
 		if @modele.getCase(x,y).neutre? and not getCaseVue(x, y).etat.eql?("neutre") then
 
 			getCaseVue(x, y).changerEtat("neutre")
@@ -183,6 +185,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		return @mat[x][y]
 	end
 	
+	#Dialogue lorsq'un nom de grille vide est entré pour la sauvegarde
 	def dgGrilleVide
 	
 		d = Gtk::Dialog.new("Grille non renseignée", @window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
@@ -204,6 +207,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		d.destroy
 	end
 	
+	#Dialogue de sauvegarde de la grille
 	def dgGrilleSauv
 	
 		d = Gtk::Dialog.new("Sauvegarde de la grille", @window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
@@ -211,8 +215,8 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 
 		hbox = Gtk::HBox.new(false, 5)
 
-		label = Gtk::Label.new("Grille sauvegardée avec succès")
 		image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
+		label = Gtk::Label.new("Grille sauvegardée avec succès")
 
 		hbox.pack_start(image, false, false, 0)
 		hbox.pack_start(label, false, false, 0)

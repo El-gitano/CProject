@@ -3,6 +3,7 @@
 require './Modeles/ModeleEditeur'
 require './Modeles/Grilles/GrilleEditeur'
 require './Vues/VueEditeur'
+require './Vues/DialogueInfo'
 require 'gtk2'
 
 class ControleurEditeur < Controleur
@@ -16,8 +17,13 @@ class ControleurEditeur < Controleur
 
 		@modele = ModeleEditeur.new(unProfil, 10)
 		@vue = VueEditeur.new(@modele)
-		
 		@modele.ajouterObservateur(@vue)
+		
+		#On revient au menu quand la fenêtre de l'éditeur est fermée
+		@vue.window.signal_connect('delete_event'){
+		
+			retourAccueil
+		}
 		
 		choixGrille = nil
 		
@@ -93,6 +99,7 @@ class ControleurEditeur < Controleur
 			connecterGrille
 		}
 	
+		#Dialogue pour l'enregistrement d'une grille
 		@vue.boutonEnregistrer.signal_connect("clicked"){
 	
 			#On demande à l'utilisateur d'entrer un nom de grille
@@ -156,7 +163,7 @@ class ControleurEditeur < Controleur
 											when Gtk::Dialog::RESPONSE_ACCEPT
 										
 												@modele.miseAJourGrille(etNomGrille.text)
-												@vue.dgGrilleSauv
+												DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès\nL'ancienne grille a été écrasée", @vue.window)
 												choixOK = true
 										end
 									}
@@ -166,12 +173,12 @@ class ControleurEditeur < Controleur
 								else
 								
 									@modele.sauvegarderGrille(etNomGrille.text)
-									@vue.dgGrilleSauv
+									 DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", @vue.window)
 									choixOK = true
 								end
 							else
 							
-								@vue.dgGrilleVide
+								 DialogueInfo.afficher("Grille non renseignée", "Veuillez renseigner un nom de grille s'il vous plaît", @vue.window)
 							end
 						
 						when Gtk::Dialog::RESPONSE_REJECT
@@ -183,12 +190,14 @@ class ControleurEditeur < Controleur
 			dialogue.destroy
 		}
 	
+		#Génération d'un grille aléatoire
 		@vue.boutonAleatoire.signal_connect("clicked"){
 	
 			@modele.grille.genererAleatoire
 			@modele.lancerMaj
 		}
 	
+		#Changement de la taille de la grille
 		@vue.listBoutonTaille.each{|x|
 		
 			x.signal_connect("clicked"){|leBouton|

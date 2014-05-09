@@ -39,22 +39,20 @@ class ControleurAccueil < Controleur
 	
 		@vue.boutonCredit.signal_connect("clicked"){
 		
-			dialogue = Gtk::Dialog.new("Credits", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+			dialogue = Gtk::Dialog.new("Crédits", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
 		
 			# Creation des elements
 			tabNoms = Array.new
 
-			tabNoms.push(Gtk::Label.new("AYDIN Emre"))
-			tabNoms.push(Gtk::Label.new("FOUCAULT Antoine"))
-			tabNoms.push(Gtk::Label.new("GUENVER Loic"))
-			tabNoms.push(Gtk::Label.new("LANVIN Elyan"))
-			tabNoms.push(Gtk::Label.new("MARCAIS Thomas"))
-			tabNoms.push(Gtk::Label.new("RAMOLET Arthur"))
+			tabNoms.push(hBoxNom("AYDIN Emre"))
+			tabNoms.push(hBoxNom("FOUCAULT Antoine"))
+			tabNoms.push(hBoxNom("GUENVER Loic"))
+			tabNoms.push(hBoxNom("LANVIN Elyan"))
+			tabNoms.push(hBoxNom("MARCAIS Thomas"))
+			tabNoms.push(hBoxNom("RAMOLET Arthur"))
 
-			labelAnnee = Gtk::Label.new("Crée en 2014")
+			labelAnnee = Gtk::Label.new("\nCrée en 2014")
 			labelUniv = Gtk::Label.new("Projet Université du Maine")
-
-			boutonOK = Gtk::Button.new("Ok", false)
 
 			# Ajout des elements a la Vbox
 			tabNoms.each{|x|
@@ -63,17 +61,33 @@ class ControleurAccueil < Controleur
 			}
 
 			dialogue.vbox.add(labelAnnee)
-			dialogue.vbox.add(labeluniv)
+			dialogue.vbox.add(labelUniv)
 
 			# Affichage des elements et lancement de la fenetre
 			dialogue.show_all
 
 			dialogue.run
+			
+			dialogue.destroy
 		}
 	
 		@vue.boutonProfil.signal_connect("clicked"){
 
 			changerControleur(ControleurProfil.new(@picross, @modele.profil))
 		}
+	end
+	
+	#Crée une Hbox à partir d'un nom qu'elle entoure d'étoiles
+	def hBoxNom(unNom)
+	
+		hBox = Gtk::HBox.new(false, 5)
+		imEtoile = Gtk::Image.new("./Vues/Images/etoileCredit.png")
+		imEtoile2 = Gtk::Image.new("./Vues/Images/etoileCredit.png")
+		
+		hBox.pack_start(imEtoile, false, false, 0)
+		hBox.pack_start(Gtk::Label.new(unNom))
+		hBox.pack_start(imEtoile2, false, false, 0)
+		
+		return hBox
 	end
 end

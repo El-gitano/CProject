@@ -2,6 +2,7 @@ require 'sqlite3'
 require './Modeles/Modele'
 
 class ModeleAvecProfil < Modele
+    
     @profil
 
     def initialize(pseudo)
@@ -10,4 +11,9 @@ class ModeleAvecProfil < Modele
         @profil = profil.ouvrir(pseudo, stats)
     end
 
+	#Met à jour le profil actuel dans la base de donnée
+	def sauvegarderProfil
+		
+		
+	end
 end

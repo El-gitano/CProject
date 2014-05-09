@@ -7,7 +7,6 @@ class Profil
 
 	attr_reader :pseudo,:donnees
 
-
 	private_class_method :new
 
 	def Profil.ouvrir(pseudo, stats)
@@ -15,7 +14,7 @@ class Profil
 		new(pseudo, stats)
 	end
 
-	def initialize(pseudo,stats)
+	def initialize(pseudo, stats)
 	
 		@pseudo = pseudo
 		@donnees = Statistiques.ouvrir(stats)
