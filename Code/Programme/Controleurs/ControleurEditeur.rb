@@ -139,8 +139,8 @@ class ControleurEditeur < Controleur
 	
 						when Gtk::Dialog::RESPONSE_ACCEPT
 		
-							#On vérifie que la grille n'existe pas
-							if not etNomGrille.text.eql?("") then
+							#On vérifie que la grille n'existe pas et que l'utilisateur est propriétaire de la grille
+							if not etNomGrille.text.eql?("") and @modele.grillePropriete(etNomGrille.text) then
 								
 								#La grille existe déjà, on demande donc à l'utilisateur de confirmer sa sauvegarde
 								if @modele.grilleExiste?(etNomGrille.text) then
@@ -182,7 +182,7 @@ class ControleurEditeur < Controleur
 								end
 							else
 							
-								 DialogueInfo.afficher("Grille non renseignée", "Veuillez renseigner un nom de grille s'il vous plaît", @vue.window)
+								 DialogueInfo.afficher("Grille non renseignée", "Grille appartenant à un autre joueur ou non renseignée", @vue.window)
 							end
 						
 						when Gtk::Dialog::RESPONSE_REJECT

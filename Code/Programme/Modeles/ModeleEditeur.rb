@@ -95,6 +95,12 @@ class ModeleEditeur < Modele
 		return @grille.getCase(x,y)
     end
 
+	#Retourne vrai si le profil chargé dans le modèle est propriétaire d'une grille dont le nom est passé en paramètre
+	def grillePropriete(unNomGrille)
+		
+		return !requete("SELECT * FROM grilleediter WHERE createur = '#{@profil.pseudo}' AND nomgrille = '#{unNomGrille}'").empty?
+	end
+	
     def to_s
         print "\n",@grille.nomGrille," ",@grille.nbJokers," ",@grille.taille,"\n"
         @grille.to_debug

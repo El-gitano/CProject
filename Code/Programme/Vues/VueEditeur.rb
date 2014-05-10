@@ -20,10 +20,6 @@ class VueEditeur < Vue
 	@vbox
 	@vbox2
 	
-	@imgCaseCroix
-	@imgCaseNoire
-	@imgCaseNeutre
-	
 	#Utile pour retrouver une case à partir des coordonnees
 	@mat
 	@tailleGrille
