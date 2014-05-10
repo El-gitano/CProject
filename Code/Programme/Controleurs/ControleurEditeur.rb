@@ -1,9 +1,13 @@
 # encoding: utf-8
 
+require './Controleurs/Controleur'
+
 require './Modeles/ModeleEditeur'
 require './Modeles/Grilles/GrilleEditeur'
+
 require './Vues/VueEditeur'
 require './Vues/DialogueInfo'
+
 require 'gtk2'
 
 class ControleurEditeur < Controleur
@@ -224,6 +228,7 @@ class ControleurEditeur < Controleur
 				@modele.lancerMaj
 			}
 		}
+		
 	end
 	
 	# Retour a l'accueil

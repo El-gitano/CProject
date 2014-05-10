@@ -16,7 +16,7 @@ class Statistiques
 		@stats = stats
 	end
 
-	def maj(cle,donnee)
+	def maj(cle, donnee)
 	
 		@stats[cle]=donnee	
 	end

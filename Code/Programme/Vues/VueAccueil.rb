@@ -34,7 +34,7 @@ class VueAccueil < Vue
 		@boutonDeco = Gtk::Button.new("", false)
 		@boutonJouer = Gtk::Button.new("Jouer", false)
 		@boutonJouer.child.modify_font(arial18)
-		@boutonEditer = Gtk::Button.new("Editeur", false)
+		@boutonEditer = Gtk::Button.new("Éditeur", false)
 		@boutonEditer.child.modify_font(arial18)
 		@boutonCredit = Gtk::Button.new("Crédits", false)
 		@boutonCredit.child.modify_font(arial18)
