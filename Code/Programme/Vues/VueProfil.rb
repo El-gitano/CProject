@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require './Vues/Vue'
 
 class VueProfil < Vue
