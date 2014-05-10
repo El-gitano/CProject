@@ -104,14 +104,15 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 	def creerGrille(tailleGrille)
  
  		tailleWidget = 600
+ 		espacementCases = 0
  		tailleCase = tailleWidget/tailleGrille - 1#Moins 1 pour l'espacement entre cases
 		posY = 0
 		
 		#Définition du plateau de jeu (graphique) 
 		@grille.destroy if not @grille.nil?
 		@grille = Gtk::Table.new(tailleGrille, tailleGrille, false)
-		@grille.set_row_spacings(1)
-		@grille.set_column_spacings(1)
+		@grille.set_row_spacings(espacementCases)
+		@grille.set_column_spacings(espacementCases)
 		@grille.set_size_request(tailleWidget, tailleWidget)
 		
 		@mat = Array.new(tailleGrille) { Array.new(tailleGrille) }
@@ -170,6 +171,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		elsif @modele.getCase(x,y).jouee? and not getCaseVue(x, y).etat.eql?("jouee") then
 
 			getCaseVue(x, y).changerEtat("jouee")
+
 		end
 	end
 
