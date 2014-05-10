@@ -66,8 +66,10 @@ class Modele
     	@bdd.close
     end
     
+    #Sauvegarde le profil en mémoire dans la bdd
     def sauvegarderProfil()		
-
+		
+		#Sauvegarde des stats
 		0.upto(@profil.donnees.stats.length/2) do |x|
 	
 			@profil.donnees.stats.delete(x)
@@ -79,8 +81,7 @@ class Modele
 
 		@profil.donnees.stats.each do |key, value| 
 	
-			self.requete("UPDATE stats SET '#{key}' = '#{value}' WHERE id = #{id}")
-			#puts "#{key} is #{value}\n" 
+			self.requete("UPDATE stats SET '#{key}' = '#{value}' WHERE id = #{id}") 
 		end	
 	end
 end

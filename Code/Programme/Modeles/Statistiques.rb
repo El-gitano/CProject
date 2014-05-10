@@ -2,7 +2,7 @@ class Statistiques
 
 	@stats
 
-	attr_reader :stats
+	attr_accessor :stats
 
 	private_class_method :new
 

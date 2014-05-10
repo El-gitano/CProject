@@ -16,12 +16,21 @@ class ModeleProfil < Modele
 	
 	def reinitialiserStatistiques
 	
-		@stats.each_value{|x|
+		#Génération des nouvelles statistiques
+		newStats = Hash.new
 		
-			x = 0
+		@stats.each_pair{|cle, valeur|
+
+			valeur = 0 if not cle.eql?("id")
+			newStats[cle] = valeur
 		}
+
+		@profil.donnees.stats = newStats
+		@stats = newStats
 		
-		#Enregistrer dans la bdd
+		#Enregistrement dans la bdd
+		sauvegarderProfil
+		lancerMaj
 	end
 	
 	#Retourne vrai si un profil existe sous le nom passé en paramètre
@@ -33,7 +42,8 @@ class ModeleProfil < Modele
 	#Change le nom d'un profil déjà existant
 	def changerNomProfil(nouveauNom)
 	
-		requete("UPDATE profil SET pseudo = '#nouveauNom' WHERE pseudo = '@modele.profil.pseudo'")
+		requete("UPDATE profil SET pseudo = '#{nouveauNom}' WHERE pseudo = '#{@profil.pseudo}'")
+		requete("UPDATE grilleediter SET createur ='#{nouveauNom}' WHERE createur = '#{@profil.pseudo}'")
 		@profil.pseudo = nouveauNom
 		lancerMaj
 	end

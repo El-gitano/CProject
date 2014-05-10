@@ -30,7 +30,6 @@ class ControleurProfil < Controleur
 		@vue.boutonEffacer.signal_connect("button_press_event"){
 		
 			@modele.reinitialiserStatistiques
-			@modele.lancerMaj
 		}
 		
 		#Renommage du profil

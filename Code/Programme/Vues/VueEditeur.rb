@@ -90,10 +90,6 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 			@hbox2.pack_start(x, true, false, 0)
 		}
 
-
-		##@vbox.pack_start(@hbox1, true, false, 0)
-		#@vbox.pack_start(@vbox2, true, false, 0)
-
 		@vbox.set_border_width(20) #On espace la vBox de la fenêtre
 		@vbox3.set_spacing(20)
 		@vbox3.pack_start(@hbox1, true, false, 0)
@@ -159,6 +155,8 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 				actualiserCase(x,y)
 			}
 		}
+		
+		@grille.show_all
 	end
 	
 	#Actualise la case située aux coordonnées (x,y)
