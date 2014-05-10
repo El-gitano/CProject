@@ -5,6 +5,21 @@ require './Modeles/Grilles/GrilleJeu'
 require 'date'
 
 class ModeleJeu < ModeleGrille
-    @plateauJeu
+
+	public_class_method :new
+	
+	@plateauJeu
+
+	def initialize(unProfil, uneTaille)
+	
+		super(unProfil,uneTaille)
+		@plateauJeu = GrilleEditeur.Creer(uneTaille, "NouvelleGrille", unProfil, 0)
+	end
+	
+
+	
+	
+	
+	
     attr_reader :plateauJeu
 end

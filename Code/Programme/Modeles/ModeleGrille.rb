@@ -10,8 +10,6 @@ class ModeleGrille < Modele
 	@grille
 	
 	attr_accessor :grille
-
-	public_class_method :new
 	
 	def initialize(unProfil, uneTaille)
 	
@@ -37,7 +35,8 @@ class ModeleGrille < Modele
         nbJokers = @grille.nbJokers
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
         
-        self.requete("INSERT INTO grilleediter(createur,nomgrille,taillegrille,grille,nbjokers,datecreation,datemaj) VALUES('#{@profil.pseudo}','#{nomGrille}','#{tailleGrille}','#{serial}','#{nbJokers}','#{date}','#{date}')")
+		id = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
+        self.requete("INSERT INTO grilleediter(createur,nomgrille,taillegrille,grille,nbjokers,datecreation,datemaj) VALUES('#{id[0]["id"]}','#{nomGrille}','#{tailleGrille}','#{serial}','#{nbJokers}','#{date}','#{date}')")
         
     end
 
