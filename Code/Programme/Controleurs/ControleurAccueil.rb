@@ -1,4 +1,4 @@
-# encoding: UTF-8
+#encoding: UTF-8
 
 require './Modeles/ModeleAccueil'
 require './Vues/VueAccueil'
@@ -22,22 +22,33 @@ class ControleurAccueil < Controleur
 
 		@modele.ajouterObservateur(@vue)	
 		
+		#On revient au menu quand la fenêtre de l'accueil est fermée
+		@vue.window.signal_connect('delete_event'){
+		
+			@modele.sauvegarderProfil
+			changerControleur(ControleurDemarrage.new(@picross))
+		}
+		
+		#Retour à l'accueil
 		@vue.boutonDeco.signal_connect("clicked"){
 	
 			@modele.sauvegarderProfil
 			changerControleur(ControleurDemarrage.new(@picross))
 		}
 	
+		#Lancement d'une partie
 		@vue.boutonJouer.signal_connect("clicked"){
 	
 			changerControleur(ControleurJeu.new(@picross, @modele.profil))
 		}
 	
+		#Lancement de l'éditeur
 		@vue.boutonEditer.signal_connect("clicked"){
 	
 			changerControleur(ControleurEditeur.new(@picross, @modele.profil))
 		}
 	
+		#Affichage des crédits
 		@vue.boutonCredit.signal_connect("clicked"){
 		
 			dialogue = Gtk::Dialog.new("Crédits", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])

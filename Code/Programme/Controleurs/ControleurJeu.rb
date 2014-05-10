@@ -1,4 +1,4 @@
-# encoding: UTF-8
+#encoding: UTF-8
 
 require './Modeles/ModeleJeu'
 require './Vues/VueJeu'
@@ -9,21 +9,71 @@ require 'gtk2'
 class ControleurJeu < Controleur
 
 	# Constructeur
-	def initialize(unJeu, unModele)
+	def initialize(unJeu, unProfil, uneGrille)
 
 		super(unJeu)
 
-		@modele = ModeleJeu.new
+		@modele = ModeleJeu.new(unProfil, uneGrille)
 		@vue = VueJeu.new(@modele)
 		
 		@modele.ajouterObservateur(@vue)
+		
+		#On connecte un signal à chaque bouton
+		@vue.grille.each{|uneCase|
+		
+			uneCase.add_events(Gdk::Event::BUTTON_PRESS_MASK)
+			uneCase.signal_connect("button_press_event") do |laCase, event|{		
+		
+				# Si clic gauche
+				if (event.button == 1) then
+	
+					puts "Clic gauche sur la case #{laCase.x}, #{laCase.y}"
+					
+				# Si clic droit
+				else if (event.button == 3)
+		
+					puts "Clic droit sur la case #{laCase.x}, #{laCase.y}"
+				end
+			}
+		}
+		
+		#En cas de ragequit on met à jour le profil, on le sauvegarde et on quitte
+		@vue.miRageQuit.signal_connect("activate"){
+		
+			@modele.ajouterRageQuit
+			@modele.sauvegarderProfil
+			exit(true)
+		}
+		
+				#Utilisation d'un joker
+		@vue.boutonJoker.signal_connect("clicked"){
+	
+			#On dévoile les cases voulues
+			@modele.utiliserJoker
+		
+			#On decremente le nb de jokers
+			@modele.enleverJoker
+		
+			#On met jour la/les vues
+			@modele.lancerMaj
+		}
+	
+		#Utilisation d'un indice
+		@vue.btIndice.signal_connect("clicked"){
+	
+			#On trouve la ligne/colonne ou on peut avoir un indice
+			indice = @modele.getIndice
+		
+			if !indice.nil? then
+		
+				DialogueInfo.afficher("Indice", "Vous pouvez jouer #{indice}")
+		
+			else
+		
+				DialogueInfo.afficher("Indice introuvable", "Nous n'avons aucun indice à vous donner")
+			end
+		}
 	end
-
-	# Retour a l'accueil
-	@vue.boutonRetourAccueil.signal_connect("clicked"){	
-		changerControleur(ControleurAccueil.new(@picross, @modele.profil))
-	}
-
 
 	# Bouton pour vérifier si la grille est correctement remplie 
 	@vue.boutonVerifierGrille.signal_connect("clicked"){
@@ -35,8 +85,8 @@ class ControleurJeu < Controleur
 			hbox1 = Gtk::HBox.new(false, 5)	
 
 			hbox2 = Gtk::HBox.new(false, 5)	
-				vbox1 = Gtk::VBox.new(false, 5)
-				vbox2 = Gtk::VBox.new(false, 5)
+			vbox1 = Gtk::VBox.new(false, 5)
+			vbox2 = Gtk::VBox.new(false, 5)
 
 			# Creation des elements
 			labelInfo = Gtk::Label.new("La grille est correcte ! \n")	
@@ -109,58 +159,6 @@ class ControleurJeu < Controleur
 	}
 
 
-	# Gestion des clics pour 1 bouton (a multiplier par le nombre de cases ?)	
-	@vue.boutonCase1.add_events(Gdk::Event::BUTTON_PRESS_MASK)
-	@vue.boutonCase1.signal_connect("button_press_event") do |widget, event|{		
-		# Si clic gauche
-		if (event.button == 1)
-		
-			# si EtatNeutre   
-			if @vue.boutonCase.etat == EtatCaseNeutre.getInstance 
-
-				@vue.boutonCase.etat = EtatCaseJouee.getInstance
-
-			# si EtatJoue
-			if @vue.boutonCase.etat == EtatCaseJouee.getInstance 
-
-				@vue.boutonCase.etat = EtatCaseNeutre.getInstance
-
-			# si EtatCroix
-			if @vue.boutonCase.etat == EtatCaseCroix.getInstance 
-
-				@vue.boutonCase.etat = EtatCaseJouee.getInstance
-				
-		# Si clic droit
-		if (event.button == 3)
-		
-			# si EtatNeutre
-			if @vue.boutonCase.etat == EtatCaseNeutre.getInstance 
-
-				@vue.boutonCase.etat = EtatCaseCroix.getInstance
-
-			# si EtatJoue
-			if @vue.boutonCase.etat == EtatCaseJouee.getInstance 
-
-				@vue.boutonCase.etat = EtatCaseCroix.getInstance
-
-			# si EtatCroix
-			if @vue.boutonCase.etat == EtatCaseCroix.getInstance 
-
-				@vue.boutonCase.etat = EtatCaseNeutre.getInstance
-	}
 
 
-	# Utilisation d'un joker
-	@vue.boutonJoker.signal_connect("clicked"){
-		# on donne l'astuce
-			dialogue = Gtk::Dialog.new("Astuce", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
-			labelAstuce = Gtk::Label.new("Astuce a modifier via un setLabel")
-
-			dialogue.vbox.add(labelInfo)
-			dialogue.show_all
-			dialogue.run
-
-		# on decremente le nb de jokers
-		@modele.plateauJeu.enleverJoker
-	}
 end
