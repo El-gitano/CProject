@@ -30,8 +30,10 @@ class ModeleEditeur < ModeleGrille
 		return res
     end
 	
-	#Retourne vrai si le profil chargé dans le modèle est propriétaire d'une grille dont le nom est passé en paramètre
+	#Retourne vrai si le profil chargé dans le modèle est propriétaire d'une grille dont le nom est passé en paramètre (et vrai si la grille n'existe pas)
 	def grillePropriete(unNomGrille)
+		
+		return true if requete("SELECT * FROM grilleediter WHERE nomgrille = '#{unNomGrille}'").empty?
 		
 		return !requete("SELECT * FROM grilleediter WHERE createur = '#{@profil.pseudo}' AND nomgrille = '#{unNomGrille}'").empty?
 	end

@@ -3,6 +3,8 @@ class InfosGrille
 	@infosLigne
 	@infosColonne
 	
+	attr_reader :infosLigne, :infosColonne
+	
 	def initialize
 	
 		@infosLignes = Array.new
