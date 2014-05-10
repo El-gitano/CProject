@@ -7,6 +7,8 @@ require 'date'
 #Le modèle de l'éditeur permet de manipuler la grille à éditer ainsi que d'en sauvegarder/charger une
 class ModeleEditeur < ModeleGrille
 		
+	public_class_method :new
+		
 	def initialize(unProfil, uneTaille)
 	
 		super(unProfil,uneTaille)
