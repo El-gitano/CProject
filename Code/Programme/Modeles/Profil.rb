@@ -5,7 +5,7 @@ class Profil
 	@pseudo
 	@donnees
 
-	attr_reader :donnees
+	attr_accessor :donnees
 	attr_accessor :pseudo
 
 	private_class_method :new

@@ -11,10 +11,9 @@ class ModeleGrille < Modele
 	
 	attr_accessor :grille
 	
-	def initialize(unProfil, uneTaille)
+	def initialize(unProfil)
 	
 		super(unProfil)
-		@grille = GrilleEditeur.Creer(uneTaille, "NouvelleGrille", unProfil, 0)
 		#@grille.genererAleatoire
 		#@grille.to_debug
 		#lancerMaj
@@ -26,29 +25,6 @@ class ModeleGrille < Modele
         grille = requete("SELECT COUNT(*) AS 'liste' FROM grilleediter WHERE nomgrille = '#{nom}'")
 		return true if grille[0]["liste"] >= 1
     end
-
-	#Sauvegarde une grille
-    def sauvegarderGrille(nomGrille)
-    
-        serial = @grille.casesSerialize
-        tailleGrille = @grille.taille
-        nbJokers = @grille.nbJokers
-		date = Time.now.strftime("%d/%m/%Y %H:%M")
-        
-		id = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
-        self.requete("INSERT INTO grilleediter(createur,nomgrille,taillegrille,grille,nbjokers,datecreation,datemaj) VALUES('#{id[0]["id"]}','#{nomGrille}','#{tailleGrille}','#{serial}','#{nbJokers}','#{date}','#{date}')")
-        
-    end
-
-	#Met à jour une grille
-	def miseAJourGrille(nomGrille)
-	
-		serial = @grille.casesSerialize
-        tailleGrille = @grille.taille
-		dateModification = Time.now.strftime("%d/%m/%Y %H:%M")
-		
-		self.requete("UPDATE grilleediter SET taillegrille = '#{tailleGrille}', grille = '#{serial}', nbjokers = '#{@nbJokers}', datemaj = '#{dateModification}' WHERE nomgrille = '#{nomGrille}'")
-	end
 	
 	#Charge une grille
     def charger(uneGrille)

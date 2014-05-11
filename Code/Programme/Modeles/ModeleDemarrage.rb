@@ -4,6 +4,7 @@ require './Modeles/Modele'
 class ModeleDemarrage < Modele
 	
 	public_class_method :new
+	attr_accessor :profil
 	
 	def initialize()
 	
