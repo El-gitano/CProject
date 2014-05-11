@@ -16,14 +16,18 @@ class ModeleAccueil < Modele
 	
 	#Retourne l'ensemble des sauvegardes sous cette forme : Nom_sauvegarde [Nom_grille] (date_modification)
 	def listeSauvegardes
-	
+        reqGrille = requete("SELECT nompartie,nomgrille,grillejouee.datemaj FROM grillejouee JOIN grilleediter ON grillejouee.idGrille=grilleediter.id")
 		
-	end
-	
-	#Retourne la liste des grilles par leurs noms
-	def listeGrilles
-	
-	
+		res = Array.new
+		i = 0
+		reqGrille.each do |x|
+		
+				res.push("#{reqGrille[i]["nompartie"]} [#{reqGrille[i]["nomgrille"]}] (#{reqGrille[i]["datemaj"]})")
+				i+=1
+				
+		end
+
+		return res
 	end
 	
 	def getTailleGrille(uneGrille)
@@ -33,6 +37,7 @@ class ModeleAccueil < Modele
 		return res[0]["taillegrille"]
 	end
 	
+	#Retourne la liste des grilles par leurs noms
 	def listeGrilles
 	
 		res = Array.new

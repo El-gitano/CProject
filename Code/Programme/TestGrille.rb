@@ -1,22 +1,26 @@
 require './Modeles/ModeleJeu.rb'
+require './Modeles/ModeleAccueil.rb'
 require './Modeles/ModeleDemarrage.rb'
 require './Modeles/ModeleAvecProfil.rb'
 
-modeleAccueil = ModeleDemarrage.new
+modeleDem = ModeleDemarrage.new
 
-modeleAccueil.chargerProfil("Charles")
+modeleDem.chargerProfil("Nabo")
 
-profil = modeleAccueil.profil
+modeleAcc = ModeleAccueil.new(modeleDem.profil)
+test = modeleAcc.listeSauvegardes
 
-modelejeu = ModeleJeu.new("Daminou",profil,10)
+#profil = modeleAccueil.profil
 
+#modelejeu = ModeleJeu.new("Daminou",profil,10)
+#test = modeleAccueil.listeSauvegardes
 
-
+print test
 
 #grille = modeleedit.getGrille('magrilleAleat')
 #grille.to_debug
-modelejeu.nouvellePartie("Nom Partie")
+#modelejeu.nouvellePartie("Nom Partie")
 
-print modelejeu
+#print modelejeu
 
 
