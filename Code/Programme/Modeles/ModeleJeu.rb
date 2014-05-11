@@ -12,19 +12,16 @@ class ModeleJeu < ModeleGrille
 	
 	@plateauJeu#Grille de jeu
 	@grille#Grille de référence
+	@timer
 	
 	@informations#Informations numériques sur la grille de référence
 	
-	attr_reader :plateauJeu
+	attr_reader :plateauJeu,:timer
 
-	def initialize(unProfil, uneGrille, uneTaille)
+
+	def initialize(unProfil)
 	
 		super(unProfil)
-		
-		#On récupère les infos de la grille passées en paramètre puis on instancie une GrilleEditeur
-		@grille = charger(uneGrille)
-		@informations = InfosGrille.new
-		@informations.genererInfos(@grille)
 	end
 	
 	#retourne l'indice de @"grille" Dans ModeleGrille
@@ -44,28 +41,66 @@ class ModeleJeu < ModeleGrille
 		return valide
 	end
 	
-	def sauvegarderPartie(nomPartie)
+	def remplacerSauvegarde(nomPartie)
 
 		serial = @plateauJeu.casesSerialize
-        tailleGrille = @plateauJeu.taille
+        nbJokers = @plateauJeu.nbJokers
+		date = Time.now.strftime("%d/%m/%Y %H:%M")
+        idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
+		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'") 
+		req = "UPDATE grillejouee SET grille='#{serial}',jokersRestants='#{nbJokers}',timer='#{@timer}',datemaj='#{date}' WHERE joueur='#{idProfil[0]["id"]}' AND nompartie='#{nomPartie}' AND idGrille='#{idGrilleRef[0]["id"]}'"
+		#print req
+		self.requete(req)
+	end
+	
+	def nouvelleSauvegarde(nomPartie)
+
+		serial = @plateauJeu.casesSerialize
         nbJokers = @plateauJeu.nbJokers
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
         
-		id = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
-		#TODO verifier si nom existe : update si non : insert
-		#self.requete("INSERT INTO grillejouer(joueur,nompartie,taillegrille,grille,jockersRestant,datecreation,datemaj) VALUES('#{id[0]["id"]}','#{nomGrille}','#{tailleGrille}','#{serial}','#{nbJokers}','#{date}','#{date}')")
+		idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
+		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'")
+		self.requete("INSERT INTO grillejouee(joueur,idGrille,nompartie,grille,jokersRestants,timer,datedebut,datemaj) VALUES('#{idProfil[0]["id"]}','#{idGrilleRef[0]["id"]}','#{nomPartie}','#{serial}','#{nbJokers}','#{@timer}','#{date}','#{date}')")
 	end
 	
-	def nouvellePartie(nomPartie)
+	def nouvellePartie(nomPartie,uneGrille)
+		#TODO initialisation du timer
+		@timer = 0
+		
+		#On récupère les infos de la grille passées en paramètre puis on instancie une GrilleEditeur
+		@grille = charger(uneGrille)
+		@informations = InfosGrille.new
+		@informations.genererInfos(@grille)
+	
 		@profil.donnees.stats["parties_commencees"]+=1
 		sauvegarderProfil()
 		@plateauJeu = GrilleJeu.Creer(@grille.taille, nomPartie, @profil, @grille.nbJokers)
+		
 	end
 	
 	def chargerPartie(nomPartie)
 	
+		idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
+		req = "SELECT * FROM grillejouee WHERE nompartie='#{nomPartie}' AND joueur='#{idProfil[0]["id"]}'"
+		reqTemp = requete(req)
+		
+		
+		nomGrilleRef = requete("SELECT nomgrille FROM grilleediter WHERE id='#{reqTemp[0]["idGrille"]}'")
+		
+		@grille = charger(nomGrilleRef[0]["nomgrille"])
+		@informations = InfosGrille.new
+		@informations.genererInfos(@grille)
+		
+		@plateauJeu = GrilleJeu.Creer(@grille.taille, nomPartie, @profil, @grille.nbJokers)
+		@plateauJeu.cases = Grille.casesDeserialize(reqTemp[0]["grille"])  
+		@plateauJeu.nbJokers = reqTemp[0]["jokersRestants"]
+		
+		#TODO initialisation du timer
+		@timer = 0
+			
 	end
-	
+		
 		#Retourne un tableau des noms des sauvegardes d'un utilisateur, possibilité d'effectuer un traitement de type yield
 	def listeNomGrillesChargeables(unPseudo)
 		id = requete("SELECT id FROM profil WHERE pseudo='#{unPseudo}'")

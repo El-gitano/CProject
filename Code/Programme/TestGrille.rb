@@ -7,20 +7,23 @@ modeleDem = ModeleDemarrage.new
 
 modeleDem.chargerProfil("Nabo")
 
-modeleAcc = ModeleAccueil.new(modeleDem.profil)
-test = modeleAcc.listeSauvegardes
+#modeleAcc = ModeleAccueil.new(modeleDem.profil)
+#test = modeleAcc.listeSauvegardes
 
-#profil = modeleAccueil.profil
+profil = modeleDem.profil
 
-#modelejeu = ModeleJeu.new("Daminou",profil,10)
+modelejeu = ModeleJeu.new(profil)
 #test = modeleAccueil.listeSauvegardes
 
-print test
+#print test
+#modelejeu.nouvellePartie("nouvellePartie","toto666")
+#modelejeu.nouvelleSauvegarde("Sauvegarde")
 
 #grille = modeleedit.getGrille('magrilleAleat')
 #grille.to_debug
-#modelejeu.nouvellePartie("Nom Partie")
+modelejeu.chargerPartie("Sauvegarde")
 
-#print modelejeu
+print modelejeu
+#modelejeu.remplacerSauvegarde("SauveTaMere")
 
 
