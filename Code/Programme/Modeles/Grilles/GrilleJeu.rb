@@ -2,14 +2,14 @@ require './Modeles/Grilles/Grille.rb'
 
 class GrilleJeu < Grille
 
-	def GrilleJeu.Creer(uneTaille)
+	def GrilleJeu.Creer(taille, nomGrille, createur, nbJokers)
 	
-		new(uneTaille)
+		new(taille,nomGrille,createur,nbJokers)
 	end
 	
-	def initialize(uneTaille)
+	def initialize(taille,nomGrille,createur,nbJokers)
 	
-		super(uneTaille)
+		super(taille,nomGrille,createur,nbJokers)
 	end
 
 	# Pour ControleurJeu
