@@ -1,6 +1,7 @@
 #encoding: UTF-8
 
 require './Vues/Vue'
+require './Vues/CaseVue'
 require 'gtk2'
 
 class VueJeu < Vue
@@ -19,6 +20,8 @@ class VueJeu < Vue
 	@grille
 	
 	public_class_method :new
+	
+	attr_reader :miSauvegarder, :miQuitter, :miRageQuit, :lbTimer, :lbNomGrille, :btJoker, :btIndice, :btVerifier, :grille
 	
 	def initialize(unModele)
 	
@@ -151,7 +154,7 @@ class VueJeu < Vue
 		
 			1.upto(tailleGrille){|y|
 			
-				@table.attach(CaseVue.new("neutre", tailleGrille, x, y)
+				@table.attach(CaseVue.new("neutre", tailleGrille, x, y))
 			}
 		}
 	end
@@ -166,7 +169,10 @@ class VueJeu < Vue
 			}
 		}
 		
-		@table.show_all
+		#Désactivation du bouton joker si plus de jokers
+		@btJoker.sensitive = false if @modele.nbJokers.eql?(0)
+		
+		@window.show_all
 	end
 	
 	#Actualise la case située aux coordonnées (x,y)

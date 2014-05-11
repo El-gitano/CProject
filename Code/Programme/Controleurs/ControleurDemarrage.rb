@@ -23,6 +23,12 @@ class ControleurDemarrage < Controleur
 		
 		#Handlers de signaux
 		
+		#On revient au menu quand la fenêtre de l'accueil est fermée
+		@vue.window.signal_connect('delete_event'){
+		
+			Gtk.main_quit
+		}
+		
 		@vue.boutonSupprimer.signal_connect("clicked"){
 		
 			pseudo = @vue.getProfil

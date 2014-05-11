@@ -8,6 +8,8 @@ require 'gtk2'
 
 class ControleurJeu < Controleur
 
+	public_class_method :new
+	
 	# Constructeur
 	def initialize(unJeu, unProfil, uneGrille)
 
@@ -21,8 +23,7 @@ class ControleurJeu < Controleur
 		#On connecte un signal à chaque bouton
 		@vue.grille.each{|uneCase|
 		
-			uneCase.add_events(Gdk::Event::BUTTON_PRESS_MASK)
-			uneCase.signal_connect("button_press_event") do |laCase, event|{		
+			uneCase.signal_connect("button_press_event"){|laCase, event|
 		
 				# Si clic gauche
 				if (event.button == 1) then
@@ -30,7 +31,7 @@ class ControleurJeu < Controleur
 					puts "Clic gauche sur la case #{laCase.x}, #{laCase.y}"
 					
 				# Si clic droit
-				else if (event.button == 3)
+				elsif (event.button == 3) then
 		
 					puts "Clic droit sur la case #{laCase.x}, #{laCase.y}"
 				end
@@ -42,10 +43,10 @@ class ControleurJeu < Controleur
 		
 			@modele.ajouterRageQuit
 			@modele.sauvegarderProfil
-			exit(true)
+			Gtk.main_quit
 		}
 		
-				#Utilisation d'un joker
+		#Utilisation d'un joker
 		@vue.boutonJoker.signal_connect("clicked"){
 	
 			#On dévoile les cases voulues
@@ -73,92 +74,88 @@ class ControleurJeu < Controleur
 				DialogueInfo.afficher("Indice introuvable", "Nous n'avons aucun indice à vous donner")
 			end
 		}
-	end
-
-	# Bouton pour vérifier si la grille est correctement remplie 
-	@vue.boutonVerifierGrille.signal_connect("clicked"){
-
-		if @modele.plateau.estRempli?
-			dialogue = Gtk::Dialog.new("Fin de partie", @window, Gtk::Dialog::DESTROY_WITH_PARENT,["Nouvelle Partie", Gtk::Dialog::RESPONSE_ACCEPT],["Retour à l'accueil", Gtk::Dialog::RESPONSE_REJECT])
 		
-			# Creation des box
-			hbox1 = Gtk::HBox.new(false, 5)	
+		# Bouton pour vérifier si la grille est correctement remplie 
+		@vue.boutonVerifierGrille.signal_connect("clicked"){
 
-			hbox2 = Gtk::HBox.new(false, 5)	
-			vbox1 = Gtk::VBox.new(false, 5)
-			vbox2 = Gtk::VBox.new(false, 5)
-
-			# Creation des elements
-			labelInfo = Gtk::Label.new("La grille est correcte ! \n")	
-			labelClic = Gtk::Label.new("Nombre de clics : ")
-			labelJoker = Gtk::Label.new("Nombre de jokers utilises : ")
-			labelErreur = Gtk::Label.new("Nombre d'erreurs : ")
-			labelTemps = Gtk::Label.new("Temps ecoule : ")
-
-			labelNbClic = Gtk::Label.new("100")
-			labelNbJoker = Gtk::Label.new("3")
-			labelNbErreur = Gtk::Label.new("10")
-			labelTempsEcoule = Gtk::Label.new("15:15 ")
+			if @modele.plateau.estRempli? then
+				dialogue = Gtk::Dialog.new("Fin de partie", @window, Gtk::Dialog::DESTROY_WITH_PARENT,["Nouvelle Partie", Gtk::Dialog::RESPONSE_ACCEPT],["Retour à l'accueil", Gtk::Dialog::RESPONSE_REJECT])
 		
-			# Ajout des elements
-			dialogue.vbox.add(hbox1)
+				# Creation des box
+				hbox1 = Gtk::HBox.new(false, 5)	
 
-			dialogue.vbox.add(hbox2)
-				hbox2.add(vbox1)
-				hbox2.add(vbox2)
+				hbox2 = Gtk::HBox.new(false, 5)	
+				vbox1 = Gtk::VBox.new(false, 5)
+				vbox2 = Gtk::VBox.new(false, 5)
+
+				# Creation des elements
+				labelInfo = Gtk::Label.new("La grille est correcte ! \n")	
+				labelClic = Gtk::Label.new("Nombre de clics : ")
+				labelJoker = Gtk::Label.new("Nombre de jokers utilises : ")
+				labelErreur = Gtk::Label.new("Nombre d'erreurs : ")
+				labelTemps = Gtk::Label.new("Temps ecoule : ")
+
+				labelNbClic = Gtk::Label.new("100")
+				labelNbJoker = Gtk::Label.new("3")
+				labelNbErreur = Gtk::Label.new("10")
+				labelTempsEcoule = Gtk::Label.new("15:15 ")
+		
+				# Ajout des elements
+				dialogue.vbox.add(hbox1)
+
+				dialogue.vbox.add(hbox2)
+					hbox2.add(vbox1)
+					hbox2.add(vbox2)
 				
-			hbox1.add(labelInfo)
+				hbox1.add(labelInfo)
 
-			vbox1.add(labelClic)
-			vbox1.add(labelJoker)
-			vbox1.add(labelErreur)
-			vbox1.add(labelTemps)
+				vbox1.add(labelClic)
+				vbox1.add(labelJoker)
+				vbox1.add(labelErreur)
+				vbox1.add(labelTemps)
 
-			vbox2.add(labelNbClic)	
-			vbox2.add(labelNbJoker)
-			vbox2.add(labelNbErreur)		
-			vbox2.add(labelTempsEcoule)
+				vbox2.add(labelNbClic)	
+				vbox2.add(labelNbJoker)
+				vbox2.add(labelNbErreur)		
+				vbox2.add(labelTempsEcoule)
 
-			# Affichage des elements et lancement de la fenetre
-			dialogue.show_all
+				# Affichage des elements et lancement de la fenetre
+				dialogue.show_all
 
-			dialogue.run{|reponse|
+				dialogue.run{|reponse|
 				
-				if reponse == Gtk::Dialog::RESPONSE_ACCEPT then
-					# Retour au menu de jeu
-					changerControleur(ControleurMenuJeu.new(@picross, @modele.profil))
+					if reponse == Gtk::Dialog::RESPONSE_ACCEPT then
+						# Retour au menu de jeu
+						changerControleur(ControleurMenuJeu.new(@picross, @modele.profil))
 
-				else
-					# Retour à l'accueil
-					self.retourAccueil
-				end			
-			}
+					else
+						# Retour à l'accueil
+						self.retourAccueil
+					end			
+				}
 
-		else
-			dialogue = Gtk::Dialog.new("Information", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
-			labelInfo = Gtk::Label.new("La grille doit être remplie avant de pouvoir la vérifier.")
+			else
+				dialogue = Gtk::Dialog.new("Information", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+				labelInfo = Gtk::Label.new("La grille doit être remplie avant de pouvoir la vérifier.")
 
-			dialogue.vbox.add(labelInfo)
-			dialogue.show_all
-			dialogue.run
-		end
-	}	
+				dialogue.vbox.add(labelInfo)
+				dialogue.show_all
+				dialogue.run
+			end
+		}	
+		
+		# Recommencer la grille
+		@vue.boutonRecommencer.signal_connect("clicked"){
 
-
-	# Recommencer la grille
-	@vue.boutonRecommencer.signal_connect("clicked"){
-
-		@modele.grille.reinitialiserCases
-		@modele.plateauJeu.timer = 0	
-	}
-
-
-	# Sauvegarder la grille pour la continuer plus tard
-	@vue.boutonSauvegarder.signal_connect("clicked"){	
-
-	}
+			@modele.grille.reinitialiserCases
+			@modele.plateauJeu.timer = 0	
+		}
 
 
-
-
+		# Sauvegarder la grille pour la continuer plus tard
+		@vue.boutonSauvegarder.signal_connect("clicked"){	
+		
+			i=1
+		}
+	end	
 end

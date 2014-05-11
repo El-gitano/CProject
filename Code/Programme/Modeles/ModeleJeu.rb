@@ -10,14 +10,18 @@ class ModeleJeu < ModeleGrille
 
 	public_class_method :new
 	
-	@plateauJeu
-	@informations
+	@plateauJeu#Grille de jeu
+	@grille#Grille de référence
+	
+	@informations#Informations numériques sur la grille de référence
+	
 	attr_reader :plateauJeu
 
-	def initialize(uneGrille, unProfil, uneTaille)
+	def initialize(unProfil, uneGrille, uneTaille)
 	
 		super(unProfil)
-		@grille = GrilleEditeur.Creer(uneTaille, "GrilleReference", unProfil, 0)
+		
+		#On récupère les infos de la grille passées en paramètre puis on instancie une GrilleEditeur
 		@grille = charger(uneGrille)
 		@informations = InfosGrille.new
 		@informations.genererInfos(@grille)
@@ -30,7 +34,7 @@ class ModeleJeu < ModeleGrille
 	#compare grilleRef et grilleJeu, renvoie true si elles sont identiques
 	def grilleValide?
 	
-		valide = @grille.cases == @plateauJeu.cases
+		valide = @grille.cases == @plateauJeu.cases#Toujours faux car tu compares les adresses des objets et non leurs contenu ;)
 		
 		if valide then #Si grille terminée, +1 au nombre de partie terminées puis maj modification
 			@profil.donnees.stats["parties_terminees"]+=1

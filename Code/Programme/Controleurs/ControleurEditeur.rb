@@ -75,7 +75,7 @@ class ControleurEditeur < Controleur
 				nomGrille = comboBoxGrilles.active_text
 				choixGrille = comboBoxGrilles.active_text
 				lbNomGrille.markup = "<b>"+nomGrille+"</b>"
-				grille = @modele.getGrille(nomGrille)
+				tailleGrille = @modele.
 	
 				lbNbJoker.text = "Jokers : " + grille.nbJokers.to_s
 				lbTaille.text = "Taille : " + grille.taille.to_s + "X" + grille.taille.to_s

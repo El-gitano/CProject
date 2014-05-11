@@ -4,6 +4,7 @@ require './Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb'
 
 class GrilleEditeur < Grille
 
+	#Création d'une grille
 	def GrilleEditeur.Creer(taille, nomGrille, createur, nbJokers)
 	
 		new(taille,nomGrille,createur,nbJokers)
