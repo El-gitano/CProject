@@ -68,8 +68,20 @@ class ModeleJeu < ModeleGrille
 	
 		#Retourne un tableau des noms des sauvegardes d'un utilisateur, possibilité d'effectuer un traitement de type yield
 	def listeNomGrillesChargeables(unPseudo)
-	
-		#TODO
+		id = requete("SELECT id FROM profil WHERE pseudo='#{unPseudo}'")
+        reqGrille = requete("SELECT nompartie FROM grillejouer WHERE joueur='#{id[0]["id"]}'")
+		res = Array.new
+		i = 0
+		
+		reqGrille.each do |x|
+
+				res.push(reqGrille[i]["nompartie"])
+				yield reqGrille[i]["nompartie"]
+				i+=1
+				
+		end
+		
+		return res
     end
 	
 	def to_s

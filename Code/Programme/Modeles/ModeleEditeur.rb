@@ -18,7 +18,7 @@ class ModeleEditeur < ModeleGrille
 	#Retourne un tableau des noms des grilles d'un utilisateur, possibilité d'effectuer un traitement de type yield
 	def listeNomGrillesEditables(unPseudo)
 	
-		id = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
+		id = requete("SELECT id FROM profil WHERE pseudo='#{unPseudo}'")
         reqGrille = requete("SELECT nomgrille FROM grilleediter WHERE createur='#{id[0]["id"]}'")
 		res = Array.new
 		i = 0
