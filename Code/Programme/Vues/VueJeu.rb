@@ -20,6 +20,7 @@ class VueJeu < Vue
 	@table
 	@mat
 	
+	
 	public_class_method :new
 	
 	attr_reader :miSauvegarder, :miQuitter, :miRageQuit, :lbTimer, :lbNomGrille, :btJoker, :btIndice, :btVerifier, :table
@@ -30,7 +31,7 @@ class VueJeu < Vue
 		
 		#VBox principale
 		vbox = Gtk::VBox.new(false, 5)
-		
+
 		vbox.pack_start(creerMenu)
 		vbox.pack_start(creerEntete)
 		vbox.pack_start(creerPlateau)
@@ -39,7 +40,10 @@ class VueJeu < Vue
 		vbox.pack_start(@btVerifier)
 		
 		vbox.set_border_width(5)
-		
+
+		arial18 = Pango::FontDescription.new('Arial 20')
+		@lbTimer.modify_font(arial18)
+
 		miseAJour
 		
 		@window.add(vbox)
@@ -76,7 +80,7 @@ class VueJeu < Vue
 	
 		hbox = Gtk::HBox.new(false, 50)
 		
-		@lbTimer = Gtk::Label.new(genererTemps(@modele.timer))
+		@lbTimer = Gtk::Label.new
 		@lbNomGrille = Gtk::Label.new(@modele.plateauJeu.nomGrille)
 		vboxAide = creerVBoxAide
 		

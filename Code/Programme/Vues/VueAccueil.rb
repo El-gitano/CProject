@@ -10,6 +10,7 @@ class VueAccueil < Vue
 	@boutonCredit
 	@boutonProfil
 	@boutonDeco
+
 	
 	attr_reader :boutonJouer, :boutonEditer, :boutonCredit, :boutonProfil, :boutonDeco
 	
@@ -20,10 +21,10 @@ class VueAccueil < Vue
 		super(unModele)
 
 		#Lignes de code commentées pour les tests
-		@window.set_size_request(350,290)
+		@window.set_size_request(350,800)
 		
 		#Cette box contient les 5 lignes champs + bouton
-		vbox = Gtk::VBox.new(true, 50)
+		vbox = Gtk::VBox.new(false, 50)
 		vbox.set_border_width(20) #On espace la vBox de la fenêtre
 		hbox = Gtk::HBox.new(false, 0)
 
@@ -39,8 +40,16 @@ class VueAccueil < Vue
 		@boutonCredit = Gtk::Button.new("Crédits", false)
 		@boutonCredit.child.modify_font(arial18)
 
-		@boutonDeco.set_image(Gtk::Image.new("./Images/croix2.png"))
+		imgDeco = Gtk::Image.new('./Vues/Images/croix2.png')
+		@boutonDeco.set_image(imgDeco)
 
+		imgDeco.show()
+
+		pixAnim = Gdk::PixbufAnimation.new('./Vues/Images/animation.GIF')
+		animation = Gtk::Image.new(nil)
+		animation.set_pixbuf_animation(pixAnim)
+		
+		vbox.pack_start(animation, false, false,0)
 		vbox.pack_start(@boutonJouer, false, false, 0)
 		vbox.pack_start(@boutonEditer, false, false, 0)
 		vbox.pack_start(@boutonCredit, false, false, 0)
