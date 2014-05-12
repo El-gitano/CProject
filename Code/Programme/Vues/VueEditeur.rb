@@ -68,11 +68,21 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 			@listBoutonTaille.push(boutonTaille)
 		}
 
+		
+		imgOuvrir = Gtk::Image.new("./Vues/Images/folder.png")
+		imgEnregistrer = Gtk::Image.new("./Vues/Images/disquette.png")
+		imgImporterImage = Gtk::Image.new("./Vues/Images/image2.png")
+		imgAleatoire = Gtk::Image.new("./Vues/Images/aleatoire.png")
 
-		@boutonOuvrir.set_image(Gtk::Image.new("./Images/folder.png"))
-		@boutonEnregistrer.set_image(Gtk::Image.new("./Images/disquette.png"))
-		@boutonImporterImage.set_image(Gtk::Image.new("./Images/image2.png"))
-		@boutonAleatoire.set_image(Gtk::Image.new("./Images/aleatoire.png"))
+		@boutonOuvrir.set_image(imgOuvrir)
+		@boutonEnregistrer.set_image(imgEnregistrer)
+		@boutonImporterImage.set_image(imgImporterImage)
+		@boutonAleatoire.set_image(imgAleatoire)
+
+		imgOuvrir.show()
+		imgEnregistrer.show()
+		imgImporterImage.show()
+		imgAleatoire.show()
 
 		@hbox1.pack_start(@boutonOuvrir, true, false, 0)
 		@hbox1.pack_start(@boutonEnregistrer, true, false, 0)
