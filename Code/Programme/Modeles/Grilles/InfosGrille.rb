@@ -31,7 +31,7 @@ class InfosGrille
 					cases = true
 					cpt += 1
 				
-				elsif (uneCase.neutre? and cases == true) then
+				elsif cases == true then
 				
 					cases = false
 					
@@ -63,7 +63,7 @@ class InfosGrille
 					cases = true
 					cpt += 1
 				
-				elsif (uneCase.neutre? and cases == true) then
+				elsif cases == true then
 				
 					cases = false
 					

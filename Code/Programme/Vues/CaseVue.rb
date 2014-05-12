@@ -53,8 +53,8 @@ class CaseVue < Gtk::EventBox
 				@image = Gtk::Image.new("./Vues/Images/carreN"+@tailleGrille.to_s+".png")
 				
 			when "croix"
-				i=1
-				#return Gtk::Image.new("./Vues/Images/carreN"+@tailleGrille.to_s+".png")
+
+				@image = Gtk::Image.new("./Vues/Images/croixPlateau"+@tailleGrille.to_s+".png")
 		end
 	end
 end

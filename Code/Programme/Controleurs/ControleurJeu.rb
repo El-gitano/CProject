@@ -28,14 +28,15 @@ class ControleurJeu < Controleur
 				# Si clic gauche
 				if (event.button == 1) then
 	
-					puts "Clic gauche sur la case #{laCase.x}, #{laCase.y}"
-					#@modele.plateauJeu
+					@modele.plateauJeu.getCase(laCase.x, laCase.y).clicGauche
 					
 				# Si clic droit
 				elsif (event.button == 3) then
 		
-					puts "Clic droit sur la case #{laCase.x}, #{laCase.y}"
+					@modele.plateauJeu.getCase(laCase.x, laCase.y).clicDroit		
 				end
+				
+				@vue.actualiserCase(laCase.x, laCase.y)
 			}
 		}
 		
@@ -79,7 +80,8 @@ class ControleurJeu < Controleur
 		# Bouton pour vérifier si la grille est correctement remplie 
 		@vue.btVerifier.signal_connect("clicked"){
 
-			if @modele.plateau.estRempli? then
+			if @modele.grilleValide? then
+				
 				dialogue = Gtk::Dialog.new("Fin de partie", @window, Gtk::Dialog::DESTROY_WITH_PARENT,["Nouvelle Partie", Gtk::Dialog::RESPONSE_ACCEPT],["Retour à l'accueil", Gtk::Dialog::RESPONSE_REJECT])
 		
 				# Creation des box
@@ -90,7 +92,7 @@ class ControleurJeu < Controleur
 				vbox2 = Gtk::VBox.new(false, 5)
 
 				# Creation des elements
-				labelInfo = Gtk::Label.new("La grille est correcte ! \n")	
+				labelInfo = Gtk::Label.new("La grille est valide ! \n")	
 				labelClic = Gtk::Label.new("Nombre de clics : ")
 				labelJoker = Gtk::Label.new("Nombre de jokers utilises : ")
 				labelErreur = Gtk::Label.new("Nombre d'erreurs : ")
@@ -136,19 +138,95 @@ class ControleurJeu < Controleur
 				}
 
 			else
-				dialogue = Gtk::Dialog.new("Information", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
-				labelInfo = Gtk::Label.new("La grille doit être remplie avant de pouvoir la vérifier.")
-
-				dialogue.vbox.add(labelInfo)
-				dialogue.show_all
-				dialogue.run
+				
+				DialogueInfo.afficher("Grille invalide", "Votre grille est invalide", @vue.window)
 			end
 		}	
 
 		# Sauvegarder la grille pour la continuer plus tard
 		@vue.miSauvegarder.signal_connect("activate"){	
 		
-			i=1
+			dgSauvegarde
 		}
-	end	
+		
+		@vue.miQuitter.signal_connect("activate"){#Ajouter vérification de sauvegarde
+		
+			changerControleur(ControleurAccueil.new(@picross, @modele.profil))
+		}
+	end
+	
+	def dgSauvegarde
+	
+		#On demande à l'utilisateur d'entrer un nom de grille
+		dialogue = Gtk::Dialog.new("Nom de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT])
+
+		dialogue.set_modal(true)
+
+		lbNomSauvegarde = Gtk::Label.new("Nom de la sauvegarde : ")
+		etNomSauvegarde = Gtk::Entry.new
+		etNomSauvegarde.text = @modele.plateauJeu.nomGrille
+		
+		hBox = Gtk::HBox.new(false, 5)
+
+		hBox.pack_start(lbNomSauvegarde , false, false, 0)
+		hBox.pack_start(etNomSauvegarde , false, false, 0)
+		dialogue.vbox.pack_start(hBox, false, false, 0)
+		
+		dialogue.show_all
+
+		dialogue.run{|reponse|
+
+			#On ne traite la réponse que si l'utilisateur a cliqué sur "Enregistrer" ou "ANNULER"
+			if reponse.eql?(Gtk::Dialog::RESPONSE_ACCEPT)
+
+					#On vérifie que la grille n'existe pas et que l'utilisateur est propriétaire de la grille
+					if not etNomSauvegarde.text.eql?("") then
+						
+						#La grille existe déjà, on demande donc à l'utilisateur de confirmer sa sauvegarde
+						if @modele.sauvegardeExiste?(etNomSauvegarde.text) then
+					
+							d = Gtk::Dialog.new("Sauvegarde existante", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+							d.set_modal(true)
+
+							hbox = Gtk::HBox.new(false, 5)
+
+							label = Gtk::Label.new("Une sauvegarde sous ce nom existe déjà. Écraser la grille existante ?")
+							image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
+
+							hbox.pack_start(image, false, false, 0)
+							hbox.pack_start(label, false, false, 0)
+
+							d.vbox.add(hbox)
+
+							d.show_all	
+							d.run{|reponse|
+						
+								case reponse
+									
+									#Réponse positive on sauvegarde en écrasant l'ancienne grille
+									when Gtk::Dialog::RESPONSE_ACCEPT
+								
+										@modele.remplacerSauvegarde
+										DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès\nL'ancienne grille a été écrasée", @vue.window)
+										choixOK = true
+								end
+							}
+							d.destroy
+						
+						#Pas de grille déjà existante, on sauvegarde
+						else
+						
+							@modele.sauvegarderGrille(etNomGrille.text)
+							 DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", @vue.window)
+							choixOK = true
+						end
+					else
+					
+						 DialogueInfo.afficher("Grille non renseignée", "Grille appartenant à un autre joueur ou non renseignée", @vue.window)
+					end
+			end
+		}
+		
+		dialogue.destroy
+	end
 end

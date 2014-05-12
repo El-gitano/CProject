@@ -36,10 +36,15 @@ class ModeleJeu < ModeleGrille
 	def getIndice
 	end
 	
-	#compare grilleRef et grilleJeu, renvoie true si elles sont identiques
+	#Retourne vrai si la grille du joueur répond aux critères de la grille de solution
 	def grilleValide?
 	
-		valide = @grille.cases == @plateauJeu.cases#Toujours faux car tu compares les adresses des objets et non leurs contenu ;)
+		#Génération des indices de la grille de jeu
+		informationsTemp = InfosGrille.new
+		informationsTemp.genererInfos(@plateauJeu)
+		
+		#Comparaison des deux informations de grille
+		valide =  (informationsTemp.infosLignes == @informations.infosLignes and  informationsTemp.infosColonnes == @informations.infosColonnes)
 		
 		if valide then #Si grille terminée, +1 au nombre de partie terminées puis maj modification
 			@profil.donnees.stats["parties_terminees"]+=1
@@ -59,7 +64,7 @@ class ModeleJeu < ModeleGrille
 		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'") 
 		req = "UPDATE grillejouee SET grille='#{serial}', jokersRestants='#{nbJokers}', timer='#{@timer}', datemaj='#{date}' WHERE joueur='#{idProfil[0]["id"]}' AND nompartie='#{nomPartie}' AND idGrille='#{idGrilleRef[0]["id"]}'"
 		#print req
-		self.requete(req)
+		requete(req)
 	end
 	
 	#Retourne vrai si le nom de sauvegarde passé en paramètre existe déjà pour un joueur
@@ -143,10 +148,10 @@ class ModeleJeu < ModeleGrille
 		requete("UPDATE stats SET ragequits = ragequits+1 WHERE id = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}')")
 	end
 	
-	#def getCase(x,y)
+	def getCase(x,y)
 	
-	#	return @plateauJeu.getCase(x,y)
-    #end
+		return @plateauJeu.getCase(x,y)
+    end
     
 	def to_s
 		@grille.to_debug

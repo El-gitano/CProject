@@ -14,9 +14,10 @@ class EtatCaseJouee < EtatCase
 		return @@instance
 	end
 	
-	def clicDroit
+	def clicDroit(uneCase)
 	
 		super(uneCase)
+		uneCase.changerEtat(EtatCaseCroix.getInstance)
 	end
 	
 	def clicGauche(uneCase)
