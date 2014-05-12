@@ -17,11 +17,12 @@ class VueJeu < Vue
 	@btIndice
 	@btVerifier
 	
-	@grille
+	@table
+	@mat
 	
 	public_class_method :new
 	
-	attr_reader :miSauvegarder, :miQuitter, :miRageQuit, :lbTimer, :lbNomGrille, :btJoker, :btIndice, :btVerifier, :grille
+	attr_reader :miSauvegarder, :miQuitter, :miRageQuit, :lbTimer, :lbNomGrille, :btJoker, :btIndice, :btVerifier, :table
 	
 	def initialize(unModele)
 	
@@ -38,6 +39,8 @@ class VueJeu < Vue
 		vbox.pack_start(@btVerifier)
 		
 		vbox.set_border_width(5)
+		
+		miseAJour
 		
 		@window.add(vbox)
 		@window.show_all
@@ -73,13 +76,13 @@ class VueJeu < Vue
 	
 		hbox = Gtk::HBox.new(false, 50)
 		
-		@lbTimer = Gtk::Label.new(genererTemps(@modele.temps))
-		@lbNomGrille = Gtk::Label.new(@modele.grilleSolution.nom)
-		hboxAide = creerVBoxAide
+		@lbTimer = Gtk::Label.new(genererTemps(@modele.timer))
+		@lbNomGrille = Gtk::Label.new(@modele.plateauJeu.nomGrille)
+		vboxAide = creerVBoxAide
 		
 		hbox.pack_start(@lbTimer)
 		hbox.pack_start(@lbNomGrille)
-		hbox.pack_start(hboxAide)
+		hbox.pack_start(vboxAide)
 		
 	end
 	
@@ -106,12 +109,12 @@ class VueJeu < Vue
 	#Retourne une VBox contenant les informations sur une colonne
 	def creerInfoColonne(unNombre)
 	
-		informations = @modele.infosGrille.infosColonne[unNombre]
-		vbox = Gtk::VBox.new(false, 1)
+		informations = @modele.informations.infosColonnes[unNombre]
+		vbox = Gtk::VBox.new(false, 0)
 		
 		informations.each{|nombre|
 		
-			vbox.pack_end(Gtk::Label.new(nombre.to_s))
+			vbox.pack_end(Gtk::Label.new(nombre.to_s), false, false)
 		}
 		
 		return vbox
@@ -120,12 +123,12 @@ class VueJeu < Vue
 	#Retourne une HBox contenant les informations sur une ligne
 	def creerInfoLigne(unNombre)
 	
-		informations = @modele.infosGrille.infosLigne[unNombre]
-		hbox = Gtk::VBox.new(false, 1)
+		informations = @modele.informations.infosLignes[unNombre]
+		hbox = Gtk::HBox.new(false, 5)
 		
 		informations.each{|nombre|
 		
-			vbox.pack_end(Gtk::Label.new(nombre.to_s))
+			hbox.pack_end(Gtk::Label.new(nombre.to_s), false, false)
 		}
 		
 		return hbox
@@ -134,48 +137,56 @@ class VueJeu < Vue
 	#Crée le plateau de jeu à partir de la grille du modèle
 	def creerPlateau
 	
-		tailleGrille = @modele.tailleGrille
+		tailleGrille = @modele.plateauJeu.taille
 		@table = Gtk::Table.new(tailleGrille+1, tailleGrille+1, false)#On rajoute 1 pour insérer les infos des colonnes
+		@mat = Array.new(tailleGrille) {Array.new(tailleGrille)}
 		
 		#Infos des colonnes
-		1.upto(tailleGrille){|x|
+		0.upto(tailleGrille-1){|x|
 		
 			@table.attach(creerInfoColonne(x), x+1, x+2, 0, 1)
 		}
 		
 		#Infos des lignes
-		1.upto(tailleGrille){|y|
+		0.upto(tailleGrille-1){|y|
 		
 			@table.attach(creerInfoLigne(y), 0, 1, y+1, y+2)
 		}
 		
 		#Création de la grille
-		1.upto(tailleGrille){|x|
+		0.upto(tailleGrille-1){|x|
 		
-			1.upto(tailleGrille){|y|
+			0.upto(tailleGrille-1){|y|
 			
-				@table.attach(CaseVue.new("neutre", tailleGrille, x, y))
+				caseTemp = CaseVue.new("neutre", tailleGrille, x, y)
+				@table.attach(caseTemp, x+1, x+2, y+1, y+2)
+				@mat[x][y] = caseTemp
 			}
 		}
+		
+		return @table
 	end
 	
 	#Met à jour la vue à partir du modele
 	def miseAJour
 		
+		tailleGrille = @modele.plateauJeu.taille
+		
 		#Mise à jour de toutes les cases du plateau à partir du modèle
-		0.upto(@tailleGrille-1){|x|
-			0.upto(@tailleGrille-1){|y|
+		0.upto(tailleGrille-1){|x|
+			0.upto(tailleGrille-1){|y|
 				actualiserCase(x,y)
 			}
 		}
 		
 		#Désactivation du bouton joker si plus de jokers
-		@btJoker.sensitive = false if @modele.nbJokers.eql?(0)
+		@btJoker.sensitive = false if @modele.plateauJeu.nbJokers.eql?(0)
+		@btJoker.label = "Jokers (#{@modele.plateauJeu.nbJokers})"
 		
 		@window.show_all
 	end
 	
-	#Actualise la case située aux coordonnées (x,y)
+	#Actualise la case située aux coordonnées (x,y) Changer getCase dans le modèle
 	def actualiserCase(x,y)
 		
 		#Doit devenir....
@@ -192,5 +203,10 @@ class VueJeu < Vue
 			getCaseVue(x, y).changerEtat("jouee")
 
 		end
+	end
+	
+	def getCaseVue(unX, unY)
+	
+		return @mat[unX][unY]
 	end
 end

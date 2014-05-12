@@ -73,9 +73,10 @@ class ControleurEditeur < Controleur
 			comboBoxGrilles.signal_connect("changed"){
 
 				nomGrille = comboBoxGrilles.active_text
+				grille = @modele.getGrille(nomGrille)
 				choixGrille = comboBoxGrilles.active_text
 				lbNomGrille.markup = "<b>"+nomGrille+"</b>"
-				tailleGrille = @modele.
+				tailleGrille = grille.taille
 	
 				lbNbJoker.text = "Jokers : " + grille.nbJokers.to_s
 				lbTaille.text = "Taille : " + grille.taille.to_s + "X" + grille.taille.to_s

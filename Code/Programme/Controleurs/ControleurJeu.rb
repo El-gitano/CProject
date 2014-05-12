@@ -11,17 +11,17 @@ class ControleurJeu < Controleur
 	public_class_method :new
 	
 	# Constructeur
-	def initialize(unJeu, unProfil, uneGrille)
+	def initialize(unJeu, unProfil, unChoix, unNom)
 
 		super(unJeu)
 
-		@modele = ModeleJeu.new(unProfil, uneGrille)
+		@modele = ModeleJeu.new(unProfil, unChoix, unNom)
 		@vue = VueJeu.new(@modele)
 		
 		@modele.ajouterObservateur(@vue)
 		
 		#On connecte un signal à chaque bouton
-		@vue.grille.each{|uneCase|
+		@vue.table.each{|uneCase|
 		
 			uneCase.signal_connect("button_press_event"){|laCase, event|
 		
@@ -29,6 +29,7 @@ class ControleurJeu < Controleur
 				if (event.button == 1) then
 	
 					puts "Clic gauche sur la case #{laCase.x}, #{laCase.y}"
+					#@modele.plateauJeu
 					
 				# Si clic droit
 				elsif (event.button == 3) then
@@ -47,7 +48,7 @@ class ControleurJeu < Controleur
 		}
 		
 		#Utilisation d'un joker
-		@vue.boutonJoker.signal_connect("clicked"){
+		@vue.btJoker.signal_connect("clicked"){
 	
 			#On dévoile les cases voulues
 			@modele.utiliserJoker
@@ -62,7 +63,7 @@ class ControleurJeu < Controleur
 		#Utilisation d'un indice
 		@vue.btIndice.signal_connect("clicked"){
 	
-			#On trouve la ligne/colonne ou on peut avoir un indice
+			#On trouve la ligne/colonne où on peut avoir un indice
 			indice = @modele.getIndice
 		
 			if !indice.nil? then
@@ -76,7 +77,7 @@ class ControleurJeu < Controleur
 		}
 		
 		# Bouton pour vérifier si la grille est correctement remplie 
-		@vue.boutonVerifierGrille.signal_connect("clicked"){
+		@vue.btVerifier.signal_connect("clicked"){
 
 			if @modele.plateau.estRempli? then
 				dialogue = Gtk::Dialog.new("Fin de partie", @window, Gtk::Dialog::DESTROY_WITH_PARENT,["Nouvelle Partie", Gtk::Dialog::RESPONSE_ACCEPT],["Retour à l'accueil", Gtk::Dialog::RESPONSE_REJECT])
@@ -143,17 +144,9 @@ class ControleurJeu < Controleur
 				dialogue.run
 			end
 		}	
-		
-		# Recommencer la grille
-		@vue.boutonRecommencer.signal_connect("clicked"){
-
-			@modele.grille.reinitialiserCases
-			@modele.plateauJeu.timer = 0	
-		}
-
 
 		# Sauvegarder la grille pour la continuer plus tard
-		@vue.boutonSauvegarder.signal_connect("clicked"){	
+		@vue.miSauvegarder.signal_connect("activate"){	
 		
 			i=1
 		}

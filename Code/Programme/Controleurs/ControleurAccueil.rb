@@ -40,8 +40,7 @@ class ControleurAccueil < Controleur
 		#Lancement d'une partie (après sélection de la grille)
 		@vue.boutonJouer.signal_connect("clicked"){
 	
-			nomGrille = dgBoxChoixPartie
-			changerControleur(ControleurJeu.new(@picross, @modele.profil, nomGrille)) if !nomGrille.nil?
+			dgBoxChoixPartie
 		}
 	
 		#Lancement de l'éditeur
@@ -111,28 +110,23 @@ class ControleurAccueil < Controleur
 		dialogue = Gtk::Dialog.new("Choix de jeu", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, ["Charger", 1], ["Nouvelle partie", 2])
 
 		dialogue.set_modal(true)
-
 		dialogue.show_all
 		
 		dialogue.run{|reponse|
-
-			dialogue.destroy
 			
 			case reponse
 
 				when 1#Chargement
 
-					return dgBoxChargement
+					dgBoxChargement
 					
 				when 2#Nouvelle partie
 
-					return dgBoxNouvellePartie
-					
-				else
-
-					return nil	
+					dgBoxNouvellePartie
 			end
 		}
+		
+		dialogue.destroy
 	end
 	
 	#Propose au joueur l'ensemble de ses sauvegardes
@@ -143,9 +137,10 @@ class ControleurAccueil < Controleur
 		dialogue.set_modal(true)
 
 		comboBoxSauvegardes = Gtk::ComboBox.new(true)
-		@modele.listeSauvegardes.each{|x|
+		
+		@modele.listeSauvegardes.each{|infos|
 
-			comboBoxGrilles.append_text(x)
+			comboBoxSauvegardes.append_text(infos)
 		}
 
 		dialogue.vbox.add(comboBoxSauvegardes)
@@ -153,26 +148,16 @@ class ControleurAccueil < Controleur
 		dialogue.show_all
 		
 		dialogue.run{|reponse|
-
-			dialogue.destroy
-			
-			case reponse
-			
-				#Annulation
-				when 1
 				
-					return nil
-				
-				#Chargement
-				when 2
-			
-					return comboBoxSauvegardes.active_text.split#À compléter
-					
-				else
-				
-					return nil
+			#Chargement
+			if reponse.eql?(2)
+		
+				comboBoxSauvegardes.active_text.split#À compléter
+				changerControleur(ControleurJeu.new(@picross, @modele.profil, true, comboBoxSauvegardes.active_text))
 			end
 		}
+		
+		dialogue.destroy
 	end
 	
 	#Propose au joueur l'ensemble des grilles jouables
@@ -232,20 +217,14 @@ class ControleurAccueil < Controleur
 		
 		dialogue.run{|reponse|
 
-			case reponse
-
-				#Nouvelle partie
-				when 2
-					nomGrille = comboBoxGrilles.active_text
-					dialogue.destroy
-					return nomGrille
-				
-				#Annulation/Fermeture de la boîte	
-				else 
-					dialogue.destroy
-					return nil
+			#Nouvelle partie
+			if reponse.eql?(2)
+			
+				changerControleur(ControleurJeu.new(@picross, @modele.profil, false, comboBoxGrilles.active_text))
 			end
 		}
+		
+		dialogue.destroy
 	end
 	
 	def creerHBox(unTitre, unLabel)

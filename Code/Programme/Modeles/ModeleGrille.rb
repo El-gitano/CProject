@@ -14,9 +14,6 @@ class ModeleGrille < Modele
 	def initialize(unProfil)
 	
 		super(unProfil)
-		#@grille.genererAleatoire
-		#@grille.to_debug
-		#lancerMaj
 	end
 
 	#Retourne vrai si une grille du nom passé en paramètre existe

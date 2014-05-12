@@ -26,25 +26,25 @@ class Grille
 		@dateMofication = Time.now.strftime("%d/%m/%Y %H:%M")
 	end
 		
-	def getCase(y, x)
+	def getCase(x, y)
 	
 		return @cases[x][y]
 	end
 	
 	def getColonne(x)
-
+		
 		return @cases[x]
 	end
 	
 	def getLigne(y)
-	
+
 		resultat = Array.new()
 		
 		@cases.each{|x|
 		
 			resultat.push(x[y])
 		}
-
+		
 		return resultat
 	end
 	

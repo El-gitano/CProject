@@ -16,12 +16,20 @@ class ModeleJeu < ModeleGrille
 	
 	@informations#Informations numériques sur la grille de référence
 	
-	attr_reader :plateauJeu,:timer
+	attr_reader :plateauJeu, :timer, :informations
 
-
-	def initialize(unProfil)
+	#Un choix à true désigne une sauvegarde à charger, à false une nouvelle partie, le nom correspond à la sauvegarde ou au nom de la grille
+	def initialize(unProfil, unChoix, unNom)
 	
 		super(unProfil)
+		
+		if unChoix == true then
+		
+			chargerPartie(unNom)
+		else
+		
+			nouvellePartie("Nouvelle partie", unNom)
+		end
 	end
 	
 	#retourne l'indice de @"grille" Dans ModeleGrille
@@ -41,6 +49,7 @@ class ModeleJeu < ModeleGrille
 		return valide
 	end
 	
+	#Écrase la sauvegarde "nomPartie" avec des nouvelles données
 	def remplacerSauvegarde(nomPartie)
 
 		serial = @plateauJeu.casesSerialize
@@ -48,11 +57,18 @@ class ModeleJeu < ModeleGrille
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
         idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
 		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'") 
-		req = "UPDATE grillejouee SET grille='#{serial}',jokersRestants='#{nbJokers}',timer='#{@timer}',datemaj='#{date}' WHERE joueur='#{idProfil[0]["id"]}' AND nompartie='#{nomPartie}' AND idGrille='#{idGrilleRef[0]["id"]}'"
+		req = "UPDATE grillejouee SET grille='#{serial}', jokersRestants='#{nbJokers}', timer='#{@timer}', datemaj='#{date}' WHERE joueur='#{idProfil[0]["id"]}' AND nompartie='#{nomPartie}' AND idGrille='#{idGrilleRef[0]["id"]}'"
 		#print req
 		self.requete(req)
 	end
 	
+	#Retourne vrai si le nom de sauvegarde passé en paramètre existe déjà pour un joueur
+	def sauvegardeExiste(nomSauvegarde)
+	
+		return !requete("SELECT * FROM grillejouee WHERE nompartie = '#{nomSauvegarde}' AND createur = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}')").empty?
+	end
+	
+	#Crée une nouvelle sauvegarde pour un joueur
 	def nouvelleSauvegarde(nomPartie)
 
 		serial = @plateauJeu.casesSerialize
@@ -64,7 +80,9 @@ class ModeleJeu < ModeleGrille
 		self.requete("INSERT INTO grillejouee(joueur,idGrille,nompartie,grille,jokersRestants,timer,datedebut,datemaj) VALUES('#{idProfil[0]["id"]}','#{idGrilleRef[0]["id"]}','#{nomPartie}','#{serial}','#{nbJokers}','#{@timer}','#{date}','#{date}')")
 	end
 	
-	def nouvellePartie(nomPartie,uneGrille)
+	#Démarre une nouvelle partie
+	def nouvellePartie(nomPartie, uneGrille)
+		
 		#TODO initialisation du timer
 		@timer = 0
 		
@@ -72,19 +90,19 @@ class ModeleJeu < ModeleGrille
 		@grille = charger(uneGrille)
 		@informations = InfosGrille.new
 		@informations.genererInfos(@grille)
-	
+
 		@profil.donnees.stats["parties_commencees"]+=1
 		sauvegarderProfil()
 		@plateauJeu = GrilleJeu.Creer(@grille.taille, nomPartie, @profil, @grille.nbJokers)
 		
 	end
 	
+	#Charge une partie depuis son nom
 	def chargerPartie(nomPartie)
 	
 		idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
 		req = "SELECT * FROM grillejouee WHERE nompartie='#{nomPartie}' AND joueur='#{idProfil[0]["id"]}'"
 		reqTemp = requete(req)
-		
 		
 		nomGrilleRef = requete("SELECT nomgrille FROM grilleediter WHERE id='#{reqTemp[0]["idGrille"]}'")
 		
@@ -101,30 +119,39 @@ class ModeleJeu < ModeleGrille
 			
 	end
 		
-		#Retourne un tableau des noms des sauvegardes d'un utilisateur, possibilité d'effectuer un traitement de type yield
-	def listeNomGrillesChargeables(unPseudo)
-		id = requete("SELECT id FROM profil WHERE pseudo='#{unPseudo}'")
+	#Retourne un tableau des noms des sauvegardes d'un utilisateur, possibilité d'effectuer un traitement de type yield
+	def listeNomGrillesChargeables
+	
+		id = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
         reqGrille = requete("SELECT nompartie FROM grillejouer WHERE joueur='#{id[0]["id"]}'")
 		res = Array.new
 		i = 0
 		
 		reqGrille.each do |x|
 
-				res.push(reqGrille[i]["nompartie"])
-				yield reqGrille[i]["nompartie"]
-				i+=1
+			res.push(x["nompartie"])
+			yield x["nompartie"]
+			i+=1
 				
 		end
 		
 		return res
     end
 	
+	def ajouterRageQuit
+	
+		requete("UPDATE stats SET ragequits = ragequits+1 WHERE id = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}')")
+	end
+	
+	#def getCase(x,y)
+	
+	#	return @plateauJeu.getCase(x,y)
+    #end
+    
 	def to_s
 		@grille.to_debug
 		@plateauJeu.to_debug
 		@informations.to_debug
 		print grilleValide?
 	end
-	
-
 end
