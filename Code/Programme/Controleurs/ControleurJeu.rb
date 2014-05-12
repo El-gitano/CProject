@@ -20,6 +20,9 @@ class ControleurJeu < Controleur
 		
 		@modele.ajouterObservateur(@vue)
 		
+		#On link le label au timer
+		@modele.timer.label = @vue.lbTimer
+
 		#On connecte un signal à chaque bouton
 		@vue.table.each{|uneCase|
 		

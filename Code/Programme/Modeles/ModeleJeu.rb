@@ -4,6 +4,7 @@ require './Modeles/ModeleGrille'
 require './Modeles/Grilles/GrilleJeu'
 require './Modeles/Grilles/GrilleEditeur'
 require './Modeles/Grilles/InfosGrille.rb'
+require './Modeles/Timer.rb'
 require 'date'
 
 class ModeleJeu < ModeleGrille
@@ -42,6 +43,7 @@ class ModeleJeu < ModeleGrille
 		valide = @grille.cases == @plateauJeu.cases#Toujours faux car tu compares les adresses des objets et non leurs contenu ;)
 		
 		if valide then #Si grille terminée, +1 au nombre de partie terminées puis maj modification
+			@timer.stopperTimer
 			@profil.donnees.stats["parties_terminees"]+=1
 			sauvegarderProfil()
 		end
@@ -82,9 +84,8 @@ class ModeleJeu < ModeleGrille
 	
 	#Démarre une nouvelle partie
 	def nouvellePartie(nomPartie, uneGrille)
-		
-		#TODO initialisation du timer
-		@timer = 0
+
+		@timer = Timer.new
 		
 		#On récupère les infos de la grille passées en paramètre puis on instancie une GrilleEditeur
 		@grille = charger(uneGrille)
@@ -94,6 +95,8 @@ class ModeleJeu < ModeleGrille
 		@profil.donnees.stats["parties_commencees"]+=1
 		sauvegarderProfil()
 		@plateauJeu = GrilleJeu.Creer(@grille.taille, nomPartie, @profil, @grille.nbJokers)
+
+		@timer.lancerTimer
 		
 	end
 	
@@ -114,8 +117,8 @@ class ModeleJeu < ModeleGrille
 		@plateauJeu.cases = Grille.casesDeserialize(reqTemp[0]["grille"])  
 		@plateauJeu.nbJokers = reqTemp[0]["jokersRestants"]
 		
-		#TODO initialisation du timer
-		@timer = 0
+		@timer = Timer.new(reqTemp[0]["timer"])
+		@timer.lancerTimer
 			
 	end
 		
@@ -146,7 +149,7 @@ class ModeleJeu < ModeleGrille
 	#def getCase(x,y)
 	
 	#	return @plateauJeu.getCase(x,y)
-    #end
+   	#end
     
 	def to_s
 		@grille.to_debug
