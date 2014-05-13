@@ -1,7 +1,7 @@
 # encoding: utf-8 
 
-require './Modeles/Modele'
-require './Modeles/Grilles/GrilleEditeur'
+require_relative 'Modele'
+require_relative 'Grilles/GrilleEditeur'
 require 'date'
 
 #Le modèle de l'éditeur permet de manipuler la grille à éditer ainsi que d'en sauvegarder/charger une

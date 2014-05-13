@@ -14,15 +14,14 @@ class ControleurNouvellePartie < Controleur
 
 		super(unJeu)
 		@modele = ModeleNouvellePartie.new(unProfil)
+		@vue = VueNouvellePartie.new(@modele)
+		@modele.ajouterObservateur(@vue)
 		
-		@window.signal_connect("delete_event"){
+		@vue.window.signal_connect("delete_event"){
 		
 			@modele.sauvegarderProfil
 			Gtk.main_quit
 		}
-		
-		@vue = VueNouvellePartie.new(@modele)
-		@modele.ajouterObservateur(@vue)
 		
 		#Chargement de la grille sélectionnée
 		@vue.btCharger.signal_connect("clicked"){

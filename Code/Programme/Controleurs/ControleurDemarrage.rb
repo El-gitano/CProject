@@ -1,9 +1,9 @@
 # encoding: UTF-8
 
-require './Modeles/ModeleDemarrage'
-require './Vues/VueDemarrage'
-require './Controleurs/Controleur'
-require './Controleurs/ControleurAccueil'
+require_relative '../Modeles/ModeleDemarrage'
+require_relative '../Vues/VueDemarrage'
+require_relative 'Controleur'
+require_relative 'ControleurAccueil'
 
 require 'gtk2'
 
@@ -17,13 +17,12 @@ class ControleurDemarrage < Controleur
 		super(unJeu)
 		
 		@modele = ModeleDemarrage.new
-		@vue = VueDemarrage.new(@modele)
-		
+		@vue = VueDemarrage.new(@modele)	
 		@modele.ajouterObservateur(@vue)
 		
 		#Handlers de signaux
 		
-		#On revient au menu quand la fenêtre de l'accueil est fermée
+		#Fin du programme
 		@vue.window.signal_connect('delete_event'){
 		
 			Gtk.main_quit

@@ -1,4 +1,5 @@
 #encoding UTF-8
+require_relative 'Modele'
 
 class ModeleAccueil < Modele
 

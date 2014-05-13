@@ -1,3 +1,5 @@
+require 'gtk2'
+
 #Un bouton taille redéfinit la taille de la grille de l'éditeur, il connait donc sa taille
 class BoutonTaille < Gtk::Button
 

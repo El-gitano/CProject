@@ -1,4 +1,4 @@
-require_relative '../Modeles/Statistiques'
+require_relative 'Statistiques'
 
 #La classe profil contient un pseudo et des statistiques associées à ce pseudo, ainsi que les opérations de consultation/modification sur ceux-ci
 class Profil

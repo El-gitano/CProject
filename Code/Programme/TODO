@@ -1,7 +1,5 @@
 Mini-aide
 Passer actualiser_case dans une classe VueGrille pour refonte
 Générer RDoc
-Mettre à jour les stats lors du jeu (vérifier temps_joué)
-Commenter les vues, modèles, contrôleurs
-Vérifier les sorties aux fermetures de fenêtre
-Générer des scripts d'exécution automatique
+Mettre à jour les stats lors du jeu (Corriger temps joué)
+Implanter les jokers et les indices + fin de partie

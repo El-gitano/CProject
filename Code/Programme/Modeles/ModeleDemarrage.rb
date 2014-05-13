@@ -1,4 +1,4 @@
-require './Modeles/Modele'
+require_relative 'Modele'
 
 #Le modèle de démarrage permet au profil d'effectuer des intéraction avec la partie Profil de notre Bdd
 class ModeleDemarrage < Modele

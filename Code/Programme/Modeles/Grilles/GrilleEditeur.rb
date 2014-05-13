@@ -1,6 +1,8 @@
-require './Modeles/Grilles/Grille.rb'
-require './Modeles/Grilles/EtatsCases/EtatCaseJouee.rb'
-require './Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb'
+#encoding UTF-8
+
+require_relative 'Grille'
+require_relative 'EtatsCases/EtatCaseJouee'
+require_relative 'EtatsCases/EtatCaseNeutre'
 
 class GrilleEditeur < Grille
 

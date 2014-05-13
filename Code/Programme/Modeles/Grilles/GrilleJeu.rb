@@ -1,4 +1,6 @@
-require './Modeles/Grilles/Grille.rb'
+#encoding UTF-8
+
+require_relative 'Grille'
 
 class GrilleJeu < Grille
 

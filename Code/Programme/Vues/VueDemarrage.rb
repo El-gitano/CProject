@@ -1,4 +1,4 @@
-require './Vues/Vue'
+require_relative 'Vue'
 
 #Vue chargée de présenter une interface de connexion/création/supression pour un profil
 class VueDemarrage < Vue

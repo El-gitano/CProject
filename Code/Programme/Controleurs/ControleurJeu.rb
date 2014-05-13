@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-require './Modeles/ModeleJeu'
-require './Vues/VueJeu'
-require './Controleurs/Controleur'
+require_relative '../Modeles/ModeleJeu'
+require_relative '../Vues/VueJeu'
+require_relative 'Controleur'
 
 require 'gtk2'
 
@@ -18,8 +18,7 @@ class ControleurJeu < Controleur
 		super(unJeu)
 
 		@modele = ModeleJeu.new(unProfil, unChoix, unNom)
-		@vue = VueJeu.new(@modele)
-		
+		@vue = VueJeu.new(@modele)	
 		@modele.ajouterObservateur(@vue)
 		
 		#On link le label au timer
@@ -67,6 +66,7 @@ class ControleurJeu < Controleur
 			
 				if @multiSelection then
 				
+					@modele.ajouterClic
 					@modele.getCase(uneCase.x,  uneCase.y).clicGauche
 					@modele.lancerMaj
 				end
@@ -100,11 +100,11 @@ class ControleurJeu < Controleur
 		
 			if !indice.nil? then
 		
-				DialogueInfo.afficher("Indice", "Vous pouvez jouer #{indice}")
+				DialogueInfo.afficher("Indice", "Vous pouvez jouer #{indice}", @vue.window)
 		
 			else
 		
-				DialogueInfo.afficher("Indice introuvable", "Nous n'avons aucun indice à vous donner")
+				DialogueInfo.afficher("Indice introuvable", "Nous n'avons aucun indice à vous donner", @vue.window)
 			end
 		}
 		
@@ -181,7 +181,8 @@ class ControleurJeu < Controleur
 			@modele.lancerMaj
 		}
 		
-		@vue.miQuitter.signal_connect("activate"){#Ajouter vérification de sauvegarde
+		# On propose la sauvegarde avant de quitter la partie
+		@vue.miQuitter.signal_connect("activate"){
 		
 			dgSauvegardeQuitter
 		}
@@ -193,6 +194,7 @@ class ControleurJeu < Controleur
 		}
 	end
 	
+	#Boite de dialogue récupérant la sauvegarde
 	def dgSauvegarde
 	
 		#On demande à l'utilisateur d'entrer un nom de grille
@@ -228,7 +230,7 @@ class ControleurJeu < Controleur
 
 							hbox = Gtk::HBox.new(false, 5)
 
-							label = Gtk::Label.new("Une sauvegarde sous ce nom existe déjà. Écraser la grille existante ?")
+							label = Gtk::Label.new("Une sauvegarde sous ce nom existe déjà. Écraser la sauvegarde existante ?")
 							image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
 
 							hbox.pack_start(image, false, false, 0)
@@ -243,7 +245,8 @@ class ControleurJeu < Controleur
 									
 									#Réponse positive on sauvegarde en écrasant l'ancienne grille
 									when Gtk::Dialog::RESPONSE_ACCEPT
-								
+										
+										@modele.profil.getStats["timer"] += @modele.tempsEcoule
 										@modele.remplacerSauvegarde
 										DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès\nL'ancienne grille a été écrasée", @vue.window)
 										choixOK = true
@@ -254,6 +257,7 @@ class ControleurJeu < Controleur
 						#Pas de grille déjà existante, on sauvegarde
 						else
 						
+							@modele.profil.getStats["timer"] += @modele.tempsEcoule
 							@modele.nouvelleSauvegarde(etNomSauvegarde.text)
 							DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", @vue.window)
 							choixOK = true
@@ -290,7 +294,6 @@ class ControleurJeu < Controleur
 		dialogue.destroy
 		
 		@modele.timer.stopperTimer
-		@modele.sauvegarderProfil
 		changerControleur(ControleurAccueil.new(@picross, @modele.profil))
 	end
 end

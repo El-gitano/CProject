@@ -1,4 +1,6 @@
-require './Modeles/Grilles/Case.rb'
+#encoding UTF-8
+
+require_relative 'Case'
 require 'yaml'
 
 class Grille

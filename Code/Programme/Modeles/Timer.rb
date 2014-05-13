@@ -70,4 +70,10 @@ class Timer
 			@label.set_label(h + ":" + m + ":" + s)
 			@label.show
 		end
+		
+		#Retourne le temps écoule sous forme d'un entiers
+		def tempsEcoule
+		
+			return @temps - @tempsOrigine
+		end
 end

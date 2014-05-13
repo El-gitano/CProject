@@ -20,10 +20,11 @@ class ControleurProfil < Controleur
 
 		@modele.ajouterObservateur(@vue)	
 		
-		#On revient au menu quand la fenêtre des stats est fermée
+		#On quitte quand on ferme la fenêtre
 		@vue.window.signal_connect('delete_event'){
-		
-			retourAccueil
+
+			@modele.sauvegarderProfil
+			Gtk.main_quit
 		}
 		
 		#Revenir à l'accueil

@@ -1,5 +1,5 @@
 require 'sqlite3'
-require './Modeles/Profil'
+require_relative 'Profil'
 
 #Les modèles définiront les structures de donnée de notre programme ainsi que les intéractions sur ces structures. Tout modèle sera connecté à la base de donnée et pourra mettre à jour ses observateurs
 class Modele

@@ -13,10 +13,17 @@ class ControleurChargerSauvegarde < Controleur
 	def initialize(unJeu, unProfil)
 
 		super(unJeu)
+		
 		@modele = ModeleChargerSauvegarde.new(unProfil)
 		@vue = VueChargerSauvegarde.new(@modele)
-
 		@modele.ajouterObservateur(@vue)
+		
+		#On quitte quand on ferme la fenêtre
+		@vue.window.signal_connect('delete_event'){
+		
+			@modele.sauvegarderProfil
+			Gtk.main_quit
+		}
 		
 		#Chargement de la grille sélectionnée
 		@vue.btCharger.signal_connect("clicked"){

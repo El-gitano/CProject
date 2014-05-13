@@ -1,6 +1,8 @@
-require './Modeles/Grilles/EtatsCases/EtatCase.rb'
-require './Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb'
-require './Modeles/Grilles/EtatsCases/EtatCaseJouee.rb'
+#encoding UTF-8
+
+require_relative 'EtatCase'
+require_relative 'EtatCaseNeutre'
+require_relative 'EtatCaseJouee'
 
 class EtatCaseCroix < EtatCase
     

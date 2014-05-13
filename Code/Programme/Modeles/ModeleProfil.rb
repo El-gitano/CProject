@@ -1,4 +1,4 @@
-require './Modeles/Modele'
+require_relative 'Modele'
 
 class ModeleProfil < Modele
 

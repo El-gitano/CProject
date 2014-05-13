@@ -28,7 +28,7 @@ class ControleurAccueil < Controleur
 
 		@modele.ajouterObservateur(@vue)	
 		
-		#On revient au menu quand la fenêtre de l'accueil est fermée
+		#On quitte quand on ferme la fenêtre
 		@vue.window.signal_connect('delete_event'){
 		
 			@modele.sauvegarderProfil
@@ -66,20 +66,6 @@ class ControleurAccueil < Controleur
 		}
 	end
 	
-	#Crée une Hbox à partir d'un nom qu'elle entoure d'étoiles
-	def hBoxNom(unNom)
-	
-		hBox = Gtk::HBox.new(false, 5)
-		imEtoile = Gtk::Image.new("./Vues/Images/etoileCredit.png")
-		imEtoile2 = Gtk::Image.new("./Vues/Images/etoileCredit.png")
-		
-		hBox.pack_start(imEtoile, false, false, 0)
-		hBox.pack_start(Gtk::Label.new(unNom))
-		hBox.pack_start(imEtoile2, false, false, 0)
-		
-		return hBox
-	end
-	
 	#Ouvre une boite de dialogue permettant au joueur de choisir entre charger une partie ou en créer une nouvelle
 	def dgBoxChoixPartie
 	
@@ -105,38 +91,7 @@ class ControleurAccueil < Controleur
 		dialogue.destroy
 	end
 	
-	#Propose au joueur l'ensemble des grilles jouables
-	def dgBoxNouvellePartie
-	
-		dialogue = Gtk::Dialog.new("Ouverture d'une sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
-		listeur = ListeurGrillesJouables.new(@modele)
-		
-		dialogue.set_size_request(600, 200)
-		dialogue.set_modal(true)	
-		dialogue.vbox.add(listeur)			
-		dialogue.show_all
-		
-		dialogue.run{|reponse|
-
-			#On ne traite la réponse que si l'utilisateur a cliqué sur "OPEN"
-			if reponse == Gtk::Dialog::RESPONSE_ACCEPT then
-
-				changerControleur(ControleurJeu.new(@picross, @modele.profil, false, listeur.treeView.selection.selected[0])) if !listeur.treeView.selection.selected.nil?
-			end
-		}
-
-		dialogue.destroy
-	end
-	
-	def creerHBox(unTitre, unLabel)
-	
-		hBox = Gtk::HBox.new(true, 5)
-		
-		hBox.pack_start(Gtk::Label.new(unTitre + " : "))
-		hBox.pack_start(unLabel)
-		return hBox
-	end
-	
+	#Ouvre une boîte de dialogue des crédits
 	def dgCredit
 	
 		dialogue = Gtk::Dialog.new("Crédits", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
@@ -169,5 +124,19 @@ class ControleurAccueil < Controleur
 		dialogue.run
 		
 		dialogue.destroy
+	end
+	
+	#Crée une Hbox à partir d'un nom qu'elle entoure d'étoiles
+	def hBoxNom(unNom)
+	
+		hBox = Gtk::HBox.new(false, 5)
+		imEtoile = Gtk::Image.new("./Vues/Images/etoileCredit.png")
+		imEtoile2 = Gtk::Image.new("./Vues/Images/etoileCredit.png")
+		
+		hBox.pack_start(imEtoile, false, false, 0)
+		hBox.pack_start(Gtk::Label.new(unNom))
+		hBox.pack_start(imEtoile2, false, false, 0)
+		
+		return hBox
 	end
 end

@@ -1,7 +1,8 @@
 #encoding: UTF-8
 
-require './Vues/Vue'
-require './Vues/CaseVue'
+require_relative 'Vue'
+require_relative 'CaseVue'
+
 require 'gtk2'
 
 class VueJeu < Vue

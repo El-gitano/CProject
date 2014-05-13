@@ -1,5 +1,6 @@
+#encoding UTF-8
 require 'sqlite3'
-require './Modeles/Modele'
+require_relative 'Modele'
 
 class ModeleAvecProfil < Modele
     

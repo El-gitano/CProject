@@ -1,4 +1,6 @@
-require './Modeles/Grilles/EtatsCases/EtatCase.rb'
+#encoding UTF-8
+
+require 'EtatCase'
 
 class EtatCaseJouee < EtatCase
    

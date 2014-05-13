@@ -1,10 +1,10 @@
 # encoding: utf-8
 
-require './Modeles/ModeleGrille'
-require './Modeles/Grilles/GrilleJeu'
-require './Modeles/Grilles/GrilleEditeur'
-require './Modeles/Grilles/InfosGrille.rb'
-require './Modeles/Timer.rb'
+require_relative 'ModeleGrille'
+require_relative 'Grilles/GrilleJeu'
+require_relative 'Grilles/GrilleEditeur'
+require_relative 'Grilles/InfosGrille'
+require_relative 'Timer'
 require 'date'
 
 class ModeleJeu < ModeleGrille
@@ -187,6 +187,11 @@ class ModeleJeu < ModeleGrille
 		return @plateauJeu.getCase(x,y)
     end
     
+    def tempsEcoule
+    
+    	return @timer.tempsEcoule
+    end
+    	
     #Réinitialise le jeu afin de recommencer une partie
     def reinitialiserJeu
     
