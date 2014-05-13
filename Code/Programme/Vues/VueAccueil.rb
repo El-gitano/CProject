@@ -18,7 +18,7 @@ class VueAccueil < Vue
 	
 	def initialize(unModele)
 	
-		super(unModele)
+		super(unModele, "Accueil")
 
 		#Lignes de code commentées pour les tests
 		@window.set_size_request(350,800)
@@ -30,7 +30,7 @@ class VueAccueil < Vue
 
 		arial18 = Pango::FontDescription.new('Arial 25')
 
-		@boutonProfil = Gtk::Button.new(@modele.getProfil, false)
+		@boutonProfil = Gtk::Button.new(@modele.profil.pseudo, false)
 		@boutonProfil.child.modify_font(arial18)
 		@boutonDeco = Gtk::Button.new("", false)
 		@boutonJouer = Gtk::Button.new("Jouer", false)

@@ -8,6 +8,8 @@ require 'gtk2'
 
 class ControleurJeu < Controleur
 
+	@multiSelection
+	
 	public_class_method :new
 	
 	# Constructeur
@@ -23,6 +25,21 @@ class ControleurJeu < Controleur
 		#On link le label au timer
 		@modele.timer.label = @vue.lbTimer
 
+		@vue.window.signal_connect("key-press-event"){|w, e|
+		
+			if  Gdk::Keyval::GDK_space == e.keyval then
+			
+				if @multiSelection then
+				
+					@multiSelection = false
+					
+				else
+				
+					@multiSelection = true
+				end
+			end
+		}
+		
 		#On connecte un signal à chaque bouton
 		@vue.table.each{|uneCase|
 		
@@ -40,6 +57,15 @@ class ControleurJeu < Controleur
 				end
 				
 				@vue.actualiserCase(laCase.x, laCase.y)
+			}
+			
+			uneCase.signal_connect("enter-notify-event"){|w, event|
+			
+				if @multiSelection then
+				
+					@modele.getCase(uneCase.x,  uneCase.y).clicGauche
+					@modele.lancerMaj
+				end
 			}
 		}
 		
@@ -150,11 +176,18 @@ class ControleurJeu < Controleur
 		@vue.miSauvegarder.signal_connect("activate"){	
 		
 			dgSauvegarde
+			@modele.lancerMaj
 		}
 		
 		@vue.miQuitter.signal_connect("activate"){#Ajouter vérification de sauvegarde
 		
-			changerControleur(ControleurAccueil.new(@picross, @modele.profil))
+			dgSauvegardeQuitter
+		}
+		
+		#On revient au menu quand la fenêtre de l'éditeur est fermée
+		@vue.window.signal_connect('delete_event'){
+		
+			dgSauvegardeQuitter
 		}
 	end
 	
@@ -180,7 +213,7 @@ class ControleurJeu < Controleur
 		dialogue.run{|reponse|
 
 			#On ne traite la réponse que si l'utilisateur a cliqué sur "Enregistrer" ou "ANNULER"
-			if reponse.eql?(Gtk::Dialog::RESPONSE_ACCEPT)
+			if reponse == Gtk::Dialog::RESPONSE_ACCEPT
 
 					#On vérifie que la grille n'existe pas et que l'utilisateur est propriétaire de la grille
 					if not etNomSauvegarde.text.eql?("") then
@@ -219,8 +252,8 @@ class ControleurJeu < Controleur
 						#Pas de grille déjà existante, on sauvegarde
 						else
 						
-							@modele.sauvegarderGrille(etNomGrille.text)
-							 DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", @vue.window)
+							@modele.nouvelleSauvegarde(etNomSauvegarde.text)
+							DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", @vue.window)
 							choixOK = true
 						end
 					else
@@ -231,5 +264,31 @@ class ControleurJeu < Controleur
 		}
 		
 		dialogue.destroy
+	end
+	
+	def dgSauvegardeQuitter
+	
+		dialogue = Gtk::Dialog.new("Proposition de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT])
+
+		dialogue.set_modal(true)
+
+		lbNomSauvegarde = Gtk::Label.new("Souhaitez vous sauvegarder votre grille avant de quitter ?")
+		dialogue.vbox.pack_start(lbNomSauvegarde, false, false, 0)
+	
+		dialogue.show_all
+
+		dialogue.run{|reponse|
+
+			if reponse == Gtk::Dialog::RESPONSE_ACCEPT
+			
+				dgSauvegarde
+			end
+		}
+		
+		dialogue.destroy
+		
+		@modele.timer.stopperTimer
+		@modele.sauvegarderProfil
+		changerControleur(ControleurAccueil.new(@picross, @modele.profil))
 	end
 end

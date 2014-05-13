@@ -18,7 +18,7 @@ class VueDemarrage < Vue
 	
 	def initialize(unModele)
 	
-		super(unModele)
+		super(unModele, "Connexion")
 		
 		#Cette box contient les deux lignes champs + bouton
 		vbox = Gtk::VBox.new(false, 3)

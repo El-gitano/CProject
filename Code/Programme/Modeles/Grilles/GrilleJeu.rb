@@ -12,8 +12,12 @@ class GrilleJeu < Grille
 		super(taille,nomGrille,createur,nbJokers)
 	end
 
-	# Pour ControleurJeu
+	#Remet toutes les cases d'une grille à l'état neutre
 	def reinitialiserCases
-		# Mettre toutes les cases à l'état neutre
+	
+		operationGrille{|uneCase|
+		
+			uneCase.etat = EtatCaseNeutre.getInstance
+		}
 	end
 end

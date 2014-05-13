@@ -27,7 +27,7 @@ class VueJeu < Vue
 	
 	def initialize(unModele)
 	
-		super(unModele)
+		super(unModele, "Jeu")
 		
 		#VBox principale
 		vbox = Gtk::VBox.new(false, 5)
@@ -184,10 +184,23 @@ class VueJeu < Vue
 		}
 		
 		#Désactivation du bouton joker si plus de jokers
-		@btJoker.sensitive = false if @modele.plateauJeu.nbJokers.eql?(0)
-		@btJoker.label = "Jokers (#{@modele.plateauJeu.nbJokers})"
+		if @modele.plateauJeu.nbJokers.eql?(0) then
+		
+			@btJoker.sensitive = false 
+			@btJoker.label = "Jokers"
+			
+		else
+		
+			@btJoker.sensitive = true
+			@btJoker.label = "Jokers (#{@modele.plateauJeu.nbJokers})"
+		end
 		
 		@window.show_all
+	end
+	
+	def miseAJourNomGrille
+	
+		@lbNomGrille.text = @modele.plateauJeu.nomGrille
 	end
 	
 	#Actualise la case située aux coordonnées (x,y) Changer getCase dans le modèle

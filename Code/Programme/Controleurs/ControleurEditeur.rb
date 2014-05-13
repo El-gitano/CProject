@@ -7,12 +7,15 @@ require './Modeles/Grilles/GrilleEditeur'
 
 require './Vues/VueEditeur'
 require './Vues/DialogueInfo'
+require './Vues/ListeurGrillesEditables'
 
 require 'gtk2'
 
 class ControleurEditeur < Controleur
 
 	public_class_method :new
+	
+	@multiSelection = false
 	
 	# Constructeur
 	def initialize(unJeu, unProfil)
@@ -29,72 +32,28 @@ class ControleurEditeur < Controleur
 			retourAccueil
 		}
 		
+		#Touche de multisélection
+		@vue.window.add_events(Gdk::Event::KEY_PRESS)
+		
 		choixGrille = nil
 		
 		#Boîte de dialogue pour ouverture d'une grille
 		@vue.boutonOuvrir.signal_connect("clicked"){
 		
-			dialogue = Gtk::Dialog.new("Ouverture d'un plateau", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
-
-			dialogue.set_size_request(550,200)
-			dialogue.set_modal(true)
-
-			comboBoxGrilles = Gtk::ComboBox.new(true)
-	
-			@modele.listeNomGrillesEditables(@modele.profil.pseudo){|x|
-
-				comboBoxGrilles.append_text(x)
-			}
-
-			ligneH = Gtk::HSeparator.new
-
-			lbNomGrille = Gtk::Label.new
-			lbNomGrille.markup="<b>Le nom du plateau</b>"
-
-			vBox = Gtk::VBox.new(false, 5)
-
-			#Création de l'intérieur de la boite de dialogue
-			lbNbJoker = Gtk::Label.new("Jokers : ")
-			lbTaille = Gtk::Label.new("Taille : ")
-			lbDateCreation = Gtk::Label.new("Date de création : ")
-			lbDateModification = Gtk::Label.new("Date de modification : ")
-
-			vBox.pack_start(lbNbJoker, false, false, 0)
-			vBox.pack_start(lbTaille, false, false, 0)
-			vBox.pack_start(lbDateCreation, false, false, 0)
-			vBox.pack_start(lbDateModification, false, false, 0)
-
-			#Ajout à la vbox par défaut
-			dialogue.vbox.pack_start(comboBoxGrilles, false, false, 0)
-			dialogue.vbox.pack_start(lbNomGrille, false, false, 0)
-			dialogue.vbox.pack_start(vBox, false, false, 0)
-
-			#Màj sélection de l'utilisateur
-			comboBoxGrilles.signal_connect("changed"){
-
-				nomGrille = comboBoxGrilles.active_text
-				grille = @modele.getGrille(nomGrille)
-				choixGrille = comboBoxGrilles.active_text
-				lbNomGrille.markup = "<b>"+nomGrille+"</b>"
-				tailleGrille = grille.taille
-	
-				lbNbJoker.text = "Jokers : " + grille.nbJokers.to_s
-				lbTaille.text = "Taille : " + grille.taille.to_s + "X" + grille.taille.to_s
-				lbDateCreation.text = "Date de création : " + grille.dateCreation.to_s
-				lbDateModification.text = "Date de modification : " + grille.dateModification.to_s
-			}
-
+			dialogue = Gtk::Dialog.new("Ouverture d'une grille", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
+			listeur = ListeurGrillesEditables.new(@modele)
+			
+			dialogue.set_size_request(600, 200)
+			dialogue.set_modal(true)	
+			dialogue.vbox.add(listeur)			
 			dialogue.show_all
-
+			
 			dialogue.run{|reponse|
 
 				#On ne traite la réponse que si l'utilisateur a cliqué sur "OPEN"
-				case reponse
+				if reponse == Gtk::Dialog::RESPONSE_ACCEPT then
 	
-					when Gtk::Dialog::RESPONSE_ACCEPT
-		
-						@modele.charger(choixGrille)
-	
+					@modele.charger(listeur.treeView.selection.selected[0])
 				end
 			}
 
@@ -108,7 +67,7 @@ class ControleurEditeur < Controleur
 		@vue.boutonEnregistrer.signal_connect("clicked"){
 	
 			#On demande à l'utilisateur d'entrer un nom de grille
-			dialogue = Gtk::Dialog.new("Nom de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+			dialogue = Gtk::Dialog.new("Sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
 
 			dialogue.set_modal(true)
 
@@ -202,6 +161,12 @@ class ControleurEditeur < Controleur
 			@modele.lancerMaj
 		}
 	
+		#Le SpinButton des jokers
+		@vue.sbNbJokers.signal_connect("value-changed"){
+		
+			@modele.setNbJokers(@vue.sbNbJokers.value)
+		}
+		
 		#Changement de la taille de la grille
 		@vue.listBoutonTaille.each{|x|
 		
@@ -217,22 +182,22 @@ class ControleurEditeur < Controleur
 		
 	end
 	
-	#Connecte un listener d'évènement sur la grille pour récupérer les clics
+	#Connecte un listener d'évènement sur chaque case de la grille pour récupérer les clics
 	def connecterGrille
 	
 		#On connecte un signal pour chaque case du plateau
 		@vue.operationGrille{|uneCase|
 		
 			uneCase.signal_connect("button_press_event"){
-				
+
 				@modele.getCase(uneCase.x,  uneCase.y).clicGauche
 				@modele.lancerMaj
 			}
 		}
-		
+
 	end
 	
-	# Retour a l'accueil
+	# Retour à l'accueil
 	def retourAccueil
 	
 		changerControleur(ControleurAccueil.new(@picross, @modele.profil))

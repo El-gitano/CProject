@@ -11,7 +11,7 @@ class Grille
 	@dateCreation
 	@dateModification
 	
-	attr_accessor :nomGrille,:createur,:nbJokers, :taille, :dateModification, :cases, :dateCreation
+	attr_accessor :nomGrille, :createur, :nbJokers, :taille, :dateModification, :cases, :dateCreation
 	
 	private_class_method :new
 	
@@ -23,7 +23,7 @@ class Grille
 		@nbJokers = nbJokers
 		@cases = Array.new(taille){Array.new(taille){Case.new}}
 		@dateCreation = Time.now.strftime("%d/%m/%Y %H:%M")
-		@dateMofication = Time.now.strftime("%d/%m/%Y %H:%M")
+		@dateModification = Time.now.strftime("%d/%m/%Y %H:%M")
 	end
 		
 	def getCase(x, y)
@@ -76,11 +76,12 @@ class Grille
 	end
 
 	def casesSerialize()
-		#print @cases
+
 		return YAML.dump(@cases)
 	end
 	
 	def Grille.casesDeserialize(obj)
+	
 		return YAML.load(obj)
 	end
 	
@@ -116,6 +117,5 @@ class Grille
 		}
 		
 		return nil
-		
 	end
 end

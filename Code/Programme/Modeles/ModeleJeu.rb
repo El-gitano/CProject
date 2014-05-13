@@ -33,7 +33,7 @@ class ModeleJeu < ModeleGrille
 		end
 	end
 	
-	#retourne l'indice de @"grille" Dans ModeleGrille
+	#Retourne un indice de jeu au joueur
 	def getIndice
 	end
 	
@@ -64,15 +64,15 @@ class ModeleJeu < ModeleGrille
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
         idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
 		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'") 
-		req = "UPDATE grillejouee SET grille='#{serial}', jokersRestants='#{nbJokers}', timer='#{@timer}', datemaj='#{date}' WHERE joueur='#{idProfil[0]["id"]}' AND nompartie='#{nomPartie}' AND idGrille='#{idGrilleRef[0]["id"]}'"
-		#print req
+		req = "UPDATE grillejouee SET grille='#{serial}', jokersRestants='#{nbJokers}', timer='#{@timer.temps}', datemaj='#{date}' WHERE joueur='#{idProfil[0]["id"]}' AND nompartie='#{nomPartie}' AND idGrille='#{idGrilleRef[0]["id"]}'"
+
 		requete(req)
 	end
 	
 	#Retourne vrai si le nom de sauvegarde passé en paramètre existe déjà pour un joueur
-	def sauvegardeExiste(nomSauvegarde)
+	def sauvegardeExiste?(nomSauvegarde)
 	
-		return !requete("SELECT * FROM grillejouee WHERE nompartie = '#{nomSauvegarde}' AND createur = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}')").empty?
+		return !requete("SELECT * FROM grillejouee WHERE nompartie = '#{nomSauvegarde}' AND joueur = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}') AND idGrille = (SELECT id FROM grilleediter WHERE nomGrille = '#{@plateauJeu}')").empty?
 	end
 	
 	#Crée une nouvelle sauvegarde pour un joueur
@@ -82,9 +82,9 @@ class ModeleJeu < ModeleGrille
         nbJokers = @plateauJeu.nbJokers
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
         
-		idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
-		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'")
-		self.requete("INSERT INTO grillejouee(joueur,idGrille,nompartie,grille,jokersRestants,timer,datedebut,datemaj) VALUES('#{idProfil[0]["id"]}','#{idGrilleRef[0]["id"]}','#{nomPartie}','#{serial}','#{nbJokers}','#{@timer}','#{date}','#{date}')")
+		idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")[0]["id"]
+		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'")[0]["id"]
+		self.requete("INSERT INTO grillejouee(joueur, idGrille, nompartie, grille, jokersRestants, timer, datedebut, datemaj) VALUES('#{idProfil}','#{idGrilleRef}','#{nomPartie}','#{serial}','#{nbJokers}','#{@timer.temps}','#{date}','#{date}')")
 	end
 	
 	#Démarre une nouvelle partie
@@ -93,16 +93,17 @@ class ModeleJeu < ModeleGrille
 		@timer = Timer.new
 		
 		#On récupère les infos de la grille passées en paramètre puis on instancie une GrilleEditeur
-		@grille = charger(uneGrille)
+		charger(uneGrille)
+		
 		@informations = InfosGrille.new
 		@informations.genererInfos(@grille)
 
 		@profil.donnees.stats["parties_commencees"]+=1
-		sauvegarderProfil()
+		
 		@plateauJeu = GrilleJeu.Creer(@grille.taille, nomPartie, @profil, @grille.nbJokers)
 
-		@timer.lancerTimer
-		
+		lancerMaj
+		@timer.lancerTimer	
 	end
 	
 	#Charge une partie depuis son nom
@@ -123,8 +124,7 @@ class ModeleJeu < ModeleGrille
 		@plateauJeu.nbJokers = reqTemp[0]["jokersRestants"]
 		
 		@timer = Timer.new(reqTemp[0]["timer"])
-		@timer.lancerTimer
-			
+		@timer.lancerTimer			
 	end
 		
 	#Retourne un tableau des noms des sauvegardes d'un utilisateur, possibilité d'effectuer un traitement de type yield
@@ -146,14 +146,32 @@ class ModeleJeu < ModeleGrille
 		return res
     end
 	
+	#Ajoute un ragequit au compte du joueur
 	def ajouterRageQuit
 	
-		requete("UPDATE stats SET ragequits = ragequits+1 WHERE id = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}')")
+		print requete("UPDATE stats SET ragequits = ragequits+1 WHERE id = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}')")
+	end
+	
+	#Dévoile 3 cases dans la mesure du possible
+	def utiliserJoker
+	
+		puts "À implémenter"
+	end
+	
+	#Enlève un joker pour le joueur
+	def enleverJoker
+	
+		@plateauJeu.nbJokers -= 1
 	end
 	
 	def getCase(x,y)
 	
 		return @plateauJeu.getCase(x,y)
+    end
+    
+    #Réinitialise le jeu afin de recommencer une partie
+    def reinitialiserJeu
+    
     end
     
 	def to_s

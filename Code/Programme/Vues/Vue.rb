@@ -11,11 +11,11 @@ class Vue
 	private_class_method :new
 	
 	#Une vue n'a besoin que d'un modèle pour fonctionner
-	def initialize(unModele)
+	def initialize(unModele, leTitre)
 	
 		@modele = unModele
 		
-		@window = Gtk::Window.new("Picross accueil")
+		@window = Gtk::Window.new(leTitre)
 		@window.set_window_position(Gtk::Window::POS_CENTER)
 		@window.set_resizable(false)
 	end

@@ -1,6 +1,2 @@
-Ajout d'un timer au jeu
-Ajout du choix du nombre de jokers à l'éditeur
 Mini-aide
-Ajouter la vérification que la grille a été sauvegardée à la sortie du jeu
-Ajouter un connect_event à la destruction de la fenêtre de jeu
-Passer actualiser_case dans une classe VueGrille
+Passer actualiser_case dans une classe VueGrille pour refonte
