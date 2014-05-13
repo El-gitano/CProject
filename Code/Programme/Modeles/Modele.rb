@@ -67,7 +67,7 @@ class Modele
     end
     
     #Sauvegarde le profil en mémoire dans la bdd
-    def sauvegarderProfil()		
+    def sauvegarderProfil
 		
 		#Sauvegarde des stats
 		0.upto(@profil.donnees.stats.length/2) do |x|

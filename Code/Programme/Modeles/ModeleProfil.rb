@@ -33,11 +33,13 @@ class ModeleProfil < Modele
 		lancerMaj
 	end
 	
+	#Retourne les statistiques de tous les joueurs
 	def infosStats
 	
-		req = requete("SELECT (parties_commencees/parties_terminees)*100, temps_joue, joker_tulises, indices_utilises, nombre_clics, ragequits FROM stats WHERE id = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}'))")
+		req = requete("SELECT pseudo, (parties_terminees/parties_commencees) AS taux_reussite, temps_joue, joker_utilises, indices_utilises, nombre_clics, ragequits FROM stats INNER JOIN profil ON stats.id = profil.id")
 		return req
 	end
+	
 	#Retourne vrai si un profil existe sous le nom passé en paramètre
 	def profilExiste?(unProfil)
 	

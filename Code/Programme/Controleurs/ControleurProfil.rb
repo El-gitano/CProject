@@ -81,8 +81,9 @@ class ControleurProfil < Controleur
 								else
 								
 									@modele.changerNomProfil(etNouveauPseudo.text)
-									 DialogueInfo.afficher("Changement profil", "Nom de profil changé avec succès !", @vue.window)
+									DialogueInfo.afficher("Changement profil", "Nom de profil changé avec succès !", @vue.window)
 									choixOK = true
+									@modele.lancerMaj
 								end
 							else
 							

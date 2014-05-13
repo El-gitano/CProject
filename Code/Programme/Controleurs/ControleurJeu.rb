@@ -268,7 +268,7 @@ class ControleurJeu < Controleur
 	
 	def dgSauvegardeQuitter
 	
-		dialogue = Gtk::Dialog.new("Proposition de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT])
+		dialogue = Gtk::Dialog.new("Proposition de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, ["Non", Gtk::Dialog::RESPONSE_REJECT], ["Oui", Gtk::Dialog::RESPONSE_ACCEPT])
 
 		dialogue.set_modal(true)
 
