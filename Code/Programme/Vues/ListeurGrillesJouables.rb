@@ -1,3 +1,4 @@
+# encoding: utf-8 
 require 'gtk2'
 
 #Cette classe présente les grilles éditables par un joueur sous forme d'une grille
