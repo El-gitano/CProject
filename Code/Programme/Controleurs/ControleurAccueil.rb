@@ -1,7 +1,11 @@
 #encoding: UTF-8
 
 require './Modeles/ModeleAccueil'
+
 require './Vues/VueAccueil'
+require './Vues/ListeurSauvegardes'
+require './Vues/ListeurGrillesJouables'
+
 require './Controleurs/Controleur'
 require './Controleurs/ControleurEditeur'
 require './Controleurs/ControleurProfil'
@@ -133,27 +137,20 @@ class ControleurAccueil < Controleur
 	def dgBoxChargement
 	
 		dialogue = Gtk::Dialog.new("Chargement d'une sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, ["Annuler", 1], ["Charger", 2])
-
 		dialogue.set_modal(true)
-
-		comboBoxSauvegardes = Gtk::ComboBox.new(true)
+		dialogue.set_size_request(600, 200)
 		
-		@modele.listeSauvegardes.each{|infos|
-
-			comboBoxSauvegardes.append_text(infos)
-		}
-
-		dialogue.vbox.add(comboBoxSauvegardes)
+		listeur = ListeurSauvegardes.new(@modele)
+		dialogue.vbox.add(listeur)
 
 		dialogue.show_all
 		
 		dialogue.run{|reponse|
 				
 			#Chargement
-			if reponse.eql?(2)
+			if reponse == 2
 		
-				comboBoxSauvegardes.active_text.split#À compléter
-				changerControleur(ControleurJeu.new(@picross, @modele.profil, true, comboBoxSauvegardes.active_text))
+				changerControleur(ControleurJeu.new(@picross, @modele.profil, true, listeur.treeView.selection.selected[0]))
 			end
 		}
 		
@@ -163,67 +160,23 @@ class ControleurAccueil < Controleur
 	#Propose au joueur l'ensemble des grilles jouables
 	def dgBoxNouvellePartie
 	
-		dialogue = Gtk::Dialog.new("Nouvelle partie", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, ["Annuler", 1], ["Nouveau", 2])
-
-		dialogue.set_modal(true)
-
-		comboBoxGrilles = Gtk::ComboBox.new(true)
-	
-		@modele.listeGrilles.each{|x|
-
-			comboBoxGrilles.append_text(x)
-		}
-
-		ligneH = Gtk::HSeparator.new
-
-		lbNomGrille = Gtk::Label.new
-		lbNomGrille.markup="<b>Le nom du plateau</b>"
-
-		vBox = Gtk::VBox.new(false, 5)
-
-		#Création de l'intérieur de la boite de dialogue
-		lbCreateur = Gtk::Label.new
-		lbNbJokers = Gtk::Label.new
-		lbTaille = Gtk::Label.new
-		lbDateCreation = Gtk::Label.new
-		lbDateModification = Gtk::Label.new
+		dialogue = Gtk::Dialog.new("Ouverture d'une sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
+		listeur = ListeurGrillesJouables.new(@modele)
 		
-		vBox.pack_start(creerHBox("Créateur", lbCreateur), false, false, 0)
-		vBox.pack_start(creerHBox("Nombre de jokers", lbNbJokers), false, false, 0)
-		vBox.pack_start(creerHBox("Taille", lbTaille), false, false, 0)
-		vBox.pack_start(creerHBox("Date de création", lbDateCreation), false, false, 0)
-		vBox.pack_start(creerHBox("Date de modification", lbDateModification), false, false, 0)
-
-		#Ajout à la vbox par défaut
-		dialogue.vbox.pack_start(comboBoxGrilles, false, false, 0)
-		dialogue.vbox.pack_start(lbNomGrille, false, false, 0)
-		dialogue.vbox.pack_start(vBox, false, false, 0)
-
-		#Màj sélection de l'utilisateur
-		comboBoxGrilles.signal_connect("changed"){
-
-			nomGrille = comboBoxGrilles.active_text
-			lbNomGrille.markup = "<b>"+nomGrille+"</b>"
-			infos = @modele.getInfosGrille(nomGrille)
-
-			lbCreateur.text = infos["createur"]
-			lbNbJokers.text = infos["nbjokers"].to_s
-			lbTaille.text = infos["taillegrille"].to_s + "X" + infos["taillegrille"].to_s
-			lbDateCreation.text = infos["datecreation"].to_s
-			lbDateModification.text = infos["datemaj"].to_s
-		}
-		
-		dialogue.show_all	
+		dialogue.set_size_request(600, 200)
+		dialogue.set_modal(true)	
+		dialogue.vbox.add(listeur)			
+		dialogue.show_all
 		
 		dialogue.run{|reponse|
 
-			#Nouvelle partie
-			if reponse.eql?(2)
-			
-				changerControleur(ControleurJeu.new(@picross, @modele.profil, false, comboBoxGrilles.active_text))
+			#On ne traite la réponse que si l'utilisateur a cliqué sur "OPEN"
+			if reponse == Gtk::Dialog::RESPONSE_ACCEPT then
+
+				changerControleur(ControleurJeu.new(@picross, @modele.profil, false, listeur.treeView.selection.selected[0]))
 			end
 		}
-		
+
 		dialogue.destroy
 	end
 	

@@ -9,24 +9,18 @@ class ModeleAccueil < Modele
 		super(unProfil)
 	end
 	
-	def getProfil
+	#Retourne les informations sur les sauvegardes d'un joueur
+	def infosSauvegardes
 	
-		return @profil.pseudo
+        req = requete("SELECT nompartie, nomgrille, taillegrille, jokersRestants, grillejouee.datemaj FROM grillejouee INNER JOIN grilleediter ON grillejouee.idGrille=grilleediter.id WHERE joueur = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}')")
+
+		return req
 	end
 	
-	#Retourne l'ensemble des sauvegardes sous cette forme : Nom_sauvegarde [Nom_grille] (date_modification)
-	def listeSauvegardes
-	
-        reqGrille = requete("SELECT nompartie, nomgrille, grillejouee.datemaj FROM grillejouee JOIN grilleediter ON grillejouee.idGrille=grilleediter.id")
-
-		res = Array.new
-
-		reqGrille.each do |x|
+	def infosGrillesJouables
 		
-				res.push("#{x["nompartie"]} [#{x["nomgrille"]}] (#{x["datemaj"]})")					
-		end
-
-		return res
+		req = requete("SELECT nomgrille, pseudo, taillegrille, nbjokers, datecreation, datemaj FROM grilleediter INNER JOIN profil ON profil.id = grilleediter.createur")
+		return req
 	end
 	
 	def getTailleGrille(uneGrille)

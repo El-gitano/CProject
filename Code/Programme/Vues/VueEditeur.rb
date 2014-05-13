@@ -13,6 +13,7 @@ class VueEditeur < Vue
 	@boutonAleatoire
 	@labelTaille
 	@listBoutonTaille
+	@sbNbJokers
 	@grille
 	@hbox1
 	@hbox2
@@ -24,13 +25,13 @@ class VueEditeur < Vue
 	@mat
 	@tailleGrille
 	
-attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAleatoire, :listBoutonTaille, :mat
+attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAleatoire, :listBoutonTaille, :mat, :sbNbJokers
 	
 	public_class_method :new
 	
 	def initialize(unModele)
 	
-		super(unModele)
+		super(unModele, "Éditeur")
 		@tailleGrille = @modele.grille.taille
 		
 		tailleFenetreX = 640
@@ -45,9 +46,9 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		@hbox2 = Gtk::HBox.new(false, 0)	
 		@hbox3 = Gtk::HBox.new(false, 0)	
 		
-		@boutonOuvrir = Gtk::Button.new("Ouvrir", false)
-		@boutonEnregistrer = Gtk::Button.new("Enregistrer", false)
-		@boutonImporterImage = Gtk::Button.new("Importer", false)
+		@boutonOuvrir = Gtk::Button.new(" Ouvrir", false)
+		@boutonEnregistrer = Gtk::Button.new(" Enregistrer", false)
+		#@boutonImporterImage = Gtk::Button.new(" Importer", false)
 		@boutonAleatoire = Gtk::Button.new("Aléatoire", false)
 		@labelTaille = Gtk::Label.new("Taille de la grille", false)
 		
@@ -58,11 +59,12 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		
 		@boutonOuvrir.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		@boutonEnregistrer.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
-		@boutonImporterImage.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
+		#@boutonImporterImage.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		@boutonAleatoire.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		
 		@listBoutonTaille = Array.new
 		5.step(25,5){ |x|
+		
 			boutonTaille = BoutonTaille.new(x)
 			boutonTaille.set_size_request(80, 30)
 			@listBoutonTaille.push(boutonTaille)
@@ -71,22 +73,22 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		
 		imgOuvrir = Gtk::Image.new("./Vues/Images/folder.png")
 		imgEnregistrer = Gtk::Image.new("./Vues/Images/disquette.png")
-		imgImporterImage = Gtk::Image.new("./Vues/Images/image2.png")
+		#imgImporterImage = Gtk::Image.new("./Vues/Images/image2.png")
 		imgAleatoire = Gtk::Image.new("./Vues/Images/aleatoire.png")
 
 		@boutonOuvrir.set_image(imgOuvrir)
 		@boutonEnregistrer.set_image(imgEnregistrer)
-		@boutonImporterImage.set_image(imgImporterImage)
+		#@boutonImporterImage.set_image(imgImporterImage)
 		@boutonAleatoire.set_image(imgAleatoire)
 
 		imgOuvrir.show()
 		imgEnregistrer.show()
-		imgImporterImage.show()
+		#imgImporterImage.show()
 		imgAleatoire.show()
 
 		@hbox1.pack_start(@boutonOuvrir, true, false, 0)
 		@hbox1.pack_start(@boutonEnregistrer, true, false, 0)
-		@hbox1.pack_start(@boutonImporterImage, true, false, 0)
+		#@hbox1.pack_start(@boutonImporterImage, true, false, 0)
 		@hbox1.pack_start(@boutonAleatoire, true, false, 0)
 		
 		@vbox2.pack_start(@labelTaille, true, false, 0)
@@ -95,6 +97,13 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		@listBoutonTaille.each{|x|
 			@hbox2.pack_start(x, true, false, 0)
 		}
+		
+		hBoxTemp = Gtk::HBox.new(false, 3)
+		@sbNbJokers = Gtk::SpinButton.new(0, 5, 1)
+		
+		hBoxTemp.pack_start(Gtk::Label.new("Jokers : "), false, false, 0)
+		hBoxTemp.pack_start(@sbNbJokers, false, false, 0)
+		@hbox2.pack_start(hBoxTemp, true, false, 0)
 
 		@vbox.set_border_width(20) #On espace la vBox de la fenêtre
 		@vbox3.set_spacing(20)
@@ -115,7 +124,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
  
  		tailleWidget = 600
  		espacementCases = 0
- 		tailleCase = tailleWidget/tailleGrille - 1#Moins 1 pour l'espacement entre cases
+ 		tailleCase = tailleWidget/tailleGrille#Moins 1 pour l'espacement entre cases
 		posY = 0
 		
 		#Définition du plateau de jeu (graphique) 
@@ -162,6 +171,9 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 				actualiserCase(x,y)
 			}
 		}
+		
+		#Mise à jour du nombre de jokersRestants
+		@sbNbJokers.value = @modele.grille.nbJokers
 		
 		@grille.show_all
 	end

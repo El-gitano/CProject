@@ -17,8 +17,8 @@ class VueProfil < Vue
 	
 	def initialize(unModele)
 	
-		super(unModele)
-		
+		super(unModele, "Profil")
+
 		@window.signal_connect('destroy') { Gtk.main_quit }
 		
 		@boutonRenommer = Gtk::Button.new("Renommer profil")

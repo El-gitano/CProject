@@ -8,7 +8,9 @@ require 'date'
 class ModeleEditeur < ModeleGrille
 		
 	public_class_method :new
-		
+	
+	attr_reader :grille
+	
 	def initialize(unProfil, uneTaille)
 	
 		super(unProfil)
@@ -16,22 +18,10 @@ class ModeleEditeur < ModeleGrille
 	end
 	
 	#Retourne un tableau des noms des grilles d'un utilisateur, possibilité d'effectuer un traitement de type yield
-	def listeNomGrillesEditables(unPseudo)
+	def infosGrillesEditables
 	
-		id = requete("SELECT id FROM profil WHERE pseudo='#{unPseudo}'")
-        reqGrille = requete("SELECT nomgrille FROM grilleediter WHERE createur='#{id[0]["id"]}'")
-		res = Array.new
-		i = 0
-		
-		reqGrille.each do |x|
-
-				res.push(reqGrille[i]["nomgrille"])
-				yield reqGrille[i]["nomgrille"]
-				i+=1
-				
-		end
-		
-		return res
+        req = requete("SELECT nomgrille, pseudo, taillegrille, nbjokers, datecreation, datemaj FROM grilleediter INNER JOIN profil ON profil.id = grilleediter.createur WHERE pseudo='#{@profil.pseudo}'")
+		return req
     end
 	
 	#Retourne vrai si le profil chargé dans le modèle est propriétaire d'une grille dont le nom est passé en paramètre (et vrai si la grille n'existe pas)
@@ -62,9 +52,15 @@ class ModeleEditeur < ModeleGrille
 	
 		serial = @grille.casesSerialize
         tailleGrille = @grille.taille
+        nbJokers = @grille.nbJokers
 		dateModification = Time.now.strftime("%d/%m/%Y %H:%M")
 		
-		self.requete("UPDATE grilleediter SET taillegrille = '#{tailleGrille}', grille = '#{serial}', nbjokers = '#{@nbJokers}', datemaj = '#{dateModification}' WHERE nomgrille = '#{nomGrille}'")
+		self.requete("UPDATE grilleediter SET taillegrille = '#{tailleGrille}', grille = '#{serial}', nbjokers = '#{nbJokers}', datemaj = '#{dateModification}' WHERE nomgrille = '#{nomGrille}'")
 	end
 	
+	#Définit le nombre de jokers de la grille à l'aide de l'entier passé en paramètre
+	def setNbJokers(uneValeur)
+	
+		@grille.nbJokers = uneValeur
+	end
 end

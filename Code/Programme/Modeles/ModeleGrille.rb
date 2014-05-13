@@ -39,7 +39,8 @@ class ModeleGrille < Modele
 		grille.dateModification = reqTemp[0]["datemaj"]
 		grille.dateCreation = reqTemp[0]["datecreation"]
 		grille.cases = Grille.casesDeserialize(reqTemp[0]["grille"])
-        
+		grille.nbJokers = reqTemp[0]["nbjokers"]
+
 		return grille
     end
 	
