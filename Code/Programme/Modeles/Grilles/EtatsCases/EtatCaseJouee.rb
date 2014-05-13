@@ -1,6 +1,6 @@
 #encoding UTF-8
 
-require 'EtatCase'
+require_relative 'EtatCase'
 
 class EtatCaseJouee < EtatCase
    

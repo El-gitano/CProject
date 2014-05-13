@@ -10,6 +10,7 @@ class VueJeu < Vue
 	@miSauvegarder
 	@miQuitter
 	@miRageQuit
+	@miDidac
 	
 	@lbTimer
 	@lbNomGrille
@@ -24,7 +25,7 @@ class VueJeu < Vue
 	
 	public_class_method :new
 	
-	attr_reader :miSauvegarder, :miQuitter, :miRageQuit, :lbTimer, :lbNomGrille, :btJoker, :btIndice, :btVerifier, :table
+	attr_reader :miSauvegarder, :miQuitter, :miRageQuit, :lbTimer, :lbNomGrille, :btJoker, :btIndice, :btVerifier, :table, :miDidac
 	
 	def initialize(unModele)
 	
@@ -58,6 +59,7 @@ class VueJeu < Vue
 		
 		#Niveau 1
 		fichier = Gtk::MenuItem.new("Fichier")
+		@miDidac = Gtk::MenuItem.new("Didacticiel")
 		@miRageQuit = Gtk::MenuItem.new("RageQuit")
 		
 		#Niveau 2 (Fichier)
@@ -71,6 +73,7 @@ class VueJeu < Vue
 		fichier.set_submenu(menuFichier)
 		
 		mb.append(fichier)
+		mb.append(@miDidac)
 		mb.append(@miRageQuit)
 		
 		return mb
