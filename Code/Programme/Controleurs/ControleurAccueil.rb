@@ -111,7 +111,7 @@ class ControleurAccueil < Controleur
 	#Ouvre une boite de dialogue permettant au joueur de choisir entre charger une partie ou en créer une nouvelle
 	def dgBoxChoixPartie
 	
-		dialogue = Gtk::Dialog.new("Choix de jeu", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, ["Charger", 1], ["Nouvelle partie", 2])
+		dialogue = Gtk::Dialog.new("Choix de jeu", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, ["Retour", 0], ["Charger", 1], ["Nouvelle partie", 2])
 
 		dialogue.set_modal(true)
 		dialogue.show_all
@@ -150,7 +150,7 @@ class ControleurAccueil < Controleur
 			#Chargement
 			if reponse == 2
 		
-				changerControleur(ControleurJeu.new(@picross, @modele.profil, true, listeur.treeView.selection.selected[0]))
+				changerControleur(ControleurJeu.new(@picross, @modele.profil, true, listeur.treeView.selection.selected[0])) if !listeur.treeView.selection.selected.nil?
 			end
 		}
 		
@@ -160,7 +160,7 @@ class ControleurAccueil < Controleur
 	#Propose au joueur l'ensemble des grilles jouables
 	def dgBoxNouvellePartie
 	
-		dialogue = Gtk::Dialog.new("Ouverture d'une sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
+		dialogue = Gtk::Dialog.new("Ouverture d'une sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT])
 		listeur = ListeurGrillesJouables.new(@modele)
 		
 		dialogue.set_size_request(600, 200)
@@ -173,7 +173,7 @@ class ControleurAccueil < Controleur
 			#On ne traite la réponse que si l'utilisateur a cliqué sur "OPEN"
 			if reponse == Gtk::Dialog::RESPONSE_ACCEPT then
 
-				changerControleur(ControleurJeu.new(@picross, @modele.profil, false, listeur.treeView.selection.selected[0]))
+				changerControleur(ControleurJeu.new(@picross, @modele.profil, false, listeur.treeView.selection.selected[0])) if !listeur.treeView.selection.selected.nil?
 			end
 		}
 

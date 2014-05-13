@@ -26,6 +26,12 @@ class ControleurProfil < Controleur
 			retourAccueil
 		}
 		
+		#Revenir à l'accueil
+		@vue.boutonRetour.signal_connect("button_press_event"){
+		
+			retourAccueil
+		}
+		
 		#Réinitialisation des statistiques
 		@vue.boutonEffacer.signal_connect("button_press_event"){
 		

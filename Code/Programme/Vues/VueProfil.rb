@@ -9,9 +9,10 @@ class VueProfil < Vue
 	
 	@boutonRenommer
 	@boutonEffacer
+	@boutonRetour
 	@lbPseudo
 	
-	attr_reader :boutonRenommer, :boutonEffacer
+	attr_reader :boutonRenommer, :boutonEffacer, :boutonRetour
 	
 	public_class_method :new
 	
@@ -23,6 +24,7 @@ class VueProfil < Vue
 		
 		@boutonRenommer = Gtk::Button.new("Renommer profil")
 		@boutonEffacer = Gtk::Button.new("Réinitialiser les statistiques")
+		@boutonRetour = Gtk::Button.new("Retour")
 		
 		vBox = Gtk::VBox.new(false, 20)
 		
@@ -38,6 +40,7 @@ class VueProfil < Vue
 		@vboxStats = Gtk::VBox.new(false, 5)
 		
 		hBox = Gtk::HBox.new(true, 5)
+		hBox.pack_start(@boutonRetour)
 		hBox.pack_start(@boutonRenommer)
 		hBox.pack_start(@boutonEffacer)
 		

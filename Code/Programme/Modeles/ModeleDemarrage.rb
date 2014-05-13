@@ -28,7 +28,7 @@ class ModeleDemarrage < Modele
             requete("INSERT INTO profil(pseudo, pass) VALUES ('#{unLogin}', NULL)")
             tab=requete("SELECT id from profil WHERE pseudo = '#{unLogin}'")
             id = tab [0]["id"]
-            req = "INSERT INTO stats(id, parties_commencees, parties_terminees, temps_joue, joker_utilises, indices_utilises, grilles_crees, ragequits) VALUES(#{id},0,0,0,0,0,0,0)"
+            req = "INSERT INTO stats(id, parties_commencees, parties_terminees, temps_joue, joker_utilises, indices_utilises, grilles_crees, nombre_clics, ragequits) VALUES(#{id},0,0,0,0,0,0,0,0)"
             requete(req)
 
             return true

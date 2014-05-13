@@ -33,6 +33,11 @@ class ModeleProfil < Modele
 		lancerMaj
 	end
 	
+	def infosStats
+	
+		req = requete("SELECT (parties_commencees/parties_terminees)*100, temps_joue, joker_tulises, indices_utilises, nombre_clics, ragequits FROM stats WHERE id = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}'))")
+		return req
+	end
 	#Retourne vrai si un profil existe sous le nom passé en paramètre
 	def profilExiste?(unProfil)
 	
