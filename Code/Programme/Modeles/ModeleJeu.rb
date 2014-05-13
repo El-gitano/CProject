@@ -35,6 +35,9 @@ class ModeleJeu < ModeleGrille
 	
 	#Retourne un indice de jeu au joueur
 	def getIndice
+	
+		@profil.getStats["indices_utilises"] += 1
+		print "À implémenter"
 	end
 	
 	#Retourne vrai si la grille du joueur répond aux critères de la grille de solution
@@ -48,9 +51,10 @@ class ModeleJeu < ModeleGrille
 		valide =  (informationsTemp.infosLignes == @informations.infosLignes and  informationsTemp.infosColonnes == @informations.infosColonnes)
 		
 		if valide then #Si grille terminée, +1 au nombre de partie terminées puis maj modification
+		
 			@timer.stopperTimer
-			@profil.donnees.stats["parties_terminees"]+=1
-			sauvegarderProfil()
+			@profil.getStats["parties_terminees"] += 1
+			sauvegarderProfil
 		end
 		
 		return valide
@@ -72,7 +76,7 @@ class ModeleJeu < ModeleGrille
 	#Retourne vrai si le nom de sauvegarde passé en paramètre existe déjà pour un joueur
 	def sauvegardeExiste?(nomSauvegarde)
 	
-		return !requete("SELECT * FROM grillejouee WHERE nompartie = '#{nomSauvegarde}' AND joueur = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}') AND idGrille = (SELECT id FROM grilleediter WHERE nomGrille = '#{@plateauJeu}')").empty?
+		return !requete("SELECT * FROM grillejouee WHERE nompartie = '#{nomSauvegarde}' AND joueur = #{@profil.getStats["id"]} AND idGrille = (SELECT id FROM grilleediter WHERE nomGrille = '#{@plateauJeu}')").empty?
 	end
 	
 	#Crée une nouvelle sauvegarde pour un joueur
@@ -98,7 +102,7 @@ class ModeleJeu < ModeleGrille
 		@informations = InfosGrille.new
 		@informations.genererInfos(@grille)
 
-		@profil.donnees.stats["parties_commencees"]+=1
+		@profil.getStats["parties_commencees"] += 1
 		
 		@plateauJeu = GrilleJeu.Creer(@grille.taille, nomPartie, @profil, @grille.nbJokers)
 
@@ -146,15 +150,28 @@ class ModeleJeu < ModeleGrille
 		return res
     end
 	
-	#Ajoute un ragequit au compte du joueur
+	#Ajoute un ragequit aux statistiques du joueur
 	def ajouterRageQuit
 	
-		print requete("UPDATE stats SET ragequits = ragequits+1 WHERE id = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}')")
+		@profil.getStats["ragequits"] += 1
+	end
+	
+	#Ajoute le temps passé depuis le lancement de la grille au temps de jeu global du joueur
+	def ajouterTemps
+	
+		@profil.getStats["temps_joue"] += @timer.tempsOrigine - @timer.temps
+	end
+	
+	#Ajoute un clic aux statistiques du joueur
+	def ajouterClic
+	
+		@profil.getStats["nombre_clics"] += 1
 	end
 	
 	#Dévoile 3 cases dans la mesure du possible
 	def utiliserJoker
-	
+		
+		enleverJoker
 		puts "À implémenter"
 	end
 	
@@ -162,6 +179,7 @@ class ModeleJeu < ModeleGrille
 	def enleverJoker
 	
 		@plateauJeu.nbJokers -= 1
+		@profil.getStats["joker_utilises"] += 1
 	end
 	
 	def getCase(x,y)

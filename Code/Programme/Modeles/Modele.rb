@@ -70,18 +70,21 @@ class Modele
     def sauvegarderProfil
 		
 		#Sauvegarde des stats
-		0.upto(@profil.donnees.stats.length/2) do |x|
+		0.upto(@profil.getStats.length/2) do |x|
 	
-			@profil.donnees.stats.delete(x)
+			@profil.getStats.delete(x)
 		end	
 
-		id = @profil.donnees.stats["id"]
-
-		#print "id : ",id
-
-		@profil.donnees.stats.each do |key, value| 
+		id = @profil.getStats["id"]
+		req = ""
+		
+		@profil.getStats.each do |key, value| 
 	
-			self.requete("UPDATE stats SET '#{key}' = '#{value}' WHERE id = #{id}") 
+			req += "'#{key}' = '#{value}', "
 		end	
+		
+		req = req[0...-2]
+		
+		self.requete("UPDATE stats SET #{req} WHERE id = #{id}") 
 	end
 end

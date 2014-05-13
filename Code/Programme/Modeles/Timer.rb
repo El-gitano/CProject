@@ -1,9 +1,11 @@
-ENCOURS = 0
-FINI = 1
-ENPAUSE = 2
-
+#La classe timer stocke un temps qu'elle incrémente chaque seconde lorsque son thread est lancé
 class Timer
 
+		ENCOURS = 0
+		FINI = 1
+		ENPAUSE = 2
+		
+		@tempsOrigine
 		@temps
 		@statutJeu
 		@label
@@ -13,13 +15,15 @@ class Timer
 		@secondes
 
 		attr_writer :label
-		attr_reader :temps
+		attr_reader :temps, :tempsOrigine
 
 		def initialize(unTemps=0)
 
-			@temps = unTemps
+			@tempsOrigine = unTemps
+			@temps = tempsOrigine
 		end 
 
+		#Le le thread chargé d'actualiser le timer lors d'une partie
 		def lancerTimer
 		
 			@statutJeu = ENCOURS
@@ -36,11 +40,13 @@ class Timer
 
 		end 
 
+		#Arrête le thread timer
 		def stopperTimer
 		
 			@statutJeu = FINI	
 		end
 
+		#Arrête le thread timer
 		def mettreEnPause
 		
 			@statutJeu = ENPAUSE	

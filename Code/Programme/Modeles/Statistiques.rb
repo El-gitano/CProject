@@ -16,9 +16,9 @@ class Statistiques
 		@stats = stats
 	end
 
+	#Met à jour une statistique à partir de son nom
 	def maj(cle, donnee)
 	
 		@stats[cle]=donnee	
 	end
-
 end

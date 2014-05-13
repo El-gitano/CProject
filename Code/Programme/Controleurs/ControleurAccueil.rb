@@ -1,15 +1,16 @@
 #encoding: UTF-8
 
-require './Modeles/ModeleAccueil'
+require_relative '../Modeles/ModeleAccueil'
 
-require './Vues/VueAccueil'
-require './Vues/ListeurSauvegardes'
-require './Vues/ListeurGrillesJouables'
+require_relative '../Vues/VueAccueil'
+require_relative '../Vues/Listeurs/ListeurGrillesJouables'
 
-require './Controleurs/Controleur'
-require './Controleurs/ControleurEditeur'
-require './Controleurs/ControleurProfil'
-require './Controleurs/ControleurJeu'
+require_relative 'Controleur'
+require_relative 'ControleurEditeur'
+require_relative 'ControleurProfil'
+require_relative 'ControleurJeu'
+require_relative 'ControleurChargerSauvegarde'
+require_relative 'ControleurNouvellePartie'
 
 require 'gtk2'
 
@@ -31,10 +32,10 @@ class ControleurAccueil < Controleur
 		@vue.window.signal_connect('delete_event'){
 		
 			@modele.sauvegarderProfil
-			changerControleur(ControleurDemarrage.new(@picross))
+			Gtk.main_quit
 		}
 		
-		#Retour à l'accueil
+		#Retour à la fenêtre de connexion
 		@vue.boutonDeco.signal_connect("clicked"){
 	
 			@modele.sauvegarderProfil
@@ -56,36 +57,7 @@ class ControleurAccueil < Controleur
 		#Affichage des crédits
 		@vue.boutonCredit.signal_connect("clicked"){
 		
-			dialogue = Gtk::Dialog.new("Crédits", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
-		
-			# Creation des elements
-			tabNoms = Array.new
-
-			tabNoms.push(hBoxNom("AYDIN Emre"))
-			tabNoms.push(hBoxNom("FOUCAULT Antoine"))
-			tabNoms.push(hBoxNom("GUENVER Loic"))
-			tabNoms.push(hBoxNom("LANVIN Elyan"))
-			tabNoms.push(hBoxNom("MARCAIS Thomas"))
-			tabNoms.push(hBoxNom("RAMOLET Arthur"))
-
-			labelAnnee = Gtk::Label.new("\nCrée en 2014")
-			labelUniv = Gtk::Label.new("Projet Université du Maine")
-
-			# Ajout des elements a la Vbox
-			tabNoms.each{|x|
-
-				dialogue.vbox.add(x)
-			}
-
-			dialogue.vbox.add(labelAnnee)
-			dialogue.vbox.add(labelUniv)
-
-			# Affichage des elements et lancement de la fenetre
-			dialogue.show_all
-
-			dialogue.run
-			
-			dialogue.destroy
+			dgCredit
 		}
 	
 		@vue.boutonProfil.signal_connect("clicked"){
@@ -122,35 +94,11 @@ class ControleurAccueil < Controleur
 
 				when 1#Chargement
 
-					dgBoxChargement
+					changerControleur(ControleurChargerSauvegarde.new(@picross, @modele.profil))
 					
 				when 2#Nouvelle partie
 
-					dgBoxNouvellePartie
-			end
-		}
-		
-		dialogue.destroy
-	end
-	
-	#Propose au joueur l'ensemble de ses sauvegardes
-	def dgBoxChargement
-	
-		dialogue = Gtk::Dialog.new("Chargement d'une sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, ["Annuler", 1], ["Charger", 2])
-		dialogue.set_modal(true)
-		dialogue.set_size_request(600, 200)
-		
-		listeur = ListeurSauvegardes.new(@modele)
-		dialogue.vbox.add(listeur)
-
-		dialogue.show_all
-		
-		dialogue.run{|reponse|
-				
-			#Chargement
-			if reponse == 2
-		
-				changerControleur(ControleurJeu.new(@picross, @modele.profil, true, listeur.treeView.selection.selected[0])) if !listeur.treeView.selection.selected.nil?
+					changerControleur(ControleurNouvellePartie.new(@picross, @modele.profil))
 			end
 		}
 		
@@ -187,5 +135,39 @@ class ControleurAccueil < Controleur
 		hBox.pack_start(Gtk::Label.new(unTitre + " : "))
 		hBox.pack_start(unLabel)
 		return hBox
+	end
+	
+	def dgCredit
+	
+		dialogue = Gtk::Dialog.new("Crédits", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,[Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
+		
+		# Creation des elements
+		tabNoms = Array.new
+
+		tabNoms.push(hBoxNom("AYDIN Emre"))
+		tabNoms.push(hBoxNom("FOUCAULT Antoine"))
+		tabNoms.push(hBoxNom("GUENVER Loic"))
+		tabNoms.push(hBoxNom("LANVIN Elyan"))
+		tabNoms.push(hBoxNom("MARCAIS Thomas"))
+		tabNoms.push(hBoxNom("RAMOLET Arthur"))
+
+		labelAnnee = Gtk::Label.new("\nCrée en 2014")
+		labelUniv = Gtk::Label.new("Projet Université du Maine")
+
+		# Ajout des elements a la Vbox
+		tabNoms.each{|x|
+
+			dialogue.vbox.add(x)
+		}
+
+		dialogue.vbox.add(labelAnnee)
+		dialogue.vbox.add(labelUniv)
+
+		# Affichage des elements et lancement de la fenetre
+		dialogue.show_all
+
+		dialogue.run
+		
+		dialogue.destroy
 	end
 end

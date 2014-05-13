@@ -11,9 +11,10 @@ class ModeleProfil < Modele
 	def initialize(unProfil)
 	
 		super(unProfil)
-		@stats = @profil.donnees.stats
+		@stats = @profil.getStats
 	end
 	
+	#Met toutes les valeurs des statistiques du joueur à l'état initial
 	def reinitialiserStatistiques
 	
 		#Génération des nouvelles statistiques
@@ -25,15 +26,16 @@ class ModeleProfil < Modele
 			newStats[cle] = valeur
 		}
 
-		@profil.donnees.stats = newStats
+		#Màj en mémoire
 		@stats = newStats
+		@profil.changerStats(newStats)	
 		
 		#Enregistrement dans la bdd
 		sauvegarderProfil
 		lancerMaj
 	end
 	
-	#Retourne les statistiques de tous les joueurs
+	#Retourne les statistiques de tous les joueurs depuis la bdd
 	def infosStats
 	
 		req = requete("SELECT pseudo, (parties_terminees/parties_commencees) AS taux_reussite, temps_joue, joker_utilises, indices_utilises, nombre_clics, ragequits FROM stats INNER JOIN profil ON stats.id = profil.id")
@@ -53,5 +55,11 @@ class ModeleProfil < Modele
 		requete("UPDATE grilleediter SET createur ='#{nouveauNom}' WHERE createur = '#{@profil.pseudo}'")
 		@profil.pseudo = nouveauNom
 		lancerMaj
+	end
+	
+	#Retourne le pseudo du profil chargé en mémoire
+	def getPseudo
+	
+		return @profil.pseudo
 	end
 end	

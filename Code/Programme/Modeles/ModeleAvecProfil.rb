@@ -16,4 +16,9 @@ class ModeleAvecProfil < Modele
 		
 		
 	end
+	
+	def getPseudo
+	
+		return @profil.pseudo
+	end
 end

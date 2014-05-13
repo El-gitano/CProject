@@ -21,7 +21,7 @@ class VueAccueil < Vue
 		super(unModele, "Accueil")
 
 		#Lignes de code commentées pour les tests
-		@window.set_size_request(350,800)
+		@window.set_size_request(350, 800)
 		
 		#Cette box contient les 5 lignes champs + bouton
 		vbox = Gtk::VBox.new(false, 50)
@@ -49,7 +49,7 @@ class VueAccueil < Vue
 		animation = Gtk::Image.new(nil)
 		animation.set_pixbuf_animation(pixAnim)
 		
-		vbox.pack_start(animation, false, false,0)
+		#vbox.pack_start(animation, false, false,0)
 		vbox.pack_start(@boutonJouer, false, false, 0)
 		vbox.pack_start(@boutonEditer, false, false, 0)
 		vbox.pack_start(@boutonCredit, false, false, 0)

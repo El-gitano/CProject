@@ -20,23 +20,13 @@ class Vue
 		@window.set_resizable(false)
 	end
 
-	
-	#A utiliser pour les test (pas besoin du modèle) ET À COMMENTER POUR LES AUTRES
-	#def initialize()
-	
-
-	#	@window = Gtk::Window.new("Picross")
-	#	@window.set_window_position(Gtk::Window::POS_CENTER)
-	#	@window.set_resizable(true)
-	#end
-	
-	
 	#Actualiser sera redéfinit par les classes filles (on code ici pour débuguer)
 	def actualiser
 	
 	
 	end
 	
+	#Ferme la fenêtre de la vue actuelle
 	def fermerFenetre
 	
 		@window.hide_all

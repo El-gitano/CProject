@@ -1,6 +1,6 @@
 require './Vues/Vue'
 
-#Vue chargée d'effectuer le lien entre le contrôleur et l'utilisateur lors de l'écran de connexion à son profil
+#Vue chargée de présenter une interface de connexion/création/supression pour un profil
 class VueDemarrage < Vue
 	
 	@boutonAjouter

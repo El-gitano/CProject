@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
-require './Vues/Vue'
-require './Vues/ListeurStats'
+require_relative 'Vue'
+require_relative 'Listeurs/ListeurStats'
 
 class VueProfil < Vue
 
@@ -19,13 +19,13 @@ class VueProfil < Vue
 	
 	def initialize(unModele)
 	
-		super(unModele, "Profil")
+		super(unModele, "Profil/Classement")
 
 		@window.signal_connect('destroy') {Gtk.main_quit}
 		
-		@boutonRenommer = Gtk::Button.new("Renommer profil")
-		@boutonEffacer = Gtk::Button.new("Réinitialiser les statistiques")
-		@boutonRetour = Gtk::Button.new("Retour")
+		@boutonRenommer = Gtk::Button.new("Renommer mon profil")
+		@boutonEffacer = Gtk::Button.new("Réinitialiser mes statistiques")
+		@boutonRetour = Gtk::Button.new("Retour à l'accueil")
 		
 		vBox = Gtk::VBox.new(false, 20)
 		
@@ -58,7 +58,7 @@ class VueProfil < Vue
 	
 	def miseAJour
 	
-		@lbPseudo.set_markup("<b>Statistiques de #{@modele.profil.pseudo}</b>")
+		@lbPseudo.set_markup("<b>Statistiques et classement de #{@modele.profil.pseudo}</b>")
 		@listeur.maj
 		
 	end

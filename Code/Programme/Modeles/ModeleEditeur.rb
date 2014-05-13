@@ -17,13 +17,6 @@ class ModeleEditeur < ModeleGrille
 		@grille = GrilleEditeur.Creer(uneTaille, "NouvelleGrille", unProfil, 0)
 	end
 	
-	#Retourne un tableau des noms des grilles d'un utilisateur, possibilité d'effectuer un traitement de type yield
-	def infosGrillesEditables
-	
-        req = requete("SELECT nomgrille, pseudo, taillegrille, nbjokers, datecreation, datemaj FROM grilleediter INNER JOIN profil ON profil.id = grilleediter.createur WHERE pseudo='#{@profil.pseudo}'")
-		return req
-    end
-	
 	#Retourne vrai si le profil chargé dans le modèle est propriétaire d'une grille dont le nom est passé en paramètre (et vrai si la grille n'existe pas)
 	def grillePropriete(unNomGrille)
 		
@@ -34,7 +27,13 @@ class ModeleEditeur < ModeleGrille
 		return !requete("SELECT * FROM grilleediter WHERE createur = '#{id[0]["id"]}' AND nomgrille = '#{unNomGrille}'").empty?
 	end
 	
-		#Sauvegarde une grille
+	#Ajoute une création de grille aux statistiques du joueur
+	def ajouterGrilleCree
+	
+		@profil.getStats["grilles_crees"] += 1
+	end
+	
+	#Sauvegarde une grille sous le nom passé en paramètre
     def sauvegarderGrille(nomGrille)
     
         serial = @grille.casesSerialize
@@ -47,7 +46,7 @@ class ModeleEditeur < ModeleGrille
         
     end
 
-	#Met à jour une grille
+	#Met à jour une grille à partir de son nom
 	def miseAJourGrille(nomGrille)
 	
 		serial = @grille.casesSerialize

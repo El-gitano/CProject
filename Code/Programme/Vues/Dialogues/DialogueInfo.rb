@@ -1,9 +1,11 @@
 require 'gtk2'
 
+#DialogueInfo est une boîte de dialogue informative prenant en paramètre le titre et le texte de la boîte lors de son instanciation
 class DialogueInfo < Gtk::Dialog
 
 	private_class_method :new
 	
+	#Cette méthode crée le dialogue et le lance
 	def DialogueInfo.afficher(unTitre, uneInfo, uneFenetre)
 	
 		d = new(unTitre, uneInfo, uneFenetre)

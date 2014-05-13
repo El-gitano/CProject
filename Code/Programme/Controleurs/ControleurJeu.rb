@@ -25,6 +25,7 @@ class ControleurJeu < Controleur
 		#On link le label au timer
 		@modele.timer.label = @vue.lbTimer
 
+		#Multi-sélection
 		@vue.window.signal_connect("key-press-event"){|w, e|
 		
 			if  Gdk::Keyval::GDK_space == e.keyval then
@@ -45,6 +46,9 @@ class ControleurJeu < Controleur
 		
 			uneCase.signal_connect("button_press_event"){|laCase, event|
 		
+				#Màj stats
+				@modele.ajouterClic
+				
 				# Si clic gauche
 				if (event.button == 1) then
 	
@@ -73,6 +77,7 @@ class ControleurJeu < Controleur
 		@vue.miRageQuit.signal_connect("activate"){
 		
 			@modele.ajouterRageQuit
+			@modele.ajouterTemps
 			@modele.sauvegarderProfil
 			Gtk.main_quit
 		}
@@ -82,9 +87,6 @@ class ControleurJeu < Controleur
 	
 			#On dévoile les cases voulues
 			@modele.utiliserJoker
-		
-			#On decremente le nb de jokers
-			@modele.enleverJoker
 		
 			#On met jour la/les vues
 			@modele.lancerMaj

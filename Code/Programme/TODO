@@ -1,6 +1,7 @@
 Mini-aide
 Passer actualiser_case dans une classe VueGrille pour refonte
 Générer RDoc
-Gérer le profil par listeur (mettre ligne du joueur en rouge)
-Mettre à jour les stats lors du jeu
-Ajouter la supression de sauvegarde et de grille
+Mettre à jour les stats lors du jeu (vérifier temps_joué)
+Commenter les vues, modèles, contrôleurs
+Vérifier les sorties aux fermetures de fenêtre
+Générer des scripts d'exécution automatique

@@ -1,19 +1,17 @@
 # encoding: utf-8 
+
 require 'gtk2'
 
-#Cette classe présente les grilles éditables par un joueur sous forme d'une grille
-class ListeurGrillesJouables < Gtk::ScrolledWindow
+require_relative 'Listeur'
 
-	@modele
-	@treeView
-	
-	attr_reader :treeView
+#Cette classe présente les grilles jouables par un joueur
+class ListeurGrillesJouables < Listeur
+
+	public_class_method :new
 	
 	def initialize(unModele)
 	
-		super()
-
-		@modele = unModele
+		super(unModele)
 
 		modeleTV = Gtk::ListStore.new(String, String, Integer, Integer, String, String)
 		
@@ -30,7 +28,7 @@ class ListeurGrillesJouables < Gtk::ScrolledWindow
 			}
 		}
 		
-		@treeView = Gtk::TreeView.new(modeleTV)
+		@treeView.model = modeleTV
  
 		#On définit + ajoute les colonnes
 		listeColonnes = Array.new
@@ -43,23 +41,8 @@ class ListeurGrillesJouables < Gtk::ScrolledWindow
 		listeColonnes.push(Gtk::TreeViewColumn.new("Date création", renderer, "text" => 4))
 		listeColonnes.push(Gtk::TreeViewColumn.new("Date modification", renderer, "text" => 5))
 
-		#Les colonnes sont triables
-		listeColonnes.each_with_index{|col, index|
-			
-			col.sort_indicator = true
-  			col.sort_column_id = index
-  			
-  			col.signal_connect('clicked'){ |col|
+		linkerColonnes(listeColonnes)
 
-   				col.sort_order =  (col.sort_order == Gtk::SORT_ASCENDING) ? Gtk::SORT_DESCENDING : Gtk::SORT_ASCENDING
-  			}
-  			
-  			@treeView.append_column(col)
-		}
-
-		add(@treeView)
-		set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC)
-		border_width = 5
 		return self
 	end
 end

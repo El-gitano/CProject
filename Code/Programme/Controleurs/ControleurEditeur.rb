@@ -1,13 +1,13 @@
 # encoding: utf-8
 
-require './Controleurs/Controleur'
+require_relative 'Controleur'
+require_relative 'ControleurOuvrirGrille'
 
-require './Modeles/ModeleEditeur'
-require './Modeles/Grilles/GrilleEditeur'
+require_relative '../Modeles/ModeleEditeur'
+require_relative '../Modeles/Grilles/GrilleEditeur'
 
-require './Vues/VueEditeur'
-require './Vues/DialogueInfo'
-require './Vues/ListeurGrillesEditables'
+require_relative '../Vues/VueEditeur'
+require_relative '../Vues/Dialogues/DialogueInfo'
 
 require 'gtk2'
 
@@ -18,50 +18,28 @@ class ControleurEditeur < Controleur
 	@multiSelection = false
 	
 	# Constructeur
-	def initialize(unJeu, unProfil)
+	def initialize(unJeu, unProfil, grilleACharger = nil)
 
 		super(unJeu)
 
 		@modele = ModeleEditeur.new(unProfil, 10)
 		@vue = VueEditeur.new(@modele)
-		@modele.ajouterObservateur(@vue)
+		@modele.ajouterObservateur(@vue)	
+		@modele.charger(grilleACharger) if !grilleACharger.nil?
 		
 		#On revient au menu quand la fenêtre de l'éditeur est fermée
 		@vue.window.signal_connect('delete_event'){
 		
-			retourAccueil
+			@modele.sauvegarderProfil
+			Gtk.main_quit
 		}
-		
-		#Touche de multisélection
-		@vue.window.add_events(Gdk::Event::KEY_PRESS)
 		
 		choixGrille = nil
 		
 		#Boîte de dialogue pour ouverture d'une grille
 		@vue.boutonOuvrir.signal_connect("clicked"){
 
-		
-			dialogue = Gtk::Dialog.new("Ouverture d'une grille", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
-			listeur = ListeurGrillesEditables.new(@modele)
-			
-			dialogue.set_size_request(600, 200)
-			dialogue.set_modal(true)	
-			dialogue.vbox.add(listeur)			
-			dialogue.show_all
-			
-			dialogue.run{|reponse|
-
-				#On ne traite la réponse que si l'utilisateur a cliqué sur "OPEN"
-				if reponse == Gtk::Dialog::RESPONSE_ACCEPT then
-	
-					@modele.charger(listeur.treeView.selection.selected[0])
-				end
-			}
-
-			dialogue.destroy
-			
-			@modele.lancerMaj
-			connecterGrille
+			changerControleur(ControleurOuvrirGrille.new(@picross, @modele.profil))
 		}
 	
 		#Dialogue pour l'enregistrement d'une grille
@@ -128,6 +106,7 @@ class ControleurEditeur < Controleur
 											when Gtk::Dialog::RESPONSE_ACCEPT
 										
 												@modele.miseAJourGrille(etNomGrille.text)
+												@modele.ajouterGrilleCree
 												DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès\nL'ancienne grille a été écrasée", @vue.window)
 												choixOK = true
 										end
@@ -137,8 +116,9 @@ class ControleurEditeur < Controleur
 								#Pas de grille déjà existante, on sauvegarde
 								else
 								
+									@modele.ajouterGrilleCree
 									@modele.sauvegarderGrille(etNomGrille.text)
-									 DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", @vue.window)
+									DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", @vue.window)
 									choixOK = true
 								end
 							else
@@ -185,6 +165,7 @@ class ControleurEditeur < Controleur
 		}
 		
 		connecterGrille
+		@modele.lancerMaj
 		
 	end
 	

@@ -1,7 +1,7 @@
 require 'gtk2'
 
 #Une case vue est un boite d'évènement qui contient une image
-#À l'initialisation, on définit la taille de l'image contenue puis ensuite on la change seulement (le type de l'image mais pas la taille
+#À l'initialisation, on définit la taille de l'image contenue puis ensuite on change seulement l'image (mais pas sa taille)
 class CaseVue < Gtk::EventBox
 
 	@x

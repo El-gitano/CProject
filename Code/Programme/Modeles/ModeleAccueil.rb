@@ -1,4 +1,4 @@
-require './Modeles/ModeleAvecProfil'
+#encoding UTF-8
 
 class ModeleAccueil < Modele
 
@@ -9,20 +9,7 @@ class ModeleAccueil < Modele
 		super(unProfil)
 	end
 	
-	#Retourne les informations sur les sauvegardes d'un joueur
-	def infosSauvegardes
-	
-        req = requete("SELECT nompartie, nomgrille, taillegrille, jokersRestants, grillejouee.datemaj FROM grillejouee INNER JOIN grilleediter ON grillejouee.idGrille=grilleediter.id WHERE joueur = (SELECT id FROM profil WHERE pseudo = '#{@profil.pseudo}')")
-
-		return req
-	end
-	
-	def infosGrillesJouables
-		
-		req = requete("SELECT nomgrille, pseudo, taillegrille, nbjokers, datecreation, datemaj FROM grilleediter INNER JOIN profil ON profil.id = grilleediter.createur")
-		return req
-	end
-	
+	#Retourne la taille d'une grille
 	def getTailleGrille(uneGrille)
 	
 		res = requete("SELECT taillegrille FROM grilleediter WHERE nomgrille = '#{uneGrille}'")

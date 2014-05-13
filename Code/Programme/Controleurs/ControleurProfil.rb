@@ -1,8 +1,8 @@
 # encoding: UTF-8
 
-require './Modeles/ModeleProfil'
-require './Vues/VueProfil'
-require './Controleurs/Controleur'
+require_relative '../Modeles/ModeleProfil'
+require_relative '../Vues/VueProfil'
+require_relative '../Controleurs/Controleur'
 
 require 'gtk2'
 
@@ -27,13 +27,13 @@ class ControleurProfil < Controleur
 		}
 		
 		#Revenir à l'accueil
-		@vue.boutonRetour.signal_connect("button_press_event"){
+		@vue.boutonRetour.signal_connect("clicked"){
 		
 			retourAccueil
 		}
 		
 		#Réinitialisation des statistiques
-		@vue.boutonEffacer.signal_connect("button_press_event"){
+		@vue.boutonEffacer.signal_connect("clicked"){
 		
 			@modele.reinitialiserStatistiques
 		}

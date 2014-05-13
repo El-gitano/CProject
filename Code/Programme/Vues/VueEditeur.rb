@@ -1,8 +1,8 @@
 # encoding: UTF-8
 
-require './Vues/Vue'
-require './Vues/BoutonTaille'
-require './Vues/CaseVue'
+require_relative 'Vue'
+require_relative 'BoutonTaille'
+require_relative 'CaseVue'
 
 #Vue chargée d'effectuer le lien entre le contrôleur et l'utilisateur lors de l'écran d'accueil
 class VueEditeur < Vue
