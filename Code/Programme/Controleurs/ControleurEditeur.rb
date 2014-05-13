@@ -39,6 +39,7 @@ class ControleurEditeur < Controleur
 		
 		#Boîte de dialogue pour ouverture d'une grille
 		@vue.boutonOuvrir.signal_connect("clicked"){
+
 		
 			dialogue = Gtk::Dialog.new("Ouverture d'une grille", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OPEN, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
 			listeur = ListeurGrillesEditables.new(@modele)
@@ -160,7 +161,12 @@ class ControleurEditeur < Controleur
 			@modele.grille.genererAleatoire
 			@modele.lancerMaj
 		}
-	
+
+		# Bouton pour le retour a l'accueil	
+		@vue.boutonRetour.signal_connect("clicked"){
+			retourAccueil
+		}
+
 		#Le SpinButton des jokers
 		@vue.sbNbJokers.signal_connect("value-changed"){
 		

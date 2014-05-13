@@ -11,6 +11,7 @@ class VueEditeur < Vue
 	@boutonEnregistrer
 	@boutonImporterImage
 	@boutonAleatoire
+	@boutonRetour
 	@labelTaille
 	@listBoutonTaille
 	@sbNbJokers
@@ -25,7 +26,7 @@ class VueEditeur < Vue
 	@mat
 	@tailleGrille
 	
-attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAleatoire, :listBoutonTaille, :mat, :sbNbJokers
+attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAleatoire, :boutonRetour, :listBoutonTaille, :mat, :sbNbJokers
 	
 	public_class_method :new
 	
@@ -50,6 +51,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		@boutonEnregistrer = Gtk::Button.new(" Enregistrer", false)
 		#@boutonImporterImage = Gtk::Button.new(" Importer", false)
 		@boutonAleatoire = Gtk::Button.new("Aléatoire", false)
+		@boutonRetour = Gtk::Button.new(" Retour", false)
 		@labelTaille = Gtk::Label.new("Taille de la grille", false)
 		
 		nbBoutonsHaut = 4
@@ -61,6 +63,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		@boutonEnregistrer.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		#@boutonImporterImage.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		@boutonAleatoire.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
+		@boutonRetour.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		
 		@listBoutonTaille = Array.new
 		5.step(25,5){ |x|
@@ -75,22 +78,26 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		imgEnregistrer = Gtk::Image.new("./Vues/Images/disquette.png")
 		#imgImporterImage = Gtk::Image.new("./Vues/Images/image2.png")
 		imgAleatoire = Gtk::Image.new("./Vues/Images/aleatoire.png")
+		imgFermer = Gtk::Image.new("./Vues/Images/retour.png")
 
 		@boutonOuvrir.set_image(imgOuvrir)
 		@boutonEnregistrer.set_image(imgEnregistrer)
 		#@boutonImporterImage.set_image(imgImporterImage)
 		@boutonAleatoire.set_image(imgAleatoire)
+		@boutonRetour.set_image(imgFermer)
 
 		imgOuvrir.show()
 		imgEnregistrer.show()
 		#imgImporterImage.show()
 		imgAleatoire.show()
+		imgFermer.show()
 
 		@hbox1.pack_start(@boutonOuvrir, true, false, 0)
 		@hbox1.pack_start(@boutonEnregistrer, true, false, 0)
 		#@hbox1.pack_start(@boutonImporterImage, true, false, 0)
 		@hbox1.pack_start(@boutonAleatoire, true, false, 0)
-		
+		@hbox1.pack_start(@boutonRetour, true, false, 0)
+
 		@vbox2.pack_start(@labelTaille, true, false, 0)
 		@vbox2.pack_start(@hbox2, true, false, 0)
 	
