@@ -162,6 +162,7 @@ class VueJeu < Vue
 		}
 		
 		#Création de la grille
+				
 		0.upto(tailleGrille-1){|x|
 		
 			0.upto(tailleGrille-1){|y|
@@ -170,6 +171,15 @@ class VueJeu < Vue
 				@table.attach(caseTemp, x+1, x+2, y+1, y+2)
 				@mat[x][y] = caseTemp
 			}
+		}
+		
+		#Définition de l'espacement des cases toutes les 5 cases
+		espacementCases = 2
+		
+		5.step(tailleGrille, 5){|i|
+		
+			@table.set_row_spacing(i, espacementCases)
+			@table.set_column_spacing(i, espacementCases)
 		}
 		
 		return @table
