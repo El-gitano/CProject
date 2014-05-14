@@ -45,11 +45,11 @@ class VueAccueil < Vue
 
 		imgDeco.show()
 
-		pixAnim = Gdk::PixbufAnimation.new('./Vues/Images/animation.GIF')
+		pixAnim = Gdk::PixbufAnimation.new('./Vues/Images/animation.gif')
 		animation = Gtk::Image.new(nil)
 		animation.set_pixbuf_animation(pixAnim)
 		
-		#vbox.pack_start(animation, false, false,0)
+		vbox.pack_start(animation, false, false,0)
 		vbox.pack_start(@boutonJouer, false, false, 0)
 		vbox.pack_start(@boutonEditer, false, false, 0)
 		vbox.pack_start(@boutonCredit, false, false, 0)

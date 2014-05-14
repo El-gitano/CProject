@@ -28,7 +28,7 @@ class ModeleProfil < ModeleAvecProfil
 
 		#Màj en mémoire
 		@stats = newStats
-		@profil.changerStats(newStats)	
+		@profil.setStats(newStats)	
 		
 		#Enregistrement dans la bdd
 		sauvegarderProfil

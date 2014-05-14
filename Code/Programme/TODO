@@ -5,3 +5,5 @@ Implanter les jokers et les indices + fin de partie
 Corriger taux de réussite dans profil
 Centrer la fenêtre de jeu
 Manuel utilisateur
+Renommer la test.sqlite en bdd.sqlite
+Crypter les sauvegardes
