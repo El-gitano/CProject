@@ -1,3 +1,4 @@
+#encoding: UTF-8
 require 'gtk2'
 
 require_relative 'DialogueConfirmation'

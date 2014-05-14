@@ -165,6 +165,7 @@ class VueJeu < Vue
 		}
 		
 		#Création de la grille
+				
 		0.upto(tailleGrille-1){|x|
 		
 			0.upto(tailleGrille-1){|y|
