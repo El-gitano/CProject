@@ -2,16 +2,20 @@
 
 require_relative '../Modeles/ModeleJeu'
 require_relative '../Vues/VueJeu'
+
 require_relative '../Vues/Dialogues/DialogueTuto'
 require_relative '../Vues/Dialogues/DialogueInfoFinPartie'
+require_relative '../Vues/Dialogues/DialogueSaveJeu'
+require_relative '../Vues/Dialogues/DialogueConfirmation'
+
 require_relative 'Controleur'
 
 require 'gtk2'
 
+#Le contrôleur de jeu définit l'ensemble de la logique du jeu de Picross
 class ControleurJeu < Controleur
 
 	@multiSelection
-	@didacticiel
 	
 	public_class_method :new
 	
@@ -87,6 +91,7 @@ class ControleurJeu < Controleur
 		
 		#Affichage du didacticiel et arrete le Timer pendant ce temps et le reprendre lorsqu'on le ferme
 		@vue.miDidac.signal_connect("activate"){
+			
 			@modele.timer.stopperTimer
 			DialogueTuto.afficher(@vue.window)
 			@modele.timer.lancerTimer
@@ -132,124 +137,36 @@ class ControleurJeu < Controleur
 		}	
 
 		# Sauvegarder la grille pour la continuer plus tard
-		@vue.miSauvegarder.signal_connect("activate"){	
+		@vue.miSauvegarder.signal_connect("activate"){
+		
 			@modele.timer.stopperTimer
-			dgSauvegarde
+			DialogueSaveJeu.afficher(@vue.window, @modele)
 			@modele.lancerMaj
 			@modele.timer.lancerTimer
 		}
 		
 		# On propose la sauvegarde avant de quitter la partie
 		@vue.miQuitter.signal_connect("activate"){
+		
 			@modele.timer.stopperTimer
-			dgSauvegardeQuitter
+			sauvegardeQuitter
 		}
 		
-		#On revient au menu quand la fenêtre de l'éditeur est fermée
+		#On quitte le jeu
 		@vue.window.signal_connect('delete_event'){
 		
-			dgSauvegardeQuitter
+			@modele.sauvegarderProfil
+			Gtk.main_quit
 		}
 	end
 	
-	#Boite de dialogue récupérant la sauvegarde
-	def dgSauvegarde
+	#Propose au joueur de sauvegarder avant de revenir à l'accueil
+	def sauvegardeQuitter
 	
-		#On demande à l'utilisateur d'entrer un nom de grille
-		dialogue = Gtk::Dialog.new("Nom de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT])
-
-		dialogue.set_modal(true)
-
-		lbNomSauvegarde = Gtk::Label.new("Nom de la sauvegarde : ")
-		etNomSauvegarde = Gtk::Entry.new
-		etNomSauvegarde.text = @modele.plateauJeu.nomGrille
-		
-		hBox = Gtk::HBox.new(false, 5)
-
-		hBox.pack_start(lbNomSauvegarde , false, false, 0)
-		hBox.pack_start(etNomSauvegarde , false, false, 0)
-		dialogue.vbox.pack_start(hBox, false, false, 0)
-		
-		dialogue.show_all
-
-		dialogue.run{|reponse|
-
-			#On ne traite la réponse que si l'utilisateur a cliqué sur "Enregistrer" ou "ANNULER"
-			if reponse == Gtk::Dialog::RESPONSE_ACCEPT
-
-					#On vérifie que la grille n'existe pas et que l'utilisateur est propriétaire de la grille
-					if not etNomSauvegarde.text.eql?("") then
-						
-						#La grille existe déjà, on demande donc à l'utilisateur de confirmer sa sauvegarde
-						if @modele.sauvegardeExiste?(etNomSauvegarde.text) then
-					
-							d = Gtk::Dialog.new("Sauvegarde existante", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
-							d.set_modal(true)
-
-							hbox = Gtk::HBox.new(false, 5)
-
-							label = Gtk::Label.new("Une sauvegarde sous ce nom existe déjà. Écraser la sauvegarde existante ?")
-							image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
-
-							hbox.pack_start(image, false, false, 0)
-							hbox.pack_start(label, false, false, 0)
-
-							d.vbox.add(hbox)
-
-							d.show_all	
-							d.run{|reponse|
-						
-								case reponse
-									
-									#Réponse positive on sauvegarde en écrasant l'ancienne grille
-									when Gtk::Dialog::RESPONSE_ACCEPT
-										
-										@modele.profil.getStats["timer"] += @modele.tempsEcoule
-										@modele.remplacerSauvegarde
-										DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès\nL'ancienne grille a été écrasée", @vue.window)
-										choixOK = true
-								end
-							}
-							d.destroy
-						
-						#Pas de grille déjà existante, on sauvegarde
-						else
-						
-							@modele.profil.getStats["timer"] += @modele.tempsEcoule
-							@modele.nouvelleSauvegarde(etNomSauvegarde.text)
-							DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", @vue.window)
-							choixOK = true
-						end
-					else
-					
-						 DialogueInfo.afficher("Grille non renseignée", "Grille appartenant à un autre joueur ou non renseignée", @vue.window)
-					end
-			end
-		}
-		
-		dialogue.destroy
-	end
-	
-	def dgSauvegardeQuitter
-	
-		dialogue = Gtk::Dialog.new("Proposition de sauvegarde", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT, ["Non", Gtk::Dialog::RESPONSE_REJECT], ["Oui", Gtk::Dialog::RESPONSE_ACCEPT])
-
-		dialogue.set_modal(true)
-
-		lbNomSauvegarde = Gtk::Label.new("Souhaitez vous sauvegarder votre grille avant de quitter ?")
-		dialogue.vbox.pack_start(lbNomSauvegarde, false, false, 0)
-	
-		dialogue.show_all
-
-		dialogue.run{|reponse|
-
-			if reponse == Gtk::Dialog::RESPONSE_ACCEPT
+		if DialogueConfirmation.afficher("Proposition de sauvegarde", @vue.window, "Souhaitez vous sauvegarder votre partie avant de revenir à l'accueil ?") then
 			
-				dgSauvegarde
-			end
-		}
-		
-		dialogue.destroy
+				DialogueSaveJeu.afficher()
+		end
 		
 		@modele.timer.stopperTimer
 		changerControleur(ControleurAccueil.new(@picross, @modele.profil))

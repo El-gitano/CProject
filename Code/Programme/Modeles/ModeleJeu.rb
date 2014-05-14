@@ -76,7 +76,7 @@ class ModeleJeu < ModeleGrille
 	#Retourne vrai si le nom de sauvegarde passé en paramètre existe déjà pour un joueur
 	def sauvegardeExiste?(nomSauvegarde)
 	
-		return !requete("SELECT * FROM grillejouee WHERE nompartie = '#{nomSauvegarde}' AND joueur = #{@profil.getStats["id"]} AND idGrille = (SELECT id FROM grilleediter WHERE nomGrille = '#{@plateauJeu}')").empty?
+		return !requete("SELECT * FROM grillejouee WHERE nompartie = '#{nomSauvegarde}' AND joueur = #{@profil.getStats["id"]}").empty?
 	end
 	
 	#Crée une nouvelle sauvegarde pour un joueur
@@ -85,10 +85,9 @@ class ModeleJeu < ModeleGrille
 		serial = @plateauJeu.casesSerialize
         nbJokers = @plateauJeu.nbJokers
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
-        
-		idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")[0]["id"]
+
 		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'")[0]["id"]
-		self.requete("INSERT INTO grillejouee(joueur, idGrille, nompartie, grille, jokersRestants, timer, datedebut, datemaj) VALUES('#{idProfil}','#{idGrilleRef}','#{nomPartie}','#{serial}','#{nbJokers}','#{@timer.temps}','#{date}','#{date}')")
+		requete("INSERT INTO grillejouee(joueur, idGrille, nompartie, grille, jokersRestants, timer, datedebut, datemaj) VALUES('#{@profil.getStats["id"]}','#{idGrilleRef}','#{nomPartie}','#{serial}','#{nbJokers}','#{@timer.temps}','#{date}','#{date}')")
 	end
 	
 	#Démarre une nouvelle partie
@@ -112,12 +111,9 @@ class ModeleJeu < ModeleGrille
 	
 	#Charge une partie depuis son nom
 	def chargerPartie(nomPartie)
-	
-		idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
-		req = "SELECT * FROM grillejouee WHERE nompartie='#{nomPartie}' AND joueur='#{idProfil[0]["id"]}'"
-		reqTemp = requete(req)
-		
-		nomGrilleRef = requete("SELECT nomgrille FROM grilleediter WHERE id='#{reqTemp[0]["idGrille"]}'")
+
+		reqTemp = requete("SELECT * FROM grillejouee WHERE nompartie='#{nomPartie}' AND joueur='#{@profil.getStats["id"]}'")[0]["idGrille"]
+		nomGrilleRef = requete("SELECT nomgrille FROM grilleediter WHERE id='#{reqTemp}'")
 		
 		@grille = charger(nomGrilleRef[0]["nomgrille"])
 		@informations = InfosGrille.new
@@ -127,7 +123,7 @@ class ModeleJeu < ModeleGrille
 		@plateauJeu.cases = Grille.casesDeserialize(reqTemp[0]["grille"])  
 		@plateauJeu.nbJokers = reqTemp[0]["jokersRestants"]
 		
-		@timer = Timer.new(reqTemp[0]["timer"],@profil)
+		@timer = Timer.new(reqTemp[0]["timer"], @profil)
 		@timer.lancerTimer			
 	end
 		

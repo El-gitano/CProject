@@ -18,7 +18,7 @@ class ModeleEditeur < ModeleGrille
 	end
 	
 	#Retourne vrai si le profil chargé dans le modèle est propriétaire d'une grille dont le nom est passé en paramètre (et vrai si la grille n'existe pas)
-	def grillePropriete(unNomGrille)
+	def grillePropriete?(unNomGrille)
 		
 		return (!grilleExiste?(unNomGrille) or !requete("SELECT * FROM grilleediter WHERE createur = (SELECT id FROM profil WHERE pseudo='#{getPseudo}') AND nomgrille = '#{unNomGrille}'").empty?)
 	end
@@ -26,6 +26,7 @@ class ModeleEditeur < ModeleGrille
 	#Sauvegarde une grille éditeur sous le nom passé en paramètre
     def sauvegarderGrilleEditeur(nomGrille)
     
+    	@grille.nomgrille = nomGrille
         serial = @grille.casesSerialize
         tailleGrille = @grille.taille
         nbJokers = @grille.nbJokers

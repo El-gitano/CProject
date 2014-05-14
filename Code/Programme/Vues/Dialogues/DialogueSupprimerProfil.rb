@@ -5,6 +5,8 @@ require 'gtk2'
 #Boîte de dialogue chargée de demander au joueur la confirmation de supression d'un profil
 class DialogueSupprimerProfil < Gtk::Dialog
 
+	private_class_method :new
+	
 	def DialogueSupprimerProfil.afficher(uneFenetre, unProfil)
 	
 		d = new(uneFenetre, unProfil)

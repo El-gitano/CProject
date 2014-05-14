@@ -22,6 +22,7 @@ class VueDemarrage < Vue
 		
 		#Cette box contient les deux lignes champs + bouton
 		vbox = Gtk::VBox.new(false, 3)
+		vbox.set_border_width(10)
 		
 		@label = Gtk::Label.new()
 		

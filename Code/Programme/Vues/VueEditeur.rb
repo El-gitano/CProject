@@ -72,8 +72,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 			boutonTaille.set_size_request(80, 30)
 			@listBoutonTaille.push(boutonTaille)
 		}
-
-		
+	
 		imgOuvrir = Gtk::Image.new("./Vues/Images/folder.png")
 		imgEnregistrer = Gtk::Image.new("./Vues/Images/disquette.png")
 		#imgImporterImage = Gtk::Image.new("./Vues/Images/image2.png")
@@ -146,6 +145,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 			posX = 0
 
 			0.upto(tailleGrille-1){|y|
+			
 				#On spécifie la position de la case
 				caseTemp = CaseVue.new("neutre", tailleGrille, x, y)
 				@mat[x][y] = caseTemp#Mat contient des références à nos objets afin de les faire évoluer aux évènements
@@ -214,28 +214,6 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 	def getCaseVue(x, y)
 	
 		return @mat[x][y]
-	end
-	
-	#Dialogue lorsq'un nom de grille vide est entré pour la sauvegarde
-	def dgGrilleVide
-	
-		d = Gtk::Dialog.new("Grille non renseignée", @window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
-		d.set_modal(true)
-
-		hbox = Gtk::HBox.new(false, 5)
-
-		label = Gtk::Label.new("Veuillez renseigner un nom de grille s'il vous plaît")
-		image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
-
-		hbox.pack_start(image, false, false, 0)
-		hbox.pack_start(label, false, false, 0)
-
-		d.vbox.add(hbox)
-
-		d.show_all	
-		d.run
-
-		d.destroy
 	end
 	
 	#Dialogue de sauvegarde de la grille

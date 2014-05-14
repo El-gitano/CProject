@@ -3,6 +3,8 @@ require 'gtk2'
 
 #Boîte de dialogue chargée de l'affichage du tutoriel
 class DialogueTuto < Gtk::Dialog
+	
+	private_class_method :new
 		
 	def DialogueTuto.afficher(uneFenetre)
 	
