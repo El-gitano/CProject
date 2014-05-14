@@ -79,7 +79,7 @@ class Modele
 		req = ""
 		
 		@profil.getStats.each do |key, value| 
-	
+			puts key, value
 			req += "'#{key}' = '#{value}', "
 		end	
 		
