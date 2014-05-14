@@ -38,7 +38,7 @@ class ModeleProfil < ModeleAvecProfil
 	#Retourne les statistiques de tous les joueurs depuis la bdd
 	def infosStats
 	
-		req = requete("SELECT pseudo, (parties_terminees/parties_commencees) AS taux_reussite, temps_joue, joker_utilises, indices_utilises, nombre_clics, ragequits FROM stats INNER JOIN profil ON stats.id = profil.id")
+		req = requete("SELECT pseudo, parties_terminees, parties_commencees, temps_joue, joker_utilises, indices_utilises, nombre_clics, ragequits FROM stats INNER JOIN profil ON stats.id = profil.id")
 		return req
 	end
 	

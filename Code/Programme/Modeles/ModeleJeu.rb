@@ -112,8 +112,8 @@ class ModeleJeu < ModeleGrille
 	#Charge une partie depuis son nom
 	def chargerPartie(nomPartie)
 
-		reqTemp = requete("SELECT * FROM grillejouee WHERE nompartie='#{nomPartie}' AND joueur='#{@profil.getStats["id"]}'")[0]["idGrille"]
-		nomGrilleRef = requete("SELECT nomgrille FROM grilleediter WHERE id='#{reqTemp}'")
+		reqTemp = requete("SELECT * FROM grillejouee WHERE nompartie='#{nomPartie}' AND joueur='#{@profil.getStats["id"]}'")
+		nomGrilleRef = requete("SELECT nomgrille FROM grilleediter WHERE id='#{reqTemp[0]["idGrille"]}'")
 		
 		@grille = charger(nomGrilleRef[0]["nomgrille"])
 		@informations = InfosGrille.new

@@ -53,8 +53,14 @@ class ListeurStats < Listeur
 			entree[0] = ligne[0]
 			
 			#Traitement du taux de réussite
-			entree[1] = ligne[1].nil? ? "0" : ligne[1].to_s
-			entree[1] += "%"
+			if ligne[2].eql?(0) then
+			
+				entree[1] = (0.0).to_s
+			
+			else
+			
+				entree[1] = ((ligne[1].to_f / ligne[2].to_f) * 100.0).to_s + "%"
+			end
 			
 			#Traitement du temps joué
 			entree[2] = genererTemps(ligne[2])
