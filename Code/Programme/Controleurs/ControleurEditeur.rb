@@ -117,7 +117,7 @@ class ControleurEditeur < Controleur
 								else
 								
 									@modele.ajouterGrilleCree
-									@modele.sauvegarderGrille(etNomGrille.text)
+									@modele.sauvegarderGrilleEditeur(etNomGrille.text)
 									DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", @vue.window)
 									choixOK = true
 								end

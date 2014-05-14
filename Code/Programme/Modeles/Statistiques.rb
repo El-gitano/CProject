@@ -21,4 +21,10 @@ class Statistiques
 	
 		@stats[cle]=donnee	
 	end
+	
+	#Incrémente la valeur d'une clé passée en paramètre
+	def inc(cle)
+	
+		@stats[cle] += 1
+	end
 end

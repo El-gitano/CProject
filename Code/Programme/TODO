@@ -1,8 +1,7 @@
 Corriger la Mini-aide
 Mettre le focus sur la grille/le menu au passage de la souris
-Passer actualiser_case dans une classe VueGrille pour refonte
 Générer RDoc
-Mettre à jour les stats lors du jeu (Corriger temps joué)
 Implanter les jokers et les indices + fin de partie
-Stopper timer lors de la sauvegarde
-Voir si réinitialiser grille présente un intérêt (classe grilleJeu)
+Corriger taux de réussite dans profil
+Centrer la fenêtre de jeu
+Manuel utilisateur

@@ -1,8 +1,9 @@
-#encoding UTF-8
+#encoding: UTF-8
 
-require_relative 'Modele'
+require_relative 'ModeleAvecProfil'
 
-class ModeleNouvellePartie < Modele
+#ModeleNouvellePartie se contente de retourner l'ensemble des grilles sur lesquelles le joueur peut jouer
+class ModeleNouvellePartie < ModeleAvecProfil
 
 	public_class_method :new
 	

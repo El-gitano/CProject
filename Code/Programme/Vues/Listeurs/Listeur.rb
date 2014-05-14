@@ -1,4 +1,4 @@
-#Les classes héritées de Listeur contiendront un ensemble de données présentées dans un GtkTreeView
+#Les classes héritées de Listeur contiendront un ensemble de données présentées dans un GtkTreeView contenu dans une ScrolledWindow
 class Listeur < Gtk::ScrolledWindow
 
 	@treeView

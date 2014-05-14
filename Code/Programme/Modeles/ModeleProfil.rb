@@ -1,6 +1,6 @@
-require_relative 'Modele'
+require_relative 'ModeleAvecProfil'
 
-class ModeleProfil < Modele
+class ModeleProfil < ModeleAvecProfil
 
 	@stats
 	

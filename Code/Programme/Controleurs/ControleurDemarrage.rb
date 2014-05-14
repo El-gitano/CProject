@@ -1,7 +1,11 @@
 # encoding: UTF-8
 
 require_relative '../Modeles/ModeleDemarrage'
+
 require_relative '../Vues/VueDemarrage'
+require_relative '../Vues/Dialogues/DialogueInfo'
+require_relative '../Vues/Dialogues/DialogueSupprimerProfil'
+
 require_relative 'Controleur'
 require_relative 'ControleurAccueil'
 
@@ -31,47 +35,16 @@ class ControleurDemarrage < Controleur
 		@vue.boutonSupprimer.signal_connect("clicked"){
 		
 			pseudo = @vue.getProfil
-			message = ""
 			
-			if @modele.existe?(pseudo) then
+			if @modele.existeProfil?(pseudo) then 
 			
-				dialogue = Gtk::Dialog.new("Supression du profil #{pseudo}", @vue.window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT], [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT])
-			
-				hbox = Gtk::HBox.new(false, 5)
-			
-				label = Gtk::Label.new("Etes vous sûr de vouloir supprimer le profil #{pseudo} ?")
-				image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
-			
-				hbox.pack_start(image, false, false, 0)
-				hbox.pack_start(label, false, false, 0)
-			
-				dialogue.vbox.add(hbox)
-			
-				dialogue.show_all
-			
-				dialogue.run{|reponse|
-			
-					if reponse == Gtk::Dialog::RESPONSE_ACCEPT then
+				@modele.supprimerProfil(pseudo) if DialogueSupprimerProfil.afficher(@vue.window, pseudo)
 
-						if @modele.supprimerProfil(pseudo) then
-
-							message = "Profil #{pseudo} supprimé avec succès !"	
-						else 	
-						
-							message = "Impossible de supprimer le profil #{pseudo}"
-						end
-					end
-				}
-			
-				dialogue.destroy
-			
 			else
 			
-				message = "Le profil #{pseudo} n'existe pas"
-				print message
+				DialogueInfo.afficher("Profil inexistant", "Le profil #{pseudo} n'existe pas", @vue.window)
 			end
-			
-			@vue.genererMessage(message)
+				
 			@vue.actualiser
 		}
 		
@@ -79,7 +52,7 @@ class ControleurDemarrage < Controleur
 			
 			pseudo = @vue.getProfil
 			
-			if @modele.existe?(pseudo) then
+			if @modele.existeProfil?(pseudo) then
 			
 				@vue.genererMessage("Connexion au profil #{pseudo}")
 				@modele.chargerProfil(pseudo)
@@ -87,7 +60,7 @@ class ControleurDemarrage < Controleur
 				
 			else
 			
-				@vue.genererMessage("Le profil #{pseudo} n'existe pas")
+				DialogueInfo.afficher("Profil inexistant", "Le profil #{pseudo} n'existe pas", @vue.window)
 			end
 		}
 		
@@ -95,23 +68,19 @@ class ControleurDemarrage < Controleur
 			
 			nomProfil = @vue.getProfil
 			
-			if @modele.existe?(nomProfil) then
+			if nomProfil.eql?("") then
 			
-				message = "Le profil #{nomProfil} existe déjà !"
-				
-			elsif !nomProfil.eql?("") and @modele.creerProfil(nomProfil) then
+				DialogueInfo.afficher("Pseudo non renseigné", "Vous n'avez pas renseigné de pseudo", @vue.window)
 			
-				@vue.actualiser
-				message = "Profil #{nomProfil} crée avec succès !"
-				
-				@vue.setProfil(nomProfil)
-				
+			elsif @modele.existeProfil?(nomProfil)
+			
+				DialogueInfo.afficher("Profil existant", "Le profil que vous souhaitez créer existe déjà", @vue.window)
 			else
 			
-				message = "Impossible de créer le profil #{nomProfil}"
+				@modele.creerProfil(nomProfil)
+				@vue.actualiser
+				DialogueInfo.afficher("Création de profil", "Le profil #{nomProfil} a été crée avec succès !", @vue.window)
 			end
-			
-			@vue.genererMessage(message)
 		}
 	end
 end

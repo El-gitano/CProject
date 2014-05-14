@@ -20,29 +20,18 @@ class ModeleEditeur < ModeleGrille
 	#Retourne vrai si le profil chargé dans le modèle est propriétaire d'une grille dont le nom est passé en paramètre (et vrai si la grille n'existe pas)
 	def grillePropriete(unNomGrille)
 		
-		return true if requete("SELECT * FROM grilleediter WHERE nomgrille = '#{unNomGrille}'").empty?
-		
-		id = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
-		
-		return !requete("SELECT * FROM grilleediter WHERE createur = '#{id[0]["id"]}' AND nomgrille = '#{unNomGrille}'").empty?
+		return (!grilleExiste?(unNomGrille) or !requete("SELECT * FROM grilleediter WHERE createur = (SELECT id FROM profil WHERE pseudo='#{getPseudo}') AND nomgrille = '#{unNomGrille}'").empty?)
 	end
-	
-	#Ajoute une création de grille aux statistiques du joueur
-	def ajouterGrilleCree
-	
-		@profil.getStats["grilles_crees"] += 1
-	end
-	
-	#Sauvegarde une grille sous le nom passé en paramètre
-    def sauvegarderGrille(nomGrille)
+
+	#Sauvegarde une grille éditeur sous le nom passé en paramètre
+    def sauvegarderGrilleEditeur(nomGrille)
     
         serial = @grille.casesSerialize
         tailleGrille = @grille.taille
         nbJokers = @grille.nbJokers
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
-        
-		id = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
-        self.requete("INSERT INTO grilleediter(createur,nomgrille,taillegrille,grille,nbjokers,datecreation,datemaj) VALUES('#{id[0]["id"]}','#{nomGrille}','#{tailleGrille}','#{serial}','#{nbJokers}','#{date}','#{date}')")
+
+        self.requete("INSERT INTO grilleediter(createur,nomgrille,taillegrille,grille,nbjokers,datecreation,datemaj) VALUES((SELECT id FROM profil WHERE pseudo='#{getPseudo}'),'#{nomGrille}','#{tailleGrille}','#{serial}','#{nbJokers}','#{date}','#{date}')")
         
     end
 

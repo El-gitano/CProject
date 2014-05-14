@@ -1,8 +1,8 @@
 #encoding: UTF-8
 
-require_relative 'Modele'
+require_relative 'ModeleAvecProfil'
 
-class ModeleChargerSauvegarde < Modele
+class ModeleChargerSauvegarde < ModeleAvecProfil
 
 	public_class_method :new
 	
@@ -14,8 +14,7 @@ class ModeleChargerSauvegarde < Modele
 	#Retourne les informations sur les sauvegardes d'un joueur
 	def infosSauvegardes
 	
-        req = requete("SELECT nompartie, nomgrille, taillegrille, jokersRestants, grillejouee.datemaj FROM grillejouee INNER JOIN grilleediter ON grillejouee.idGrille=grilleediter.id WHERE joueur = #{@profil.getStats["id"]}")
-		return req
+       return requete("SELECT nompartie, nomgrille, taillegrille, jokersRestants, grillejouee.datemaj FROM grillejouee INNER JOIN grilleediter ON grillejouee.idGrille=grilleediter.id WHERE joueur = #{@profil.getStats["id"]}")
 	end
 	
 	#Supprime la sauvegarde du nom passé en paramètre

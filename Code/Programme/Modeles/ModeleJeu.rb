@@ -36,7 +36,7 @@ class ModeleJeu < ModeleGrille
 	#Retourne un indice de jeu au joueur
 	def getIndice
 	
-		@profil.getStats["indices_utilises"] += 1
+		ajouterIndice
 		print "À implémenter"
 	end
 	
@@ -150,22 +150,10 @@ class ModeleJeu < ModeleGrille
 		return res
     end
 	
-	#Ajoute un ragequit aux statistiques du joueur
-	def ajouterRageQuit
-	
-		@profil.getStats["ragequits"] += 1
-	end
-	
 	#Ajoute le temps passé depuis le lancement de la grille au temps de jeu global du joueur
 	def ajouterTemps
 	
-		@profil.getStats["temps_joue"] += @timer.tempsOrigine - @timer.temps
-	end
-	
-	#Ajoute un clic aux statistiques du joueur
-	def ajouterClic
-	
-		@profil.getStats["nombre_clics"] += 1
+		super.ajouterTemps(@timer.tempsEcoule)
 	end
 	
 	#Dévoile 3 cases dans la mesure du possible
@@ -179,17 +167,13 @@ class ModeleJeu < ModeleGrille
 	def enleverJoker
 	
 		@plateauJeu.nbJokers -= 1
-		@profil.getStats["joker_utilises"] += 1
+		ajouterJoker
 	end
 	
+	#Retourne une case de la grille de jeu
 	def getCase(x,y)
 	
 		return @plateauJeu.getCase(x,y)
-    end
-    
-    def tempsEcoule
-    
-    	return @timer.tempsEcoule
     end
     	
     #Réinitialise le jeu afin de recommencer une partie

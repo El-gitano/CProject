@@ -130,15 +130,13 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 	def creerGrille(tailleGrille)
  
  		tailleWidget = 600
- 		espacementCases = 0
+ 		espacementCases = 2
  		tailleCase = tailleWidget/tailleGrille#Moins 1 pour l'espacement entre cases
 		posY = 0
 		
 		#Définition du plateau de jeu (graphique) 
 		@grille.destroy if not @grille.nil?
 		@grille = Gtk::Table.new(tailleGrille, tailleGrille, false)
-		@grille.set_row_spacings(espacementCases)
-		@grille.set_column_spacings(espacementCases)
 		@grille.set_size_request(tailleWidget, tailleWidget)
 		
 		@mat = Array.new(tailleGrille) { Array.new(tailleGrille) }
@@ -158,6 +156,14 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 
 			posY += tailleCase + 1
 		}
+		
+		#Définition de l'espacement des cases toutes les 5 cases
+		4.step(tailleGrille, 5){|i|
+		
+			@grille.set_row_spacing(i, espacementCases)
+			@grille.set_column_spacing(i, espacementCases)
+		}
+		
 		@grille.show_all
 		@vbox.pack_start(@grille, true, true, 0)
 	end

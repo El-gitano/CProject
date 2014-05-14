@@ -1,11 +1,11 @@
 # encoding: utf-8 
 
-require_relative 'Modele'
+require_relative 'ModeleAvecProfil'
 require_relative 'Grilles/GrilleEditeur'
 require 'date'
 
-#Le modèle de l'éditeur permet de manipuler la grille à éditer ainsi que d'en sauvegarder/charger une
-class ModeleGrille < Modele
+#Modele grille contient l'ensemble des opérations communes aux autres modèles sur les grilles
+class ModeleGrille < ModeleAvecProfil
 	
 	@grille
 	
@@ -19,8 +19,7 @@ class ModeleGrille < Modele
 	#Retourne vrai si une grille du nom passé en paramètre existe
     def grilleExiste?(nom)
     
-        grille = requete("SELECT COUNT(*) AS 'liste' FROM grilleediter WHERE nomgrille = '#{nom}'")
-		return true if grille[0]["liste"] >= 1
+        return !requete("SELECT * FROM grilleediter WHERE nomgrille = '#{nom}'").empty?
     end
 	
 	#Charge une grille
@@ -51,6 +50,7 @@ class ModeleGrille < Modele
     end
 	
     def to_s
+    
         print "\n",@grille.nomGrille," ",@grille.nbJokers," ",@grille.taille,"\n"
         @grille.to_debug
     end

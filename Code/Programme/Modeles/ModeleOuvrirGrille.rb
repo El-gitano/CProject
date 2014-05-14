@@ -1,8 +1,9 @@
-#encoding UTF-8
+#encoding: UTF-8
 
-require_relative 'Modele'
+require_relative 'ModeleGrille'
 
-class ModeleOuvrirGrille < Modele
+#ModeleOuvrirGrille se charge d'afficher les grilles éditables par un joueur
+class ModeleOuvrirGrille < ModeleGrille
 
 	public_class_method :new
 	
@@ -18,7 +19,7 @@ class ModeleOuvrirGrille < Modele
 		return req
     end
 	
-	#Supprime la sauvegarde du nom passé en paramètre
+	#Supprime la grille du nom passé en paramètre
 	def supprimerGrille(uneGrille)
 	
 		requete("DELETE FROM grilleediter WHERE nomgrille = '#{uneGrille}'")

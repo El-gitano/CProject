@@ -11,12 +11,12 @@ class Modele
     
     private_class_method :new
     
-    def initialize(unProfil)
+    def initialize
 
     	$fichierBDD = "test.sqlite"
     	@observateurs = Array.new
     	@bdd = SQLite3::Database.open $fichierBDD
-    	@bdd.results_as_hash = true#Utile pour retourner les résultats dans un tableau de hash
+    	@bdd.results_as_hash = true#Utile pour retourner les résultats sous forme de hash
     end
     
     #Ajoute un observateur dans la liste des observateurs
@@ -31,7 +31,7 @@ class Modele
     	@observaeurs.delete(unObservateur)
     end
     
-    #Met à jour l'ensemble des observateursattr_reader :pseudo
+    #Met à jour l'ensemble des observateurs
     def lancerMaj
     
     	@observateurs.each{|unObservateur|
@@ -46,8 +46,8 @@ class Modele
     	begin
     	
     		resultat = @bdd.execute(uneRequete)
-    		return resultat if not resultat.empty?
-    		return Array.new#On retourne un tableau nul si pas de résultat (pour les each)
+    		return resultat# if not resultat.empty?
+    		#return Array.new#On retourne un tableau nul si pas de résultat (pour les each)
     		
     	rescue SQLite3::Exception => e 
     	
