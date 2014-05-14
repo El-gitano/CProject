@@ -3,6 +3,7 @@
 require_relative '../Modeles/ModeleJeu'
 require_relative '../Vues/VueJeu'
 require_relative '../Vues/Dialogues/DialogueTuto'
+require_relative '../Vues/Dialogues/DialogueInfoFinPartie'
 require_relative 'Controleur'
 
 require 'gtk2'
@@ -84,10 +85,11 @@ class ControleurJeu < Controleur
 			Gtk.main_quit
 		}
 		
-		#Affichage du didacticiel
+		#Affichage du didacticiel et arrete le Timer pendant ce temps et le reprendre lorsqu'on le ferme
 		@vue.miDidac.signal_connect("activate"){
-		
+			@modele.timer.stopperTimer
 			DialogueTuto.afficher(@vue.window)
+			@modele.timer.lancerTimer
 		}
 		
 		#Utilisation d'un joker
@@ -121,50 +123,7 @@ class ControleurJeu < Controleur
 
 			if @modele.grilleValide? then
 				
-				dialogue = Gtk::Dialog.new("Fin de partie", @window, Gtk::Dialog::DESTROY_WITH_PARENT,["Nouvelle Partie", Gtk::Dialog::RESPONSE_ACCEPT],["Retour à l'accueil", Gtk::Dialog::RESPONSE_REJECT])
-		
-				# Creation des box
-				hbox1 = Gtk::HBox.new(false, 5)	
-
-				hbox2 = Gtk::HBox.new(false, 5)	
-				vbox1 = Gtk::VBox.new(false, 5)
-				vbox2 = Gtk::VBox.new(false, 5)
-
-				# Creation des elements
-				labelInfo = Gtk::Label.new("La grille est valide ! \n")	
-				labelClic = Gtk::Label.new("Nombre de clics : ")
-				labelJoker = Gtk::Label.new("Nombre de jokers utilises : ")
-				labelErreur = Gtk::Label.new("Nombre d'erreurs : ")
-				labelTemps = Gtk::Label.new("Temps ecoule : ")
-
-				labelNbClic = Gtk::Label.new("100")
-				labelNbJoker = Gtk::Label.new("3")
-				labelNbErreur = Gtk::Label.new("10")
-				labelTempsEcoule = Gtk::Label.new("15:15 ")
-		
-				# Ajout des elements
-				dialogue.vbox.add(hbox1)
-
-				dialogue.vbox.add(hbox2)
-					hbox2.add(vbox1)
-					hbox2.add(vbox2)
-				
-				hbox1.add(labelInfo)
-
-				vbox1.add(labelClic)
-				vbox1.add(labelJoker)
-				vbox1.add(labelErreur)
-				vbox1.add(labelTemps)
-
-				vbox2.add(labelNbClic)	
-				vbox2.add(labelNbJoker)
-				vbox2.add(labelNbErreur)		
-				vbox2.add(labelTempsEcoule)
-
-				# Affichage des elements et lancement de la fenetre
-				dialogue.show_all
-
-				
+				DialogueInfoFinPartie.afficher("Statistiques de fin de partie", @modele, @vue.window)
 
 			else
 				
@@ -174,14 +133,15 @@ class ControleurJeu < Controleur
 
 		# Sauvegarder la grille pour la continuer plus tard
 		@vue.miSauvegarder.signal_connect("activate"){	
-		
+			@modele.timer.stopperTimer
 			dgSauvegarde
 			@modele.lancerMaj
+			@modele.timer.lancerTimer
 		}
 		
 		# On propose la sauvegarde avant de quitter la partie
 		@vue.miQuitter.signal_connect("activate"){
-		
+			@modele.timer.stopperTimer
 			dgSauvegardeQuitter
 		}
 		

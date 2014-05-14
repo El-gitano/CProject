@@ -7,8 +7,12 @@ class Timer
 		
 		@tempsOrigine
 		@temps
+		
 		@statutJeu
 		@label
+		@profil		
+	
+		@thread
 		
 		@heures
 		@minutes
@@ -17,25 +21,24 @@ class Timer
 		attr_writer :label
 		attr_reader :temps, :tempsOrigine
 
-		def initialize(unTemps=0)
+		def initialize(unTemps=0, profil)
 
 			@tempsOrigine = unTemps
 			@temps = tempsOrigine
+			@profil = profil
 		end 
 
 		#Le le thread chargé d'actualiser le timer lors d'une partie
 		def lancerTimer
 		
-			@statutJeu = ENCOURS
-			Thread.start {
-				begin
-				
+			@thread = Thread.start {
+				while true
 					sleep 1
+					@profil.getStats["temps_joue"] +=1
 					@temps +=1
 					getTime
 					setLabel
-			
-				end until @statutJeu != ENCOURS
+				end
 			}
 
 		end 
@@ -43,13 +46,7 @@ class Timer
 		#Arrête le thread timer
 		def stopperTimer
 		
-			@statutJeu = FINI	
-		end
-
-		#Arrête le thread timer
-		def mettreEnPause
-		
-			@statutJeu = ENPAUSE	
+			@thread.kill
 		end
 
 		#Récupère les informations temporelles sous forme d'entiers
@@ -69,11 +66,5 @@ class Timer
 			
 			@label.set_label(h + ":" + m + ":" + s)
 			@label.show
-		end
-		
-		#Retourne le temps écoule sous forme d'un entiers
-		def tempsEcoule
-		
-			return @temps - @tempsOrigine
 		end
 end

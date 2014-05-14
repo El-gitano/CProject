@@ -29,7 +29,7 @@ class ModeleJeu < ModeleGrille
 			chargerPartie(unNom)
 		else
 		
-			nouvellePartie("Nouvelle partie", unNom)
+			nouvellePartie(unNom, unNom)
 		end
 	end
 	
@@ -94,7 +94,7 @@ class ModeleJeu < ModeleGrille
 	#Démarre une nouvelle partie
 	def nouvellePartie(nomPartie, uneGrille)
 
-		@timer = Timer.new
+		@timer = Timer.new(0,@profil)
 		
 		#On récupère les infos de la grille passées en paramètre puis on instancie une GrilleEditeur
 		charger(uneGrille)
@@ -127,7 +127,7 @@ class ModeleJeu < ModeleGrille
 		@plateauJeu.cases = Grille.casesDeserialize(reqTemp[0]["grille"])  
 		@plateauJeu.nbJokers = reqTemp[0]["jokersRestants"]
 		
-		@timer = Timer.new(reqTemp[0]["timer"])
+		@timer = Timer.new(reqTemp[0]["timer"],@profil)
 		@timer.lancerTimer			
 	end
 		
