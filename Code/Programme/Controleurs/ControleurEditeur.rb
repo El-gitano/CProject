@@ -31,8 +31,7 @@ class ControleurEditeur < Controleur
 		#On revient au menu quand la fenêtre de l'éditeur est fermée
 		@vue.window.signal_connect('delete_event'){
 		
-			@modele.sauvegarderProfil
-			Gtk.main_quit
+			quitterJeu
 		}
 		
 		#Boîte de dialogue pour ouverture d'une grille

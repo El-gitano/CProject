@@ -8,6 +8,8 @@ class Controleur
 
 	private_class_method :new
 	
+	attr_reader :picross
+	
     def initialize(unJeu)
     
 	    @picross = unJeu
@@ -19,6 +21,12 @@ class Controleur
     	@vue.fermerFenetre
     	@modele.fermerBdd
     	@picross.controleur = unControleur
+    end
+    
+    def quitterJeu
+    
+    	@modele.sauvegarderProfil if !@modele.nil?
+    	Gtk.main_quit
     end
 end
 

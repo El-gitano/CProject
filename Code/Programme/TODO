@@ -1,13 +1,15 @@
-Mettre le focus sur la grille/le menu au passage de la souris
-Implanter les jokers et les indices + fin de partie
-Corriger taux de réussite dans profil
+==== PROG ====
+
+Implanter les jokers et les indices
 Centrer la fenêtre de jeu
-Renommer la test.sqlite en bdd.sqlite
 Crypter les sauvegardes
 Gérer les injections SQL
-Ajouter la vérification auto de la grille (+ supression des croix)
-Enlever le puts lors de la sauvegarde
-Cliquer glissé
+Cliquer glisser
+Enlever bouton vérifier si ça ne rame pas en 25*25
+
+
+==== GESTION ====
+
 Préparer présentation
 Manuel utilisateur
 Vérification finale du code

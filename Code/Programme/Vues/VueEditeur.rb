@@ -216,27 +216,6 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		return @mat[x][y]
 	end
 	
-	#Dialogue de sauvegarde de la grille
-	def dgGrilleSauv
-	
-		d = Gtk::Dialog.new("Sauvegarde de la grille", @window, Gtk::Dialog::DESTROY_WITH_PARENT,  [Gtk::Stock::OK, Gtk::Dialog::RESPONSE_ACCEPT])
-		d.set_modal(true)
-
-		hbox = Gtk::HBox.new(false, 5)
-
-		image = Gtk::Image.new(Gtk::Stock::DIALOG_INFO, Gtk::IconSize::DIALOG)
-		label = Gtk::Label.new("Grille sauvegardée avec succès")
-
-		hbox.pack_start(image, false, false, 0)
-		hbox.pack_start(label, false, false, 0)
-
-		d.vbox.add(hbox)
-
-		d.show_all	
-		d.run
-		d.destroy
-	end
-	
 	def operationGrille
 	
 		@mat.each{|x|

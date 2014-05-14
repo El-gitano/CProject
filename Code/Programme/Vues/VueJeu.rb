@@ -133,6 +133,7 @@ class VueJeu < Vue
 	
 		informations = @modele.informations.infosLignes[unNombre]
 		hbox = Gtk::HBox.new(false, 5)
+		hbox.set_border_width(5)
 		
 		informations.each{|nombre|
 		
@@ -146,6 +147,8 @@ class VueJeu < Vue
 	def creerPlateau
 	
 		tailleGrille = @modele.plateauJeu.taille
+		espacementCases = 2
+		
 		@table = Gtk::Table.new(tailleGrille+1, tailleGrille+1, false)#On rajoute 1 pour insérer les infos des colonnes
 		@mat = Array.new(tailleGrille) {Array.new(tailleGrille)}
 		
@@ -170,6 +173,13 @@ class VueJeu < Vue
 				@table.attach(caseTemp, x+1, x+2, y+1, y+2)
 				@mat[x][y] = caseTemp
 			}
+		}
+		
+		#Définition de l'espacement des cases toutes les 5 cases
+		5.step(tailleGrille, 5){|i|
+		
+			@table.set_row_spacing(i, espacementCases)
+			@table.set_column_spacing(i, espacementCases)
 		}
 		
 		return @table

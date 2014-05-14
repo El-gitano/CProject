@@ -48,7 +48,7 @@ class ListeurStats < Listeur
 		donnees.each{|ligne|
 
 			entree = @modeleTV.append
-
+			
 			#Nom joueur
 			entree[0] = ligne[0]
 			
@@ -63,11 +63,11 @@ class ListeurStats < Listeur
 			end
 			
 			#Traitement du temps joué
-			entree[2] = genererTemps(ligne[2])
+			entree[2] = genererTemps(ligne[3])
 			
 			#On ajout les entrées de la requête dans notre modèle
 			3.upto(6){|i|
-				entree[i] = ligne[i]
+				entree[i] = ligne[i+1]
 			}
 		}
 	

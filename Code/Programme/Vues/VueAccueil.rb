@@ -62,6 +62,4 @@ class VueAccueil < Vue
 		@window.show_all
 		
 	end
-	
-	
 end

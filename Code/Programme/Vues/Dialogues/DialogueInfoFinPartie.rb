@@ -1,10 +1,12 @@
 #encoding: UTF-8
+
 require_relative '../../Modeles/ModeleJeu'
+require_relative '../../Controleurs/ControleurNouvellePartie'
+require_relative '../../Controleurs/ControleurAccueil'
 
 require 'gtk2'
 
-#DialogueInfo est une boîte de dialogue informative prenant en paramètre le titre et le texte de la boîte lors de son instanciation
-
+#DialogueInfoFinPartie est une boîte de dialogue affiché à la fin d'une partie et permettant d'en commencer une nouvelle ou de revenir à l'accueil
 class DialogueInfoFinPartie < Gtk::Dialog
 
 	@modele
@@ -12,11 +14,26 @@ class DialogueInfoFinPartie < Gtk::Dialog
 	private_class_method :new
 	
 	#Cette méthode crée le dialogue et le lance
-	def DialogueInfoFinPartie.afficher(unTitre, unModele, uneFenetre)
+	def DialogueInfoFinPartie.afficher(unTitre, unModele, unControleur, uneFenetre)
 	
 		d = new(unTitre, unModele, uneFenetre)
 		d.show_all
-		d.run
+		
+		d.run{|reponse|
+		
+			case reponse
+			
+				when Gtk::Dialog::RESPONSE_REJECT
+				
+					unControleur.changerControleur(ControleurAccueil.new(unControleur.picross, unModele.profil))
+				
+				when Gtk::Dialog::RESPONSE_ACCEPT
+				
+					unControleur.changerControleur(ControleurNouvellePartie.new(unControleur.picross, unModele.profil))
+					
+			end
+		}
+		
 		d.destroy
 	end
 
@@ -38,7 +55,7 @@ class DialogueInfoFinPartie < Gtk::Dialog
 		labelJoker = Gtk::Label.new("Nombre de jokers utilises : ")
 		labelTemps = Gtk::Label.new("Temps ecoule : ")
 
-		nbJokerUtilise = @modele.plateauJeu.nbJokers - @modele.plateauJeu.nbJokers
+		nbJokerUtilise = @modele.grille.nbJokers - @modele.plateauJeu.nbJokers
 		labelNbJoker = Gtk::Label.new(nbJokerUtilise.to_s)
 		labelTempsEcoule = Gtk::Label.new(@modele.timer.to_s)
 

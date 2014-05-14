@@ -29,7 +29,7 @@ class ControleurDemarrage < Controleur
 		#Fin du programme
 		@vue.window.signal_connect('delete_event'){
 		
-			Gtk.main_quit
+			quitterJeu
 		}
 		
 		@vue.boutonSupprimer.signal_connect("clicked"){

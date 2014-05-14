@@ -19,8 +19,7 @@ class ControleurNouvellePartie < Controleur
 		
 		@vue.window.signal_connect("delete_event"){
 		
-			@modele.sauvegarderProfil
-			Gtk.main_quit
+			quitterJeu
 		}
 		
 		#Chargement de la grille sélectionnée

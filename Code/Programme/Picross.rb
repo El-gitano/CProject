@@ -18,7 +18,7 @@ class Picross
     def initialize
     
     	Gtk.init
-    	$fichierBDD = "test.sqlite"
+    	$fichierBDD = "bdd.sqlite"
     	
     	@controleur = ControleurDemarrage.new(self)
     	

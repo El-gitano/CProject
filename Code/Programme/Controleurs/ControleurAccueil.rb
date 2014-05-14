@@ -31,8 +31,7 @@ class ControleurAccueil < Controleur
 		#On quitte quand on ferme la fenêtre
 		@vue.window.signal_connect('delete_event'){
 		
-			@modele.sauvegarderProfil
-			Gtk.main_quit
+			quitterJeu
 		}
 		
 		#Retour à la fenêtre de connexion

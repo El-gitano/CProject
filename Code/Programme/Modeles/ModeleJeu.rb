@@ -88,6 +88,7 @@ class ModeleJeu < ModeleGrille
 
 		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'")[0]["id"]
 		requete("INSERT INTO grillejouee(joueur, idGrille, nompartie, grille, jokersRestants, timer, datedebut, datemaj) VALUES('#{@profil.getStats["id"]}','#{idGrilleRef}','#{nomPartie}','#{serial}','#{nbJokers}','#{@timer.temps}','#{date}','#{date}')")
+		
 	end
 	
 	#Démarre une nouvelle partie
@@ -125,6 +126,18 @@ class ModeleJeu < ModeleGrille
 		
 		@timer = Timer.new(reqTemp[0]["timer"], @profil)
 		@timer.lancerTimer			
+	end
+	
+	#Remet toutes les cases à l'état croix de la grille à l'état neutre
+	def enleverCroix
+	
+		@plateauJeu.operationGrille{|uneCase|
+		
+			if uneCase.croix? then
+			
+				uneCase.changerEtat(EtatCaseNeutre.getInstance)
+			end
+		}
 	end
 		
 	#Retourne un tableau des noms des sauvegardes d'un utilisateur, possibilité d'effectuer un traitement de type yield

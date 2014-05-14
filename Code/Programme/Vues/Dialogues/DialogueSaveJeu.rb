@@ -37,7 +37,7 @@ class DialogueSaveJeu < Gtk::Dialog
 						#Si la sauvegarde existe déjà on propose de l'écraser
 						elsif unModele.sauvegardeExiste?(d.etNomSauvegarde.text) then
 						
-							choix = DialogueConfirmation.afficher("Sauveagrde existante", uneFenetre, "Une sauveagrde existe déjà sous ce nom. Écraser la sauvegarde existante ?")
+							choix = DialogueConfirmation.afficher("Sauveagrde existante", uneFenetre, "Une sauvegarde existe déjà sous ce nom. Écraser la sauvegarde existante ?")
 							
 							if choix then
 							

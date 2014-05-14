@@ -13,7 +13,6 @@ class Modele
     
     def initialize
 
-    	$fichierBDD = "test.sqlite"
     	@observateurs = Array.new
     	@bdd = SQLite3::Database.open $fichierBDD
     	@bdd.results_as_hash = true#Utile pour retourner les résultats sous forme de hash

@@ -20,8 +20,6 @@ class VueProfil < Vue
 	def initialize(unModele)
 	
 		super(unModele, "Profil/Classement")
-
-		@window.signal_connect('destroy') {Gtk.main_quit}
 		
 		@boutonRenommer = Gtk::Button.new("Renommer mon profil")
 		@boutonEffacer = Gtk::Button.new("Réinitialiser mes statistiques")

@@ -24,7 +24,7 @@ class ControleurProfil < Controleur
 		@vue.window.signal_connect('delete_event'){
 
 			@modele.sauvegarderProfil
-			Gtk.main_quit
+			changerControleur(ControleurAccueil.new(@picross, @modele.profil))
 		}
 		
 		#Revenir à l'accueil

@@ -66,6 +66,7 @@ class ControleurJeu < Controleur
 					@modele.plateauJeu.getCase(laCase.x, laCase.y).clicDroit		
 				end
 				
+				lancerVerification
 				@vue.actualiserCase(laCase.x, laCase.y)
 			}
 			
@@ -75,22 +76,21 @@ class ControleurJeu < Controleur
 				
 					@modele.ajouterClic
 					@modele.getCase(uneCase.x,  uneCase.y).clicGauche
+					lancerVerification
 					@modele.lancerMaj
 				end
 			}
 		}
 		
 		#En cas de ragequit on met à jour le profil, on le sauvegarde et on quitte
-		@vue.miRageQuit.signal_connect("activate"){
+		@vue.miRageQuit.signal_connect("button_press_event"){
 		
 			@modele.ajouterRageQuit
-			@modele.ajouterTemps
-			@modele.sauvegarderProfil
-			Gtk.main_quit
+			quitterJeu
 		}
 		
 		#Affichage du didacticiel et arrete le Timer pendant ce temps et le reprendre lorsqu'on le ferme
-		@vue.miDidac.signal_connect("activate"){
+		@vue.miDidac.signal_connect("button_press_event"){
 			
 			@modele.timer.stopperTimer
 			DialogueTuto.afficher(@vue.window)
@@ -103,6 +103,9 @@ class ControleurJeu < Controleur
 			#On dévoile les cases voulues
 			@modele.utiliserJoker
 		
+			#On vérifie que ça n'a pas résolu la grille
+			lancerVerification
+			
 			#On met jour la/les vues
 			@modele.lancerMaj
 		}
@@ -126,14 +129,12 @@ class ControleurJeu < Controleur
 		# Bouton pour vérifier si la grille est correctement remplie 
 		@vue.btVerifier.signal_connect("clicked"){
 
-			if @modele.grilleValide? then
-				
-				DialogueInfoFinPartie.afficher("Statistiques de fin de partie", @modele, @vue.window)
+			lancerVerification
 
-			else
+			#else
 				
-				DialogueInfo.afficher("Grille invalide", "Votre grille est invalide", @vue.window)
-			end
+				#DialogueInfo.afficher("Grille invalide", "Votre grille est invalide", @vue.window)
+			#end
 		}	
 
 		# Sauvegarder la grille pour la continuer plus tard
@@ -155,9 +156,19 @@ class ControleurJeu < Controleur
 		#On quitte le jeu
 		@vue.window.signal_connect('delete_event'){
 		
-			@modele.sauvegarderProfil
-			Gtk.main_quit
+			quitterJeu
 		}
+	end
+	
+	#Vérifie si la grille est résolue et agit en conséquence si c'est le cas
+	def lancerVerification
+	
+		if @modele.grilleValide? then
+				
+			@modele.enleverCroix
+			@modele.lancerMaj
+			DialogueInfoFinPartie.afficher("Statistiques de fin de partie", @modele, self, @vue.window)
+		end
 	end
 	
 	#Propose au joueur de sauvegarder avant de revenir à l'accueil
@@ -165,7 +176,7 @@ class ControleurJeu < Controleur
 	
 		if DialogueConfirmation.afficher("Proposition de sauvegarde", @vue.window, "Souhaitez vous sauvegarder votre partie avant de revenir à l'accueil ?") then
 			
-				DialogueSaveJeu.afficher()
+				DialogueSaveJeu.afficher(@vue.window, @modele)
 		end
 		
 		@modele.timer.stopperTimer

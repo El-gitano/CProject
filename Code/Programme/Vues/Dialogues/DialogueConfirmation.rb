@@ -34,7 +34,7 @@ class DialogueConfirmation < Gtk::Dialog
 	
 	def initialize(unTitre, uneFenetre, uneQuestion)
 	
-		super(unTitre, uneFenetre, Gtk::Dialog::DESTROY_WITH_PARENT, [Gtk::Stock::CANCEL, Gtk::Dialog::RESPONSE_REJECT], [Gtk::Stock::SAVE, Gtk::Dialog::RESPONSE_ACCEPT])
+		super(unTitre, uneFenetre, Gtk::Dialog::DESTROY_WITH_PARENT, ["Non", Gtk::Dialog::RESPONSE_REJECT], ["Oui", Gtk::Dialog::RESPONSE_ACCEPT])
 		
 		set_modal(true)
 
