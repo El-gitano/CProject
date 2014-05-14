@@ -24,6 +24,7 @@ class InfosGrille
 		
 			@infosLignes.push(Array.new)
 			cpt = 0#Variable "compteur" de cases pleines
+			zero = true
 			cases = false
 			
 			uneGrille.operationLigne(x){|uneCase|
@@ -32,6 +33,7 @@ class InfosGrille
 				
 					cases = true
 					cpt += 1
+					zero = false
 				
 				elsif cases == true then
 				
@@ -46,6 +48,9 @@ class InfosGrille
 			if cases == true then
 			
 				@infosLignes[x].push(cpt)
+			
+			elsif zero == true
+				@infosLignes[x].push(0)
 			end
 			
 			@infosLignes[x] = @infosLignes[x].reverse
@@ -57,13 +62,15 @@ class InfosGrille
 			@infosColonnes.push(Array.new)
 			cpt = 0#Variable "compteur" de cases pleines
 			cases = false
-			
+			zero = true
+
 			uneGrille.operationColonne(x){|uneCase|
 		
 				if uneCase.jouee? then
 				
 					cases = true
 					cpt += 1
+					zero = false
 				
 				elsif cases == true then
 				
@@ -79,8 +86,10 @@ class InfosGrille
 			if cases == true then
 			
 				@infosColonnes[x].push(cpt)
+			elsif zero == true
+				@infosColonnes[x].push(0)
 			end
-			
+
 			@infosColonnes[x] = @infosColonnes[x].reverse
 		}
 	end
