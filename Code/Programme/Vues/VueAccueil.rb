@@ -21,10 +21,10 @@ class VueAccueil < Vue
 		super(unModele, "Accueil")
 
 		#Lignes de code commentées pour les tests
-		@window.set_size_request(350, 800)
+		@window.set_size_request(350, 300) #Avec annimation 350,800
 		
 		#Cette box contient les 5 lignes champs + bouton
-		vbox = Gtk::VBox.new(false, 50)
+		vbox = Gtk::VBox.new(false, 10) #Avant menu serré 50
 		vbox.set_border_width(20) #On espace la vBox de la fenêtre
 		hbox = Gtk::HBox.new(false, 0)
 
@@ -45,9 +45,9 @@ class VueAccueil < Vue
 
 		imgDeco.show()
 
-		pixAnim = Gdk::PixbufAnimation.new('./Vues/Images/animation.gif')
-		animation = Gtk::Image.new(nil)
-		animation.set_pixbuf_animation(pixAnim)
+		#pixAnim = Gdk::PixbufAnimation.new('./Vues/Images/animation.gif')
+		#animation = Gtk::Image.new(nil)
+		#animation.set_pixbuf_animation(pixAnim)
 		
 		#vbox.pack_start(animation, false, false,0)
 		vbox.pack_start(@boutonJouer, false, false, 0)

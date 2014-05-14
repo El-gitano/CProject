@@ -53,6 +53,20 @@ class ControleurEditeur < Controleur
 			@modele.grille.genererAleatoire
 			@modele.lancerMaj
 		}
+		
+		#Importer grille
+		@vue.boutonImporter.signal_connect("clicked"){
+	
+			print "Importer Grille non implémenté"
+			@modele.lancerMaj
+		}
+		
+		#Exporter grille
+		@vue.boutonExporter.signal_connect("clicked"){
+	
+			print "Exporter Grille non implémenté"
+			@modele.lancerMaj
+		}
 
 		# Bouton pour le retour a l'accueil	
 		@vue.boutonRetour.signal_connect("clicked"){
