@@ -1,9 +1,10 @@
-#encoding UTF-8
+#encoding: UTF-8
 
 require_relative 'Grille'
 require_relative 'EtatsCases/EtatCaseJouee'
 require_relative 'EtatsCases/EtatCaseNeutre'
 
+#La classe grilleEditeur fournit une opération de génration aléatoire de la grille en plus des fonctionnalités de base d'une grille
 class GrilleEditeur < Grille
 
 	#Création d'une grille
@@ -17,6 +18,7 @@ class GrilleEditeur < Grille
 		super(taille, nomGrille, createur, nbJokers)
 	end
 	
+	#Modifie aléatoirement l'état des cases de la grille
 	def genererAleatoire
 	
 		operationGrille do |uneCase|

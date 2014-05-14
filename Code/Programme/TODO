@@ -5,3 +5,4 @@ Générer RDoc
 Mettre à jour les stats lors du jeu (Corriger temps joué)
 Implanter les jokers et les indices + fin de partie
 Stopper timer lors de la sauvegarde
+Voir si réinitialiser grille présente un intérêt (classe grilleJeu)

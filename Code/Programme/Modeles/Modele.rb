@@ -1,3 +1,5 @@
+#encoding: UTF-8
+
 require 'sqlite3'
 require_relative 'Profil'
 
@@ -6,9 +8,6 @@ class Modele
 
     @observateurs
     @bdd
-    @profil
-    
-    attr_reader :profil
     
     private_class_method :new
     
@@ -18,8 +17,6 @@ class Modele
     	@observateurs = Array.new
     	@bdd = SQLite3::Database.open $fichierBDD
     	@bdd.results_as_hash = true#Utile pour retourner les résultats dans un tableau de hash
-    	@profil = unProfil
-
     end
     
     #Ajoute un observateur dans la liste des observateurs
@@ -65,26 +62,4 @@ class Modele
     
     	@bdd.close
     end
-    
-    #Sauvegarde le profil en mémoire dans la bdd
-    def sauvegarderProfil
-		
-		#Sauvegarde des stats
-		0.upto(@profil.getStats.length/2) do |x|
-	
-			@profil.getStats.delete(x)
-		end	
-
-		id = @profil.getStats["id"]
-		req = ""
-		
-		@profil.getStats.each do |key, value| 
-	
-			req += "'#{key}' = '#{value}', "
-		end	
-		
-		req = req[0...-2]
-		
-		self.requete("UPDATE stats SET #{req} WHERE id = #{id}") 
-	end
 end

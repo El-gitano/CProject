@@ -1,9 +1,10 @@
-#encoding UTF-8
+#encoding: UTF-8
 
 require_relative 'EtatCase'
 require_relative 'EtatCaseNeutre'
 require_relative 'EtatCaseJouee'
 
+#Définition de la réaction d'une case aux clics lorsqu'elle possède une croix (le joueur a estimé qu'il ne fallait pas jouer sur cette case)
 class EtatCaseCroix < EtatCase
     
 	@@instance = nil
@@ -20,12 +21,14 @@ class EtatCaseCroix < EtatCase
 		return @@instance
 	end
 	
+	#La case passe à l'état neutre
 	def clicDroit(uneCase)
 	
 		super(uneCase)
 		uneCase.changerEtat(EtatCaseNeutre.getInstance)
 	end
 	
+	#La case passe à l'état joué
 	def clicGauche(uneCase)
 	
 		super(uneCase)

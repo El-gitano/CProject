@@ -1,8 +1,9 @@
-#encoding UTF-8
+#encoding: UTF-8
 
 require_relative 'Case'
 require 'yaml'
 
+#Une grille est composée d'une ensemble de cases ainsi que de diverses informations telles que sa taille, son nom...
 class Grille
 	
 	@taille
@@ -28,16 +29,19 @@ class Grille
 		@dateModification = Time.now.strftime("%d/%m/%Y %H:%M")
 	end
 		
+	#Retourne une case de la grille (de la classe Case)
 	def getCase(x, y)
 	
 		return @cases[x][y]
 	end
 	
+	#Retourne la colonne x de cases de la grille
 	def getColonne(x)
 		
 		return @cases[x]
 	end
 	
+	#Retourne la ligne y de cases de la grille
 	def getLigne(y)
 
 		resultat = Array.new()
@@ -50,6 +54,7 @@ class Grille
 		return resultat
 	end
 	
+	#Effectue une opération sur l'ensemble de la grille. Cette opération est un bloc passé en paramètre
 	def operationGrille
 	
 		@cases.each{|x|
@@ -61,6 +66,7 @@ class Grille
 		}
 	end
 	
+	#Effectue une opération sur la ligne y de la grille. Cette opération est un bloc passé en paramètre
 	def operationLigne(y)
 	
 		getLigne(y).each{|el|
@@ -69,6 +75,7 @@ class Grille
 		}
 	end
 	
+	#Effectue une opération sur la colonne x de la grille. Cette opération est un bloc passé en paramètre
 	def operationColonne(x)
 	
 		getColonne(x).each{|el|
@@ -77,18 +84,16 @@ class Grille
 		}
 	end
 
+	#Serialise les cases de la grille afin de les sauvegarder dans la bdd
 	def casesSerialize()
 
 		return YAML.dump(@cases)
 	end
 	
+	#Déserialise une grille afin de la charger en mémoire
 	def Grille.casesDeserialize(obj)
 	
 		return YAML.load(obj)
-	end
-	
-	def to_num
-
 	end
 
 	def to_s

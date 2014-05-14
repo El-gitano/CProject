@@ -17,7 +17,7 @@ class Controleur
 	def changerControleur(unControleur)
     
     	@vue.fermerFenetre
-    	
+    	@modele.fermerBdd
     	@picross.controleur = unControleur
     end
 end

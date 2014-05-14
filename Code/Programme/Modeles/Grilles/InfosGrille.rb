@@ -1,5 +1,6 @@
-#encoding UTF-8
+#encoding: UTF-8
 
+#La classe InfoGrille parcourt une grille afin de déterminer le nombre de blocs successifs pour chaque ligne et chaque colonne qu'elle stocke dans ses variables internes
 class InfosGrille
 
 	@infosLignes
@@ -13,7 +14,7 @@ class InfosGrille
 		@infosColonnes = Array.new
 	end
 	
-	#Génère les informations pour les lignes et colonnes d'une grille donnée
+	#Génère les informations pour les lignes et colonnes d'une instance Grille
 	def genererInfos(uneGrille)
 	
 		@infosLignes.clear

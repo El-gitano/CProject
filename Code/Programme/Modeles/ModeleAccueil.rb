@@ -1,21 +1,14 @@
-#encoding UTF-8
-require_relative 'Modele'
+#encoding: UTF-8
 
-class ModeleAccueil < Modele
+require_relative 'ModeleAvecProfil'
+
+class ModeleAccueil < ModeleAvecProfil
 
 	public_class_method :new
 	
 	def initialize(unProfil)
 	
 		super(unProfil)
-	end
-	
-	#Retourne la taille d'une grille
-	def getTailleGrille(uneGrille)
-	
-		res = requete("SELECT taillegrille FROM grilleediter WHERE nomgrille = '#{uneGrille}'")
-		
-		return res[0]["taillegrille"]
 	end
 	
 	#Retourne la liste des grilles par leurs noms
