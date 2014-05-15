@@ -4,6 +4,8 @@ require_relative 'ModeleGrille'
 require_relative 'Grilles/GrilleJeu'
 require_relative 'Grilles/GrilleEditeur'
 require_relative 'Grilles/InfosGrille'
+require_relative 'Grilles/EtatsCases/EtatCaseCroix'
+require_relative 'Grilles/EtatsCases/EtatCaseJouee'
 require_relative 'Timer'
 require 'date'
 
@@ -12,7 +14,7 @@ class ModeleJeu < ModeleGrille
 	public_class_method :new
 	
 	@plateauJeu#Grille de jeu
-	@grille#Grille de référence
+	@grille#Grille de référence (solution)
 	@timer
 	
 	@informations#Informations numériques sur la grille de référence
@@ -164,11 +166,38 @@ class ModeleJeu < ModeleGrille
 		super.ajouterTemps(@timer.tempsEcoule)
 	end
 	
-	#Dévoile 3 cases dans la mesure du possible
+	#Dévoile une case aléatoirement dans le jeu
 	def utiliserJoker
+	
+		casesFausses = Array.new
 		
+		0.upto((@plateauJeu.taille-1)){|x|
+		
+			0.upto((@plateauJeu.taille-1)){|y|
+			
+				casesFausses.push([@plateauJeu.getCase(x, y), x, y]) if ((@plateauJeu.getCase(x, y).etat) != (@grille.getCase(x, y)))
+			}
+		}
+
+		indice = Random.rand(casesFausses.size)
+		
+		caseAChanger = casesFausses[indice][0]
+		x = casesFausses[indice][1]
+		y = casesFausses[indice][2]
+		
+		#On met la solution
+		caseSolution = @grille.getCase(x, y)
+		
+		if caseSolution.neutre? then
+			
+			caseAChanger.changerEtat(EtatCaseCroix.getInstance)
+		
+		elsif caseSolution.jouee? then
+		
+			caseAChanger.changerEtat(EtatCaseJouee.getInstance)
+		end
+				
 		enleverJoker
-		puts "À implémenter"
 	end
 	
 	#Enlève un joker pour le joueur
@@ -184,9 +213,10 @@ class ModeleJeu < ModeleGrille
 		return @plateauJeu.getCase(x,y)
     end
     	
-    #Réinitialise le jeu afin de recommencer une partie
-    def reinitialiserJeu
+    #Retourne une tableau contenant les coordonnées des cases résolvables par le joueur au moment de l'appel
+    def chercherSolutions
     
+    	
     end
     
 	def to_s

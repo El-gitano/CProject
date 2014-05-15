@@ -108,7 +108,7 @@ class Grille
 	
 		return YAML.load(obj)
 	end
-
+	
 	def to_s
 	
 		0.upto(@taille-1){|y|

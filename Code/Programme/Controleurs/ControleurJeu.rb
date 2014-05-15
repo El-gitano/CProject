@@ -76,7 +76,7 @@ class ControleurJeu < Controleur
 	
 			#On dévoile les cases voulues
 			@modele.utiliserJoker
-		
+			
 			#On vérifie que ça n'a pas résolu la grille
 			lancerVerification
 			
