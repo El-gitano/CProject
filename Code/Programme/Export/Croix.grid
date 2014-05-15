@@ -1,0 +1,58 @@
+--- !ruby/object:GrilleEditeur
+taille: 5
+nomGrille: Croix
+createur: 3
+nbJokers: 3
+cases:
+- - !ruby/object:Case
+    etat: &18499940 !ruby/object:EtatCaseJouee {}
+  - !ruby/object:Case
+    etat: &18499460 !ruby/object:EtatCaseNeutre {}
+  - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499940
+- - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499940
+  - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499940
+  - !ruby/object:Case
+    etat: *18499460
+- - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499940
+  - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499460
+- - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499940
+  - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499940
+  - !ruby/object:Case
+    etat: *18499460
+- - !ruby/object:Case
+    etat: *18499940
+  - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499460
+  - !ruby/object:Case
+    etat: *18499940
+dateCreation: 14/05/2014 14:25
+dateModification: 14/05/2014 14:25
