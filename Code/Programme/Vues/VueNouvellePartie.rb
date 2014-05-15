@@ -16,7 +16,7 @@ class VueNouvellePartie < Vue
 	def initialize(unModele)
 	
 		super(unModele, "Nouvelle partie")
-		@window.set_size_request(640, 200)
+		@window.set_size_request(680, 200)
 		
 		vbox = Gtk::VBox.new(false, 10)
 		vbox.set_border_width(10)

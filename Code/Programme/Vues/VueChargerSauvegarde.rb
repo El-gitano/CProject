@@ -17,7 +17,7 @@ class VueChargerSauvegarde < Vue
 	def initialize(unModele)
 	
 		super(unModele, "Chargement d'une sauvegarde")
-		@window.set_size_request(640, 200)
+		@window.set_size_request(680, 200)
 		
 		@window.signal_connect("delete_event"){
 		
