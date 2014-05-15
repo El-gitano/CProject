@@ -30,26 +30,11 @@ class ControleurJeu < Controleur
 		
 		#On link le label au timer
 		@modele.timer.label = @vue.lbTimer
-
-		#Multi-sélection
-		@vue.window.signal_connect("key-press-event"){|w, e|
-		
-			if  Gdk::Keyval::GDK_space == e.keyval then
-			
-				if @multiSelection then
-				
-					@multiSelection = false
-					
-				else
-				
-					@multiSelection = true
-				end
-			end
-		}
 		
 		#On connecte un signal à chaque bouton
 		@vue.table.each{|uneCase|
 		
+			#Changement d'état lors d'un clic
 			uneCase.signal_connect("button_press_event"){|laCase, event|
 		
 				#Màj stats
@@ -67,18 +52,7 @@ class ControleurJeu < Controleur
 				end
 				
 				lancerVerification
-				@vue.actualiserCase(laCase.x, laCase.y)
-			}
-			
-			uneCase.signal_connect("enter-notify-event"){|w, event|
-			
-				if @multiSelection then
-				
-					@modele.ajouterClic
-					@modele.getCase(uneCase.x,  uneCase.y).clicGauche
-					lancerVerification
-					@modele.lancerMaj
-				end
+				@vue.actualiserCase(laCase.x, laCase.y)	
 			}
 		}
 		
@@ -125,17 +99,6 @@ class ControleurJeu < Controleur
 				DialogueInfo.afficher("Indice introuvable", "Nous n'avons aucun indice à vous donner", @vue.window)
 			end
 		}
-		
-		# Bouton pour vérifier si la grille est correctement remplie 
-		@vue.btVerifier.signal_connect("clicked"){
-
-			lancerVerification
-
-			#else
-				
-				#DialogueInfo.afficher("Grille invalide", "Votre grille est invalide", @vue.window)
-			#end
-		}	
 
 		# Sauvegarder la grille pour la continuer plus tard
 		@vue.miSauvegarder.signal_connect("activate"){

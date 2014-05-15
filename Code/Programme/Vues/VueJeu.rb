@@ -17,7 +17,6 @@ class VueJeu < Vue
 	
 	@btJoker
 	@btIndice
-	@btVerifier
 	
 	@table
 	@mat
@@ -25,7 +24,7 @@ class VueJeu < Vue
 	
 	public_class_method :new
 	
-	attr_reader :miSauvegarder, :miQuitter, :miRageQuit, :lbTimer, :lbNomGrille, :btJoker, :btIndice, :btVerifier, :table, :miDidac
+	attr_reader :miSauvegarder, :miQuitter, :miRageQuit, :lbTimer, :lbNomGrille, :btJoker, :btIndice, :table, :miDidac
 	
 	def initialize(unModele)
 	
@@ -37,9 +36,6 @@ class VueJeu < Vue
 		vbox.pack_start(creerMenu)
 		vbox.pack_start(creerEntete)
 		vbox.pack_start(creerPlateau)
-		
-		@btVerifier = Gtk::Button.new("Vérifier")
-		vbox.pack_start(@btVerifier)
 		
 		vbox.set_border_width(5)
 
