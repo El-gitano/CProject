@@ -2,6 +2,7 @@
 
 require_relative 'Controleur'
 require_relative 'ControleurOuvrirGrille'
+require_relative 'ControleurOuvrirGrilleExport'
 
 require_relative '../Modeles/ModeleEditeur'
 require_relative '../Modeles/Grilles/GrilleEditeur'
@@ -64,8 +65,7 @@ class ControleurEditeur < Controleur
 		#Exporter grille
 		@vue.boutonExporter.signal_connect("clicked"){
 	
-			print "Exporter Grille non implémenté"
-			@modele.lancerMaj
+			changerControleur(ControleurOuvrirGrilleExport.new(@picross, @modele.profil))
 		}
 
 		# Bouton pour le retour a l'accueil	

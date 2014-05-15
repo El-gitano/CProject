@@ -96,6 +96,19 @@ class Grille
 		return YAML.load(obj)
 	end
 
+
+	#Serialise les cases de la grille afin de les sauvegarder dans la bdd
+	def plateauSerialize()
+
+		return YAML.dump(self)
+	end
+	
+	#Déserialise une grille afin de la charger en mémoire
+	def Grille.plateauDeserialize(obj)
+	
+		return YAML.load(obj)
+	end
+
 	def to_s
 	
 		0.upto(@taille-1){|y|

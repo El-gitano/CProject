@@ -18,6 +18,35 @@ class GrilleEditeur < Grille
 		super(taille, nomGrille, createur, nbJokers)
 	end
 	
+	def importerGrille(nomGrille)
+		if File.exists?(nomGrille) then
+			file = File.open(nomGrille, "r")
+			tmp = Grille.plateauDeserialize(file)
+
+			self.taille = tmp.taille
+			self.cases = tmp.cases
+			self.nomGrille = tmp.nomGrille
+			self.createur = tmp.createur
+			self.nbJokers = tmp.nbJokers
+			self.dateCreation = tmp.dateCreation
+			self.dateModification = tmp.dateModification
+
+			file.close()
+			return true
+		else
+			return false
+		end
+	end
+
+	def exporterGrille(nomGrille)
+			file = File.new(nomGrille, "w")
+
+			tmp = plateauSerialize()
+
+			file.puts(tmp)
+			file.close()
+	end
+
 	#Modifie aléatoirement l'état des cases de la grille
 	def genererAleatoire
 	
@@ -38,4 +67,3 @@ class GrilleEditeur < Grille
 		end
 	end
 end
-
