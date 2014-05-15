@@ -32,6 +32,7 @@ class VueJeu < Vue
 		
 		#VBox principale
 		vbox = Gtk::VBox.new(false, 5)
+		@window.add(vbox)
 
 		vbox.pack_start(creerMenu)
 		vbox.pack_start(creerEntete)
@@ -44,7 +45,8 @@ class VueJeu < Vue
 
 		miseAJour
 		
-		@window.add(vbox)
+		
+
 		@window.show_all
 	end
 	
@@ -206,7 +208,9 @@ class VueJeu < Vue
 			@btJoker.label = "Jokers (#{@modele.plateauJeu.nbJokers})"
 		end
 		
+		
 		@window.show_all
+
 	end
 	
 	def miseAJourNomGrille
