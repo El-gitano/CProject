@@ -22,7 +22,7 @@ class ModeleOuvrirGrilleImport < ModeleGrille
 		#print "profil courant : ",@profil.pseudo,"\n"
 
 		array.each do |x|
-			print " nom fich :",x,"\n"
+			#print " nom fich :",x,"\n"
 			tmp = ModeleEditeur.new(@profil,10)
 			tmp.grille.importerGrille("./Import/"+x)
 			#print tmp.grille.to_debug

@@ -24,7 +24,7 @@ class ModeleAvecProfil < Modele
 	#Change le pseudo du profil actuel
 	def changerPseudo(unPseudo)
 	
-		@profil.pseudo = pseudo
+		@profil.pseudo = unPseudo
 	end
 	
 	#Met à jour le profil actuel ainsi que ses statistiques dans la base de donnée
