@@ -43,6 +43,8 @@ class ListeurGrillesJouables < Listeur
 
 		linkerColonnes(listeColonnes)
 
+		modeleTV.set_sort_column_id(2)
+		
 		return self
 	end
 end
