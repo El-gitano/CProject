@@ -54,7 +54,6 @@ class InfosGrille
 				@infosLignes[x].push(0)
 			end
 			
-			@infosLignes[x] = @infosLignes[x].reverse
 		}
 		
 		#Remplissage infos colonnes
