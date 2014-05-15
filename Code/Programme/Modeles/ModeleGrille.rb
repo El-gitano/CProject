@@ -8,7 +8,7 @@ require 'date'
 class ModeleGrille < ModeleAvecProfil
 	
 	@grille
-	
+	public_class_method :new
 	attr_accessor :grille
 	
 	def initialize(unProfil)

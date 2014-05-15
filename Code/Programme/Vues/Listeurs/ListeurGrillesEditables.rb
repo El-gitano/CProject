@@ -7,15 +7,19 @@ class ListeurGrillesEditables < Listeur
 
 	public_class_method :new
 	
-	def initialize(unModele)
-	
+	def initialize(unModele,multiselection = false)
+		
 		super(unModele)
 
 		@modeleTV = Gtk::ListStore.new(String, String, Integer, Integer, String, String)
 		
 		maj
 		
+
+		@treeView.selection.mode=Gtk::SELECTION_MULTIPLE if multiselection
+
 		@treeView.model = @modeleTV
+
  
 		#On définit + ajoute les colonnes
 		listeColonnes = Array.new
