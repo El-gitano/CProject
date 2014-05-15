@@ -45,14 +45,13 @@ class ModeleProfil < ModeleAvecProfil
 	#Retourne vrai si un profil existe sous le nom passé en paramètre
 	def profilExiste?(unProfil)
 	
-		return !requete("SELECT * FROM profil WHERE pseudo = '#{unProfil}'").empty?
+		return !requete("SELECT * FROM profil WHERE pseudo = '#{sanitize(unProfil)}'").empty?
 	end
 	
 	#Change le nom d'un profil déjà existant
 	def changerNomProfil(nouveauNom)
 	
-		requete("UPDATE profil SET pseudo = '#{nouveauNom}' WHERE pseudo = '#{@profil.pseudo}'")
-		requete("UPDATE grilleediter SET createur ='#{nouveauNom}' WHERE createur = '#{@profil.pseudo}'")
+		requete("UPDATE profil SET pseudo = '#{sanitize(nouveauNom)}' WHERE id = #{@stats["id"]}")
 		@profil.pseudo = nouveauNom
 		lancerMaj
 	end

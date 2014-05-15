@@ -66,9 +66,9 @@ class ModeleJeu < ModeleGrille
 		serial = @plateauJeu.casesSerialize
         nbJokers = @plateauJeu.nbJokers
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
-        idProfil = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
-		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'") 
-		req = "UPDATE grillejouee SET grille='#{serial}', jokersRestants='#{nbJokers}', timer='#{@timer.temps}', datemaj='#{date}' WHERE joueur='#{idProfil[0]["id"]}' AND nompartie='#{nomPartie}' AND idGrille='#{idGrilleRef[0]["id"]}'"
+
+		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{sanitize(@grille.nomGrille)}'") 
+		req = "UPDATE grillejouee SET grille='#{serial}', jokersRestants='#{nbJokers}', timer='#{@timer.temps}', datemaj='#{date}' WHERE joueur='#{@profil.getStats["id"]}' AND nompartie='#{sanitize(nomPartie)}' AND idGrille='#{idGrilleRef[0]["id"]}'"
 
 		requete(req)
 	end
@@ -76,7 +76,7 @@ class ModeleJeu < ModeleGrille
 	#Retourne vrai si le nom de sauvegarde passé en paramètre existe déjà pour un joueur
 	def sauvegardeExiste?(nomSauvegarde)
 	
-		return !requete("SELECT * FROM grillejouee WHERE nompartie = '#{nomSauvegarde}' AND joueur = #{@profil.getStats["id"]}").empty?
+		return !requete("SELECT * FROM grillejouee WHERE nompartie = '#{sanitize(nomSauvegarde)}' AND joueur = #{@profil.getStats["id"]}").empty?
 	end
 	
 	#Crée une nouvelle sauvegarde pour un joueur
@@ -86,8 +86,8 @@ class ModeleJeu < ModeleGrille
         nbJokers = @plateauJeu.nbJokers
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
 
-		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{@grille.nomGrille}'")[0]["id"]
-		requete("INSERT INTO grillejouee(joueur, idGrille, nompartie, grille, jokersRestants, timer, datedebut, datemaj) VALUES('#{@profil.getStats["id"]}','#{idGrilleRef}','#{nomPartie}','#{serial}','#{nbJokers}','#{@timer.temps}','#{date}','#{date}')")
+		idGrilleRef = requete("SELECT id FROM grilleediter WHERE nomgrille = '#{sanitize(@grille.nomGrille)}'")[0]["id"]
+		requete("INSERT INTO grillejouee(joueur, idGrille, nompartie, grille, jokersRestants, timer, datedebut, datemaj) VALUES('#{@profil.getStats["id"]}','#{idGrilleRef}','#{sanitize(nomPartie)}','#{serial}','#{nbJokers}','#{@timer.temps}','#{date}','#{date}')")
 		
 	end
 	
@@ -113,7 +113,7 @@ class ModeleJeu < ModeleGrille
 	#Charge une partie depuis son nom
 	def chargerPartie(nomPartie)
 
-		reqTemp = requete("SELECT * FROM grillejouee WHERE nompartie='#{nomPartie}' AND joueur='#{@profil.getStats["id"]}'")
+		reqTemp = requete("SELECT * FROM grillejouee WHERE nompartie='#{sanitize(nomPartie)}' AND joueur='#{@profil.getStats["id"]}'")
 		nomGrilleRef = requete("SELECT nomgrille FROM grilleediter WHERE id='#{reqTemp[0]["idGrille"]}'")
 		
 		@grille = charger(nomGrilleRef[0]["nomgrille"])
@@ -143,8 +143,7 @@ class ModeleJeu < ModeleGrille
 	#Retourne un tableau des noms des sauvegardes d'un utilisateur, possibilité d'effectuer un traitement de type yield
 	def listeNomGrillesChargeables
 	
-		id = requete("SELECT id FROM profil WHERE pseudo='#{@profil.pseudo}'")
-        reqGrille = requete("SELECT nompartie FROM grillejouer WHERE joueur='#{id[0]["id"]}'")
+        reqGrille = requete("SELECT nompartie FROM grillejouer WHERE joueur='#{@profil.getStats["id"]}'")
 		res = Array.new
 		i = 0
 		

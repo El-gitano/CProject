@@ -57,8 +57,8 @@ class ModeleAvecProfil < Modele
         if not existeProfil?(unLogin) then
 		
 			#Création du profil
-            requete("INSERT INTO profil(pseudo, pass) VALUES ('#{unLogin}', NULL)")
-            id = requete("SELECT id from profil WHERE pseudo = '#{unLogin}'")[0]["id"]
+            requete("INSERT INTO profil(pseudo, pass) VALUES ('#{sanitize(unLogin)}', NULL)")
+            id = requete("SELECT id from profil WHERE pseudo = '#{sanitize(unLogin)}'")[0]["id"]
             
             #Création des stats
             requete("INSERT INTO stats(id, parties_commencees, parties_terminees, temps_joue, joker_utilises, indices_utilises, grilles_crees, nombre_clics, ragequits) VALUES(#{id},0,0,0,0,0,0,0,0)")
@@ -71,9 +71,8 @@ class ModeleAvecProfil < Modele
 		
 		if existeProfil?(unLogin) then
 
-			tab=requete("SELECT id from profil WHERE pseudo = '#{unLogin}'")
-            id = tab [0]["id"]
-			requete("DELETE FROM profil WHERE pseudo = '#{unLogin}'")
+			id = requete("SELECT id from profil WHERE pseudo = '#{sanitize(unLogin)}'")[0]["id"]
+			requete("DELETE FROM profil WHERE id = #{id}")
 			requete("DELETE FROM stats WHERE id = '#{id}'")
 
 		end
@@ -83,17 +82,16 @@ class ModeleAvecProfil < Modele
     def chargerProfil(unPseudo)
 
 		#Récupération du profil dans des variables
-		pseudo = requete("SELECT pseudo FROM profil WHERE profil.pseudo = '#{unPseudo}'")
-       	stats = requete("SELECT stats.* FROM profil INNER JOIN stats ON profil.id = stats.id WHERE profil.pseudo = '#{unPseudo}'")
+       	stats = requete("SELECT * FROM stats WHERE id = (SELECT id FROM profil WHERE profil.pseudo = '#{sanitize(unPseudo)}')")
 		
 		#Chargement du profil
-		@profil = Profil.ouvrir(pseudo[0]["pseudo"], stats[0])
+		@profil = Profil.ouvrir(unPseudo, stats[0])
    	end
 	
 	#Retourne vrai si le profil de pseudo "unLogin" existe, faux sinon
 	def existeProfil?(unLogin)
 	
-		return !requete("SELECT * FROM profil WHERE pseudo = '#{unLogin}'").empty?
+		return !requete("SELECT * FROM profil WHERE pseudo = '#{sanitize(unLogin)}'").empty?
 	end
 	
 	#Retourne la liste des profils de la bdd ordonnés de chronologique dans leurs création

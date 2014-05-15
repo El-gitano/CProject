@@ -23,7 +23,7 @@ class ControleurDemarrage < Controleur
 		@modele = ModeleDemarrage.new
 		@vue = VueDemarrage.new(@modele)	
 		@modele.ajouterObservateur(@vue)
-		
+
 		#Handlers de signaux
 		
 		#Fin du programme

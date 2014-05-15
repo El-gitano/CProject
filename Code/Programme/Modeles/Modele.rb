@@ -61,4 +61,9 @@ class Modele
     
     	@bdd.close
     end
+    
+    def sanitize(uneChaine)
+	
+    	return uneChaine.gsub('\'', '\'\'')
+    end
 end
