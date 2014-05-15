@@ -40,7 +40,6 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		tailleFenetreX = 640
 		
 		@window.set_size_request(tailleFenetreX, 750)
-		@window.set_resizable(false) 
 		@vbox = Gtk::VBox.new(false, 10)
 		@vbox2 = Gtk::VBox.new(false, 2)
 		@vbox3 = Gtk::VBox.new(false, 2)
@@ -94,14 +93,6 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		@boutonImporter.set_image(imgImporter)
 		@boutonExporter.set_image(imgExporter)
 		@boutonRetour.set_image(imgFermer)
-
-		imgOuvrir.show()
-		imgEnregistrer.show()
-		#imgImporterImage.show()
-		imgImporter.show()
-		imgExporter.show()
-		imgAleatoire.show()
-		imgFermer.show()
 
 		@hbox1.pack_start(@boutonOuvrir, true, false, 0)
 		@hbox1.pack_start(@boutonEnregistrer, true, false, 0)
