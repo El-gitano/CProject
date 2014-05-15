@@ -15,14 +15,14 @@ class ModeleOuvrirGrille < ModeleGrille
 	#Retourne un tableau des informations sur les grilles appartenant à un utilisateur
 	def infosGrillesEditables
 	
-        req = requete("SELECT nomgrille, pseudo, taillegrille, nbjokers, datecreation, datemaj FROM grilleediter INNER JOIN profil ON profil.id = grilleediter.createur WHERE pseudo='#{@profil.pseudo}'")
+        req = requete("SELECT nomgrille, pseudo, taillegrille, nbjokers, datecreation, datemaj FROM grilleediter INNER JOIN profil ON profil.id = grilleediter.createur WHERE profil.id ='#{@profil.getStats["id"]}'")
 		return req
     end
 	
 	#Supprime la grille du nom passé en paramètre
 	def supprimerGrille(uneGrille)
 	
-		requete("DELETE FROM grilleediter WHERE nomgrille = '#{uneGrille}'")
+		requete("DELETE FROM grilleediter WHERE nomgrille = '#{sanitize(uneGrille)}'")
 		lancerMaj
 	end
 end

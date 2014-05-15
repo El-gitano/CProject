@@ -50,7 +50,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		@hbox3 = Gtk::HBox.new(false, 0)	
 		
 		@boutonOuvrir = Gtk::Button.new(" Ouvrir", false)
-		@boutonEnregistrer = Gtk::Button.new(" Enregistrer", false)
+		@boutonEnregistrer = Gtk::Button.new(" Sauver", false)
 		#@boutonImporterImage = Gtk::Button.new(" Importer", false)
 		@boutonAleatoire = Gtk::Button.new("Aléatoire", false)
 		@boutonImporter = Gtk::Button.new(" Importer", false)

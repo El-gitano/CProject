@@ -20,19 +20,19 @@ class ModeleEditeur < ModeleGrille
 	#Retourne vrai si le profil chargé dans le modèle est propriétaire d'une grille dont le nom est passé en paramètre (et vrai si la grille n'existe pas)
 	def grillePropriete?(unNomGrille)
 		
-		return (!grilleExiste?(unNomGrille) or !requete("SELECT * FROM grilleediter WHERE createur = (SELECT id FROM profil WHERE pseudo='#{getPseudo}') AND nomgrille = '#{unNomGrille}'").empty?)
+		return (!grilleExiste?(unNomGrille) or !requete("SELECT * FROM grilleediter WHERE createur = (SELECT id FROM profil WHERE pseudo='#{sanitize(getPseudo)}') AND nomgrille = '#{sanitize(unNomGrille)}'").empty?)
 	end
 
 	#Sauvegarde une grille éditeur sous le nom passé en paramètre
     def sauvegarderGrilleEditeur(nomGrille)
     
-    	@grille.nomgrille = nomGrille
+    	@grille.nomGrille = nomGrille
         serial = @grille.casesSerialize
         tailleGrille = @grille.taille
         nbJokers = @grille.nbJokers
 		date = Time.now.strftime("%d/%m/%Y %H:%M")
 
-        self.requete("INSERT INTO grilleediter(createur,nomgrille,taillegrille,grille,nbjokers,datecreation,datemaj) VALUES((SELECT id FROM profil WHERE pseudo='#{getPseudo}'),'#{nomGrille}','#{tailleGrille}','#{serial}','#{nbJokers}','#{date}','#{date}')")
+        self.requete("INSERT INTO grilleediter(createur, nomgrille, taillegrille, grille, nbjokers, datecreation, datemaj) VALUES((SELECT id FROM profil WHERE pseudo='#{sanitize(getPseudo)}'),'#{sanitize(nomGrille)}','#{tailleGrille}','#{serial}','#{nbJokers}','#{date}','#{date}')")
         
     end
 
@@ -44,7 +44,7 @@ class ModeleEditeur < ModeleGrille
         nbJokers = @grille.nbJokers
 		dateModification = Time.now.strftime("%d/%m/%Y %H:%M")
 		
-		self.requete("UPDATE grilleediter SET taillegrille = '#{tailleGrille}', grille = '#{serial}', nbjokers = '#{nbJokers}', datemaj = '#{dateModification}' WHERE nomgrille = '#{nomGrille}'")
+		self.requete("UPDATE grilleediter SET taillegrille = '#{tailleGrille}', grille = '#{serial}', nbjokers = '#{nbJokers}', datemaj = '#{dateModification}' WHERE nomgrille = '#{sanitize(nomGrille)}'")
 	end
 	
 	#Définit le nombre de jokers de la grille à l'aide de l'entier passé en paramètre

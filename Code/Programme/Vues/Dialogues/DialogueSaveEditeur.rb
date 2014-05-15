@@ -35,7 +35,7 @@ class DialogueSaveEditeur < Gtk::Dialog
 					
 							DialogueInfo.afficher("Pas de nom de grille", "Veuillez renseigner un nom de grille svp", uneFenetre)
 						#Si le joueur n'est pas propriétaire de la grille
-						elsif unModele.grillePropriete?(d.etNomGrille.text) then
+						elsif !unModele.grillePropriete?(d.etNomGrille.text) then
 					
 							DialogueInfo.afficher("Accès interdit", "La grille que vous essayez d'écraser ne vous appartient pas", uneFenetre)
 						
@@ -55,7 +55,7 @@ class DialogueSaveEditeur < Gtk::Dialog
 						
 							choix = true
 							unModele.ajouterGrilleCree
-							unModele.sauvegarderGrilleEditeur(etNomGrille.text)
+							unModele.sauvegarderGrilleEditeur(d.etNomGrille.text)
 							DialogueInfo.afficher("Sauvegarde de la grille", "Grille sauvegardée avec succès", uneFenetre)
 						end
 				

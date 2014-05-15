@@ -19,7 +19,7 @@ class ModeleGrille < ModeleAvecProfil
 	#Retourne vrai si une grille du nom passé en paramètre existe
     def grilleExiste?(nom)
     
-        return !requete("SELECT * FROM grilleediter WHERE nomgrille = '#{nom}'").empty?
+        return !requete("SELECT * FROM grilleediter WHERE nomgrille = '#{sanitize(nom)}'").empty?
     end
 	
 	#Charge une grille
@@ -31,7 +31,7 @@ class ModeleGrille < ModeleAvecProfil
 	#Retourne une grille par son nom
 	def getGrille(nomGrille)
 	
-        reqTemp = requete("SELECT * FROM grilleediter WHERE nomgrille='#{nomGrille}'")
+        reqTemp = requete("SELECT * FROM grilleediter WHERE nomgrille='#{sanitize(nomGrille)}'")
         
         #Génération de la grille résultat
 		grille = GrilleEditeur.Creer(reqTemp[0]["taillegrille"], reqTemp[0]["nomgrille"], reqTemp[0]["createur"], reqTemp[0]["nbjokers"])
