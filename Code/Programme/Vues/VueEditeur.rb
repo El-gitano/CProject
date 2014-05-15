@@ -37,7 +37,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		super(unModele, "Éditeur")
 		@tailleGrille = @modele.grille.taille
 		
-		tailleFenetreX = 660
+		tailleFenetreX = 690
 		
 		@window.set_size_request(tailleFenetreX, 750)
 		@window.set_resizable(false) 
