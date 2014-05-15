@@ -50,7 +50,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		
 		@boutonOuvrir = Gtk::Button.new(" Ouvrir", false)
 		@boutonEnregistrer = Gtk::Button.new(" Sauver", false)
-		#@boutonImporterImage = Gtk::Button.new(" Importer", false)
+		@boutonImporterImage = Gtk::Button.new(" Importer", false)
 		@boutonAleatoire = Gtk::Button.new("Aléatoire", false)
 		@boutonImporter = Gtk::Button.new(" Importer", false)
 		@boutonExporter = Gtk::Button.new(" Exporter", false)
@@ -64,7 +64,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 		
 		@boutonOuvrir.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		@boutonEnregistrer.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
-		#@boutonImporterImage.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
+		@boutonImporterImage.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		@boutonAleatoire.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		@boutonRetour.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
 		@boutonImporter.set_size_request(tailleBoutonHautX, tailleBoutonHautY)
@@ -80,7 +80,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 	
 		imgOuvrir = Gtk::Image.new("./Vues/Images/folder.png")
 		imgEnregistrer = Gtk::Image.new("./Vues/Images/disquette.png")
-		#imgImporterImage = Gtk::Image.new("./Vues/Images/image2.png")
+		imgImporterImage = Gtk::Image.new("./Vues/Images/image2.png")
 		imgAleatoire = Gtk::Image.new("./Vues/Images/aleatoire.png")
 		imgFermer = Gtk::Image.new("./Vues/Images/retour.png")
 		imgImporter = Gtk::Image.new("./Vues/Images/importer.png")
@@ -88,7 +88,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 
 		@boutonOuvrir.set_image(imgOuvrir)
 		@boutonEnregistrer.set_image(imgEnregistrer)
-		#@boutonImporterImage.set_image(imgImporterImage)
+		@boutonImporterImage.set_image(imgImporterImage)
 		@boutonAleatoire.set_image(imgAleatoire)
 		@boutonImporter.set_image(imgImporter)
 		@boutonExporter.set_image(imgExporter)
@@ -96,7 +96,7 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 
 		@hbox1.pack_start(@boutonOuvrir, true, false, 0)
 		@hbox1.pack_start(@boutonEnregistrer, true, false, 0)
-		#@hbox1.pack_start(@boutonImporterImage, true, false, 0)
+		@hbox1.pack_start(@boutonImporterImage, true, false, 0)
 		@hbox1.pack_start(@boutonAleatoire, true, false, 0)
 		@hbox1.pack_start(@boutonImporter, true, false, 0)
 		@hbox1.pack_start(@boutonExporter, true, false, 0)
