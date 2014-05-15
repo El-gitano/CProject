@@ -1,10 +1,11 @@
 ==== PROG ====
 
-Implanter les jokers et les indices
+Implanter les indices
 Crypter les sauvegardes
 Corriger launchers
 Mettre booléen pour éviter d'avoir 200% de réussite
-Pré complétion de la grille de jeu
+Pré complétion de la grille de jeu ?
+Mettre tout en chemin relatif
 Nettoyer la bdd
 
 ==== GESTION ====

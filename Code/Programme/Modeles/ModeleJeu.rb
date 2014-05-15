@@ -169,13 +169,14 @@ class ModeleJeu < ModeleGrille
 	#Dévoile une case aléatoirement dans le jeu
 	def utiliserJoker
 	
+		#On récupère les cases qui diffèrent de la solution dans le jeu
 		casesFausses = Array.new
 		
 		0.upto((@plateauJeu.taille-1)){|x|
 		
 			0.upto((@plateauJeu.taille-1)){|y|
 			
-				casesFausses.push([@plateauJeu.getCase(x, y), x, y]) if ((@plateauJeu.getCase(x, y).etat) != (@grille.getCase(x, y)))
+				casesFausses.push([@plateauJeu.getCase(x, y), x, y]) if (@plateauJeu.getCase(x, y).etat != @grille.getCase(x, y).etat)
 			}
 		}
 
@@ -198,6 +199,27 @@ class ModeleJeu < ModeleGrille
 		end
 				
 		enleverJoker
+	end
+	
+	#Retourne un tableau contenant les cases jouables par le joueur lors de l'appel
+	def casesJouablesGrille
+	
+		cases = Array.new
+		
+		#On recherche des cases jouables pour chaque colonne
+		0.upto(@plateauJeu.taille){|x|
+		
+			@plateauJeu.getColonne(x){
+			
+				
+			}
+		}
+		
+		#On recherche des cases jouables pour chaque ligne
+		0.upto(@plateauJeu.taille){|y|
+
+			casesJouablesLigne(@plateauJeu.getLigne(y))
+		}
 	end
 	
 	#Enlève un joker pour le joueur
