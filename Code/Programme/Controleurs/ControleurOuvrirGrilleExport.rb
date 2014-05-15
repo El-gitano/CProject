@@ -1,4 +1,4 @@
-#encoding UTF-8
+#encoding: UTF-8
 
 require_relative '../Vues/VueOuvrirGrilleExport'
 require_relative '../Modeles/ModeleOuvrirGrilleExport'
@@ -24,10 +24,9 @@ class ControleurOuvrirGrilleExport < Controleur
 			@vue.listeur.getAllSelection.selected_each {|model, path, iter|
 				tmpGrille = ModeleGrille.new(@modele.profil)
 				tmpGrille.charger(iter[0]) 
-				DialogueSaveEditeur.afficher(@vue.window, @modele)
 				tmpGrille.grille.exporterGrille("./Export/"+iter[0]+".grid")
 			}
-
+			DialogueInfo.afficher("Exportation", "Exportation réalisée avec succès", @vue.window)
 		}
 		
 		#Retour à l'éditeur

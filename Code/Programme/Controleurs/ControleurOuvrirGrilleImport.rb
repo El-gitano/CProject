@@ -1,4 +1,4 @@
-#encoding UTF-8
+#encoding: UTF-8
 
 require_relative '../Vues/VueOuvrirGrilleImport'
 require_relative '../Modeles/ModeleOuvrirGrilleImport'
@@ -28,7 +28,7 @@ class ControleurOuvrirGrilleImport < Controleur
 			
 				
 			}
-
+			DialogueInfo.afficher("Importation", "Importation réalisée avec succès", @vue.window)
 		}
 		
 		#Retour à l'éditeur

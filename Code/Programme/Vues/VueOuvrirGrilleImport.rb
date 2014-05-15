@@ -34,7 +34,7 @@ class VueOuvrirGrilleImport < Vue
 		hbox = Gtk::HBox.new(true, 5)
 		
 		@btRetour = Gtk::Button.new("Retour")
-		@btCharger = Gtk::Button.new("importer")
+		@btCharger = Gtk::Button.new("Importer")
 		
 		hbox.pack_start(@btRetour, false, true, 0)
 		hbox.pack_start(@btCharger, false, true, 0)
