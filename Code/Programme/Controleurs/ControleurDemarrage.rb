@@ -24,6 +24,9 @@ class ControleurDemarrage < Controleur
 		@vue = VueDemarrage.new(@modele)	
 		@modele.ajouterObservateur(@vue)
 
+		@nbCaracteres
+		@taillePseudo = 7
+		
 		#Handlers de signaux
 		
 		#Fin du programme
@@ -67,11 +70,16 @@ class ControleurDemarrage < Controleur
 		@vue.boutonAjouter.signal_connect("clicked"){
 			
 			nomProfil = @vue.getProfil
+			@nbCaracteres = nomProfil.length
 			
 			if nomProfil.eql?("") then
 			
 				DialogueInfo.afficher("Pseudo non renseigné", "Vous n'avez pas renseigné de pseudo", @vue.window)
-			
+
+			elsif @nbCaracteres > @taillePseudo then
+
+				DialogueInfo.afficher("Pseudo trop long", "Le pseudo ne doit pas depasser #@taillePseudo caracteres", @vue.window)
+
 			elsif @modele.existeProfil?(nomProfil)
 			
 				DialogueInfo.afficher("Profil existant", "Le profil que vous souhaitez créer existe déjà", @vue.window)

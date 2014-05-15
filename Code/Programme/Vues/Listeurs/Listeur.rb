@@ -23,6 +23,11 @@ class Listeur < Gtk::ScrolledWindow
 	
 		return @treeView.selection.selected
 	end
+
+	def getAllSelection
+	
+		return @treeView.selection
+	end
 	
 	#Active le triage sur un tableau de colonnes et les ajoutent au treeView
 	def linkerColonnes(listeColonnes)

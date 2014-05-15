@@ -30,7 +30,7 @@ class VueDemarrage < Vue
 		hbox1 = Gtk::HBox.new(false, 5)
 		
 		@boutonSupprimer = Gtk::Button.new("Supprimer", false)
-		@boutonConnecter = Gtk::Button.new("Connecter", false)
+		@boutonConnecter = Gtk::Button.new("Se connecter", false)
 		@boutonConnecter.set_size_request(100, -1)
 		
 		@list_store = Gtk::ListStore.new(String)
