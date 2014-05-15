@@ -20,7 +20,7 @@ class ModeleChargerSauvegarde < ModeleAvecProfil
 	#Supprime la sauvegarde du nom passé en paramètre
 	def supprimerSauvegarde(unNom, uneGrille)
 	
-		requete("DELETE FROM grillejouee WHERE nompartie = '#{unNom}' AND joueur = #{@profil.getStats["id"]} AND idGrille = (SELECT id FROM grilleediter WHERE nomGrille = '#{uneGrille}')")
+		requete("DELETE FROM grillejouee WHERE nompartie = '#{sanitize(unNom)}' AND joueur = #{@profil.getStats["id"]} AND idGrille = (SELECT id FROM grilleediter WHERE nomGrille = '#{sanitize(uneGrille)}')")
 		lancerMaj
 	end
 end
