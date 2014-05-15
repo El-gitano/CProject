@@ -25,7 +25,7 @@ class ControleurDemarrage < Controleur
 		@modele.ajouterObservateur(@vue)
 
 		@nbCaracteres
-		@taillePseudo = 14 
+		@taillePseudo = 7
 		
 		#Handlers de signaux
 		

@@ -49,5 +49,8 @@ class ListeurSauvegardes < Listeur
 				entree[i] = ligne[i]
 			}
 		}
+		
+		#On trie par ordre de temps
+		@modeleTV.set_sort_column_id(4)
 	end
 end

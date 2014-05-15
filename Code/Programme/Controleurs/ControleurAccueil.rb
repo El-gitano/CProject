@@ -105,7 +105,7 @@ class ControleurAccueil < Controleur
 		tabNoms.push(hBoxNom("MARCAIS Thomas"))
 		tabNoms.push(hBoxNom("RAMOLET Arthur"))
 
-		labelAnnee = Gtk::Label.new("\nCrée en 2014")
+		labelAnnee = Gtk::Label.new("\nCréé en 2014")
 		labelUniv = Gtk::Label.new("Projet Université du Maine")
 
 		# Ajout des elements a la Vbox

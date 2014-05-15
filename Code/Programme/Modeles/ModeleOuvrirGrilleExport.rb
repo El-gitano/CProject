@@ -15,7 +15,7 @@ class ModeleOuvrirGrilleExport < ModeleGrille
 	#Retourne un tableau des informations sur les grilles appartenant à un utilisateur
 	def infosGrillesEditables
 	
-        req = requete("SELECT nomgrille, pseudo, taillegrille, nbjokers, datecreation, datemaj FROM grilleediter INNER JOIN profil ON profil.id = grilleediter.createur WHERE pseudo='#{@profil.pseudo}'")
+        req = requete("SELECT nomgrille, pseudo, taillegrille, nbjokers, datecreation, datemaj FROM grilleediter INNER JOIN profil ON profil.id = grilleediter.createur WHERE pseudo='#{sanitize(@profil.pseudo)}'")
 		return req
     end
 

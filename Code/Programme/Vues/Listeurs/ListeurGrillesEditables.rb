@@ -52,5 +52,7 @@ class ListeurGrillesEditables < Listeur
 				entree[i] = ligne[i]
 			}
 		}
+		
+		@modeleTV.set_sort_column_id(5)
 	end
 end
