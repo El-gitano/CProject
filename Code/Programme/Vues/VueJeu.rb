@@ -128,15 +128,25 @@ class VueJeu < Vue
 	def creerInfoLigne(unNombre)
 	
 		informations = @modele.informations.infosLignes[unNombre]
-		hbox = Gtk::HBox.new(false, 5)
-		hbox.set_border_width(5)
+		hbox = Gtk::HBox.new(false, 0)
+		
+		chaine = ""
 		
 		informations.each{|nombre|
 		
-			hbox.pack_end(Gtk::Label.new(nombre.to_s), false, false)
+			chaine += (nombre.to_s + " ")
 		}
 		
+		hbox.pack_end(Gtk::Label.new(chaine), false, false)
+		
 		return hbox
+	end
+	
+	def creerEspace(hauteur, largeur)
+	
+		espace = Gtk::Alignment.new(20, 20, 20, 20)
+		espace.set_size_request(hauteur, largeur)
+		return espace
 	end
 	
 	#Crée le plateau de jeu à partir de la grille du modèle

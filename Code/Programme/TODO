@@ -3,9 +3,10 @@
 Implanter les jokers et les indices
 Centrer la fenêtre de jeu
 Crypter les sauvegardes
-Gérer les injections SQL
 Corriger launchers
+Corriger grille 25*25 jeu
 Mettre booléen pour éviter d'avoir 200% de réussite
+Triage auto des grilles dans les treeViews
 
 ==== GESTION ====
 
