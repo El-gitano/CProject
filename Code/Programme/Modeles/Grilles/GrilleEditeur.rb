@@ -19,7 +19,9 @@ class GrilleEditeur < Grille
 	end
 	
 	def importerGrille(nomGrille, pseudo=false)
+	
 		if File.exists?(nomGrille) then
+		
 			file = File.open(nomGrille, "r")
 			tmp = Grille.plateauDeserialize(file)
 			

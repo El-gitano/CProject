@@ -24,7 +24,7 @@ class ControleurOuvrirGrilleExport < Controleur
 			@vue.listeur.getAllSelection.selected_each {|model, path, iter|
 				tmpGrille = ModeleGrille.new(@modele.profil)
 				tmpGrille.charger(iter[0]) 
-				tmpGrille.grille.exporterGrille("./Export/"+iter[0]+".grid")
+				tmpGrille.grille.exporterGrille(File.expand_path("../Export/"+iter[0]+".grid", File.dirname(__FILE__)))
 			}
 			DialogueInfo.afficher("Exportation", "Exportation réalisée avec succès", @vue.window)
 		}

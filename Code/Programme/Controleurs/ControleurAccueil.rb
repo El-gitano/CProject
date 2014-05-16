@@ -119,9 +119,7 @@ class ControleurAccueil < Controleur
 
 		# Affichage des elements et lancement de la fenetre
 		dialogue.show_all
-
 		dialogue.run
-		
 		dialogue.destroy
 	end
 	

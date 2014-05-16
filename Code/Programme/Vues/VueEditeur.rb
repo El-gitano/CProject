@@ -78,13 +78,13 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 			@listBoutonTaille.push(boutonTaille)
 		}
 	
-		imgOuvrir = Gtk::Image.new("./Vues/Images/folder.png")
-		imgEnregistrer = Gtk::Image.new("./Vues/Images/disquette.png")
-		imgImporterImage = Gtk::Image.new("./Vues/Images/image2.png")
-		imgAleatoire = Gtk::Image.new("./Vues/Images/aleatoire.png")
-		imgFermer = Gtk::Image.new("./Vues/Images/retour.png")
-		imgImporter = Gtk::Image.new("./Vues/Images/importer.png")
-		imgExporter = Gtk::Image.new("./Vues/Images/exporter.png")
+		imgOuvrir = Gtk::Image.new(File.expand_path("./Images/folder.png", File.dirname(__FILE__)))
+		imgEnregistrer = Gtk::Image.new(File.expand_path("./Images/disquette.png", File.dirname(__FILE__)))
+		imgImporterImage = Gtk::Image.new(File.expand_path("./Images/image2.png", File.dirname(__FILE__)))
+		imgAleatoire = Gtk::Image.new(File.expand_path("./Images/aleatoire.png", File.dirname(__FILE__)))
+		imgFermer = Gtk::Image.new(File.expand_path("./Images/retour.png", File.dirname(__FILE__)))
+		imgImporter = Gtk::Image.new(File.expand_path("./Images/importer.png", File.dirname(__FILE__)))
+		imgExporter = Gtk::Image.new(File.expand_path("./Images/exporter.png", File.dirname(__FILE__)))
 
 		@boutonOuvrir.set_image(imgOuvrir)
 		@boutonEnregistrer.set_image(imgEnregistrer)
