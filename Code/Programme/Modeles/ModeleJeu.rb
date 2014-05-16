@@ -60,7 +60,7 @@ class ModeleJeu < ModeleGrille
 		
 		if valide then #Si grille terminée, +1 au nombre de partie terminées puis maj modification
 		
-			@timer.stopperTimer
+			@timer.stopperTimer			
 			@profil.getStats["parties_terminees"] += 1
 			sauvegarderProfil
 		end
@@ -147,24 +147,6 @@ class ModeleJeu < ModeleGrille
 			end
 		}
 	end
-		
-	#Retourne un tableau des noms des sauvegardes d'un utilisateur, possibilité d'effectuer un traitement de type yield
-	def listeNomGrillesChargeables
-	
-        reqGrille = requete("SELECT nompartie FROM grillejouer WHERE joueur='#{@profil.getStats["id"]}'")
-		res = Array.new
-		i = 0
-		
-		reqGrille.each do |x|
-
-			res.push(x["nompartie"])
-			yield x["nompartie"]
-			i+=1
-				
-		end
-		
-		return res
-    end
 	
 	#Dévoile une case aléatoirement dans le jeu
 	def utiliserJoker
@@ -176,18 +158,16 @@ class ModeleJeu < ModeleGrille
 		
 			0.upto((@plateauJeu.taille-1)){|y|
 			
-				casesFausses.push([@plateauJeu.getCase(x, y), x, y]) if (@plateauJeu.getCase(x, y).etat != @grille.getCase(x, y).etat)
+				casesFausses.push(@plateauJeu.getCase(x, y)) if (@plateauJeu.getCase(x, y).etat != @grille.getCase(x, y).etat)
 			}
 		}
 
 		indice = Random.rand(casesFausses.size)
 		
-		caseAChanger = casesFausses[indice][0]
-		x = casesFausses[indice][1]
-		y = casesFausses[indice][2]
+		caseAChanger = casesFausses[indice]
 		
 		#On met la solution
-		caseSolution = @grille.getCase(x, y)
+		caseSolution = @grille.getCase(caseAChanger.x, caseAChanger.y)
 		
 		if caseSolution.neutre? then
 			
