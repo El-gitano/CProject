@@ -87,15 +87,41 @@ class ControleurJeu < Controleur
 		#Utilisation d'un indice
 		@vue.btIndice.signal_connect("clicked"){
 	
-			#On trouve la ligne/colonne où on peut avoir un indice
-			indice = @modele.getIndice
-		
-			if !indice.nil? then
-		
-				DialogueInfo.afficher("Indice", "Vous pouvez jouer #{indice}", @vue.window)
-		
+			erreursTrop = @modele.chercherErreursTrop
+			erreursBlocs = @modele.chercherErreursBlocs
+			casesJouables = @modele.getIndice
+			
+			#Si il y a des erreurs de type trop de cases dans la grille
+			if !erreursTrop.nil? then
+			
+				lVSc = determinerIndice(erreursTrop)
+				indice = Random.rand(erreursTrop[lVSc].size)
+				element = lVSc.eql?(1) ? "colonne" : "ligne"
+				
+				DialogueInfo.afficher("Mauvais jeu", "Vous devriez commencer par vérifier les cases #{element} #{erreursTrop[lVSc][indice]+1}...", @vue.window)
+			
+			#Si le joueur a des blocs consécutifs qui ne respectent pas les infos
+			elsif !erreursBlocs.nil?
+			
+				lVSc = determinerIndice(erreursBlocs)
+				print lVSc
+				indice = Random.rand(erreursBlocs[lVSc].size)
+				element = lVSc.eql?(1) ? "colonne" : "ligne"
+				
+				DialogueInfo.afficher("Mauvais jeu", "Vous devriez commencer par vérifier vos/votre bloc(s) #{element} #{erreursBlocs[lVSc][indice]+1}...", @vue.window)
+				
+			#Il y a un indice à donner	
+			elsif !casesJouables.nil?
+			
+				casesJouables.each{|c|
+				
+					c.changerEtat(EtatCaseJouee.getInstance)
+					@vue.actualiserCase(c.x, c.y)
+				}
+				
+			#Il n'y a pas d'indices à donner
 			else
-		
+			
 				DialogueInfo.afficher("Indice introuvable", "Nous n'avons aucun indice à vous donner", @vue.window)
 			end
 		}
@@ -144,5 +170,26 @@ class ControleurJeu < Controleur
 		
 		@modele.timer.stopperTimer
 		changerControleur(ControleurAccueil.new(@picross, @modele.profil))
+	end
+	
+	#Prends en paramètre un tableau contenant deux tableaux
+	#Si l'un des deux tableau est vide, la méthode renvoi l'indice du tableau plein sinon elle renvoi aléatoirement 0 ou 1
+	def determinerIndice(unTab)
+	
+		#Seulement erreur de lignes
+		if !unTab[0].empty? and unTab[1].empty? then
+		
+			return 0
+			
+		#Seulement erreur de colonnes
+		elsif unTab[0].empty? and !unTab[1].empty? then
+		
+			return 1
+			
+		#Les deux
+		else
+		
+			return Random.rand(2)
+		end
 	end
 end

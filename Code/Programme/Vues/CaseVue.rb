@@ -46,15 +46,15 @@ class CaseVue < Gtk::EventBox
 		
 			when "neutre"
 			
-				@image =  Gtk::Image.new("./Vues/Images/carreB"+@tailleGrille.to_s+".png")
+				@image =  Gtk::Image.new(File.expand_path("./Images/carreB"+@tailleGrille.to_s+".png", File.dirname(__FILE__)))
 				
 			when "jouee"
 			
-				@image = Gtk::Image.new("./Vues/Images/carreN"+@tailleGrille.to_s+".png")
+				@image = Gtk::Image.new(File.expand_path("./Images/carreN"+@tailleGrille.to_s+".png", File.dirname(__FILE__)))
 				
 			when "croix"
 
-				@image = Gtk::Image.new("./Vues/Images/croixPlateau"+@tailleGrille.to_s+".png")
+				@image = Gtk::Image.new(File.expand_path("./Images/croixPlateau"+@tailleGrille.to_s+".png", File.dirname(__FILE__)))
 		end
 	end
 end

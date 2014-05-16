@@ -7,7 +7,9 @@ require_relative 'Grilles/InfosGrille'
 require_relative 'Grilles/EtatsCases/EtatCaseCroix'
 require_relative 'Grilles/EtatsCases/EtatCaseJouee'
 require_relative 'Timer'
+
 require 'date'
+require 'set'
 
 class ModeleJeu < ModeleGrille
 
@@ -39,7 +41,11 @@ class ModeleJeu < ModeleGrille
 	def getIndice
 	
 		ajouterIndice
-		print "À implémenter"
+		solutions = chercherSolutions
+		
+		return nil if solutions.empty?
+		return solutions	
+		
 	end
 	
 	#Retourne vrai si la grille du joueur répond aux critères de la grille de solution
@@ -160,12 +166,6 @@ class ModeleJeu < ModeleGrille
 		return res
     end
 	
-	#Ajoute le temps passé depuis le lancement de la grille au temps de jeu global du joueur
-	def ajouterTemps
-	
-		super.ajouterTemps(@timer.tempsEcoule)
-	end
-	
 	#Dévoile une case aléatoirement dans le jeu
 	def utiliserJoker
 	
@@ -201,27 +201,6 @@ class ModeleJeu < ModeleGrille
 		enleverJoker
 	end
 	
-	#Retourne un tableau contenant les cases jouables par le joueur lors de l'appel
-	def casesJouablesGrille
-	
-		cases = Array.new
-		
-		#On recherche des cases jouables pour chaque colonne
-		0.upto(@plateauJeu.taille){|x|
-		
-			@plateauJeu.getColonne(x){
-			
-				
-			}
-		}
-		
-		#On recherche des cases jouables pour chaque ligne
-		0.upto(@plateauJeu.taille){|y|
-
-			casesJouablesLigne(@plateauJeu.getLigne(y))
-		}
-	end
-	
 	#Enlève un joker pour le joueur
 	def enleverJoker
 	
@@ -235,10 +214,286 @@ class ModeleJeu < ModeleGrille
 		return @plateauJeu.getCase(x,y)
     end
     	
-    #Retourne une tableau contenant les coordonnées des cases résolvables par le joueur au moment de l'appel
+    #Retourne un tableau contenant les coordonnées des cases résolvables par le joueur au moment de l'appel
     def chercherSolutions
     
+    	setCases = Set.new
     	
+    	0.upto(@plateauJeu.taille-1){|i|
+    	
+    		setCases.merge(chercherTableau(@plateauJeu.getColonne(i), @informations.getInfoColonne(i), false)) if not tabPleins(@plateauJeu.getColonne(i), @informations.getInfoColonne(i))
+    		setCases.merge(chercherTableau(@plateauJeu.getLigne(i), @informations.getInfoLigne(i), true)) if not tabPleins(@plateauJeu.getLigne(i), @informations.getInfoLigne(i))
+    	}
+    	
+    	return setCases
+    end
+    
+    #Retourne true si le nombre de cases du tableau correspond à la somme des indices
+    def tabPleins(tab, indices)
+    
+    	return compareInfoTab(tab, indices).eql?(0)
+    end
+    
+    #Cherche les cases résolvables par le joueur pour une ligne ou une colonne (application des stratégies de résolution)
+    #True = ligne
+    #False = colonnes
+    def chercherTableau(desCases, desInfos, unSens)
+    
+    	res = Set.new
+  	
+    	#Toutes les cases doivent être jouées
+    	if desInfos.size.eql?(1) and desInfos[0].eql?(@plateauJeu.taille) then
+    	
+    		res.merge(desCases.select{|laCase| laCase.neutre?})
+    	end
+  	
+    	#Une case sur deux est pleine dans la ligne
+    	if desInfos.size.eql?((@plateauJeu.taille/2)+1) then
+    	
+    		desCases.each_with_index{|laCase, i|
+    		
+    			res.add(laCase) if ((i%2).eql?(0) and laCase.neutre?)
+    		}
+    	end
+    	
+    	#On détermine les cases qui sont à jouer au milieu de la grille
+    	if desInfos.size.eql?(1) and desInfos[0] > (@plateauJeu.taille/2) then
+    		
+    		desCases.each_with_index{|laCase, i|
+    		
+				res.add(laCase) if laCase.neutre? and (i < desInfos[0]) and i > (@plateauJeu.taille-desInfos[0]-1)
+    		} 		
+    	end
+
+		sommeInfo = 0
+		desInfos.each{|x| sommeInfo += x}
+		
+		#L'ensemble des cases + espaces remplit la ligne/colonne
+		if (desInfos.size-1 + sommeInfo).eql?(@plateauJeu.taille) then
+		
+			i = 0
+			desInfos.each{|info|
+			
+				i.upto(info-1){|j|
+				
+					res.add(desCases[j]) if desCases[j].neutre?
+				}
+				
+				i+=1 if info != desInfos.last
+			}
+		end	
+		
+
+    	#Traitement générique sur les informations du tableau
+    	desInfos.each{|uneInfo|
+    		
+    		#Emplacements neutres de la taille de l'info
+    		empLibresOk = emplacementsDisponibles(desCases, unSens).select{|unEmplacement| unEmplacement[0].eql?(uneInfo)}
+    		
+    		#Emplacements joues de la taille de l'info
+    		empOccupesOk = emplacementsJoues(desCases).select{|unEmplacement| unEmplacement[1].eql?(uneInfo)}
+    		
+    		#Si on a une suite de cases neutres qui elles seules peuvent convenir à l'information, on ajoute les cases de cette suite
+    		if !empOccupesOk.size.eql?(nombreOccInfos(desInfos, uneInfo)) then
+    		
+    			empLibresOk.each{|b|
+			
+					depart = b[1]
+					etendue = b[0]
+					#puts "Départ et étendue : #{depart} #{etendue}"
+					
+					depart.upto(depart+etendue-1){|i|
+						#puts "Ajout de la case #{desCases[i].x}, #{desCases[i].y} (#{depart}-#{depart+etendue-1})"
+						res.add(desCases[i])
+					}
+				}
+    		end
+
+			
+    	}
+   	
+    	return res
+    end
+    
+    #Retourne le nombre d'occurence de i dans le tableau des informations
+    def nombreOccInfos(tabInfos, i)
+    
+    	res = 0
+    	
+    	tabInfos.each{|info|
+    	
+    		res += 1 if info.eql?(i)
+    	}
+    	
+    	return res
+    end
+    
+    #Retourne un tableau contenant, au vu de l'organisation de la ligne/colonne, les positions de départ des cases neutres ainsi que leurs étendue
+    def emplacementsDisponibles(tabCases, unSens)
+    
+    	suiteCase = false
+    	res = Array.new
+    	etendue = 0
+    	depart = 0
+    	
+    	tabCases.each_with_index{|laCase, i|
+    	
+    		#On traite les lignes
+    		if unSens then
+    		
+    			if (laCase.neutre?  and !tabPleins(@plateauJeu.getColonne(laCase.x), @informations.getInfoColonne(laCase.x))) or (laCase.jouee? and (compareInfoTab(@plateauJeu.getColonne(laCase.x), @informations.getInfoColonne(laCase.x) )<= 0)) then
+    		
+    				etendue += 1
+					depart = i if suiteCase == false
+					suiteCase = true
+				
+				#On a pas de case ou on a arrêté une suite	
+				else
+				
+					#On arrête une suite de cases
+					if suiteCase == true then 
+						puts "Ligne #{laCase.y} - départ #{depart} étendue : #{etendue}]"
+						res.push([etendue, depart]) 
+						etendue = 0
+					end
+					
+					suiteCase = false
+				end
+					
+    		#On traite les colonnes
+    		else
+    		
+    			if (laCase.neutre?  and !tabPleins(@plateauJeu.getLigne(laCase.y), @informations.getInfoLigne(laCase.y))) or (laCase.jouee? and (compareInfoTab(@plateauJeu.getLigne(laCase.y), @informations.getInfoLigne(laCase.y) )<= 0)) then
+    		
+    				etendue += 1
+					depart = i if suiteCase == false
+					suiteCase = true
+				
+				#On a pas de case ou on a arrêté une suite	
+				else
+				
+					#On arrête une suite de cases
+					if suiteCase == true then 
+						puts "Colonne #{laCase.x} - départ #{depart} étendue : #{etendue}]"
+						res.push([etendue, depart]) 
+						etendue = 0
+					end
+					
+					suiteCase = false
+				end
+    		end
+		}
+		
+		#En cas de sortie avant la fin du bloc
+		res.push([etendue, depart])  if suiteCase 
+		
+    	return res
+    end
+    
+    #Retourne l'indice de départ et l'étendue des blocs de cases jouées pour une ligne/colonne donnée
+    def emplacementsJoues(tabCases)
+    
+    	suiteCase = false
+    	res = Array.new
+    
+    	etendue = 0
+    	depart = 0
+    	
+    	tabCases.each_with_index{|laCase, i|
+    	
+    		#On commence ou on continue une suite de cases jouees
+    		if laCase.jouee? then
+    		
+    			etendue += 1
+    			depart = i if suiteCase == false
+    			suiteCase = true
+    		
+    		#On a pas de case ou on a arrêté une suite	
+    		else
+    		
+    			#On arrête une suite de cases
+    			if suiteCase == true then 
+    			
+    				res.push([etendue, depart]) 
+    				etendue = 0
+    			end
+    			
+    			suiteCase = false
+    		end
+    	}
+    	
+    	return res
+    end
+    
+    #Retourne un tableau des lignes et colonnes contenant plus de cases jouees que spécifié dans leurs infos ou nil si tout va bien
+    def chercherErreursTrop
+    
+    	erreursLigne = Array.new
+    	erreursColonne = Array.new
+    	
+    	0.upto(@plateauJeu.taille-1){|i|
+    	
+    		erreursLigne.push(i) if compareInfoTab(@plateauJeu.getLigne(i), @informations.getInfoLigne(i)) > 0
+    		erreursColonne.push(i) if compareInfoTab(@plateauJeu.getColonne(i), @informations.getInfoColonne(i)) > 0
+    	}
+    	
+    	return nil if (erreursLigne.empty? and erreursColonne.empty?)
+    	return [erreursLigne, erreursColonne]
+    	
+    end
+    
+    #Retourne un tableau désignant les lignes et colonnes où les blocs ne correspondent pas aux infos
+    def chercherErreursBlocs
+    
+    	erreursLigne = Array.new
+    	erreursColonne = Array.new
+    	
+    	0.upto(@plateauJeu.taille-1){|i|
+    	
+    		erreursLigne.push(i) if !checkBlocs(emplacementsJoues(@plateauJeu.getLigne(i)), @informations.getInfoLigne(i))
+    		erreursColonne.push(i) if !checkBlocs(emplacementsJoues(@plateauJeu.getColonne(i)), @informations.getInfoColonne(i))
+    	}
+    	
+    	return nil if (erreursLigne.empty? and erreursColonne.empty?)
+    	return [erreursLigne, erreursColonne]
+    end
+    
+    #Retourne vrai s'il n'y a pas de bloc supérieur aux infos lignes/colonnes dans celle-ci
+    def checkBlocs(tabBlocs, infos)
+    
+    	maxEtendue = 0
+    	maxInfos = 0
+    	
+    	infos.each{|x|
+    	
+    		maxInfos = x if x > maxInfos
+    	}
+    	
+    	tabBlocs.each{|bloc|
+    	
+    		maxEtendue = bloc[0] if bloc[0] > maxEtendue
+    	}
+    	
+    	return maxEtendue <= maxInfos
+    end
+    
+    #Retourne >0 si le nb de cases jouées est supérieur aux infos, <0 pour l'inverse et 0 en cas d'égalite
+    def compareInfoTab(unTab, desInfos)
+    
+    	nbCasesJouees = 0
+    	sommeInfo = 0
+    	
+    	unTab.each{|uneCase|
+    	
+    		nbCasesJouees += 1 if uneCase.jouee?
+    	}
+    	
+    	desInfos.each{|uneInfo|
+    	
+    		sommeInfo += uneInfo
+    	}
+    	
+    	return (nbCasesJouees-sommeInfo)
     end
     
 	def to_s

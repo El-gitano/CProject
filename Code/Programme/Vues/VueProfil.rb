@@ -30,8 +30,8 @@ class VueProfil < Vue
 		@lbPseudo = Gtk::Label.new
 		
 		hBoxTitre = Gtk::HBox.new(true, 5)
-		imEtoile = Gtk::Image.new("./Vues/Images/etoileCredit.png")
-		imEtoile2 = Gtk::Image.new("./Vues/Images/etoileCredit.png")		
+		imEtoile = Gtk::Image.new(File.expand_path("./Images/etoileCredit.png", File.dirname(__FILE__)))
+		imEtoile2 = Gtk::Image.new(File.expand_path("./Images/etoileCredit.png", File.dirname(__FILE__)))		
 		hBoxTitre.pack_start(imEtoile, false, false, 0)
 		hBoxTitre.pack_start(@lbPseudo)
 		hBoxTitre.pack_start(imEtoile2, false, false, 0)

@@ -31,7 +31,7 @@ class DialogueTuto < Gtk::Dialog
 
 		# Creation des elements
 		lbDidac1 = Gtk::Label.new
-		lbDidac2 = Gtk::Label.new("Le but est de noircir les cases de la grille afin de faire apparaître une image.\n")
+		lbDidac2 = Gtk::Label.new("Le but est de noircir les cases de la grille afin de faire apparaître une image.\nAfin de noircir une case il suffit de cliquer dessus à l'aide du bouton gauche de la souris (ou d'effectuer un cliquer-glisser)")
 
 		lbDidac3 = Gtk::Label.new
 		lbDidac4 = Gtk::Label.new("Les nombres présents à gauche de la grille indiquent le nombre de cases à noircir sur la ligne correspondante.\nLes nombres présents en haut de la grille indiquent le nombre de cases à noircir sur la colonne correspondante.\n")
@@ -44,7 +44,7 @@ class DialogueTuto < Gtk::Dialog
 		lbDidac8 = Gtk::Label.new("Si le hanjie est une grille de 10 cases sur 10 cases, une ligne/colonne indiquant 10 signifie que toutes les cases doivent être noircies.\n")
 
 		lbDidac9 = Gtk::Label.new
-		lbDidac10 = Gtk::Label.new("Vous pouvez aussi éliminer les cases qui ne sont évidemment pas à noircir, cela permet de voir plus clair dans la résolution du hanjie. \nSi une ligne contient trois cases à noircir et que vous avez déjà noircies ces trois cases, éliminez toutes les autres cases de cette ligne.\n")
+		lbDidac10 = Gtk::Label.new("Vous pouvez aussi éliminer les cases qui ne sont pas à noircir, cela permet de voir plus clair dans la résolution du hanjie. \nSi une ligne contient trois cases à noircir et que vous avez déjà noircies ces trois cases, éliminez toutes les autres cases de cette ligne à l'aide du clic droit.\n")
 
 		# Les titres des labels sont definis et agrandis
 		lbDidac1.set_markup('<span size="x-large">But du jeu</span>')
@@ -76,8 +76,6 @@ class DialogueTuto < Gtk::Dialog
 		vbox.add(align8)
 		vbox.add(align9)
 		vbox.add(align10)
-	
-		
 
 		show_all
 	end

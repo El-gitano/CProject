@@ -18,7 +18,7 @@ class Picross
     def initialize
     
     	Gtk.init
-    	$fichierBDD = "bdd.sqlite"
+    	$fichierBDD = File.expand_path("bdd.sqlite", File.dirname(__FILE__))
     	
     	@controleur = ControleurDemarrage.new(self)
     	

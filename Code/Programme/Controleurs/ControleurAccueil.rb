@@ -129,8 +129,8 @@ class ControleurAccueil < Controleur
 	def hBoxNom(unNom)
 	
 		hBox = Gtk::HBox.new(false, 5)
-		imEtoile = Gtk::Image.new("./Vues/Images/etoileCredit.png")
-		imEtoile2 = Gtk::Image.new("./Vues/Images/etoileCredit.png")
+		imEtoile = Gtk::Image.new(File.expand_path("../Vues/Images/etoileCredit.png", File.dirname(__FILE__)))
+		imEtoile2 = Gtk::Image.new(File.expand_path("../Vues/Images/etoileCredit.png", File.dirname(__FILE__)))
 		
 		hBox.pack_start(imEtoile, false, false, 0)
 		hBox.pack_start(Gtk::Label.new(unNom))

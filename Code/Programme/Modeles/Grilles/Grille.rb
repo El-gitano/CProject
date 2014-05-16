@@ -24,9 +24,27 @@ class Grille
 		@nomGrille = nomGrille
 		@createur = createur
 		@nbJokers = nbJokers
-		@cases = Array.new(taille){Array.new(taille){Case.new}}
+		initGrille(taille)
 		@dateCreation = Time.now.strftime("%d/%m/%Y %H:%M")
 		@dateModification = Time.now.strftime("%d/%m/%Y %H:%M")
+	end
+	
+	#Initialise la grille (donne des indices au cases)
+	def initGrille(taille)
+	
+		@cases = Array.new
+		
+		0.upto(taille-1){|x|
+		
+			colonne = Array.new
+			
+			0.upto(taille-1){|y|
+		
+				colonne.push(Case.new(x, y))
+			}
+			
+			@cases.push(colonne)
+		}
 	end
 		
 	#Retourne une case de la grille (de la classe Case)

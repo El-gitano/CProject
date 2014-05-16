@@ -95,6 +95,15 @@ class InfosGrille
 		}
 	end
 	
+	def getInfoLigne(y)
+	
+		return @infosLignes[y]
+	end
+	
+	def getInfoColonne(x)
+	
+		return @infosColonnes[x]
+	end
 	def to_debug
 	
 		i = 0

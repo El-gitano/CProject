@@ -40,16 +40,11 @@ class VueAccueil < Vue
 		@boutonCredit = Gtk::Button.new("Crédits", false)
 		@boutonCredit.child.modify_font(arial18)
 
-		imgDeco = Gtk::Image.new('./Vues/Images/croix2.png')
+		imgDeco = Gtk::Image.new(File.expand_path('./Images/croix2.png', File.dirname(__FILE__)))
 		@boutonDeco.set_image(imgDeco)
 
 		imgDeco.show()
 
-		#pixAnim = Gdk::PixbufAnimation.new('./Vues/Images/animation.gif')
-		#animation = Gtk::Image.new(nil)
-		#animation.set_pixbuf_animation(pixAnim)
-		
-		#vbox.pack_start(animation, false, false,0)
 		vbox.pack_start(@boutonJouer, false, false, 0)
 		vbox.pack_start(@boutonEditer, false, false, 0)
 		vbox.pack_start(@boutonCredit, false, false, 0)

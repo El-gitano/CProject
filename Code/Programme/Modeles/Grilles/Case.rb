@@ -6,11 +6,15 @@ require_relative 'EtatsCases/EtatCaseNeutre'
 class Case
 
     @etat
+    @x
+    @y
     
-    attr_accessor :etat
+    attr_reader :x, :y, :etat
     
-    def initialize
+    def initialize(x, y)
     
+    	@x = x
+    	@y = y
     	@etat = EtatCaseNeutre.getInstance
     end
     
