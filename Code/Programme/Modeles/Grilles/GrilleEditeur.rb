@@ -18,11 +18,11 @@ class GrilleEditeur < Grille
 		super(taille, nomGrille, createur, nbJokers)
 	end
 	
-	def importerGrille(nomGrille)
+	def importerGrille(nomGrille, pseudo=false)
 		if File.exists?(nomGrille) then
 			file = File.open(nomGrille, "r")
 			tmp = Grille.plateauDeserialize(file)
-
+			
 			self.taille = tmp.taille
 			self.cases = tmp.cases
 			self.nomGrille = tmp.nomGrille

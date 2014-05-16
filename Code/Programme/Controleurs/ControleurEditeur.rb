@@ -3,6 +3,7 @@
 require_relative 'Controleur'
 require_relative 'ControleurOuvrirGrille'
 require_relative 'ControleurOuvrirGrilleExport'
+require_relative 'ControleurOuvrirGrilleImport'
 
 require_relative '../Modeles/ModeleEditeur'
 require_relative '../Modeles/Grilles/GrilleEditeur'
@@ -58,8 +59,7 @@ class ControleurEditeur < Controleur
 		#Importer grille
 		@vue.boutonImporter.signal_connect("clicked"){
 	
-			print "Importer Grille non implémenté"
-			@modele.lancerMaj
+			changerControleur(ControleurOuvrirGrilleImport.new(@picross, @modele.profil))
 		}
 		
 		#Exporter grille

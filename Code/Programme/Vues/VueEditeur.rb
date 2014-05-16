@@ -96,11 +96,20 @@ attr_reader :boutonOuvrir, :boutonEnregistrer, :boutonImporterImage, :boutonAlea
 
 		@hbox1.pack_start(@boutonOuvrir, true, false, 0)
 		@hbox1.pack_start(@boutonEnregistrer, true, false, 0)
-		@hbox1.pack_start(@boutonImporterImage, true, false, 0)
+		#@hbox1.pack_start(@boutonImporterImage, true, false, 0)
 		@hbox1.pack_start(@boutonAleatoire, true, false, 0)
 		@hbox1.pack_start(@boutonImporter, true, false, 0)
 		@hbox1.pack_start(@boutonExporter, true, false, 0)
 		@hbox1.pack_start(@boutonRetour, true, false, 0)
+		
+		
+		imgOuvrir.show()
+		imgEnregistrer.show()
+		imgImporterImage.show()
+		imgAleatoire.show()
+		imgFermer.show()
+		imgImporter.show()
+		imgExporter.show()
 
 		@vbox2.pack_start(@labelTaille, true, false, 0)
 		@vbox2.pack_start(@hbox2, true, false, 0)

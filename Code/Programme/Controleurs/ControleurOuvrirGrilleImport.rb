@@ -1,4 +1,4 @@
-#encoding UTF-8
+#encoding: UTF-8
 
 require_relative '../Vues/VueOuvrirGrilleImport'
 require_relative '../Modeles/ModeleOuvrirGrilleImport'
@@ -17,17 +17,18 @@ class ControleurOuvrirGrilleImport < Controleur
 		@vue = VueOuvrirGrilleImport.new(@modele)
 
 		@modele.ajouterObservateur(@vue)
-		
+		hash = @vue.listeur.modeleHash
+
 		#Chargement de la grille sélectionnée
 		@vue.btCharger.signal_connect("clicked"){
 		@vue.listeur.getAllSelection.selected_each {|model, path, iter|
 				
-				iter[6].profil.changerPseudo(unPseudo)
-				iter[6].sauvegarderGrilleEditeur(iter[0])
+				hash[iter[0]].changerPseudo(unProfil.pseudo)
+				hash[iter[0]].sauvegarderGrilleEditeur(iter[0])
 			
 				
 			}
-
+			DialogueInfo.afficher("Importation", "Importation réalisée avec succès", @vue.window)
 		}
 		
 		#Retour à l'éditeur
