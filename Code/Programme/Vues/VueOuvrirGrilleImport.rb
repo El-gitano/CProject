@@ -4,6 +4,7 @@ require_relative 'Listeurs/ListeurGrillesImportables'
 
 require 'gtk2'
 
+#Vue chargée de présenter une interface d'importation de grille
 class VueOuvrirGrilleImport < Vue
 
 	@btRetour

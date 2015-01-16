@@ -5,6 +5,7 @@ require_relative '../Modeles/ModeleOuvrirGrille'
 require_relative 'Controleur'
 require_relative 'ControleurEditeur'
 
+# Ce contrôleur permet d'ouvrir une grille dans le menu éditeur
 class ControleurOuvrirGrille < Controleur
 
 	public_class_method :new

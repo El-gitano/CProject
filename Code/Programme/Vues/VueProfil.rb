@@ -3,6 +3,7 @@
 require_relative 'Vue'
 require_relative 'Listeurs/ListeurStats'
 
+#Vue chargée de présenter le profil et les options, telle que la réinitialisation des statistiques
 class VueProfil < Vue
 
 	@vbox

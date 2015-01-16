@@ -39,7 +39,7 @@ class ControleurDemarrage < Controleur
 		
 			pseudo = @vue.getProfil
 			
-			if @modele.existeProfil?(pseudo) then 
+			if @modele.existeProfil?(pseudo) and !pseudo.eql?("Route") then 
 			
 				@modele.supprimerProfil(pseudo) if DialogueSupprimerProfil.afficher(@vue.window, pseudo)
 
@@ -55,7 +55,7 @@ class ControleurDemarrage < Controleur
 			
 			pseudo = @vue.getProfil
 			
-			if @modele.existeProfil?(pseudo) then
+			if @modele.existeProfil?(pseudo) and !pseudo.eql?("Route") then
 			
 				@vue.genererMessage("Connexion au profil #{pseudo}")
 				@modele.chargerProfil(pseudo)

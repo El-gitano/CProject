@@ -31,12 +31,15 @@ class ControleurJeu < Controleur
 		#On link le label au timer
 		@modele.timer.label = @vue.lbTimer
 		
-		#On connecte un signal à chaque bouton
+		#On connecte les signaux clic et passage aux cases
 		@vue.table.each{|uneCase|
 		
 			#Changement d'état lors d'un clic
 			uneCase.signal_connect("button_press_event"){|laCase, event|
 		
+				#On relâche le clic
+				Gdk::Display.default.pointer_ungrab(Gdk::Event::CURRENT_TIME)
+				
 				#Màj stats
 				@modele.ajouterClic
 				
@@ -53,6 +56,25 @@ class ControleurJeu < Controleur
 				
 				lancerVerification
 				@vue.actualiserCase(laCase.x, laCase.y)	
+			}
+			
+			#Lors du passage de la souris on vérifie qu'on a pas un bouton de la souris appuyé
+			uneCase.signal_connect("enter-notify-event"){|laCase, event|
+				
+				if event.state == Gdk::Window::BUTTON1_MASK
+				
+					@modele.getCase(laCase.x, laCase.y).clicGauche
+					@modele.ajouterClic
+					lancerVerification
+					@vue.actualiserCase(laCase.x, laCase.y)
+					
+				elsif event.state == Gdk::Window::BUTTON3_MASK
+				
+					@modele.getCase(laCase.x, laCase.y).clicDroit
+					@modele.ajouterClic
+					lancerVerification
+					@vue.actualiserCase(laCase.x, laCase.y)
+				end
 			}
 		}
 		
@@ -113,11 +135,11 @@ class ControleurJeu < Controleur
 			#Il y a un indice à donner	
 			elsif !casesJouables.nil?
 			
-				casesJouables.each{|c|
+				c = casesJouables.to_a.select{|uneCase| uneCase.neutre?}[Random.rand(casesJouables.size)]
 				
-					c.changerEtat(EtatCaseJouee.getInstance)
-					@vue.actualiserCase(c.x, c.y)
-				}
+				indice = Random.rand(2) ? "colonne #{c.x}" : "ligne #{c.y}"
+				
+				DialogueInfo.afficher("Indice", "Vous pouvez jouer sur la #{indice}...", @vue.window)
 				
 			#Il n'y a pas d'indices à donner
 			else

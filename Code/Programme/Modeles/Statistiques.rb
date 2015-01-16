@@ -1,3 +1,4 @@
+# La classe statistiques stocke les informations liées aux profils en fonction de la résolution des grilles
 class Statistiques
 
 	@stats

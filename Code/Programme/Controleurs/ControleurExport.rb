@@ -5,6 +5,7 @@ require_relative '../Modeles/ModeleOuvrirGrille'
 require_relative 'Controleur'
 require_relative 'ControleurEditeur'
 
+# Le contrôleur export permet d'exporter une grille pour la transférer sur une autre machine
 class ControleurExport < Controleur
 
 	public_class_method :new

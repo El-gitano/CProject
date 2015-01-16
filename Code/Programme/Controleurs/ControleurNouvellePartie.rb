@@ -5,6 +5,7 @@ require_relative '../Modeles/ModeleNouvellePartie'
 require_relative 'Controleur'
 require_relative 'ControleurAccueil'
 
+# Le contrôleur nouvelle partie permet de démarrer une nouvelle partie après avoir choisi une grille
 class ControleurNouvellePartie < Controleur
 
 	public_class_method :new

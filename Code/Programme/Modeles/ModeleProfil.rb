@@ -1,5 +1,6 @@
 require_relative 'ModeleAvecProfil'
 
+# Ce modèle gère les interactions entre profils et statistiques
 class ModeleProfil < ModeleAvecProfil
 
 	@stats

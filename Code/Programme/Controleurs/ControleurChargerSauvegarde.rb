@@ -5,6 +5,7 @@ require_relative '../Modeles/ModeleChargerSauvegarde'
 require_relative 'Controleur'
 require_relative 'ControleurAccueil'
 
+# Ce contrôleur permet de charger une partie précédemment commmencée
 class ControleurChargerSauvegarde < Controleur
 
 	public_class_method :new

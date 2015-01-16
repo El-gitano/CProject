@@ -14,6 +14,7 @@ require_relative '../Vues/Dialogues/DialogueSaveEditeur'
 
 require 'gtk2'
 
+# Le contrôleur éditeur permet de créer ses propres grilles, de les exporter ou encore d'importer d'autres grilles
 class ControleurEditeur < Controleur
 
 	public_class_method :new
@@ -99,11 +100,31 @@ class ControleurEditeur < Controleur
 	
 		#On connecte un signal pour chaque case du plateau
 		@vue.operationGrille{|uneCase|
-		
-			uneCase.signal_connect("button_press_event"){
 
-				@modele.getCase(uneCase.x,  uneCase.y).clicGauche
-				@modele.lancerMaj
+			#Changement d'état lors d'un clic
+			uneCase.signal_connect("button_press_event"){|laCase, event|
+		
+				#On relâche le clic
+				Gdk::Display.default.pointer_ungrab(Gdk::Event::CURRENT_TIME)
+				
+				# Si clic gauche
+				if (event.button == 1) then
+	
+					@modele.getCase(laCase.x, laCase.y).clicGauche
+	
+				end
+				
+				@vue.actualiserCase(laCase.x, laCase.y)	
+			}
+			
+			#Lors du passage de la souris on vérifie qu'on a pas un bouton de la souris appuyé
+			uneCase.signal_connect("enter-notify-event"){|laCase, event|
+				
+				if event.state == Gdk::Window::BUTTON1_MASK
+				
+					@modele.getCase(laCase.x, laCase.y).clicGauche
+					@vue.actualiserCase(laCase.x, laCase.y)
+				end
 			}
 		}
 

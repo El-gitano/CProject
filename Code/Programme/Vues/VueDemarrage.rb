@@ -70,8 +70,11 @@ class VueDemarrage < Vue
 		
 			profils.each{|x|
 
-				iter = @list_store.append
-				iter[0] = x
+				if !x.eql?("Route") then
+				
+					iter = @list_store.append
+					iter[0] = x
+				end
 			}
 		
 			@comboBoxProfil.active = 0

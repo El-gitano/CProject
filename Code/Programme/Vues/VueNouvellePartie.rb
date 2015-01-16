@@ -3,6 +3,7 @@ require_relative 'Listeurs/ListeurGrillesJouables'
 
 require 'gtk2'
 
+#Vue chargée de présenter une interface de selection de grille
 class VueNouvellePartie < Vue
 
 	@btRetour

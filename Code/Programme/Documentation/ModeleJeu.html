@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class ModeleJeu - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">ModeleGrille
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-chargerPartie">#chargerPartie</a>
+    
+    <li ><a href="#method-i-checkBlocs">#checkBlocs</a>
+    
+    <li ><a href="#method-i-chercherErreursBlocs">#chercherErreursBlocs</a>
+    
+    <li ><a href="#method-i-chercherErreursTrop">#chercherErreursTrop</a>
+    
+    <li ><a href="#method-i-chercherSolutions">#chercherSolutions</a>
+    
+    <li ><a href="#method-i-chercherTableau">#chercherTableau</a>
+    
+    <li ><a href="#method-i-compareInfoTab">#compareInfoTab</a>
+    
+    <li ><a href="#method-i-emplacementsDisponibles">#emplacementsDisponibles</a>
+    
+    <li ><a href="#method-i-emplacementsJoues">#emplacementsJoues</a>
+    
+    <li ><a href="#method-i-enleverCroix">#enleverCroix</a>
+    
+    <li ><a href="#method-i-enleverJoker">#enleverJoker</a>
+    
+    <li ><a href="#method-i-getCase">#getCase</a>
+    
+    <li ><a href="#method-i-getIndice">#getIndice</a>
+    
+    <li ><a href="#method-i-grilleValide-3F">#grilleValide?</a>
+    
+    <li ><a href="#method-i-nombreOccInfos">#nombreOccInfos</a>
+    
+    <li ><a href="#method-i-nouvellePartie">#nouvellePartie</a>
+    
+    <li ><a href="#method-i-nouvelleSauvegarde">#nouvelleSauvegarde</a>
+    
+    <li ><a href="#method-i-remplacerSauvegarde">#remplacerSauvegarde</a>
+    
+    <li ><a href="#method-i-sauvegardeExiste-3F">#sauvegardeExiste?</a>
+    
+    <li ><a href="#method-i-tabPleins">#tabPleins</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+    <li ><a href="#method-i-utiliserJoker">#utiliserJoker</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-ModeleJeu">
+  <h1 id="class-ModeleJeu" class="class">
+    class ModeleJeu
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-informations" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">informations</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-plateauJeu" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">plateauJeu</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-timer" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">timer</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unProfil, unChoix, unNom)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Un choix à true désigne une sauvegarde à charger, à false une nouvelle
+partie, le nom correspond à la sauvegarde ou au nom de la grille</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unProfil</span>, <span class="ruby-identifier">unChoix</span>, <span class="ruby-identifier">unNom</span>)
+
+        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">unProfil</span>)
+        
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">unChoix</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span>
+        
+                <span class="ruby-identifier">chargerPartie</span>(<span class="ruby-identifier">unNom</span>)
+        <span class="ruby-keyword">else</span>
+        
+                <span class="ruby-identifier">nouvellePartie</span>(<span class="ruby-identifier">unNom</span>, <span class="ruby-identifier">unNom</span>)
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-chargerPartie" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chargerPartie</span><span
+            class="method-args">(nomPartie)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Charge une partie depuis son nom</p>
+          
+          
+
+          
+          <div class="method-source-code" id="chargerPartie-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chargerPartie</span>(<span class="ruby-identifier">nomPartie</span>)
+
+        <span class="ruby-identifier">reqTemp</span> = <span class="ruby-identifier">requete</span>(<span class="ruby-node">&quot;SELECT * FROM grillejouee WHERE nompartie=&#39;#{sanitize(nomPartie)}&#39; AND joueur=&#39;#{@profil.getStats[&quot;id&quot;]}&#39;&quot;</span>)
+        <span class="ruby-identifier">nomGrilleRef</span> = <span class="ruby-identifier">requete</span>(<span class="ruby-node">&quot;SELECT nomgrille FROM grilleediter WHERE id=&#39;#{reqTemp[0][&quot;idGrille&quot;]}&#39;&quot;</span>)
+        
+        <span class="ruby-ivar">@grille</span> = <span class="ruby-identifier">charger</span>(<span class="ruby-identifier">nomGrilleRef</span>[<span class="ruby-value">0</span>][<span class="ruby-string">&quot;nomgrille&quot;</span>])
+        <span class="ruby-ivar">@informations</span> = <span class="ruby-constant">InfosGrille</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">genererInfos</span>(<span class="ruby-ivar">@grille</span>)
+        
+        <span class="ruby-ivar">@plateauJeu</span> = <span class="ruby-constant">GrilleJeu</span>.<span class="ruby-constant">Creer</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">taille</span>, <span class="ruby-identifier">nomPartie</span>, <span class="ruby-ivar">@profil</span>, <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">nbJokers</span>)
+        <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">cases</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">casesDeserialize</span>(<span class="ruby-identifier">reqTemp</span>[<span class="ruby-value">0</span>][<span class="ruby-string">&quot;grille&quot;</span>])  
+        <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">nbJokers</span> = <span class="ruby-identifier">reqTemp</span>[<span class="ruby-value">0</span>][<span class="ruby-string">&quot;jokersRestants&quot;</span>]
+        
+        <span class="ruby-ivar">@timer</span> = <span class="ruby-constant">Timer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">reqTemp</span>[<span class="ruby-value">0</span>][<span class="ruby-string">&quot;timer&quot;</span>], <span class="ruby-ivar">@profil</span>)
+        <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">lancerTimer</span>                    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-checkBlocs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">checkBlocs</span><span
+            class="method-args">(tabBlocs, infos)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne vrai s&#39;il n&#39;y a pas de bloc supérieur aux infos
+lignes/colonnes dans celle-ci</p>
+          
+          
+
+          
+          <div class="method-source-code" id="checkBlocs-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 440</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">checkBlocs</span>(<span class="ruby-identifier">tabBlocs</span>, <span class="ruby-identifier">infos</span>)
+
+    <span class="ruby-identifier">maxEtendue</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">maxInfos</span> = <span class="ruby-value">0</span>
+    
+    <span class="ruby-identifier">infos</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-identifier">maxInfos</span> = <span class="ruby-identifier">x</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">maxInfos</span>
+    }
+    
+    <span class="ruby-identifier">tabBlocs</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">bloc</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-identifier">maxEtendue</span> = <span class="ruby-identifier">bloc</span>[<span class="ruby-value">0</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">bloc</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">maxEtendue</span>
+    }
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">maxEtendue</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">maxInfos</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-chercherErreursBlocs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chercherErreursBlocs</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne un tableau désignant les lignes et colonnes où les blocs ne
+correspondent pas aux infos</p>
+          
+          
+
+          
+          <div class="method-source-code" id="chercherErreursBlocs-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 424</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chercherErreursBlocs</span>
+
+    <span class="ruby-identifier">erreursLigne</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">erreursColonne</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+    
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-identifier">erreursLigne</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">i</span>) <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">checkBlocs</span>(<span class="ruby-identifier">emplacementsJoues</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">i</span>)), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoLigne</span>(<span class="ruby-identifier">i</span>))
+            <span class="ruby-identifier">erreursColonne</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">i</span>) <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">checkBlocs</span>(<span class="ruby-identifier">emplacementsJoues</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getColonne</span>(<span class="ruby-identifier">i</span>)), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoColonne</span>(<span class="ruby-identifier">i</span>))
+    }
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">erreursLigne</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">erreursColonne</span>.<span class="ruby-identifier">empty?</span>)
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">erreursLigne</span>, <span class="ruby-identifier">erreursColonne</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-chercherErreursTrop" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chercherErreursTrop</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne un tableau des lignes et colonnes contenant plus de cases jouees
+que spécifié dans leurs infos ou nil si tout va bien</p>
+          
+          
+
+          
+          <div class="method-source-code" id="chercherErreursTrop-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 407</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chercherErreursTrop</span>
+
+    <span class="ruby-identifier">erreursLigne</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">erreursColonne</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+    
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-identifier">erreursLigne</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">i</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">compareInfoTab</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">i</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoLigne</span>(<span class="ruby-identifier">i</span>)) <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+            <span class="ruby-identifier">erreursColonne</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">i</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">compareInfoTab</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getColonne</span>(<span class="ruby-identifier">i</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoColonne</span>(<span class="ruby-identifier">i</span>)) <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    }
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> (<span class="ruby-identifier">erreursLigne</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">and</span> <span class="ruby-identifier">erreursColonne</span>.<span class="ruby-identifier">empty?</span>)
+    <span class="ruby-keyword">return</span> [<span class="ruby-identifier">erreursLigne</span>, <span class="ruby-identifier">erreursColonne</span>]
+    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-chercherSolutions" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chercherSolutions</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne un tableau contenant les coordonnées des cases résolvables par le
+joueur au moment de l&#39;appel</p>
+          
+          
+
+          
+          <div class="method-source-code" id="chercherSolutions-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 197</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chercherSolutions</span>
+
+    <span class="ruby-identifier">setCases</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+    
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-identifier">setCases</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">chercherTableau</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getColonne</span>(<span class="ruby-identifier">i</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoColonne</span>(<span class="ruby-identifier">i</span>), <span class="ruby-keyword">false</span>)) <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">tabPleins</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getColonne</span>(<span class="ruby-identifier">i</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoColonne</span>(<span class="ruby-identifier">i</span>))
+            <span class="ruby-identifier">setCases</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">chercherTableau</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">i</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoLigne</span>(<span class="ruby-identifier">i</span>), <span class="ruby-keyword">true</span>)) <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">tabPleins</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">i</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoLigne</span>(<span class="ruby-identifier">i</span>))
+    }
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">setCases</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-chercherTableau" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chercherTableau</span><span
+            class="method-args">(desCases, desInfos, unSens)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Cherche les cases résolvables par le joueur pour une ligne ou une colonne
+(application des stratégies de résolution) True = ligne False = colonnes</p>
+          
+          
+
+          
+          <div class="method-source-code" id="chercherTableau-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 219</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chercherTableau</span>(<span class="ruby-identifier">desCases</span>, <span class="ruby-identifier">desInfos</span>, <span class="ruby-identifier">unSens</span>)
+
+    <span class="ruby-identifier">res</span> = <span class="ruby-constant">Set</span>.<span class="ruby-identifier">new</span>
+    
+    <span class="ruby-comment">#Toutes les cases doivent être jouées</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">desInfos</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">desInfos</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">eql?</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span>) <span class="ruby-keyword">then</span>
+    
+            <span class="ruby-identifier">res</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">desCases</span>.<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">laCase</span><span class="ruby-operator">|</span> <span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">neutre?</span>})
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-comment">#Une case sur deux est pleine dans la ligne</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">desInfos</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">eql?</span>((<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>)<span class="ruby-operator">+</span><span class="ruby-value">1</span>) <span class="ruby-keyword">then</span>
+    
+            <span class="ruby-identifier">desCases</span>.<span class="ruby-identifier">each_with_index</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">laCase</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+            
+                    <span class="ruby-identifier">res</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">laCase</span>) <span class="ruby-keyword">if</span> ((<span class="ruby-identifier">i</span><span class="ruby-operator">%</span><span class="ruby-value">2</span>).<span class="ruby-identifier">eql?</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">neutre?</span>)
+            }
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-comment">#On détermine les cases qui sont à jouer au milieu de la grille</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">desInfos</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-value">1</span>) <span class="ruby-keyword">and</span> <span class="ruby-identifier">desInfos</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&gt;</span> (<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>) <span class="ruby-keyword">then</span>
+            
+            <span class="ruby-identifier">desCases</span>.<span class="ruby-identifier">each_with_index</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">laCase</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+            
+                            <span class="ruby-identifier">res</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">laCase</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">neutre?</span> <span class="ruby-keyword">and</span> (<span class="ruby-identifier">i</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">desInfos</span>[<span class="ruby-value">0</span>]) <span class="ruby-keyword">and</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;</span> (<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span><span class="ruby-operator">-</span><span class="ruby-identifier">desInfos</span>[<span class="ruby-value">0</span>]<span class="ruby-operator">-</span><span class="ruby-value">1</span>)
+            }                 
+    <span class="ruby-keyword">end</span>
+
+            <span class="ruby-identifier">sommeInfo</span> = <span class="ruby-value">0</span>
+            <span class="ruby-identifier">desInfos</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sommeInfo</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">x</span>}
+            
+            <span class="ruby-comment">#L&#39;ensemble des cases + espaces remplit la ligne/colonne</span>
+            <span class="ruby-keyword">if</span> (<span class="ruby-identifier">desInfos</span>.<span class="ruby-identifier">size</span><span class="ruby-operator">-</span><span class="ruby-value">1</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">sommeInfo</span>).<span class="ruby-identifier">eql?</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span>) <span class="ruby-keyword">then</span>
+            
+                    <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
+                    <span class="ruby-identifier">desInfos</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">info</span><span class="ruby-operator">|</span>
+                    
+                            <span class="ruby-identifier">i</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">info</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+                            
+                                    <span class="ruby-identifier">res</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">desCases</span>[<span class="ruby-identifier">j</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">desCases</span>[<span class="ruby-identifier">j</span>].<span class="ruby-identifier">neutre?</span>
+                            }
+                            
+                            <span class="ruby-identifier">i</span><span class="ruby-operator">+=</span><span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">info</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">desInfos</span>.<span class="ruby-identifier">last</span>
+                    }
+            <span class="ruby-keyword">end</span>   
+            
+
+    <span class="ruby-comment">#Traitement générique sur les informations du tableau</span>
+    <span class="ruby-identifier">desInfos</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">uneInfo</span><span class="ruby-operator">|</span>
+            
+            <span class="ruby-comment">#Emplacements neutres de la taille de l&#39;info</span>
+            <span class="ruby-identifier">empLibresOk</span> = <span class="ruby-identifier">emplacementsDisponibles</span>(<span class="ruby-identifier">desCases</span>, <span class="ruby-identifier">unSens</span>).<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">unEmplacement</span><span class="ruby-operator">|</span> <span class="ruby-identifier">unEmplacement</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">uneInfo</span>)}
+            
+            <span class="ruby-comment">#Emplacements joues de la taille de l&#39;info</span>
+            <span class="ruby-identifier">empOccupesOk</span> = <span class="ruby-identifier">emplacementsJoues</span>(<span class="ruby-identifier">desCases</span>).<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">unEmplacement</span><span class="ruby-operator">|</span> <span class="ruby-identifier">unEmplacement</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">uneInfo</span>)}
+            
+            <span class="ruby-comment">#Si on a une suite de cases neutres qui elles seules peuvent convenir à l&#39;information, on ajoute les cases de cette suite</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">empOccupesOk</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">nombreOccInfos</span>(<span class="ruby-identifier">desInfos</span>, <span class="ruby-identifier">uneInfo</span>)) <span class="ruby-keyword">then</span>
+            
+                    <span class="ruby-identifier">empLibresOk</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
+                    
+                                    <span class="ruby-identifier">depart</span> = <span class="ruby-identifier">b</span>[<span class="ruby-value">1</span>]
+                                    <span class="ruby-identifier">etendue</span> = <span class="ruby-identifier">b</span>[<span class="ruby-value">0</span>]
+                                    
+                                    <span class="ruby-identifier">depart</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">depart</span><span class="ruby-operator">+</span><span class="ruby-identifier">etendue</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                                    
+                                            <span class="ruby-identifier">res</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">desCases</span>[<span class="ruby-identifier">i</span>])
+                                    }
+                            }
+            <span class="ruby-keyword">end</span>
+
+                    
+    }
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-compareInfoTab" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">compareInfoTab</span><span
+            class="method-args">(unTab, desInfos)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne &gt;0 si le nb de cases jouées est supérieur aux infos, &lt;0 pour
+l&#39;inverse et 0 en cas d&#39;égalite</p>
+          
+          
+
+          
+          <div class="method-source-code" id="compareInfoTab-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 459</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">compareInfoTab</span>(<span class="ruby-identifier">unTab</span>, <span class="ruby-identifier">desInfos</span>)
+
+    <span class="ruby-identifier">nbCasesJouees</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">sommeInfo</span> = <span class="ruby-value">0</span>
+    
+    <span class="ruby-identifier">unTab</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-identifier">nbCasesJouees</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">jouee?</span>
+    }
+    
+    <span class="ruby-identifier">desInfos</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">uneInfo</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-identifier">sommeInfo</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">uneInfo</span>
+    }
+    
+    <span class="ruby-keyword">return</span> (<span class="ruby-identifier">nbCasesJouees</span><span class="ruby-operator">-</span><span class="ruby-identifier">sommeInfo</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-emplacementsDisponibles" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">emplacementsDisponibles</span><span
+            class="method-args">(tabCases, unSens)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne un tableau contenant, au vu de l&#39;organisation de la
+ligne/colonne, les positions de départ des cases neutres ainsi que leurs
+étendue</p>
+          
+          
+
+          
+          <div class="method-source-code" id="emplacementsDisponibles-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 310</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">emplacementsDisponibles</span>(<span class="ruby-identifier">tabCases</span>, <span class="ruby-identifier">unSens</span>)
+
+    <span class="ruby-identifier">suiteCase</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">res</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-identifier">etendue</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">depart</span> = <span class="ruby-value">0</span>
+    
+    <span class="ruby-identifier">tabCases</span>.<span class="ruby-identifier">each_with_index</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">laCase</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-comment">#On traite les lignes</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">unSens</span> <span class="ruby-keyword">then</span>
+            
+                    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">neutre?</span>  <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">tabPleins</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getColonne</span>(<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">x</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoColonne</span>(<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">x</span>))) <span class="ruby-keyword">or</span> (<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">jouee?</span> <span class="ruby-keyword">and</span> (<span class="ruby-identifier">compareInfoTab</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getColonne</span>(<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">x</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoColonne</span>(<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">x</span>) )<span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>)) <span class="ruby-keyword">then</span>
+            
+                            <span class="ruby-identifier">etendue</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                                    <span class="ruby-identifier">depart</span> = <span class="ruby-identifier">i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">suiteCase</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+                                    <span class="ruby-identifier">suiteCase</span> = <span class="ruby-keyword">true</span>
+                            
+                            <span class="ruby-comment">#On a pas de case ou on a arrêté une suite  </span>
+                            <span class="ruby-keyword">else</span>
+                            
+                                    <span class="ruby-comment">#On arrête une suite de cases</span>
+                                    <span class="ruby-keyword">if</span> <span class="ruby-identifier">suiteCase</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span> 
+
+                                            <span class="ruby-identifier">res</span>.<span class="ruby-identifier">push</span>([<span class="ruby-identifier">etendue</span>, <span class="ruby-identifier">depart</span>]) 
+                                            <span class="ruby-identifier">etendue</span> = <span class="ruby-value">0</span>
+                                    <span class="ruby-keyword">end</span>
+                                    
+                                    <span class="ruby-identifier">suiteCase</span> = <span class="ruby-keyword">false</span>
+                            <span class="ruby-keyword">end</span>
+                                    
+            <span class="ruby-comment">#On traite les colonnes</span>
+            <span class="ruby-keyword">else</span>
+            
+                    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">neutre?</span>  <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">tabPleins</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">y</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoLigne</span>(<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">y</span>))) <span class="ruby-keyword">or</span> (<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">jouee?</span> <span class="ruby-keyword">and</span> (<span class="ruby-identifier">compareInfoTab</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getLigne</span>(<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">y</span>), <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">getInfoLigne</span>(<span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">y</span>) )<span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>)) <span class="ruby-keyword">then</span>
+            
+                            <span class="ruby-identifier">etendue</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                                    <span class="ruby-identifier">depart</span> = <span class="ruby-identifier">i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">suiteCase</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+                                    <span class="ruby-identifier">suiteCase</span> = <span class="ruby-keyword">true</span>
+                            
+                            <span class="ruby-comment">#On a pas de case ou on a arrêté une suite  </span>
+                            <span class="ruby-keyword">else</span>
+                            
+                                    <span class="ruby-comment">#On arrête une suite de cases</span>
+                                    <span class="ruby-keyword">if</span> <span class="ruby-identifier">suiteCase</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span> 
+
+                                            <span class="ruby-identifier">res</span>.<span class="ruby-identifier">push</span>([<span class="ruby-identifier">etendue</span>, <span class="ruby-identifier">depart</span>]) 
+                                            <span class="ruby-identifier">etendue</span> = <span class="ruby-value">0</span>
+                                    <span class="ruby-keyword">end</span>
+                                    
+                                    <span class="ruby-identifier">suiteCase</span> = <span class="ruby-keyword">false</span>
+                            <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">end</span>
+            }
+            
+            <span class="ruby-comment">#En cas de sortie avant la fin du bloc</span>
+            <span class="ruby-identifier">res</span>.<span class="ruby-identifier">push</span>([<span class="ruby-identifier">etendue</span>, <span class="ruby-identifier">depart</span>])  <span class="ruby-keyword">if</span> <span class="ruby-identifier">suiteCase</span> 
+            
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-emplacementsJoues" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">emplacementsJoues</span><span
+            class="method-args">(tabCases)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne l&#39;indice de départ et l&#39;étendue des blocs de cases jouées
+pour une ligne/colonne donnée</p>
+          
+          
+
+          
+          <div class="method-source-code" id="emplacementsJoues-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 372</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">emplacementsJoues</span>(<span class="ruby-identifier">tabCases</span>)
+
+    <span class="ruby-identifier">suiteCase</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">res</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+
+    <span class="ruby-identifier">etendue</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">depart</span> = <span class="ruby-value">0</span>
+    
+    <span class="ruby-identifier">tabCases</span>.<span class="ruby-identifier">each_with_index</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">laCase</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-comment">#On commence ou on continue une suite de cases jouees</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">laCase</span>.<span class="ruby-identifier">jouee?</span> <span class="ruby-keyword">then</span>
+            
+                    <span class="ruby-identifier">etendue</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                    <span class="ruby-identifier">depart</span> = <span class="ruby-identifier">i</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">suiteCase</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>
+                    <span class="ruby-identifier">suiteCase</span> = <span class="ruby-keyword">true</span>
+            
+            <span class="ruby-comment">#On a pas de case ou on a arrêté une suite        </span>
+            <span class="ruby-keyword">else</span>
+            
+                    <span class="ruby-comment">#On arrête une suite de cases</span>
+                    <span class="ruby-keyword">if</span> <span class="ruby-identifier">suiteCase</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">then</span> 
+                    
+                            <span class="ruby-identifier">res</span>.<span class="ruby-identifier">push</span>([<span class="ruby-identifier">etendue</span>, <span class="ruby-identifier">depart</span>]) 
+                            <span class="ruby-identifier">etendue</span> = <span class="ruby-value">0</span>
+                    <span class="ruby-keyword">end</span>
+                    
+                    <span class="ruby-identifier">suiteCase</span> = <span class="ruby-keyword">false</span>
+            <span class="ruby-keyword">end</span>
+    }
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-enleverCroix" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">enleverCroix</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Remet toutes les cases à l&#39;état croix de la grille à l&#39;état neutre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="enleverCroix-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">enleverCroix</span>
+
+        <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">operationGrille</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">uneCase</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">croix?</span> <span class="ruby-keyword">then</span>
+                
+                        <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-constant">EtatCaseNeutre</span>.<span class="ruby-identifier">getInstance</span>)
+                <span class="ruby-keyword">end</span>
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-enleverJoker" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">enleverJoker</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Enlève un joker pour le joueur</p>
+          
+          
+
+          
+          <div class="method-source-code" id="enleverJoker-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">enleverJoker</span>
+
+        <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">nbJokers</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">ajouterJoker</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getCase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getCase</span><span
+            class="method-args">(x,y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne une case de la grille de jeu</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getCase-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 191</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+    
+            <span class="ruby-keyword">return</span> <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getIndice" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getIndice</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne un indice de jeu au joueur</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getIndice-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getIndice</span>
+
+        <span class="ruby-identifier">ajouterIndice</span>
+        <span class="ruby-identifier">solutions</span> = <span class="ruby-identifier">chercherSolutions</span>
+        
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">solutions</span>.<span class="ruby-identifier">empty?</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">solutions</span>      
+        
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-grilleValide-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">grilleValide?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne vrai si la grille du joueur répond aux critères de la grille de
+solution</p>
+          
+          
+
+          
+          <div class="method-source-code" id="grilleValide-3F-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">grilleValide?</span>
+
+        <span class="ruby-comment">#Génération des indices de la grille de jeu</span>
+        <span class="ruby-identifier">informationsTemp</span> = <span class="ruby-constant">InfosGrille</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">informationsTemp</span>.<span class="ruby-identifier">genererInfos</span>(<span class="ruby-ivar">@plateauJeu</span>)
+        
+        <span class="ruby-comment">#Comparaison des deux informations de grille</span>
+        <span class="ruby-identifier">valide</span> =  (<span class="ruby-identifier">informationsTemp</span>.<span class="ruby-identifier">infosLignes</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">infosLignes</span> <span class="ruby-keyword">and</span>  <span class="ruby-identifier">informationsTemp</span>.<span class="ruby-identifier">infosColonnes</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">infosColonnes</span>)
+        
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">valide</span> <span class="ruby-keyword">then</span> <span class="ruby-comment">#Si grille terminée, +1 au nombre de partie terminées puis maj modification</span>
+        
+                <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">stopperTimer</span>                  
+                <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">getStats</span>[<span class="ruby-string">&quot;parties_terminees&quot;</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+                <span class="ruby-identifier">sauvegarderProfil</span>
+        <span class="ruby-keyword">end</span>
+        
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">valide</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nombreOccInfos" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nombreOccInfos</span><span
+            class="method-args">(tabInfos, i)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne le nombre d&#39;occurence de i dans le tableau des informations</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nombreOccInfos-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 297</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nombreOccInfos</span>(<span class="ruby-identifier">tabInfos</span>, <span class="ruby-identifier">i</span>)
+
+    <span class="ruby-identifier">res</span> = <span class="ruby-value">0</span>
+    
+    <span class="ruby-identifier">tabInfos</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">info</span><span class="ruby-operator">|</span>
+    
+            <span class="ruby-identifier">res</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">info</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-identifier">i</span>)
+    }
+    
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nouvellePartie" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nouvellePartie</span><span
+            class="method-args">(nomPartie, uneGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Démarre une nouvelle partie</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nouvellePartie-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 102</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nouvellePartie</span>(<span class="ruby-identifier">nomPartie</span>, <span class="ruby-identifier">uneGrille</span>)
+
+        <span class="ruby-ivar">@timer</span> = <span class="ruby-constant">Timer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>,<span class="ruby-ivar">@profil</span>)
+        
+        <span class="ruby-comment">#On récupère les infos de la grille passées en paramètre puis on instancie une GrilleEditeur</span>
+        <span class="ruby-identifier">charger</span>(<span class="ruby-identifier">uneGrille</span>)
+        
+        <span class="ruby-ivar">@informations</span> = <span class="ruby-constant">InfosGrille</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">genererInfos</span>(<span class="ruby-ivar">@grille</span>)
+
+        <span class="ruby-ivar">@profil</span>.<span class="ruby-identifier">getStats</span>[<span class="ruby-string">&quot;parties_commencees&quot;</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        
+        <span class="ruby-ivar">@plateauJeu</span> = <span class="ruby-constant">GrilleJeu</span>.<span class="ruby-constant">Creer</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">taille</span>, <span class="ruby-identifier">nomPartie</span>, <span class="ruby-ivar">@profil</span>, <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">nbJokers</span>)
+
+        <span class="ruby-identifier">lancerMaj</span>
+        <span class="ruby-ivar">@timer</span>.<span class="ruby-identifier">lancerTimer</span>    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nouvelleSauvegarde" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nouvelleSauvegarde</span><span
+            class="method-args">(nomPartie)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Crée une nouvelle sauvegarde pour un joueur</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nouvelleSauvegarde-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 90</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">nouvelleSauvegarde</span>(<span class="ruby-identifier">nomPartie</span>)
+
+        <span class="ruby-identifier">serial</span> = <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">casesSerialize</span>
+<span class="ruby-identifier">nbJokers</span> = <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">nbJokers</span>
+        <span class="ruby-identifier">date</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%d/%m/%Y %H:%M&quot;</span>)
+
+        <span class="ruby-identifier">idGrilleRef</span> = <span class="ruby-identifier">requete</span>(<span class="ruby-node">&quot;SELECT id FROM grilleediter WHERE nomgrille = &#39;#{sanitize(@grille.nomGrille)}&#39;&quot;</span>)[<span class="ruby-value">0</span>][<span class="ruby-string">&quot;id&quot;</span>]
+        <span class="ruby-identifier">requete</span>(<span class="ruby-node">&quot;INSERT INTO grillejouee(joueur, idGrille, nompartie, grille, jokersRestants, timer, datedebut, datemaj) VALUES(&#39;#{@profil.getStats[&quot;id&quot;]}&#39;,&#39;#{idGrilleRef}&#39;,&#39;#{sanitize(nomPartie)}&#39;,&#39;#{serial}&#39;,&#39;#{nbJokers}&#39;,&#39;#{@timer.temps}&#39;,&#39;#{date}&#39;,&#39;#{date}&#39;)&quot;</span>)
+        
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-remplacerSauvegarde" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remplacerSauvegarde</span><span
+            class="method-args">(nomPartie)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Écrase la sauvegarde “nomPartie” avec des nouvelles données</p>
+          
+          
+
+          
+          <div class="method-source-code" id="remplacerSauvegarde-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remplacerSauvegarde</span>(<span class="ruby-identifier">nomPartie</span>)
+
+        <span class="ruby-identifier">serial</span> = <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">casesSerialize</span>
+<span class="ruby-identifier">nbJokers</span> = <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">nbJokers</span>
+        <span class="ruby-identifier">date</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%d/%m/%Y %H:%M&quot;</span>)
+
+        <span class="ruby-identifier">idGrilleRef</span> = <span class="ruby-identifier">requete</span>(<span class="ruby-node">&quot;SELECT id FROM grilleediter WHERE nomgrille = &#39;#{sanitize(@grille.nomGrille)}&#39;&quot;</span>) 
+        <span class="ruby-identifier">req</span> = <span class="ruby-node">&quot;UPDATE grillejouee SET grille=&#39;#{serial}&#39;, jokersRestants=&#39;#{nbJokers}&#39;, timer=&#39;#{@timer.temps}&#39;, datemaj=&#39;#{date}&#39; WHERE joueur=&#39;#{@profil.getStats[&quot;id&quot;]}&#39; AND nompartie=&#39;#{sanitize(nomPartie)}&#39; AND idGrille=&#39;#{idGrilleRef[0][&quot;id&quot;]}&#39;&quot;</span>
+
+        <span class="ruby-identifier">requete</span>(<span class="ruby-identifier">req</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sauvegardeExiste-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sauvegardeExiste?</span><span
+            class="method-args">(nomSauvegarde)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne vrai si le nom de sauvegarde passé en paramètre existe déjà pour
+un joueur</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sauvegardeExiste-3F-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sauvegardeExiste?</span>(<span class="ruby-identifier">nomSauvegarde</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-operator">!</span><span class="ruby-identifier">requete</span>(<span class="ruby-node">&quot;SELECT * FROM grillejouee WHERE nompartie = &#39;#{sanitize(nomSauvegarde)}&#39; AND joueur = #{@profil.getStats[&quot;id&quot;]}&quot;</span>).<span class="ruby-identifier">empty?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-tabPleins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">tabPleins</span><span
+            class="method-args">(tab, indices)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne true si le nombre de cases du tableau correspond à la somme des
+indices</p>
+          
+          
+
+          
+          <div class="method-source-code" id="tabPleins-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 211</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">tabPleins</span>(<span class="ruby-identifier">tab</span>, <span class="ruby-identifier">indices</span>)
+
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">compareInfoTab</span>(<span class="ruby-identifier">tab</span>, <span class="ruby-identifier">indices</span>).<span class="ruby-identifier">eql?</span>(<span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 477</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">to_debug</span>
+        <span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">to_debug</span>
+        <span class="ruby-ivar">@informations</span>.<span class="ruby-identifier">to_debug</span>
+        <span class="ruby-identifier">print</span> <span class="ruby-identifier">grilleValide?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-utiliserJoker" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">utiliserJoker</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Dévoile une case aléatoirement dans le jeu</p>
+          
+          
+
+          
+          <div class="method-source-code" id="utiliserJoker-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleJeu.rb, line 151</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">utiliserJoker</span>
+
+        <span class="ruby-comment">#On récupère les cases qui diffèrent de la solution dans le jeu</span>
+        <span class="ruby-identifier">casesFausses</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>((<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)){<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>((<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">taille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>)){<span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+                
+                        <span class="ruby-identifier">casesFausses</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)) <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@plateauJeu</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">etat</span> <span class="ruby-operator">!=</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">etat</span>)
+                }
+        }
+
+        <span class="ruby-identifier">indice</span> = <span class="ruby-constant">Random</span>.<span class="ruby-identifier">rand</span>(<span class="ruby-identifier">casesFausses</span>.<span class="ruby-identifier">size</span>)
+        
+        <span class="ruby-identifier">caseAChanger</span> = <span class="ruby-identifier">casesFausses</span>[<span class="ruby-identifier">indice</span>]
+        
+        <span class="ruby-comment">#On met la solution</span>
+        <span class="ruby-identifier">caseSolution</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseAChanger</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">caseAChanger</span>.<span class="ruby-identifier">y</span>)
+        
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseSolution</span>.<span class="ruby-identifier">neutre?</span> <span class="ruby-keyword">then</span>
+                
+                <span class="ruby-identifier">caseAChanger</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-constant">EtatCaseCroix</span>.<span class="ruby-identifier">getInstance</span>)
+        
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">caseSolution</span>.<span class="ruby-identifier">jouee?</span> <span class="ruby-keyword">then</span>
+        
+                <span class="ruby-identifier">caseAChanger</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-constant">EtatCaseJouee</span>.<span class="ruby-identifier">getInstance</span>)
+        <span class="ruby-keyword">end</span>
+                        
+        <span class="ruby-identifier">enleverJoker</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

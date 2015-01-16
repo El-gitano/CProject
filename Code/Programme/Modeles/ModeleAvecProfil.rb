@@ -3,6 +3,7 @@
 require 'sqlite3'
 require_relative 'Modele'
 
+# Ce modèle se charge de de la création et de la mise à jour des profils
 class ModeleAvecProfil < Modele
     
     @profil

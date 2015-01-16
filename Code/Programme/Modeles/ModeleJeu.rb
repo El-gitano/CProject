@@ -280,10 +280,9 @@ class ModeleJeu < ModeleGrille
 			
 					depart = b[1]
 					etendue = b[0]
-					#puts "Départ et étendue : #{depart} #{etendue}"
 					
 					depart.upto(depart+etendue-1){|i|
-						#puts "Ajout de la case #{desCases[i].x}, #{desCases[i].y} (#{depart}-#{depart+etendue-1})"
+					
 						res.add(desCases[i])
 					}
 				}
@@ -332,7 +331,7 @@ class ModeleJeu < ModeleGrille
 				
 					#On arrête une suite de cases
 					if suiteCase == true then 
-						puts "Ligne #{laCase.y} - départ #{depart} étendue : #{etendue}]"
+
 						res.push([etendue, depart]) 
 						etendue = 0
 					end
@@ -354,7 +353,7 @@ class ModeleJeu < ModeleGrille
 				
 					#On arrête une suite de cases
 					if suiteCase == true then 
-						puts "Colonne #{laCase.x} - départ #{depart} étendue : #{etendue}]"
+
 						res.push([etendue, depart]) 
 						etendue = 0
 					end

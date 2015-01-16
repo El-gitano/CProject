@@ -15,8 +15,8 @@ class ModeleOuvrirGrilleImport < ModeleGrille
 	
 	def infosGrillesImportables
 		array = Dir.entries(File.expand_path("../Import", File.dirname(__FILE__)))
-		array.delete_at(0)
-		array.delete_at(0)
+		array.delete(".")
+		array.delete("..")
 		tmpData = Array.new
 		
 		#print "profil courant : ",@profil.pseudo,"\n"
@@ -24,7 +24,7 @@ class ModeleOuvrirGrilleImport < ModeleGrille
 		array.each do |x|
 			#print " nom fich :",x,"\n"
 			tmp = ModeleEditeur.new(@profil, 10)
-			tmp.grille.importerGrille(File.expand_path("../Import/", File.dirname(__FILE__))+x)
+			tmp.grille.importerGrille(File.expand_path("../Import/", File.dirname(__FILE__))+"/"+x)
 			#print tmp.grille.to_debug
 			tmpData.push(tmp)			
 		end

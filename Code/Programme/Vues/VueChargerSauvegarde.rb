@@ -3,6 +3,7 @@ require_relative 'Listeurs/ListeurSauvegardes'
 
 require 'gtk2'
 
+#Vue chargée de présenter une interface de chargement de sauvegarde
 class VueChargerSauvegarde < Vue
 
 	@btRetour

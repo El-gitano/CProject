@@ -4,6 +4,7 @@ require_relative 'Listeurs/ListeurGrillesEditables'
 
 require 'gtk2'
 
+#Vue chargée de présenter une interface d'exportation de grille
 class VueOuvrirGrilleExport < Vue
 
 	@btRetour

@@ -5,6 +5,7 @@ require_relative 'CaseVue'
 
 require 'gtk2'
 
+#Vue chargée de présenter une interface de jeu avec possibilite de sauvegarder
 class VueJeu < Vue
 
 	@miSauvegarder
@@ -140,13 +141,6 @@ class VueJeu < Vue
 		hbox.pack_end(Gtk::Label.new(chaine), false, false)
 		
 		return hbox
-	end
-	
-	def creerEspace(hauteur, largeur)
-	
-		espace = Gtk::Alignment.new(20, 20, 20, 20)
-		espace.set_size_request(hauteur, largeur)
-		return espace
 	end
 	
 	#Crée le plateau de jeu à partir de la grille du modèle

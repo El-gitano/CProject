@@ -2,6 +2,7 @@
 
 require_relative 'ModeleAvecProfil'
 
+# Ce modèle se contente de charger une partie précédemment commencée
 class ModeleChargerSauvegarde < ModeleAvecProfil
 
 	public_class_method :new
