@@ -1,1 +1,0 @@
-ruby ./Programme/Picross.rb
