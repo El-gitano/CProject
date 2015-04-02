@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class VueEditeur - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Vue.html">Vue</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-actualiserCase">#actualiserCase</a>
+    
+    <li ><a href="#method-i-creerGrille">#creerGrille</a>
+    
+    <li ><a href="#method-i-getCaseVue">#getCaseVue</a>
+    
+    <li ><a href="#method-i-miseAJour">#miseAJour</a>
+    
+    <li ><a href="#method-i-operationGrille">#operationGrille</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-VueEditeur">
+  <h1 id="class-VueEditeur" class="class">
+    class VueEditeur
+  </h1>
+
+  <section class="description">
+    
+<p><a href="Vue.html">Vue</a> chargée d&#39;effectuer le lien entre le
+contrôleur et l&#39;utilisateur lors de l&#39;écran d&#39;accueil</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-boutonAleatoire" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">boutonAleatoire</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-boutonEnregistrer" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">boutonEnregistrer</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-boutonExporter" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">boutonExporter</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-boutonImporter" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">boutonImporter</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-boutonImporterImage" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">boutonImporterImage</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-boutonOuvrir" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">boutonOuvrir</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-boutonRetour" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">boutonRetour</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-listBoutonTaille" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">listBoutonTaille</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-mat" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">mat</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-sbNbJokers" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">sbNbJokers</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unModele, leTitre)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Une vue n&#39;a besoin que d&#39;un modèle pour fonctionner</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Vues/Vue.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unModele</span>, <span class="ruby-identifier">leTitre</span>)
+
+        <span class="ruby-ivar">@modele</span> = <span class="ruby-identifier">unModele</span>
+        
+        <span class="ruby-ivar">@window</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Window</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">leTitre</span>)
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">set_window_position</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Window</span><span class="ruby-operator">::</span><span class="ruby-constant">POS_CENTER</span>)
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">set_resizable</span>(<span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unModele)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Vue.html#method-c-new">Vue.new</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Vues/VueEditeur.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unModele</span>)
+
+        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">unModele</span>, <span class="ruby-string">&quot;Éditeur&quot;</span>)
+        <span class="ruby-ivar">@tailleGrille</span> = <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span>
+        
+        <span class="ruby-identifier">tailleFenetreX</span> = <span class="ruby-value">640</span>
+        
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">tailleFenetreX</span>, <span class="ruby-value">750</span>)
+        <span class="ruby-ivar">@vbox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">VBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">10</span>)
+        <span class="ruby-ivar">@vbox2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">VBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">2</span>)
+        <span class="ruby-ivar">@vbox3</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">VBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">2</span>)
+
+        <span class="ruby-ivar">@hbox1</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@hbox2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)      
+        <span class="ruby-ivar">@hbox3</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)      
+        
+        <span class="ruby-ivar">@boutonOuvrir</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot; Ouvrir&quot;</span>, <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutonEnregistrer</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot; Sauver&quot;</span>, <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutonImporterImage</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot; Importer&quot;</span>, <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutonAleatoire</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aléatoire&quot;</span>, <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutonImporter</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot; Importer&quot;</span>, <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutonExporter</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot; Exporter&quot;</span>, <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@boutonRetour</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot; Retour&quot;</span>, <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@labelTaille</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Taille de la grille&quot;</span>, <span class="ruby-keyword">false</span>)
+        
+        <span class="ruby-identifier">nbBoutonsHaut</span> = <span class="ruby-value">6</span>
+        
+        <span class="ruby-identifier">tailleBoutonHautX</span> = (<span class="ruby-identifier">tailleFenetreX</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">nbBoutonsHaut</span>) <span class="ruby-operator">-</span> ( <span class="ruby-identifier">nbBoutonsHaut</span>)
+        <span class="ruby-identifier">tailleBoutonHautY</span> = <span class="ruby-value">40</span>
+        
+        <span class="ruby-ivar">@boutonOuvrir</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">tailleBoutonHautX</span>, <span class="ruby-identifier">tailleBoutonHautY</span>)
+        <span class="ruby-ivar">@boutonEnregistrer</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">tailleBoutonHautX</span>, <span class="ruby-identifier">tailleBoutonHautY</span>)
+        <span class="ruby-ivar">@boutonImporterImage</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">tailleBoutonHautX</span>, <span class="ruby-identifier">tailleBoutonHautY</span>)
+        <span class="ruby-ivar">@boutonAleatoire</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">tailleBoutonHautX</span>, <span class="ruby-identifier">tailleBoutonHautY</span>)
+        <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">tailleBoutonHautX</span>, <span class="ruby-identifier">tailleBoutonHautY</span>)
+        <span class="ruby-ivar">@boutonImporter</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">tailleBoutonHautX</span>, <span class="ruby-identifier">tailleBoutonHautY</span>)
+        <span class="ruby-ivar">@boutonExporter</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">tailleBoutonHautX</span>, <span class="ruby-identifier">tailleBoutonHautY</span>)
+        
+        <span class="ruby-ivar">@listBoutonTaille</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-value">5</span>.<span class="ruby-identifier">step</span>(<span class="ruby-value">25</span>,<span class="ruby-value">5</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-identifier">boutonTaille</span> = <span class="ruby-constant">BoutonTaille</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>)
+                <span class="ruby-identifier">boutonTaille</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-value">80</span>, <span class="ruby-value">30</span>)
+                <span class="ruby-ivar">@listBoutonTaille</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">boutonTaille</span>)
+        }
+
+        <span class="ruby-identifier">imgOuvrir</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;./Images/folder.png&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>)))
+        <span class="ruby-identifier">imgEnregistrer</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;./Images/disquette.png&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>)))
+        <span class="ruby-identifier">imgImporterImage</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;./Images/image2.png&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>)))
+        <span class="ruby-identifier">imgAleatoire</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;./Images/aleatoire.png&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>)))
+        <span class="ruby-identifier">imgFermer</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;./Images/retour.png&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>)))
+        <span class="ruby-identifier">imgImporter</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;./Images/importer.png&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>)))
+        <span class="ruby-identifier">imgExporter</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;./Images/exporter.png&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>)))
+
+        <span class="ruby-ivar">@boutonOuvrir</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-identifier">imgOuvrir</span>)
+        <span class="ruby-ivar">@boutonEnregistrer</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-identifier">imgEnregistrer</span>)
+        <span class="ruby-ivar">@boutonImporterImage</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-identifier">imgImporterImage</span>)
+        <span class="ruby-ivar">@boutonAleatoire</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-identifier">imgAleatoire</span>)
+        <span class="ruby-ivar">@boutonImporter</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-identifier">imgImporter</span>)
+        <span class="ruby-ivar">@boutonExporter</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-identifier">imgExporter</span>)
+        <span class="ruby-ivar">@boutonRetour</span>.<span class="ruby-identifier">set_image</span>(<span class="ruby-identifier">imgFermer</span>)
+
+        <span class="ruby-ivar">@hbox1</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@boutonOuvrir</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@hbox1</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@boutonEnregistrer</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-comment">#@hbox1.pack_start(@boutonImporterImage, true, false, 0)</span>
+        <span class="ruby-ivar">@hbox1</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@boutonAleatoire</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@hbox1</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@boutonImporter</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@hbox1</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@boutonExporter</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@hbox1</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@boutonRetour</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        
+        
+        <span class="ruby-identifier">imgOuvrir</span>.<span class="ruby-identifier">show</span>()
+        <span class="ruby-identifier">imgEnregistrer</span>.<span class="ruby-identifier">show</span>()
+        <span class="ruby-identifier">imgImporterImage</span>.<span class="ruby-identifier">show</span>()
+        <span class="ruby-identifier">imgAleatoire</span>.<span class="ruby-identifier">show</span>()
+        <span class="ruby-identifier">imgFermer</span>.<span class="ruby-identifier">show</span>()
+        <span class="ruby-identifier">imgImporter</span>.<span class="ruby-identifier">show</span>()
+        <span class="ruby-identifier">imgExporter</span>.<span class="ruby-identifier">show</span>()
+
+        <span class="ruby-ivar">@vbox2</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@labelTaille</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@vbox2</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@hbox2</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+
+        <span class="ruby-ivar">@listBoutonTaille</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+                <span class="ruby-ivar">@hbox2</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">x</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        }
+        
+        <span class="ruby-identifier">hBoxTemp</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">3</span>)
+        <span class="ruby-ivar">@sbNbJokers</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">SpinButton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>, <span class="ruby-value">5</span>, <span class="ruby-value">1</span>)
+        
+        <span class="ruby-identifier">hBoxTemp</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Jokers : &quot;</span>), <span class="ruby-keyword">false</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-identifier">hBoxTemp</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@sbNbJokers</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@hbox2</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">hBoxTemp</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+
+        <span class="ruby-ivar">@vbox</span>.<span class="ruby-identifier">set_border_width</span>(<span class="ruby-value">20</span>) <span class="ruby-comment">#On espace la vBox de la fenêtre</span>
+        <span class="ruby-ivar">@vbox3</span>.<span class="ruby-identifier">set_spacing</span>(<span class="ruby-value">20</span>)
+        <span class="ruby-ivar">@vbox3</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@hbox1</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@vbox3</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@vbox2</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-ivar">@vbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@vbox3</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+
+        <span class="ruby-identifier">creerGrille</span>(<span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span>)
+
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@vbox</span>)            
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;destroy&#39;</span>) { <span class="ruby-constant">Gtk</span>.<span class="ruby-identifier">main_quit</span> }
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+        
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-actualiserCase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">actualiserCase</span><span
+            class="method-args">(x,y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Actualise la case située aux coordonnées (x,y)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="actualiserCase-source">
+            <pre><span class="ruby-comment"># File Vues/VueEditeur.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">actualiserCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+        
+        <span class="ruby-comment">#Doit devenir....</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>).<span class="ruby-identifier">neutre?</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">etat</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;neutre&quot;</span>) <span class="ruby-keyword">then</span>
+
+                <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">changerEtat</span>(<span class="ruby-string">&quot;neutre&quot;</span>)
+                 
+        <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>).<span class="ruby-identifier">croix?</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">etat</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;croix&quot;</span>) <span class="ruby-keyword">then</span>
+        
+                <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">changerEtat</span>(<span class="ruby-string">&quot;croix&quot;</span>)
+                 
+        <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>).<span class="ruby-identifier">jouee?</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">etat</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;jouee&quot;</span>) <span class="ruby-keyword">then</span>
+
+                <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">changerEtat</span>(<span class="ruby-string">&quot;jouee&quot;</span>)
+
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerGrille</span><span
+            class="method-args">(tailleGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Crée une grille de taille “tailleGrille” à partir de cases de la taille
+adéquate</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creerGrille-source">
+            <pre><span class="ruby-comment"># File Vues/VueEditeur.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">creerGrille</span>(<span class="ruby-identifier">tailleGrille</span>)
+ 
+        <span class="ruby-identifier">tailleWidget</span> = <span class="ruby-value">600</span>
+        <span class="ruby-identifier">espacementCases</span> = <span class="ruby-value">2</span>
+        <span class="ruby-identifier">tailleCase</span> = <span class="ruby-identifier">tailleWidget</span><span class="ruby-operator">/</span><span class="ruby-identifier">tailleGrille</span><span class="ruby-comment">#Moins 1 pour l&#39;espacement entre cases</span>
+        <span class="ruby-identifier">posY</span> = <span class="ruby-value">0</span>
+        
+        <span class="ruby-comment">#Définition du plateau de jeu (graphique) </span>
+        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">destroy</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-ivar">@grille</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tailleGrille</span>, <span class="ruby-identifier">tailleGrille</span>, <span class="ruby-keyword">false</span>)
+        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">tailleWidget</span>, <span class="ruby-identifier">tailleWidget</span>)
+        
+        <span class="ruby-ivar">@mat</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tailleGrille</span>) { <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tailleGrille</span>) }
+
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+
+                <span class="ruby-identifier">posX</span> = <span class="ruby-value">0</span>
+
+                <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+                
+                        <span class="ruby-comment">#On spécifie la position de la case</span>
+                        <span class="ruby-identifier">caseTemp</span> = <span class="ruby-constant">CaseVue</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;neutre&quot;</span>, <span class="ruby-identifier">tailleGrille</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+                        <span class="ruby-ivar">@mat</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>] = <span class="ruby-identifier">caseTemp</span><span class="ruby-comment">#Mat contient des références à nos objets afin de les faire évoluer aux évènements</span>
+                        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">caseTemp</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>)
+                        
+                        <span class="ruby-identifier">posX</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">tailleCase</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+                }
+
+                <span class="ruby-identifier">posY</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">tailleCase</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+        }
+        
+        <span class="ruby-comment">#Définition de l&#39;espacement des cases toutes les 5 cases</span>
+        <span class="ruby-value">4</span>.<span class="ruby-identifier">step</span>(<span class="ruby-identifier">tailleGrille</span>, <span class="ruby-value">5</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">set_row_spacing</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">espacementCases</span>)
+                <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">set_column_spacing</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">espacementCases</span>)
+        }
+        
+        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">show_all</span>
+        <span class="ruby-ivar">@vbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@grille</span>, <span class="ruby-keyword">true</span>, <span class="ruby-keyword">true</span>, <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getCaseVue" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getCaseVue</span><span
+            class="method-args">(x, y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne une case de la grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getCaseVue-source">
+            <pre><span class="ruby-comment"># File Vues/VueEditeur.rb, line 227</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@mat</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-miseAJour" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">miseAJour</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Actualise l&#39;ensemble de la grille à partir du modèle</p>
+          
+          
+
+          
+          <div class="method-source-code" id="miseAJour-source">
+            <pre><span class="ruby-comment"># File Vues/VueEditeur.rb, line 185</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">miseAJour</span>()
+        
+        <span class="ruby-comment">#On a changé la taille de la grille ou chargé une grille</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@tailleGrille</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-keyword">not</span> <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-ivar">@tailleGrille</span>) <span class="ruby-keyword">then</span>
+        
+                <span class="ruby-ivar">@tailleGrille</span> = <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">taille</span>
+                <span class="ruby-identifier">creerGrille</span>(<span class="ruby-ivar">@tailleGrille</span>)
+        <span class="ruby-keyword">end</span>
+        
+        <span class="ruby-comment">#Mise à jour de toutes les cases du plateau à partir du modèle</span>
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+                <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">actualiserCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+                }
+        }
+        
+        <span class="ruby-comment">#Mise à jour du nombre de jokersRestants</span>
+        <span class="ruby-ivar">@sbNbJokers</span>.<span class="ruby-identifier">value</span> = <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">nbJokers</span>
+        
+        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">show_all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-operationGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">operationGrille</span><span
+            class="method-args">() { |y| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="operationGrille-source">
+            <pre><span class="ruby-comment"># File Vues/VueEditeur.rb, line 232</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">operationGrille</span>
+
+        <span class="ruby-ivar">@mat</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-identifier">x</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+                
+                        <span class="ruby-keyword">yield</span> <span class="ruby-identifier">y</span>
+                }
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

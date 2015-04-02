@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class ControleurAccueil - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Controleur.html">Controleur</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-dgBoxChoixPartie">#dgBoxChoixPartie</a>
+    
+    <li ><a href="#method-i-dgCredit">#dgCredit</a>
+    
+    <li ><a href="#method-i-hBoxNom">#hBoxNom</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-ControleurAccueil">
+  <h1 id="class-ControleurAccueil" class="class">
+    class ControleurAccueil
+  </h1>
+
+  <section class="description">
+    
+<p>Le contrôleur d&#39;accueil permet d&#39;accéder aux différents menu du jeu</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unJeu)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Controleurs/Controleur.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unJeu</span>)
+
+        <span class="ruby-ivar">@picross</span> = <span class="ruby-identifier">unJeu</span>
+    <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unJeu, unProfil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Constructeur</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Controleur.html#method-c-new">Controleur.new</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Controleurs/ControleurAccueil.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unJeu</span>, <span class="ruby-identifier">unProfil</span>)
+
+        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">unJeu</span>)
+        <span class="ruby-ivar">@modele</span> = <span class="ruby-constant">ModeleAccueil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">unProfil</span>)
+        <span class="ruby-ivar">@vue</span> = <span class="ruby-constant">VueAccueil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@modele</span>)
+
+        <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">ajouterObservateur</span>(<span class="ruby-ivar">@vue</span>)      
+        
+        <span class="ruby-comment">#On quitte quand on ferme la fenêtre</span>
+        <span class="ruby-ivar">@vue</span>.<span class="ruby-identifier">window</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;delete_event&#39;</span>){
+        
+                <span class="ruby-identifier">quitterJeu</span>
+        }
+        
+        <span class="ruby-comment">#Retour à la fenêtre de connexion</span>
+        <span class="ruby-ivar">@vue</span>.<span class="ruby-identifier">boutonDeco</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
+
+                <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">sauvegarderProfil</span>
+                <span class="ruby-identifier">changerControleur</span>(<span class="ruby-constant">ControleurDemarrage</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@picross</span>))
+        }
+
+        <span class="ruby-comment">#Lancement d&#39;une partie (après sélection de la grille)</span>
+        <span class="ruby-ivar">@vue</span>.<span class="ruby-identifier">boutonJouer</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
+
+                <span class="ruby-identifier">dgBoxChoixPartie</span>
+        }
+
+        <span class="ruby-comment">#Lancement de l&#39;éditeur</span>
+        <span class="ruby-ivar">@vue</span>.<span class="ruby-identifier">boutonEditer</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
+
+                <span class="ruby-identifier">changerControleur</span>(<span class="ruby-constant">ControleurEditeur</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@picross</span>, <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">profil</span>))
+        }
+
+        <span class="ruby-comment">#Affichage des crédits</span>
+        <span class="ruby-ivar">@vue</span>.<span class="ruby-identifier">boutonCredit</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
+        
+                <span class="ruby-identifier">dgCredit</span>
+        }
+
+        <span class="ruby-ivar">@vue</span>.<span class="ruby-identifier">boutonProfil</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&quot;clicked&quot;</span>){
+
+                <span class="ruby-identifier">changerControleur</span>(<span class="ruby-constant">ControleurProfil</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@picross</span>, <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">profil</span>))
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-dgBoxChoixPartie" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dgBoxChoixPartie</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Ouvre une boite de dialogue permettant au joueur de choisir entre charger
+une partie ou en créer une nouvelle</p>
+          
+          
+
+          
+          <div class="method-source-code" id="dgBoxChoixPartie-source">
+            <pre><span class="ruby-comment"># File Controleurs/ControleurAccueil.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dgBoxChoixPartie</span>
+
+        <span class="ruby-identifier">dialogue</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Choix de jeu&quot;</span>, <span class="ruby-ivar">@vue</span>.<span class="ruby-identifier">window</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span><span class="ruby-operator">::</span><span class="ruby-constant">DESTROY_WITH_PARENT</span>, [<span class="ruby-string">&quot;Retour&quot;</span>, <span class="ruby-value">0</span>], [<span class="ruby-string">&quot;Charger&quot;</span>, <span class="ruby-value">1</span>], [<span class="ruby-string">&quot;Nouvelle partie&quot;</span>, <span class="ruby-value">2</span>])
+
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">set_modal</span>(<span class="ruby-keyword">true</span>)
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">show_all</span>
+        
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">run</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">reponse</span><span class="ruby-operator">|</span>
+                
+                <span class="ruby-keyword">case</span> <span class="ruby-identifier">reponse</span>
+
+                        <span class="ruby-keyword">when</span> <span class="ruby-value">1</span><span class="ruby-comment">#Chargement</span>
+
+                                <span class="ruby-identifier">changerControleur</span>(<span class="ruby-constant">ControleurChargerSauvegarde</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@picross</span>, <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">profil</span>))
+                                
+                        <span class="ruby-keyword">when</span> <span class="ruby-value">2</span><span class="ruby-comment">#Nouvelle partie</span>
+
+                                <span class="ruby-identifier">changerControleur</span>(<span class="ruby-constant">ControleurNouvellePartie</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@picross</span>, <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">profil</span>))
+                <span class="ruby-keyword">end</span>
+        }
+        
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">destroy</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-dgCredit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dgCredit</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Ouvre une boîte de dialogue des crédits</p>
+          
+          
+
+          
+          <div class="method-source-code" id="dgCredit-source">
+            <pre><span class="ruby-comment"># File Controleurs/ControleurAccueil.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dgCredit</span>
+
+        <span class="ruby-identifier">dialogue</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Crédits&quot;</span>, <span class="ruby-ivar">@vue</span>.<span class="ruby-identifier">window</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span><span class="ruby-operator">::</span><span class="ruby-constant">DESTROY_WITH_PARENT</span>,[<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Stock</span><span class="ruby-operator">::</span><span class="ruby-constant">OK</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Dialog</span><span class="ruby-operator">::</span><span class="ruby-constant">RESPONSE_ACCEPT</span>])
+        
+        <span class="ruby-comment"># Creation des elements</span>
+        <span class="ruby-identifier">tabNoms</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+
+        <span class="ruby-identifier">tabNoms</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">hBoxNom</span>(<span class="ruby-string">&quot;AYDIN Emre&quot;</span>))
+        <span class="ruby-identifier">tabNoms</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">hBoxNom</span>(<span class="ruby-string">&quot;FOUCAULT Antoine&quot;</span>))
+        <span class="ruby-identifier">tabNoms</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">hBoxNom</span>(<span class="ruby-string">&quot;GUENVER Loic&quot;</span>))
+        <span class="ruby-identifier">tabNoms</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">hBoxNom</span>(<span class="ruby-string">&quot;LANVIN Elyan&quot;</span>))
+        <span class="ruby-identifier">tabNoms</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">hBoxNom</span>(<span class="ruby-string">&quot;MARCAIS Thomas&quot;</span>))
+        <span class="ruby-identifier">tabNoms</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">hBoxNom</span>(<span class="ruby-string">&quot;RAMOLET Arthur&quot;</span>))
+
+        <span class="ruby-identifier">labelAnnee</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;\nCréé en 2014&quot;</span>)
+        <span class="ruby-identifier">labelUniv</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Projet Université du Maine&quot;</span>)
+
+        <span class="ruby-comment"># Ajout des elements a la Vbox</span>
+        <span class="ruby-identifier">tabNoms</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+
+                <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">x</span>)
+        }
+
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">labelAnnee</span>)
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">labelUniv</span>)
+
+        <span class="ruby-comment"># Affichage des elements et lancement de la fenetre</span>
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">show_all</span>
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">run</span>
+        <span class="ruby-identifier">dialogue</span>.<span class="ruby-identifier">destroy</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-hBoxNom" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hBoxNom</span><span
+            class="method-args">(unNom)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Crée une Hbox à partir d&#39;un nom qu&#39;elle entoure d&#39;étoiles</p>
+          
+          
+
+          
+          <div class="method-source-code" id="hBoxNom-source">
+            <pre><span class="ruby-comment"># File Controleurs/ControleurAccueil.rb, line 126</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hBoxNom</span>(<span class="ruby-identifier">unNom</span>)
+
+        <span class="ruby-identifier">hBox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">5</span>)
+        <span class="ruby-identifier">imEtoile</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;../Vues/Images/etoileCredit.png&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>)))
+        <span class="ruby-identifier">imEtoile2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-string">&quot;../Vues/Images/etoileCredit.png&quot;</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword">__FILE__</span>)))
+        
+        <span class="ruby-identifier">hBox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">imEtoile</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        <span class="ruby-identifier">hBox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">unNom</span>))
+        <span class="ruby-identifier">hBox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">imEtoile2</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">hBox</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

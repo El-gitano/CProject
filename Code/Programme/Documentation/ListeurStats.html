@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class ListeurStats - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Listeur.html">Listeur</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-genererTemps">#genererTemps</a>
+    
+    <li ><a href="#method-i-ligneSurbrillance">#ligneSurbrillance</a>
+    
+    <li ><a href="#method-i-maj">#maj</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-ListeurStats">
+  <h1 id="class-ListeurStats" class="class">
+    class ListeurStats
+  </h1>
+
+  <section class="description">
+    
+<p>Cette classe présente les sauvegardes d&#39;un joueur</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unModele)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Listeur.html#method-c-new">Listeur.new</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Vues/Listeurs/Listeur.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unModele</span>)
+
+        <span class="ruby-keyword">super</span>()
+        
+        <span class="ruby-ivar">@modele</span> = <span class="ruby-identifier">unModele</span>
+        <span class="ruby-ivar">@treeView</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeView</span>.<span class="ruby-identifier">new</span>
+        
+        <span class="ruby-identifier">add</span>(<span class="ruby-ivar">@treeView</span>)
+        <span class="ruby-identifier">set_policy</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">POLICY_AUTOMATIC</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">POLICY_AUTOMATIC</span>)
+        <span class="ruby-identifier">border_width</span> = <span class="ruby-value">5</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unModele)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Listeur.html#method-c-new">Listeur.new</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Vues/Listeurs/ListeurStats.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unModele</span>)
+
+        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">unModele</span>)
+        <span class="ruby-ivar">@treeView</span>.<span class="ruby-identifier">selection</span>.<span class="ruby-identifier">mode</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">SELECTION_NONE</span> 
+        <span class="ruby-identifier">set_size_request</span>(<span class="ruby-value">900</span>,<span class="ruby-value">150</span>)
+
+        <span class="ruby-ivar">@modeleTV</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">ListStore</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">String</span>, <span class="ruby-constant">String</span>, <span class="ruby-constant">String</span>, <span class="ruby-constant">Integer</span>, <span class="ruby-constant">Integer</span>, <span class="ruby-constant">Integer</span>, <span class="ruby-constant">Integer</span>)
+        
+        <span class="ruby-identifier">maj</span>
+        
+        <span class="ruby-ivar">@treeView</span>.<span class="ruby-identifier">model</span> = <span class="ruby-ivar">@modeleTV</span>
+ 
+        <span class="ruby-comment">#On définit + ajoute les colonnes</span>
+        <span class="ruby-identifier">listeColonnes</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">renderer</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">CellRendererText</span>.<span class="ruby-identifier">new</span>
+        
+        <span class="ruby-identifier">listeColonnes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeViewColumn</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Joueur&quot;</span>, <span class="ruby-identifier">renderer</span>, <span class="ruby-string">&quot;text&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>))
+        <span class="ruby-identifier">listeColonnes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeViewColumn</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Taux de réussite&quot;</span>, <span class="ruby-identifier">renderer</span>, <span class="ruby-string">&quot;text&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>))
+        <span class="ruby-identifier">listeColonnes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeViewColumn</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Temps joué&quot;</span>, <span class="ruby-identifier">renderer</span>, <span class="ruby-string">&quot;text&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>))
+        <span class="ruby-identifier">listeColonnes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeViewColumn</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Jokers utilisés&quot;</span>, <span class="ruby-identifier">renderer</span>, <span class="ruby-string">&quot;text&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>))
+        <span class="ruby-identifier">listeColonnes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeViewColumn</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Indices utilisés&quot;</span>, <span class="ruby-identifier">renderer</span>, <span class="ruby-string">&quot;text&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">4</span>))
+        <span class="ruby-identifier">listeColonnes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeViewColumn</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Nombre de clics&quot;</span>, <span class="ruby-identifier">renderer</span>, <span class="ruby-string">&quot;text&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span>))
+        <span class="ruby-identifier">listeColonnes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">TreeViewColumn</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Nombre de ragequits&quot;</span>, <span class="ruby-identifier">renderer</span>, <span class="ruby-string">&quot;text&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">6</span>))
+
+        <span class="ruby-identifier">linkerColonnes</span>(<span class="ruby-identifier">listeColonnes</span>)
+        <span class="ruby-identifier">ligneSurbrillance</span>(<span class="ruby-identifier">listeColonnes</span>, <span class="ruby-identifier">renderer</span>)
+        
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-genererTemps" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">genererTemps</span><span
+            class="method-args">(unInt)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Génère une chaîne hh:mm:ss à partir d&#39;un entier</p>
+          
+          
+
+          
+          <div class="method-source-code" id="genererTemps-source">
+            <pre><span class="ruby-comment"># File Vues/Listeurs/ListeurStats.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">genererTemps</span>(<span class="ruby-identifier">unInt</span>)
+
+        <span class="ruby-identifier">heures</span> = <span class="ruby-identifier">unInt</span><span class="ruby-operator">/</span><span class="ruby-value">3600</span>
+        <span class="ruby-identifier">minutes</span> = (<span class="ruby-identifier">unInt</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">heures</span><span class="ruby-operator">*</span><span class="ruby-value">3600</span>)) <span class="ruby-operator">/</span> <span class="ruby-value">60</span>
+        <span class="ruby-identifier">secondes</span> = <span class="ruby-identifier">unInt</span> <span class="ruby-operator">-</span> (<span class="ruby-identifier">heures</span><span class="ruby-operator">*</span><span class="ruby-value">3600</span>) <span class="ruby-operator">-</span> (<span class="ruby-identifier">minutes</span><span class="ruby-operator">*</span><span class="ruby-value">60</span>)
+
+
+        <span class="ruby-identifier">h</span> = <span class="ruby-identifier">heures</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">10</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;0&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">heures</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">heures</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">m</span> = <span class="ruby-identifier">minutes</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">10</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;0&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">minutes</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">minutes</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">s</span> = <span class="ruby-identifier">secondes</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">10</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;0&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">secondes</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">secondes</span>.<span class="ruby-identifier">to_s</span>
+                
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">h</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;h&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">m</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;m&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;s&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ligneSurbrillance" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ligneSurbrillance</span><span
+            class="method-args">(lesColonnes, renderer)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Met en couleur (ici rouge) la ligne du joueur actuel</p>
+          
+          
+
+          
+          <div class="method-source-code" id="ligneSurbrillance-source">
+            <pre><span class="ruby-comment"># File Vues/Listeurs/ListeurStats.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">ligneSurbrillance</span>(<span class="ruby-identifier">lesColonnes</span>, <span class="ruby-identifier">renderer</span>)
+
+        <span class="ruby-identifier">lesColonnes</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">col</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-identifier">col</span>.<span class="ruby-identifier">set_cell_data_func</span>(<span class="ruby-identifier">renderer</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">col</span>, <span class="ruby-identifier">renderer</span>, <span class="ruby-identifier">model</span>, <span class="ruby-identifier">iter</span><span class="ruby-operator">|</span>
+                
+                        <span class="ruby-keyword">if</span> <span class="ruby-identifier">iter</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">eql?</span>(<span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">getPseudo</span>)
+                        
+                                <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">foreground</span> = <span class="ruby-string">&quot;red&quot;</span>
+                                
+                        <span class="ruby-keyword">else</span>
+                        
+                                <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">foreground</span> = <span class="ruby-keyword">nil</span>
+                        <span class="ruby-keyword">end</span>
+                }
+        }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-maj" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">maj</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Met à jour le modèle du <a href="Listeur.html">Listeur</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="maj-source">
+            <pre><span class="ruby-comment"># File Vues/Listeurs/ListeurStats.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">maj</span>
+
+        <span class="ruby-ivar">@modeleTV</span>.<span class="ruby-identifier">clear</span>
+        <span class="ruby-identifier">donnees</span> = <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">infosStats</span>
+
+        <span class="ruby-identifier">donnees</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">ligne</span><span class="ruby-operator">|</span>
+
+                <span class="ruby-identifier">entree</span> = <span class="ruby-ivar">@modeleTV</span>.<span class="ruby-identifier">append</span>
+                
+                <span class="ruby-comment">#Nom joueur</span>
+                <span class="ruby-identifier">entree</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">ligne</span>[<span class="ruby-value">0</span>]
+                
+                <span class="ruby-comment">#Traitement du taux de réussite</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">ligne</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">eql?</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">then</span>
+                
+                        <span class="ruby-identifier">entree</span>[<span class="ruby-value">1</span>] = (<span class="ruby-value">0.0</span>).<span class="ruby-identifier">to_s</span>
+                
+                <span class="ruby-keyword">else</span>
+                
+                        <span class="ruby-identifier">entree</span>[<span class="ruby-value">1</span>] = ((<span class="ruby-identifier">ligne</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-identifier">ligne</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">to_f</span>) <span class="ruby-operator">*</span> <span class="ruby-value">100.0</span>).<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;%&quot;</span>
+                <span class="ruby-keyword">end</span>
+                
+                <span class="ruby-comment">#Traitement du temps joué</span>
+                <span class="ruby-identifier">entree</span>[<span class="ruby-value">2</span>] = <span class="ruby-identifier">genererTemps</span>(<span class="ruby-identifier">ligne</span>[<span class="ruby-value">3</span>])
+                
+                <span class="ruby-comment">#On ajout les entrées de la requête dans notre modèle</span>
+                <span class="ruby-value">3</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-value">6</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">entree</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">ligne</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>]
+                }
+        }
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

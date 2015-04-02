@@ -1,0 +1,15 @@
+======================================================
+
+
+		CHOIX DE CONCEPTION
+
+
+======================================================
+
+Utilisation de GitHub pour gérer les versions
+Utilsation de Ruby et Glade pour la programmation
+Pas d'IDE
+Utilisation d'une liste de mail 
+Modèle en spirale
+Logiciel pour diagramme de Gannt (à définir) : MsProject - Mantis - Redmine - TeamLab - GantProject - Gantter (cloud)
+4 espaces/tabulation

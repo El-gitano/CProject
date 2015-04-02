@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class ModeleEditeur - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">ModeleGrille
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-grillePropriete-3F">#grillePropriete?</a>
+    
+    <li ><a href="#method-i-miseAJourGrille">#miseAJourGrille</a>
+    
+    <li ><a href="#method-i-sauvegarderGrilleEditeur">#sauvegarderGrilleEditeur</a>
+    
+    <li ><a href="#method-i-setNbJokers">#setNbJokers</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-ModeleEditeur">
+  <h1 id="class-ModeleEditeur" class="class">
+    class ModeleEditeur
+  </h1>
+
+  <section class="description">
+    
+<p>Le modèle de l&#39;éditeur permet de manipuler la grille à éditer ainsi que
+d&#39;en sauvegarder/charger une</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-grille" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">grille</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unProfil, uneTaille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleEditeur.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unProfil</span>, <span class="ruby-identifier">uneTaille</span>)
+
+        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">unProfil</span>)
+        <span class="ruby-ivar">@grille</span> = <span class="ruby-constant">GrilleEditeur</span>.<span class="ruby-constant">Creer</span>(<span class="ruby-identifier">uneTaille</span>, <span class="ruby-string">&quot;NouvelleGrille&quot;</span>, <span class="ruby-identifier">unProfil</span>, <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-grillePropriete-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">grillePropriete?</span><span
+            class="method-args">(unNomGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne vrai si le profil chargé dans le modèle est propriétaire d&#39;une
+grille dont le nom est passé en paramètre (et vrai si la grille
+n&#39;existe pas)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="grillePropriete-3F-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleEditeur.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">grillePropriete?</span>(<span class="ruby-identifier">unNomGrille</span>)
+        
+        <span class="ruby-keyword">return</span> (<span class="ruby-operator">!</span><span class="ruby-identifier">grilleExiste?</span>(<span class="ruby-identifier">unNomGrille</span>) <span class="ruby-keyword">or</span> <span class="ruby-operator">!</span><span class="ruby-identifier">requete</span>(<span class="ruby-node">&quot;SELECT * FROM grilleediter WHERE createur = (SELECT id FROM profil WHERE pseudo=&#39;#{sanitize(getPseudo)}&#39;) AND nomgrille = &#39;#{sanitize(unNomGrille)}&#39;&quot;</span>).<span class="ruby-identifier">empty?</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-miseAJourGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">miseAJourGrille</span><span
+            class="method-args">(nomGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Met à jour une grille à partir de son nom</p>
+          
+          
+
+          
+          <div class="method-source-code" id="miseAJourGrille-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleEditeur.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">miseAJourGrille</span>(<span class="ruby-identifier">nomGrille</span>)
+
+        <span class="ruby-identifier">serial</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">casesSerialize</span>
+<span class="ruby-identifier">tailleGrille</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">taille</span>
+<span class="ruby-identifier">nbJokers</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">nbJokers</span>
+        <span class="ruby-identifier">dateModification</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%d/%m/%Y %H:%M&quot;</span>)
+        
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">requete</span>(<span class="ruby-node">&quot;UPDATE grilleediter SET taillegrille = &#39;#{tailleGrille}&#39;, grille = &#39;#{serial}&#39;, nbjokers = &#39;#{nbJokers}&#39;, datemaj = &#39;#{dateModification}&#39; WHERE nomgrille = &#39;#{sanitize(nomGrille)}&#39;&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-sauvegarderGrilleEditeur" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sauvegarderGrilleEditeur</span><span
+            class="method-args">(nomGrille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sauvegarde une grille éditeur sous le nom passé en paramètre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="sauvegarderGrilleEditeur-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleEditeur.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sauvegarderGrilleEditeur</span>(<span class="ruby-identifier">nomGrille</span>)
+
+    <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">nomGrille</span> = <span class="ruby-identifier">nomGrille</span>
+    <span class="ruby-identifier">serial</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">casesSerialize</span>
+    <span class="ruby-identifier">tailleGrille</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">taille</span>
+    <span class="ruby-identifier">nbJokers</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">nbJokers</span>
+            <span class="ruby-identifier">date</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%d/%m/%Y %H:%M&quot;</span>)
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">requete</span>(<span class="ruby-node">&quot;INSERT INTO grilleediter(createur, nomgrille, taillegrille, grille, nbjokers, datecreation, datemaj) VALUES((SELECT id FROM profil WHERE pseudo=&#39;#{sanitize(getPseudo)}&#39;),&#39;#{sanitize(nomGrille)}&#39;,&#39;#{tailleGrille}&#39;,&#39;#{serial}&#39;,&#39;#{nbJokers}&#39;,&#39;#{date}&#39;,&#39;#{date}&#39;)&quot;</span>)
+    
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-setNbJokers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">setNbJokers</span><span
+            class="method-args">(uneValeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Définit le nombre de jokers de la grille à l&#39;aide de l&#39;entier passé
+en paramètre</p>
+          
+          
+
+          
+          <div class="method-source-code" id="setNbJokers-source">
+            <pre><span class="ruby-comment"># File Modeles/ModeleEditeur.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">setNbJokers</span>(<span class="ruby-identifier">uneValeur</span>)
+
+        <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">nbJokers</span> = <span class="ruby-identifier">uneValeur</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class VueJeu - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Vue.html">Vue</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-actualiserCase">#actualiserCase</a>
+    
+    <li ><a href="#method-i-creerEntete">#creerEntete</a>
+    
+    <li ><a href="#method-i-creerInfoColonne">#creerInfoColonne</a>
+    
+    <li ><a href="#method-i-creerInfoLigne">#creerInfoLigne</a>
+    
+    <li ><a href="#method-i-creerMenu">#creerMenu</a>
+    
+    <li ><a href="#method-i-creerPlateau">#creerPlateau</a>
+    
+    <li ><a href="#method-i-creerVBoxAide">#creerVBoxAide</a>
+    
+    <li ><a href="#method-i-genererTemps">#genererTemps</a>
+    
+    <li ><a href="#method-i-getCaseVue">#getCaseVue</a>
+    
+    <li ><a href="#method-i-miseAJour">#miseAJour</a>
+    
+    <li ><a href="#method-i-miseAJourNomGrille">#miseAJourNomGrille</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-VueJeu">
+  <h1 id="class-VueJeu" class="class">
+    class VueJeu
+  </h1>
+
+  <section class="description">
+    
+<p><a href="Vue.html">Vue</a> chargée de présenter une interface de jeu avec
+possibilite de sauvegarder</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-btIndice" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">btIndice</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-btJoker" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">btJoker</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-lbNomGrille" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">lbNomGrille</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-lbTimer" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">lbTimer</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-miDidac" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">miDidac</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-miQuitter" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">miQuitter</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-miRageQuit" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">miRageQuit</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-miSauvegarder" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">miSauvegarder</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-table" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">table</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unModele, leTitre)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Une vue n&#39;a besoin que d&#39;un modèle pour fonctionner</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Vues/Vue.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unModele</span>, <span class="ruby-identifier">leTitre</span>)
+
+        <span class="ruby-ivar">@modele</span> = <span class="ruby-identifier">unModele</span>
+        
+        <span class="ruby-ivar">@window</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Window</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">leTitre</span>)
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">set_window_position</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Window</span><span class="ruby-operator">::</span><span class="ruby-constant">POS_CENTER</span>)
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">set_resizable</span>(<span class="ruby-keyword">false</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(unModele)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Vue.html#method-c-new">Vue.new</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">unModele</span>)
+
+        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">unModele</span>, <span class="ruby-string">&quot;Jeu&quot;</span>)
+        
+        <span class="ruby-comment">#VBox principale</span>
+        <span class="ruby-identifier">vbox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">VBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">5</span>)
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">vbox</span>)
+
+        <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">creerMenu</span>)
+        <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">creerEntete</span>)
+        <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">creerPlateau</span>)
+        
+        <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">set_border_width</span>(<span class="ruby-value">5</span>)
+
+        <span class="ruby-identifier">arial18</span> = <span class="ruby-constant">Pango</span><span class="ruby-operator">::</span><span class="ruby-constant">FontDescription</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;Arial 20&#39;</span>)
+        <span class="ruby-ivar">@lbTimer</span>.<span class="ruby-identifier">modify_font</span>(<span class="ruby-identifier">arial18</span>)
+
+        <span class="ruby-identifier">miseAJour</span>
+        
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-actualiserCase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">actualiserCase</span><span
+            class="method-args">(x,y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Actualise la case située aux coordonnées (x,y) Changer getCase dans le
+modèle</p>
+          
+          
+
+          
+          <div class="method-source-code" id="actualiserCase-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 223</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">actualiserCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+        
+        <span class="ruby-comment">#Doit devenir....</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>).<span class="ruby-identifier">neutre?</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">etat</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;neutre&quot;</span>) <span class="ruby-keyword">then</span>
+
+                <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">changerEtat</span>(<span class="ruby-string">&quot;neutre&quot;</span>)
+                 
+        <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>).<span class="ruby-identifier">croix?</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">etat</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;croix&quot;</span>) <span class="ruby-keyword">then</span>
+        
+                <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">changerEtat</span>(<span class="ruby-string">&quot;croix&quot;</span>)
+                 
+        <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>).<span class="ruby-identifier">jouee?</span> <span class="ruby-keyword">and</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">etat</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-string">&quot;jouee&quot;</span>) <span class="ruby-keyword">then</span>
+
+                <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>).<span class="ruby-identifier">changerEtat</span>(<span class="ruby-string">&quot;jouee&quot;</span>)
+
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerEntete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerEntete</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Crée la tête de la fenêtre (Timer - NomGrille - HBoxAide)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creerEntete-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">creerEntete</span>
+
+        <span class="ruby-identifier">hbox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">50</span>)
+        
+        <span class="ruby-ivar">@lbTimer</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-ivar">@lbNomGrille</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">plateauJeu</span>.<span class="ruby-identifier">nomGrille</span>)
+        <span class="ruby-identifier">vboxAide</span> = <span class="ruby-identifier">creerVBoxAide</span>
+        
+        <span class="ruby-identifier">hbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@lbTimer</span>)
+        <span class="ruby-identifier">hbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@lbNomGrille</span>)
+        <span class="ruby-identifier">hbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-identifier">vboxAide</span>)
+        
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerInfoColonne" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerInfoColonne</span><span
+            class="method-args">(unNombre)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne une VBox contenant les informations sur une colonne</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creerInfoColonne-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 114</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">creerInfoColonne</span>(<span class="ruby-identifier">unNombre</span>)
+
+        <span class="ruby-identifier">informations</span> = <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">informations</span>.<span class="ruby-identifier">infosColonnes</span>[<span class="ruby-identifier">unNombre</span>]
+        <span class="ruby-identifier">vbox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">VBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        
+        <span class="ruby-identifier">informations</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">nombre</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">pack_end</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">nombre</span>.<span class="ruby-identifier">to_s</span>), <span class="ruby-keyword">false</span>, <span class="ruby-keyword">false</span>)
+        }
+        
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">vbox</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerInfoLigne" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerInfoLigne</span><span
+            class="method-args">(unNombre)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne une HBox contenant les informations sur une ligne</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creerInfoLigne-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 128</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">creerInfoLigne</span>(<span class="ruby-identifier">unNombre</span>)
+
+        <span class="ruby-identifier">informations</span> = <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">informations</span>.<span class="ruby-identifier">infosLignes</span>[<span class="ruby-identifier">unNombre</span>]
+        <span class="ruby-identifier">hbox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">0</span>)
+        
+        <span class="ruby-identifier">chaine</span> = <span class="ruby-string">&quot;&quot;</span>
+        
+        <span class="ruby-identifier">informations</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">nombre</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-identifier">chaine</span> <span class="ruby-operator">+=</span> (<span class="ruby-identifier">nombre</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot; &quot;</span>)
+        }
+        
+        <span class="ruby-identifier">hbox</span>.<span class="ruby-identifier">pack_end</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Label</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">chaine</span>), <span class="ruby-keyword">false</span>, <span class="ruby-keyword">false</span>)
+        
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">hbox</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerMenu" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerMenu</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Crée le menu en haut de la fenêtre de jeu</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creerMenu-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">creerMenu</span>
+
+        <span class="ruby-identifier">mb</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MenuBar</span>.<span class="ruby-identifier">new</span>
+        
+        <span class="ruby-comment">#Niveau 1</span>
+        <span class="ruby-identifier">fichier</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MenuItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Fichier&quot;</span>)
+        <span class="ruby-ivar">@miDidac</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MenuItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Didacticiel&quot;</span>)
+        <span class="ruby-ivar">@miRageQuit</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MenuItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;RageQuit&quot;</span>)
+        
+        <span class="ruby-comment">#Niveau 2 (Fichier)</span>
+        <span class="ruby-identifier">menuFichier</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Menu</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-ivar">@miSauvegarder</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MenuItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Sauvegarder&quot;</span>)
+        <span class="ruby-ivar">@miQuitter</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MenuItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Quitter&quot;</span>)
+        
+        <span class="ruby-identifier">menuFichier</span>.<span class="ruby-identifier">append</span>(<span class="ruby-ivar">@miSauvegarder</span>)
+        <span class="ruby-identifier">menuFichier</span>.<span class="ruby-identifier">append</span>(<span class="ruby-ivar">@miQuitter</span>)
+        
+        <span class="ruby-identifier">fichier</span>.<span class="ruby-identifier">set_submenu</span>(<span class="ruby-identifier">menuFichier</span>)
+        
+        <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">append</span>(<span class="ruby-identifier">fichier</span>)
+        <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">append</span>(<span class="ruby-ivar">@miDidac</span>)
+        <span class="ruby-identifier">mb</span>.<span class="ruby-identifier">append</span>(<span class="ruby-ivar">@miRageQuit</span>)
+        
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">mb</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerPlateau" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerPlateau</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Crée le plateau de jeu à partir de la grille du modèle</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creerPlateau-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 146</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">creerPlateau</span>
+
+        <span class="ruby-identifier">tailleGrille</span> = <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">plateauJeu</span>.<span class="ruby-identifier">taille</span>
+        <span class="ruby-identifier">espacementCases</span> = <span class="ruby-value">2</span>
+        
+        <span class="ruby-ivar">@table</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-keyword">false</span>)<span class="ruby-comment">#On rajoute 1 pour insérer les infos des colonnes</span>
+        <span class="ruby-ivar">@mat</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tailleGrille</span>) {<span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">tailleGrille</span>)}
+        
+        <span class="ruby-comment">#Infos des colonnes</span>
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">creerInfoColonne</span>(<span class="ruby-identifier">x</span>), <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>, <span class="ruby-value">0</span>, <span class="ruby-value">1</span>)
+        }
+        
+        <span class="ruby-comment">#Infos des lignes</span>
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">creerInfoLigne</span>(<span class="ruby-identifier">y</span>), <span class="ruby-value">0</span>, <span class="ruby-value">1</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>)
+        }
+        
+        <span class="ruby-comment">#Création de la grille</span>
+                        
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+                
+                        <span class="ruby-identifier">caseTemp</span> = <span class="ruby-constant">CaseVue</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;neutre&quot;</span>, <span class="ruby-identifier">tailleGrille</span>, <span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+                        <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">caseTemp</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">x</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">+</span><span class="ruby-value">2</span>)
+                        <span class="ruby-ivar">@mat</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>] = <span class="ruby-identifier">caseTemp</span>
+                }
+        }
+        
+        <span class="ruby-comment">#Définition de l&#39;espacement des cases toutes les 5 cases</span>
+        <span class="ruby-value">5</span>.<span class="ruby-identifier">step</span>(<span class="ruby-identifier">tailleGrille</span>, <span class="ruby-value">5</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        
+                <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">set_row_spacing</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">espacementCases</span>)
+                <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">set_column_spacing</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">espacementCases</span>)
+        }
+        
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@table</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-creerVBoxAide" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creerVBoxAide</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Crée une hBox contenant les boutons Joker et Indice</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creerVBoxAide-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">creerVBoxAide</span>
+
+        <span class="ruby-identifier">vbox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">VBox</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>, <span class="ruby-value">3</span>)
+        
+        <span class="ruby-ivar">@btJoker</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-ivar">@btIndice</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Button</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Indice&quot;</span>)
+        
+        <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@btJoker</span>)
+        <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">pack_start</span>(<span class="ruby-ivar">@btIndice</span>)
+        
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">vbox</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-genererTemps" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">genererTemps</span><span
+            class="method-args">(unNombre)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne un temps sous le format chronomètre à partir d&#39;un entier</p>
+          
+          
+
+          
+          <div class="method-source-code" id="genererTemps-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">genererTemps</span>(<span class="ruby-identifier">unNombre</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">unNombre</span>.<span class="ruby-identifier">to_s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getCaseVue" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getCaseVue</span><span
+            class="method-args">(unX, unY)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getCaseVue-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 241</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">getCaseVue</span>(<span class="ruby-identifier">unX</span>, <span class="ruby-identifier">unY</span>)
+
+        <span class="ruby-keyword">return</span> <span class="ruby-ivar">@mat</span>[<span class="ruby-identifier">unX</span>][<span class="ruby-identifier">unY</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-miseAJour" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">miseAJour</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Met à jour la vue à partir du modele</p>
+          
+          
+
+          
+          <div class="method-source-code" id="miseAJour-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 189</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">miseAJour</span>
+        
+        <span class="ruby-identifier">tailleGrille</span> = <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">plateauJeu</span>.<span class="ruby-identifier">taille</span>
+        
+        <span class="ruby-comment">#Mise à jour de toutes les cases du plateau à partir du modèle</span>
+        <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+                <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">tailleGrille</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+                        <span class="ruby-identifier">actualiserCase</span>(<span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span>)
+                }
+        }
+        
+        <span class="ruby-comment">#Désactivation du bouton joker si plus de jokers</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">plateauJeu</span>.<span class="ruby-identifier">nbJokers</span>.<span class="ruby-identifier">eql?</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">then</span>
+        
+                <span class="ruby-ivar">@btJoker</span>.<span class="ruby-identifier">sensitive</span> = <span class="ruby-keyword">false</span> 
+                <span class="ruby-ivar">@btJoker</span>.<span class="ruby-identifier">label</span> = <span class="ruby-string">&quot;Jokers&quot;</span>
+                
+        <span class="ruby-keyword">else</span>
+        
+                <span class="ruby-ivar">@btJoker</span>.<span class="ruby-identifier">sensitive</span> = <span class="ruby-keyword">true</span>
+                <span class="ruby-ivar">@btJoker</span>.<span class="ruby-identifier">label</span> = <span class="ruby-node">&quot;Jokers (#{@modele.plateauJeu.nbJokers})&quot;</span>
+        <span class="ruby-keyword">end</span>
+        
+        
+        <span class="ruby-ivar">@window</span>.<span class="ruby-identifier">show_all</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-miseAJourNomGrille" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">miseAJourNomGrille</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="miseAJourNomGrille-source">
+            <pre><span class="ruby-comment"># File Vues/VueJeu.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">miseAJourNomGrille</span>
+
+        <span class="ruby-ivar">@lbNomGrille</span>.<span class="ruby-identifier">text</span> = <span class="ruby-ivar">@modele</span>.<span class="ruby-identifier">plateauJeu</span>.<span class="ruby-identifier">nomGrille</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

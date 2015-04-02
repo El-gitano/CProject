@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class EtatCaseNeutre - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="EtatCase.html">EtatCase</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-getInstance">::getInstance</a>
+    
+    <li class="calls-super" ><a href="#method-i-clicDroit">#clicDroit</a>
+    
+    <li class="calls-super" ><a href="#method-i-clicGauche">#clicGauche</a>
+    
+    <li ><a href="#method-i-croix-3F">#croix?</a>
+    
+    <li ><a href="#method-i-jouee-3F">#jouee?</a>
+    
+    <li ><a href="#method-i-neutre-3F">#neutre?</a>
+    
+    <li ><a href="#method-i-to_debug">#to_debug</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-EtatCaseNeutre">
+  <h1 id="class-EtatCaseNeutre" class="class">
+    class EtatCaseNeutre
+  </h1>
+
+  <section class="description">
+    
+<p>Définition de la réaction d&#39;une case aux clics lorsqu&#39;elle est
+neutre</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-getInstance" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getInstance</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="getInstance-source">
+            <pre><span class="ruby-comment"># File Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-constant">EtatCaseNeutre</span>.<span class="ruby-identifier">getInstance</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@instance</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">then</span>
+
+                <span class="ruby-identifier">@@instance</span> = <span class="ruby-identifier">new</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">@@instance</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-clicDroit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clicDroit</span><span
+            class="method-args">(uneCase)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Passage à l&#39;état croix</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="EtatCase.html#method-i-clicDroit">EtatCase#clicDroit</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="clicDroit-source">
+            <pre><span class="ruby-comment"># File Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb, line 22</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clicDroit</span>(<span class="ruby-identifier">uneCase</span>)
+
+        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">uneCase</span>)
+        <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-constant">EtatCaseCroix</span>.<span class="ruby-identifier">getInstance</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-clicGauche" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clicGauche</span><span
+            class="method-args">(uneCase)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Passage à l&#39;état joué</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="EtatCase.html#method-i-clicGauche">EtatCase#clicGauche</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="clicGauche-source">
+            <pre><span class="ruby-comment"># File Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">clicGauche</span>(<span class="ruby-identifier">uneCase</span>)
+
+        <span class="ruby-keyword">super</span>(<span class="ruby-identifier">uneCase</span>)
+        <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">changerEtat</span>(<span class="ruby-constant">EtatCaseJouee</span>.<span class="ruby-identifier">getInstance</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-croix-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">croix?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="croix-3F-source">
+            <pre><span class="ruby-comment"># File Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">croix?</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-jouee-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">jouee?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="jouee-3F-source">
+            <pre><span class="ruby-comment"># File Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">jouee?</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-neutre-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">neutre?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="neutre-3F-source">
+            <pre><span class="ruby-comment"># File Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb, line 35</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">neutre?</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_debug" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_debug</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_debug-source">
+            <pre><span class="ruby-comment"># File Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_debug</span>
+
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&#39; N &#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File Modeles/Grilles/EtatsCases/EtatCaseNeutre.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+
+        <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;Je suis une case neutre&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

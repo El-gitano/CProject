@@ -1,0 +1,17 @@
+======================================================
+
+            Fonctionnement Serialization
+
+======================================================
+
+
+http://www.skorks.com/2010/04/serializing-and-deserializing-objects-with-ruby/
+
+#inclusion de yalm
+require "yaml"
+
+#serialization d' "objet1"
+serialized_object = YAML::dump(objet1)
+
+#deserialization d' "objet1"
+deserialized_object = YAML::load(serialized_object)
